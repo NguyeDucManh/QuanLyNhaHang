@@ -1,0 +1,2494 @@
+[
+  {
+    "location": "customers/account_service.py:10",
+    "current_value": "    # Serialize active-account changes so concurrent demotions cannot remove all admins.",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/ai_phase_views.py:67",
+    "current_value": "    accounts=[a for a in account_audit()['accounts'] if a['active'] and a['role'] in ('ADMIN','MANAGER','STAFF') and not a['seed_account'] and (not a['employee_code'] or a['employee_code'].upper().startswith('DEMO-'))]",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/ai_views.py:55",
+    "current_value": "def recommendation_demo(request):",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/ai_views.py:62",
+    "current_value": "    return render(request,'admin/ai/recommendations.html',{'admin_page':'recommendation-demo','customers':customers,'selected':customer,'recommendations':output['recommendations'],'mode':output['mode'],'evaluation':evaluate_recommendations(k=5)})",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/business_forms.py:88",
+    "current_value": "    payment_method=forms.ChoiceField(label='Phương thức thanh toán',choices=[('CASH','Tiền mặt'),('BANK_TRANSFER','Chuyển khoản QR DEMO')])",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/context_processors.py:26",
+    "current_value": "    routes.update({'ai-schedule':reverse('ai_schedules'),'recommendation-demo':reverse('recommendation_demo'),'ai-dashboard':reverse('ai_dashboard'),'ai-forecast':reverse('ai_forecast'),'ai-inventory':reverse('ai_inventory'),'ai-faces':reverse('ai_faces')})",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/employee_identity.py:6",
+    "current_value": "DEMO_EMPLOYEE = Q(employee_code__istartswith='DEMO-')",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/employee_identity.py:9",
+    "current_value": "    return Employee.objects.exclude(DEMO_EMPLOYEE).exclude(user__username__startswith='demo_m07_').filter(is_active=True, user__is_active=True, employment_status='ACTIVE').filter(Q(user__is_superuser=True)|Q(user__groups__name__in=['ADMIN','MANAGER','STAFF'])).distinct()",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/employee_identity.py:15",
+    "current_value": "    if employee.employee_code.upper().startswith('DEMO-') or employee.user.username.startswith('demo_m07_'):",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/employee_identity.py:28",
+    "current_value": "        accounts.append({'id':user.pk,'username':user.username,'name':user.get_full_name(),'active':user.is_active,'role':get_role(user),'groups':list(user.groups.values_list('name',flat=True)),'group_permissions':list(user.groups.values_list('permissions__codename',flat=True).distinct()),'direct_permissions':list(user.user_permissions.values_list('codename',flat=True)),'employee_id':employee.pk if employee else None,'employee_code':employee.employee_code if employee else None,'seed_account':use",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/employee_identity.py:29",
+    "current_value": "    demo=[]",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/employee_identity.py:30",
+    "current_value": "    for employee in Employee.objects.filter(DEMO_EMPLOYEE).select_related('user','position'):",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/employee_identity.py:33",
+    "current_value": "        demo.append({'id':employee.pk,'user_id':employee.user_id,'username':employee.user.username,'code':employee.employee_code,'position':employee.position.name,'references':refs})",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/employee_identity.py:34",
+    "current_value": "    return {'total_users':len(accounts),'active_users':sum(a['active'] for a in accounts),'employee_profiles':Employee.objects.count(),'operational_employees':operational_employees().count(),'face_profiles':FaceProfile.objects.count(),'face_embeddings':FaceEmbedding.objects.count(),'accounts':accounts,'users_without_employee':[a['username'] for a in accounts if a['active'] and a['role'] in ('STAFF','MANAGER','ADMIN') and not a['seed_account'] and a['employee_id'] is None],'demo_employees':demo,'",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/employee_identity_views.py:16",
+    "current_value": "        if value.upper().startswith('DEMO-'): raise forms.ValidationError('Nhập mã nhân viên thật, không dùng prefix DEMO-.')",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/employee_identity_views.py:23",
+    "current_value": "    if get_role(user) not in ('ADMIN','MANAGER','STAFF') or user.username.startswith('demo_m07_'):",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_labels.py:6",
+    "current_value": "MARKER=re.compile(r'(?i)\\bdemo\\b')",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_labels.py:9",
+    "current_value": "    text=re.sub(r'(?i)\\(\\s*demo\\s*\\)|\\[\\s*demo[^\\]]*\\]','',text)",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_labels.py:15",
+    "current_value": "    if re.search(r'(?i)demo[-_]u|nhân viên\\s+demo|demo_m07_',text):return 'Hồ sơ cần xác nhận'",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_labels.py:16",
+    "current_value": "    if ('@' in text and ('demo' in text.lower() or text.lower().endswith('.example'))) or re.fullmatch(r'[0\\s()+.-]{9,}',text):return 'Chưa cập nhật'",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_labels.py:17",
+    "current_value": "    if re.search(r'(?i)demo',text) and ('đường' in text.lower() or 'địa chỉ' in text.lower()):return 'Chưa cập nhật'",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_labels.py:18",
+    "current_value": "    if re.match(r'(?i)^Đánh giá demo',text):return re.sub(r'(?i)demo','mô phỏng',text)",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_labels.py:19",
+    "current_value": "    if 'DEMO MODULE07' in text or 'DEMO INITIAL' in text:return re.sub(r'\\[[^\\]]*DEMO[^\\]]*\\]','Dữ liệu khởi tạo',text,flags=re.I)",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_labels.py:29",
+    "current_value": "                for obj in model.objects.filter(**{field.name+'__icontains':'demo'}).only('pk',field.name):",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:1",
+    "current_value": "\"\"\"Explicit demonstration data, not chef-approved recipes or real contact details.\"\"\"",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:28",
+    "current_value": "MARKER='[DEMO MODULE07 OPERATIONAL]'",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:32",
+    "current_value": " ('Phô mai thêm (DEMO)','25000',(9,13)),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:33",
+    "current_value": " ('Sốt bơ tỏi (DEMO)','30000',(8,9,10,13,32)),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:34",
+    "current_value": " ('Sốt tiêu (DEMO)','20000',(18,19,20)),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:35",
+    "current_value": " ('Rau thêm (DEMO)','15000',(15,18,19,20,21,22,23)),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:36",
+    "current_value": " ('Trứng thêm (DEMO)','15000',(22,23,35)),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:39",
+    "current_value": " ('DEMO - Combo 2 người',((3,1),(15,2),(24,2)),'0.90'),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:40",
+    "current_value": " ('DEMO - Combo hải sản',((9,1),(8,2),(22,2),(45,2)),'0.92'),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:41",
+    "current_value": " ('DEMO - Combo bò',((19,2),(3,1),(25,2),(45,2)),'0.90'),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/operational_seed_data.py:42",
+    "current_value": " ('DEMO - Combo gia đình',((1,2),(12,1),(31,1),(22,3),(24,3),(45,4)),'0.88'),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/payment_demo.py:1",
+    "current_value": "\"\"\"A local QR encodes demo metadata, never a real banking payment instruction.\"\"\"",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/payment_demo.py:6",
+    "current_value": "DEMO_BANK = {'bank':'SMART RESTAURANT DEMO BANK','account_holder':'SMART RESTAURANT','account_number':'000123456789'}",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/payment_demo.py:10",
+    "current_value": "    return json.dumps({'demo':True,**DEMO_BANK,'invoice_number':payment.invoice.invoice_number,",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/payment_service.py:57",
+    "current_value": "        reference='DEMO-'+uuid.uuid4().hex.upper()",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/payment_views.py:14",
+    "current_value": "from .payment_demo import qr_svg,DEMO_BANK",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/payment_views.py:42",
+    "current_value": "        'demo_bank':DEMO_BANK,'page':'invoices','can_create':invoice.status=='UNPAID' and not pending})",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/rbac.py:114",
+    "current_value": "    access['recommendation-demo']=get_role(user) in ('ADMIN','MANAGER') and has_capability(user,'customers.view_order') and has_capability(user,'customers.view_menuitem')",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/recommendation_service.py:6",
+    "current_value": "# large buffer per hardware thread on this local Django/Chrome demo machine.",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/staff_portal.py:23",
+    "current_value": "    name=request.user.get_full_name() or (employee.full_name if employee and not employee.employee_code.upper().startswith('DEMO-') else request.user.username)",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/staff_portal.py:28",
+    "current_value": "    return {'management_base':'staff/management.html' if staff else 'index.html','personal_base':'staff/base.html' if staff else 'customer/base.html','portal_identity_confirmed':bool(employee and not employee.employee_code.upper().startswith('DEMO-') and not employee.user.username.startswith('demo_m07_')),'portal_employee':employee,'portal_name':name,'portal_initial':name[:1].upper(),'portal_position':employee.position.name if employee else 'Chưa liên kết hồ sơ','staff_nav':nav,'portal_unread':s",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/tests.py:196",
+    "current_value": "    def test_legacy_demo_cart_is_not_remapped(self):",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/tests.py:488",
+    "current_value": "    def test_no_self_lock_or_self_demotion_and_invalid_role(self):",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_ai01_ai02.py:185",
+    "current_value": "        self.assertEqual(c.get(reverse('recommendation_demo')).status_code,403)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_ai01_ai02.py:187",
+    "current_value": "        c.force_login(self.staff);self.assertEqual(c.get(reverse('recommendation_demo')).status_code,403)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_ai01_ai02.py:188",
+    "current_value": "        c.force_login(self.manager);self.assertContains(c.get(reverse('recommendation_demo')),'Cosine similarity')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_face_operational.py:35",
+    "current_value": "    def test_operational_real_included_demo_and_inactive_excluded(self):",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_face_operational.py:37",
+    "current_value": "        self.employee.employee_code='DEMO-U0001';self.employee.save();self.assertFalse(operational_employees().filter(pk=self.employee.pk).exists())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_face_operational.py:40",
+    "current_value": "        self.employee.employee_code='DEMO-U0001';self.employee.save()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_face_operational.py:41",
+    "current_value": "        response=self.client.get(reverse('ai_faces'));self.assertNotContains(response,'DEMO-U0001');self.assertTrue(FaceEmbedding.objects.filter(profile=self.profile).exists());self.assertEqual(len(response.context['employees']),0)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_face_operational.py:43",
+    "current_value": "        self.employee.employee_code='DEMO-U0001';self.employee.save();before=Employee.objects.count();audit=account_audit();self.assertEqual(audit['demo_employees'][0]['user_id'],self.staff.pk);self.assertEqual(Employee.objects.count(),before)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_face_operational.py:45",
+    "current_value": "        self.employee.employee_code='DEMO-U0001';self.employee.save();schedule=self.approved_schedule()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_face_operational.py:59",
+    "current_value": "            self.employee.employee_code='DEMO-U0001';self.employee.save()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_face_operational.py:147",
+    "current_value": "        self.employee.employee_code='DEMO-U0001';self.employee.save()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:21",
+    "current_value": "        combo=Combo.objects.create(name='Combo bò DEMO',price=100)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:22",
+    "current_value": "        call_command('clean_operational_demo_labels',stdout=StringIO());combo.refresh_from_db();self.assertEqual(combo.name,'Combo bò DEMO')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:24",
+    "current_value": "        combo=Combo.objects.create(name='Combo bò DEMO',price=100);line=ComboItem.objects.create(combo=combo,menu_item=self.menu,quantity=2)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:25",
+    "current_value": "        for _ in range(2):call_command('clean_operational_demo_labels',apply=True,allow_test_database=True,stdout=StringIO())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:28",
+    "current_value": "        combo=Combo.objects.create(name='Combo bò DEMO',price=100);Combo.objects.create(name='Combo bò',price=100)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:29",
+    "current_value": "        call_command('clean_operational_demo_labels',apply=True,allow_test_database=True,stdout=StringIO());combo.refresh_from_db();self.assertEqual(combo.name,'Combo bò DEMO');self.assertEqual(Combo.objects.count(),2)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:31",
+    "current_value": "        with self.assertRaises(CommandError):call_command('clean_operational_demo_labels',apply=True,stdout=StringIO())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:33",
+    "current_value": "        self.employee.employee_code='DEMO-U0001';self.employee.full_name='Nhân viên DEMO';self.employee.save()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:34",
+    "current_value": "        call_command('clean_operational_demo_labels',apply=True,allow_test_database=True,stdout=StringIO());self.employee.refresh_from_db();self.assertEqual(self.employee.employee_code,'DEMO-U0001');self.assertFalse(operational_employees().filter(pk=self.employee.pk).exists())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:35",
+    "current_value": "        self.client.force_login(self.staff);text=strip_tags(self.client.get(reverse('staff_home')).content.decode());self.assertNotIn('DEMO',text);self.assertIn('Hồ sơ cần xác nhận',text)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:37",
+    "current_value": "        Combo.objects.create(name='Combo bò DEMO',price=100);self.assertNotIn('DEMO',strip_tags(self.client.get(reverse('customer_combos')).content.decode()))",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:39",
+    "current_value": "        RestaurantInfo.objects.create(name='Nhà hàng DEMO',address='123 Đường DEMO',phone='0000000000',email='demo@restaurant.example',opening_time=time(8),closing_time=time(23))",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:40",
+    "current_value": "        text=strip_tags(self.client.get('/').content.decode());self.assertNotIn('DEMO',text);self.assertNotIn('0000000000',text);self.assertNotIn('demo@',text);self.assertIn('Chưa cập nhật',text)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_grouped_workspace.py:44",
+    "current_value": "        self.client.force_login(self.staff);text=strip_tags(self.client.get(reverse('staff_home')).content.decode());self.assertIn('EMP1',text);self.assertNotIn('DEMO',text)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_module05.py:1",
+    "current_value": "\"\"\"Financial snapshot, ownership, demo receipt, concurrency and real ASGI tests.\"\"\"",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_module05.py:20",
+    "current_value": "from .payment_demo import qr_payload",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_module05.py:61",
+    "current_value": "                data=json.loads(qr_payload(payment)); self.assertTrue(data['demo'])",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_module05.py:63",
+    "current_value": "                self.assertEqual(data['payment_number'],payment.payment_number); self.assertTrue(data['reference'].startswith('DEMO-'))",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_module05.py:172",
+    "current_value": "    def test_customer_invoice_snapshots_and_demo_svg_backend(self):",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_module05.py:174",
+    "current_value": "        self.assertContains(self.client.get(reverse('customer_invoice_detail',args=[self.inv.pk])),'CHUYỂN KHOẢN QR DEMO')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_operational_seed.py:38",
+    "current_value": "        self.assertEqual(len(result['new_accounts']),2);self.assertTrue(all(name.startswith('demo_m07_') for name in result['new_accounts']))",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/test_operational_seed.py:43",
+    "current_value": "    def test_existing_recipe_profile_and_user_edited_demo_data_not_overwritten(self):",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "customers/management/commands/seed_initial_inventory.py:15",
+    "current_value": "MARKER='[DEMO INITIAL INVENTORY V1]'",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:1",
+    "current_value": "\"\"\"Add demo operation data without overwriting existing rows or business history.\"\"\"",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:25",
+    "current_value": "    help='Atomic, additive, idempotent operational DEMO data for MODULE 07. No orders/payments/stock seeding.'",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:45",
+    "current_value": "        if actor is None: raise CommandError('Cần một ADMIN active để xác nhận dữ liệu demo; không tự nâng role.')",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:48",
+    "current_value": "            if RestaurantInfo.objects.filter(name='Smart Restaurant DEMO').exists(): self.skipped.append('Hồ sơ DEMO đã bị tắt; giữ trạng thái người dùng chọn.')",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:49",
+    "current_value": "            else: save_validated(RestaurantInfo(name='Smart Restaurant DEMO',description='Nhà hàng minh họa ẩm thực hải sản và món Âu. Hồ sơ DEMO, không sử dụng thông tin liên hệ cá nhân.',address='123 Đường Nhà Hàng DEMO, TP.HCM (địa chỉ minh họa)',phone='0000000000',email='demo@smart-restaurant.example',opening_time=time(8),closing_time=time(23),latitude=Decimal('10.776900'),longitude=Decimal('106.700900')))",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:66",
+    "current_value": "            employee=save_validated(Employee(user=user,employee_code=f'DEMO-U{user.pk:04}',full_name=f'Nhân viên DEMO {user.pk:02}',phone='',position=positions[position_name],hire_date=start,base_salary=Decimal(SALARIES[position_name])))",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:72",
+    "current_value": "            username='demo_m07_'+suffix;user=get_user_model().objects.filter(username=username).first()",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:76",
+    "current_value": "            user=get_user_model().objects.create_user(username=username,password=password,first_name='DEMO',last_name=position_name)",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:79",
+    "current_value": "            employees.append(save_validated(Employee(user=user,employee_code=f'DEMO-U{user.pk:04}',full_name=f'Nhân viên DEMO {suffix}',position=positions[position_name],hire_date=start,base_salary=Decimal(SALARIES[position_name]))))",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:81",
+    "current_value": "        for name,begin,end,required in [('Ca sáng (DEMO)',time(8),time(14),1),('Ca chiều (DEMO)',time(14),time(20),1),('Ca tối (DEMO)',time(17),time(23),1)]:",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:113",
+    "current_value": "        period,_=PayrollPeriod.objects.get_or_create(name=f'DEMO - Lương {month:%m/%Y}',defaults={'start_date':month,'end_date':last,'standard_hours':Decimal(208),'overtime_multiplier':Decimal('1.50')})",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:129",
+    "current_value": "                write_review(actor=order.customer,order_id=order.pk,menu_item_id=menu_id,rating=5,comment='Đánh giá DEMO: món trình bày đẹp, khẩu vị phù hợp.');reviews_created+=1",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_operational_data.py:169",
+    "current_value": "            save_validated(Promotion(code=code,name=f'DEMO - {code}',discount_type=kind,discount_value=Decimal(value),min_order_amount=Decimal(minimum),max_discount_amount=Decimal(cap) if cap else None,start_at=now-timedelta(days=1),end_at=now+timedelta(days=90),usage_limit=limit,is_active=True))",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "customers/management/commands/seed_module07_recipes.py:7",
+    "current_value": "# Quantities per serving in the existing ingredient's unit. Starter demo recipes;",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "restaurant_system/urls.py:40",
+    "current_value": "    path('management/recommendations/',ai_views.recommendation_demo,name='recommendation_demo'),",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "restaurant_system/urls.py:108",
+    "current_value": "    path('payments/<int:pk>/qr-demo/', payment_views.customer_payment_qr, name='customer_payment_qr'),",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "templates/customer/invoices.html:3",
+    "current_value": "{% block content %}<section class=\"container section\"><div class=\"section-heading\"><div><span class=\"eyebrow\">HÓA ĐƠN CỦA TÔI</span><h1>Hóa đơn & thanh toán</h1><p>Thanh toán demo được nhân viên xác nhận sau khi đối soát.</p></div></div>{% for invoice in pagination %}<article class=\"form-card\"><h2>{{ invoice.invoice_number }}</h2><p>Đơn {{ invoice.order.order_number }} · Bàn {{ invoice.order.table.code|default:\"Mang đi\" }}</p><p>{{ invoice.get_status_display }} · {{ invoice.total_amount|money }}",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": true,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "templates/customer/_invoice_content.html:4",
+    "current_value": "{% if pending_payment %}<section class=\"payment-demo\" data-legacy-label=\"CHUYỂN KHOẢN QR DEMO\"><h2>{% if pending_payment.payment_method == 'CASH' %}THANH TOÁN TIỀN MẶT{% else %}CHUYỂN KHOẢN QR MÔ PHỎNG{% endif %}</h2><p>Mã giao dịch: {{ pending_payment.payment_number }}</p><p>Số tiền: <strong>{{ pending_payment.amount|money }}</strong></p>{% if pending_payment.payment_method == 'CASH' %}<p>Vui lòng thanh toán cho nhân viên/thu ngân.</p>{% else %}<p>Ngân hàng: {{ demo_bank.bank }}</p><p>Chủ tài k",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "templates/customer/_invoice_content.html:5",
+    "current_value": "<h2>Lịch sử thanh toán</h2>{% for payment in payments %}<article class=\"payment-history\"><strong>{{ payment.payment_number }}</strong><p>{{ payment.get_payment_method_display }} · {{ payment.amount|money }} · <span data-payment-status=\"{{ payment.status }}\">{{ payment.get_status_display }}</span></p><p>Báo đã thanh toán: {{ payment.customer_confirmed_at|date:\"d/m/Y H:i:s\"|default:\"Chưa báo\" }}</p><p>Nhân viên xử lý: {{ payment.confirmed_by.username|default:\"—\" }} · {{ payment.processed_at|date:\"",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": true,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "templates/admin/ai/nav.html:1",
+    "current_value": "{% load ui_vi %}<nav aria-label=\"AI\"><a href=\"{% url 'ai_dashboard' %}\">Tổng quan</a> · <a href=\"{% url 'recommendation_demo' %}\">Gợi ý món ăn</a> · <a href=\"{% url 'ai_forecast' %}\">Dự báo</a> · <a href=\"{% url 'ai_inventory' %}\">Nguyên liệu</a> · <a href=\"{% url 'ai_faces' %}\">Nhận diện khuôn mặt</a></nav>",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "templates/admin/business/_payments_content.html:2",
+    "current_value": "<div class=\"module-heading\"><div><h1>Hóa đơn & Thanh toán</h1><p>Biên nhận DEMO cần nhân viên đối soát và xác nhận đã nhận tiền.</p></div></div>",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": true,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "templates/admin/business/_receipt_content.html:3",
+    "current_value": "{% if can_confirm %}<form method=\"post\" action=\"{% url 'admin_payment_confirm' payment.pk %}\">{% csrf_token %}<input type=\"hidden\" name=\"return_to\" value=\"receipt\">{% if can_succeed %}<button class=\"primary-button\" name=\"outcome\" value=\"success\">Xác nhận đã nhận tiền</button>{% else %}<p>Chưa có thông báo đã thanh toán từ khách. Chưa được xác nhận thành công.</p>{% endif %}<button class=\"view-button\" name=\"outcome\" value=\"failed\">Đánh dấu thất bại</button><button class=\"view-button\" name=\"outcom",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": true,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "static/ai/assistant.js:2",
+    "current_value": " function bubble(role,text,pending=false,createdAt=null){const article=document.createElement('article');article.className='chat-message '+role;const avatar=document.createElement('span');avatar.className='message-avatar';avatar.textContent=role==='user'?'Bạn':'✦';const content=document.createElement('div');content.className='message-bubble';content.textContent=role==='assistant'?String(text).replace(/\\[DEMO[^\\]]*\\]/gi,'').replace(/\\bDEMO\\b[ \\t]*[-:]?[ \\t]*/gi,''):text;const time=document.create",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "Display sanitized; seed production uses clean reference catalog"
+  },
+  {
+    "location": "static/customer/css/payment.css:1",
+    "current_value": ".payment-table-scroll{overflow-x:auto}.payment-table{width:100%;border-collapse:collapse;white-space:nowrap}.payment-table th,.payment-table td{padding:12px;text-align:left;border-bottom:1px solid #eee}.payment-demo,.payment-history{margin-top:24px;padding:20px;border:1px solid #eee;border-radius:12px}.payment-qr{display:block;width:240px;max-width:100%;height:auto;margin:16px 0;background:white}.payment-demo p,.payment-history strong{overflow-wrap:anywhere}",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "static/admin/js/main.js:57",
+    "current_value": "['AI',[['ai-dashboard','bot','Tổng quan trí tuệ nhân tạo'],['ai-schedule','calendar','Xếp lịch AI'],['recommendation-demo','spark','Gợi ý món'],['ai-forecast','chart','Dự báo'],['ai-inventory','leaf','Đề xuất nguyên liệu'],['ai-faces','user','Quản lý khuôn mặt'],['ai-chatbot','bot','Trợ lý nhà hàng']]],",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "static/admin/js/main.js:62",
+    "current_value": "Object.assign(moduleAccess,{'ai-schedule':'ai-schedule','recommendation-demo':'recommendation-demo'});",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "static/admin/js/main.js:111",
+    "current_value": "<section class=\"work-group admin-group work-income\"><header class=\"work-group-heading\"><div><h2>AI & cảnh báo</h2><p>Kết quả nghiên cứu giữ nguyên nguồn dữ liệu và giới hạn kiểm chứng</p></div></header><div class=\"admin-group-links\">${links([['recommendation-demo','Gợi ý món'],['ai-forecast','Dự báo'],['ai-inventory','Đề xuất nguyên liệu'],['ai-faces','Nhận diện khuôn mặt'],['ai-chatbot','Trợ lý nhà hàng']])}</div></section>${footer()}`;",
+    "type": "TECHNICAL_KEY",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_cases.json:2203",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_cases.json:2207",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_cases.json:2213",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_cases.json:2217",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_cases.json:2223",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_cases.json:2227",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_cases.json:2233",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_cases.json:2237",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5507",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5511",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5516",
+    "current_value": "      \"answer\": \"DEMO - Combo 2 người hiện có giá 1.080.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5533",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5537",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5542",
+    "current_value": "      \"answer\": \"DEMO - Combo hải sản hiện có giá 1.930.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5559",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5563",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5568",
+    "current_value": "      \"answer\": \"DEMO - Combo bò hiện có giá 1.570.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5585",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5589",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:5594",
+    "current_value": "      \"answer\": \"DEMO - Combo gia đình hiện có giá 2.710.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:6715",
+    "current_value": "      \"answer\": \"Nhà hàng minh họa ẩm thực hải sản và món Âu. Hồ sơ DEMO, không sử dụng thông tin liên hệ cá nhân.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:6721",
+    "current_value": "          \"title\": \"Smart Restaurant DEMO\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:6747",
+    "current_value": "      \"answer\": \"Nhà hàng minh họa ẩm thực hải sản và món Âu. Hồ sơ DEMO, không sử dụng thông tin liên hệ cá nhân.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:6753",
+    "current_value": "          \"title\": \"Smart Restaurant DEMO\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:6779",
+    "current_value": "      \"answer\": \"Nhà hàng minh họa ẩm thực hải sản và món Âu. Hồ sơ DEMO, không sử dụng thông tin liên hệ cá nhân.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json:6785",
+    "current_value": "          \"title\": \"Smart Restaurant DEMO\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_cases.json:2158",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_cases.json:2162",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_cases.json:2168",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_cases.json:2172",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_cases.json:2178",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_cases.json:2182",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_cases.json:2188",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_cases.json:2192",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5462",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5466",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5471",
+    "current_value": "      \"answer\": \"DEMO - Combo 2 người hiện có giá 1.080.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5488",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5492",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5497",
+    "current_value": "      \"answer\": \"DEMO - Combo hải sản hiện có giá 1.930.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5514",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5518",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5523",
+    "current_value": "      \"answer\": \"DEMO - Combo bò hiện có giá 1.570.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5540",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5544",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:5549",
+    "current_value": "      \"answer\": \"DEMO - Combo gia đình hiện có giá 2.710.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json:7673",
+    "current_value": "      \"answer\": \"Địa chỉ: 123 Đường Nhà Hàng DEMO, TP.HCM (địa chỉ minh họa).\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_cases.json:2158",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_cases.json:2162",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_cases.json:2168",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_cases.json:2172",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_cases.json:2178",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_cases.json:2182",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_cases.json:2188",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_cases.json:2192",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5462",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5466",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5471",
+    "current_value": "      \"answer\": \"DEMO - Combo 2 người hiện có giá 1.080.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5488",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5492",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5497",
+    "current_value": "      \"answer\": \"DEMO - Combo hải sản hiện có giá 1.930.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5514",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5518",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5523",
+    "current_value": "      \"answer\": \"DEMO - Combo bò hiện có giá 1.570.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5540",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5544",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:5549",
+    "current_value": "      \"answer\": \"DEMO - Combo gia đình hiện có giá 2.710.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json:7692",
+    "current_value": "      \"answer\": \"Địa chỉ: 123 Đường Nhà Hàng DEMO, TP.HCM (địa chỉ minh họa).\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_cases.json:2158",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_cases.json:2162",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_cases.json:2168",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_cases.json:2172",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_cases.json:2178",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_cases.json:2182",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_cases.json:2188",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_cases.json:2192",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5462",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5466",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5471",
+    "current_value": "      \"answer\": \"DEMO - Combo 2 người hiện có giá 1.080.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5488",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5492",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5497",
+    "current_value": "      \"answer\": \"DEMO - Combo hải sản hiện có giá 1.930.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5514",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5518",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5523",
+    "current_value": "      \"answer\": \"DEMO - Combo bò hiện có giá 1.570.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5540",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5544",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:5549",
+    "current_value": "      \"answer\": \"DEMO - Combo gia đình hiện có giá 2.710.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json:7692",
+    "current_value": "      \"answer\": \"Địa chỉ: 123 Đường Nhà Hàng DEMO, TP.HCM (địa chỉ minh họa).\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_cases.json:2158",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_cases.json:2162",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_cases.json:2168",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_cases.json:2172",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_cases.json:2178",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_cases.json:2182",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_cases.json:2188",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_cases.json:2192",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5462",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5466",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5471",
+    "current_value": "      \"answer\": \"DEMO - Combo 2 người hiện có giá 1.080.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5488",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5492",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5497",
+    "current_value": "      \"answer\": \"DEMO - Combo hải sản hiện có giá 1.930.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5514",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5518",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5523",
+    "current_value": "      \"answer\": \"DEMO - Combo bò hiện có giá 1.570.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5540",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5544",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:5549",
+    "current_value": "      \"answer\": \"DEMO - Combo gia đình hiện có giá 2.710.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json:7692",
+    "current_value": "      \"answer\": \"Địa chỉ: 123 Đường Nhà Hàng DEMO, TP.HCM (địa chỉ minh họa).\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_cases.json:2158",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_cases.json:2162",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_cases.json:2168",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_cases.json:2172",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_cases.json:2178",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_cases.json:2182",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_cases.json:2188",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_cases.json:2192",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5462",
+    "current_value": "    \"question\": \"Giá DEMO - Combo 2 người?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5466",
+    "current_value": "      \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5471",
+    "current_value": "      \"answer\": \"DEMO - Combo 2 người hiện có giá 1.080.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5488",
+    "current_value": "    \"question\": \"Giá DEMO - Combo hải sản?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5492",
+    "current_value": "      \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5497",
+    "current_value": "      \"answer\": \"DEMO - Combo hải sản hiện có giá 1.930.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5514",
+    "current_value": "    \"question\": \"Giá DEMO - Combo bò?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5518",
+    "current_value": "      \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5523",
+    "current_value": "      \"answer\": \"DEMO - Combo bò hiện có giá 1.570.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5540",
+    "current_value": "    \"question\": \"Giá DEMO - Combo gia đình?\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5544",
+    "current_value": "      \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:5549",
+    "current_value": "      \"answer\": \"DEMO - Combo gia đình hiện có giá 2.710.000đ.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json:7692",
+    "current_value": "      \"answer\": \"Địa chỉ: 123 Đường Nhà Hàng DEMO, TP.HCM (địa chỉ minh họa).\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:581",
+    "current_value": "    \"title\": \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:582",
+    "current_value": "    \"content\": \"[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:590",
+    "current_value": "    \"title\": \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:591",
+    "current_value": "    \"content\": \"[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:599",
+    "current_value": "    \"title\": \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:600",
+    "current_value": "    \"content\": \"[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:608",
+    "current_value": "    \"title\": \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:609",
+    "current_value": "    \"content\": \"[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:617",
+    "current_value": "    \"title\": \"Smart Restaurant DEMO\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T161639-b459d614/chunks.json:618",
+    "current_value": "    \"content\": \"Nhà hàng minh họa ẩm thực hải sản và món Âu. Hồ sơ DEMO, không sử dụng thông tin liên hệ cá nhân.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:581",
+    "current_value": "    \"title\": \"DEMO - Combo 2 người\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:582",
+    "current_value": "    \"content\": \"[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:590",
+    "current_value": "    \"title\": \"DEMO - Combo hải sản\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:591",
+    "current_value": "    \"content\": \"[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:599",
+    "current_value": "    \"title\": \"DEMO - Combo bò\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:600",
+    "current_value": "    \"content\": \"[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:608",
+    "current_value": "    \"title\": \"DEMO - Combo gia đình\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:609",
+    "current_value": "    \"content\": \"[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:617",
+    "current_value": "    \"title\": \"DEMO - WELCOME10\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:618",
+    "current_value": "    \"content\": \"DEMO - WELCOME10. Mã ưu đãi: WELCOME10. Điều kiện và số lượt còn lại cần kiểm tra trực tiếp tại thời điểm hỏi.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:628",
+    "current_value": "    \"title\": \"DEMO - GIAM50K\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:629",
+    "current_value": "    \"content\": \"DEMO - GIAM50K. Mã ưu đãi: GIAM50K. Điều kiện và số lượt còn lại cần kiểm tra trực tiếp tại thời điểm hỏi.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:639",
+    "current_value": "    \"title\": \"DEMO - COMBO15\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:640",
+    "current_value": "    \"content\": \"DEMO - COMBO15. Mã ưu đãi: COMBO15. Điều kiện và số lượt còn lại cần kiểm tra trực tiếp tại thời điểm hỏi.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:650",
+    "current_value": "    \"title\": \"DEMO - KHACHVIP\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:651",
+    "current_value": "    \"content\": \"DEMO - KHACHVIP. Mã ưu đãi: KHACHVIP. Điều kiện và số lượt còn lại cần kiểm tra trực tiếp tại thời điểm hỏi.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:661",
+    "current_value": "    \"title\": \"Smart Restaurant DEMO\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "ai_models/chatbot/20261013T163822-2226e961/chunks.json:662",
+    "current_value": "    \"content\": \"Nhà hàng minh họa ẩm thực hải sản và món Âu. Hồ sơ DEMO, không sử dụng thông tin liên hệ cá nhân.\",",
+    "type": "SOURCE_OR_ARTIFACT",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/AI_PHASE.md:72",
+    "current_value": "Liveness ngẫu nhiên blink/left/right yêu cầu neutral → action → neutral trên nhiều frame do **server** trích landmark. Challenge gắn actor, hết hạn 90 giây, dùng một lần kể cả fail. Mỗi frame phải khớp cùng profile; threshold chưa calibrate thì không chấm công. Server xác định Employee, kiểm tra owner và WorkSchedule rồi gọi `personnel_service.punch` hiện có. Không tin `employee_id`/`verified=true` của client. Audit có identity/score/threshold/liveness/action/rejection reason, không lưu ảnh. Qua",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/AI_PHASE.md:86",
+    "current_value": "## Verification và giới hạn demo",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/AI_PHASE.md:97",
+    "current_value": "Xem [FINAL_REPORT.md](FINAL_REPORT.md) và [FINAL_DEMO.md](FINAL_DEMO.md): redesign, chatbot, FaceID UX, GIS và live Edge E2E. Hạn chế browser trong báo cáo cũ là lịch sử; live HTTP đã kiểm tra được ở giai đoạn này. Webcam/GPS thật, enrollment và threshold calibration vẫn chưa được kiểm chứng. Các metric AI cũ giữ nguyên provenance.",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/AI_REPORT.md:195",
+    "current_value": "Hướng dẫn chạy/demo/calibration và giới hạn: [AI_PHASE.md](AI_PHASE.md). Không triển khai GIS/GPS/Haversine/Leaflet.",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/AI_REPORT.md:200",
+    "current_value": "Xem [FINAL_REPORT.md](FINAL_REPORT.md) và [FINAL_DEMO.md](FINAL_DEMO.md): redesign, chatbot, FaceID UX, GIS và live Edge E2E. Hạn chế browser trong báo cáo cũ là lịch sử; live HTTP đã kiểm tra được ở giai đoạn này. Webcam/GPS thật, enrollment và threshold calibration vẫn chưa được kiểm chứng. Các metric AI cũ giữ nguyên provenance.",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:34",
+    "current_value": "      \"employee_code\": \"DEMO-U0002\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:48",
+    "current_value": "      \"employee_code\": \"DEMO-U0003\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:62",
+    "current_value": "      \"employee_code\": \"DEMO-U0004\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:76",
+    "current_value": "      \"employee_code\": \"DEMO-U0005\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:90",
+    "current_value": "      \"employee_code\": \"DEMO-U0006\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:111",
+    "current_value": "  \"demo_employees\": [",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:116",
+    "current_value": "      \"code\": \"DEMO-U0002\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:131",
+    "current_value": "      \"code\": \"DEMO-U0003\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:146",
+    "current_value": "      \"code\": \"DEMO-U0004\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:161",
+    "current_value": "      \"code\": \"DEMO-U0005\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_audit.json:176",
+    "current_value": "      \"code\": \"DEMO-U0006\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:187",
+    "current_value": "      \"employee_code\": \"DEMO-U0002\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:285",
+    "current_value": "      \"employee_code\": \"DEMO-U0003\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:312",
+    "current_value": "      \"employee_code\": \"DEMO-U0004\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:339",
+    "current_value": "      \"employee_code\": \"DEMO-U0005\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:366",
+    "current_value": "      \"employee_code\": \"DEMO-U0006\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:390",
+    "current_value": "  \"demo_employees\": [",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:395",
+    "current_value": "      \"code\": \"DEMO-U0002\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:411",
+    "current_value": "      \"code\": \"DEMO-U0003\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:427",
+    "current_value": "      \"code\": \"DEMO-U0004\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:443",
+    "current_value": "      \"code\": \"DEMO-U0005\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/employee_accounts_current.json:459",
+    "current_value": "      \"code\": \"DEMO-U0006\",",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/GROUPED_WORKSPACE_REPORT.md:49",
+    "current_value": "Ban đầu **80 records / 91 trường** chứa DEMO trong business DB. [Before](OPERATIONAL_LABEL_AUDIT_BEFORE.json), [kế hoạch](OPERATIONAL_LABEL_PLAN.json), [audit source](OPERATIONAL_SOURCE_LABEL_AUDIT.json). Source audit phân biệt fixtures/tests/technical keys/docs và labels; không xóa provenance khoa học hoặc cố làm mất mọi chuỗi trong source.",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/GROUPED_WORKSPACE_REPORT.md:51",
+    "current_value": "Đã đổi **18 trường tên**: Topping #1–5, Combo #1–4, Promotion #1–4, RestaurantInfo #1, Shift #1–3 và PayrollPeriod #1. Ví dụ “DEMO - Combo bò” → “Combo bò”; không đổi giá/thành phần/PK/FK. Không có collision trên DB này. [Before → after](OPERATIONAL_LABEL_APPLIED.json). Lần apply thứ hai đổi 0 trường: [after](OPERATIONAL_LABEL_AFTER.json).",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/GROUPED_WORKSPACE_REPORT.md:55",
+    "current_value": "Command clean_operational_demo_labels mặc định dry-run; --apply mới sửa tên trong whitelist, atomic, lock từng record và full_clean, log before/after; collision cần review, không đặt tên kỳ quặc. DB QA/test cần --allow-test-database rõ ràng. Không đổi Employee, mã voucher, notes audit hoặc raw conversation.",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/GROUPED_WORKSPACE_REPORT.md:67",
+    "current_value": "Presentation/query: staff_portal.py, context_processors.py, views.py, management_views.py, booking_workspace.py; templates staff/overview_workspace, booking workspace/fields/panel/summary/archive, base wrappers, invoice; workspace.css, booking-workspace.js, dashboard.js, admin/main.js và assistant.js. Labels/command/seed: operational_labels.py, presentation_middleware.py, clean_operational_demo_labels.py, operational_reference_seed.py và seed command. Thêm duy nhất URL availability; mọi URL cũ đ",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "docs/GROUPED_WORKSPACE_REPORT.md:78",
+    "current_value": "Các screenshot dùng fixture DB riêng, không giả là dữ liệu thật đã xác minh. No-DEMO được kiểm tra trên innerText của các route/roles đã chạy; technical identifiers và test fixtures vẫn có marker hợp lệ. Không tuyên bố mọi đường dẫn động hoặc mọi free-text người dùng đều đã kiểm tra. Camera/GPS/calibration thật chưa được chứng minh thêm trong task này. Quyền add_booking cần được ADMIN cấp nếu tài khoản quản lý chưa có; không âm thầm nâng quyền.",
+    "type": "DOCUMENTATION",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/audit_operational_sources.py:9",
+    "current_value": "            if not re.search('demo',line,re.I):continue",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/audit_operational_sources.py:11",
+    "current_value": "            technical=any(key in line for key in ['recommendation-demo','recommendation_demo','demo_bank','payment-demo','data-legacy-label'])",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/build_grouped_qa.py:17",
+    "current_value": "        qa_combo=Combo.objects.create(name='Combo bò DEMO',price=500000)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/build_grouped_qa.py:22",
+    "current_value": "        restaurant.address='123 Đường Nhà Hàng DEMO';restaurant.email='demo@restaurant.example';restaurant.phone='0000000000';restaurant.save()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/build_grouped_qa.py:23",
+    "current_value": "        call_command('clean_operational_demo_labels',apply=True,allow_test_database=True,stdout=io.StringIO())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/build_grouped_qa.py:28",
+    "current_value": "s=s.replace(needle,\"                        assert not js('/demo/i.test(document.body.innerText)'),(role,path,'visible marker')\\n\"+needle)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/build_grouped_qa.py:30",
+    "current_value": "s=s.replace(needle,\"                    assert not js('/demo/i.test(document.body.innerText)'),(path,'visible marker')\\n\"+needle)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/build_grouped_qa.py:59",
+    "current_value": "                navigate(path);assert not js('/demo/i.test(document.body.innerText)'),(path,'ADMIN marker')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/build_grouped_qa.py:60",
+    "current_value": "            result['checks'].append({'kind':'all_roles_visible_labels_no_demo','result':'PASS'})",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/face_live_e2e.py:30",
+    "current_value": "            user=User.objects.create_user('face-qa-'+role.lower(),password='LiveDemo_2026!',first_name='QA',last_name=role);assign_role(user,role);users[role]=user",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/face_live_e2e.py:33",
+    "current_value": "        demo_user=User.objects.create_user('demo_m07_face_qa',password='Unused-QA');assign_role(demo_user,'STAFF')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/face_live_e2e.py:34",
+    "current_value": "        demo=Employee.objects.create(user=demo_user,employee_code='DEMO-UQA',full_name='Hidden seed employee',position=position,hire_date=timezone.localdate())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/face_live_e2e.py:51",
+    "current_value": "        _,body=clients['MANAGER'].get(paths[0]);assert 'DEMO-UQA' not in body and 'NV-QA' in body",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/face_live_e2e.py:52",
+    "current_value": "        assert Employee.objects.filter(pk=demo.pk).exists()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/finalize_report_ui.py:19",
+    "current_value": "            path.write_text(source+'\\n\\n'+marker+'\\n\\nXem [FINAL_REPORT.md](FINAL_REPORT.md) và [FINAL_DEMO.md](FINAL_DEMO.md): redesign, chatbot, FaceID UX, GIS và live Edge E2E. Hạn chế browser trong báo cáo cũ là lịch sử; live HTTP đã kiểm tra được ở giai đoạn này. Webcam/GPS thật, enrollment và threshold calibration vẫn chưa được kiểm chứng. Các metric AI cũ giữ nguyên provenance.\\n',encoding='utf-8')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/final_live_e2e.py:27",
+    "current_value": "        self.get('/login/');status,body=self.post('/login/',{'username':username,'password':'LiveDemo_2026!'});assert status==200 and 'name=\"password\"' not in body,'Login failed'",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/final_live_e2e.py:44",
+    "current_value": "            user=User.objects.create_user('e2e-'+role.lower(),password='LiveDemo_2026!');assign_role(user,role)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/final_live_e2e.py:76",
+    "current_value": "        manager.post(f'/management/orders/{order.pk}/invoice/',{});invoice=Invoice.objects.get(order=order);customer.get(f'/invoices/{invoice.pk}/');customer.post(f'/invoices/{invoice.pk}/payments/start/',{'payment_method':'BANK_TRANSFER','request_key':str(uuid.uuid4())});payment=Payment.objects.get(invoice=invoice);customer.post(f'/payments/{payment.pk}/report/',{});manager.post(f'/management/payments/{payment.pk}/confirm/',{'outcome':'success'});invoice.refresh_from_db();assert invoice.status=",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/final_live_e2e.py:83",
+    "current_value": "        registration=HTTP();registration.get('/register/');status,raw=registration.post('/register/',{'first_name':'QA Registered','username':'qa-new-user','email':'qa@example.test','password1':'Demo_Register_2026!','password2':'Demo_Register_2026!'});assert User.objects.filter(username='qa-new-user').exists();record('register_http',{'status':status});registration.post('/logout/',{});registration.get('/login/');status,raw=registration.post('/login/',{'username':'qa-new-user','password':'Demo_Reg",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:30",
+    "current_value": "            user=User.objects.create_user('face-qa-'+role.lower(),password='LiveDemo_2026!',first_name='QA',last_name=role);assign_role(user,role);users[role]=user",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:33",
+    "current_value": "        demo_user=User.objects.create_user('demo_m07_face_qa',password='Unused-QA');assign_role(demo_user,'STAFF')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:34",
+    "current_value": "        demo=Employee.objects.create(user=demo_user,employee_code='DEMO-UQA',full_name='Hidden seed employee',position=position,hire_date=timezone.localdate())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:71",
+    "current_value": "        qa_combo=Combo.objects.create(name='Combo bò DEMO',price=500000)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:76",
+    "current_value": "        restaurant.address='123 Đường Nhà Hàng DEMO';restaurant.email='demo@restaurant.example';restaurant.phone='0000000000';restaurant.save()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:77",
+    "current_value": "        call_command('clean_operational_demo_labels',apply=True,allow_test_database=True,stdout=io.StringIO())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:90",
+    "current_value": "        _,body=clients['MANAGER'].get(paths[0]);assert 'DEMO-UQA' not in body and 'NV-QA' in body",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:91",
+    "current_value": "        assert Employee.objects.filter(pk=demo.pk).exists()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:146",
+    "current_value": "                        assert not js('/demo/i.test(document.body.innerText)'),(role,path,'visible marker')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:275",
+    "current_value": "                    assert not js('/demo/i.test(document.body.innerText)'),(path,'visible marker')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:309",
+    "current_value": "                navigate(path);assert not js('/demo/i.test(document.body.innerText)'),(path,'ADMIN marker')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:310",
+    "current_value": "            result['checks'].append({'kind':'all_roles_visible_labels_no_demo','result':'PASS'})",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_final_live_e2e.py:321",
+    "current_value": "                    assert not js('/demo/i.test(document.body.innerText)'),(path,'visible marker')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:30",
+    "current_value": "            user=User.objects.create_user('face-qa-'+role.lower(),password='LiveDemo_2026!',first_name='QA',last_name=role);assign_role(user,role);users[role]=user",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:33",
+    "current_value": "        demo_user=User.objects.create_user('demo_m07_face_qa',password='Unused-QA');assign_role(demo_user,'STAFF')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:34",
+    "current_value": "        demo=Employee.objects.create(user=demo_user,employee_code='DEMO-UQA',full_name='Hidden seed employee',position=position,hire_date=timezone.localdate())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:71",
+    "current_value": "        qa_combo=Combo.objects.create(name='Combo bò DEMO',price=500000)",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:76",
+    "current_value": "        restaurant.address='123 Đường Nhà Hàng DEMO';restaurant.email='demo@restaurant.example';restaurant.phone='0000000000';restaurant.save()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:77",
+    "current_value": "        call_command('clean_operational_demo_labels',apply=True,allow_test_database=True,stdout=io.StringIO())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:90",
+    "current_value": "        _,body=clients['MANAGER'].get(paths[0]);assert 'DEMO-UQA' not in body and 'NV-QA' in body",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:91",
+    "current_value": "        assert Employee.objects.filter(pk=demo.pk).exists()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:146",
+    "current_value": "                        assert not js('/demo/i.test(document.body.innerText)'),(role,path,'visible marker')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:275",
+    "current_value": "                    assert not js('/demo/i.test(document.body.innerText)'),(path,'visible marker')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:309",
+    "current_value": "                navigate(path);assert not js('/demo/i.test(document.body.innerText)'),(path,'ADMIN marker')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:310",
+    "current_value": "            result['checks'].append({'kind':'all_roles_visible_labels_no_demo','result':'PASS'})",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/grouped_live_e2e.py:321",
+    "current_value": "                    assert not js('/demo/i.test(document.body.innerText)'),(path,'visible marker')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/group_admin_dashboard.py:12",
+    "current_value": "<section class=\"work-group admin-group work-income\"><header class=\"work-group-heading\"><div><h2>AI & cảnh báo</h2><p>Kết quả nghiên cứu giữ nguyên nguồn dữ liệu và giới hạn kiểm chứng</p></div></header><div class=\"admin-group-links\">${links([['recommendation-demo','Gợi ý món'],['ai-forecast','Dự báo'],['ai-inventory','Đề xuất nguyên liệu'],['ai-faces','Nhận diện khuôn mặt'],['ai-chatbot','Trợ lý nhà hàng']])}</div></section>${footer()}`;",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/premium_live_e2e.py:30",
+    "current_value": "            user=User.objects.create_user('face-qa-'+role.lower(),password='LiveDemo_2026!',first_name='QA',last_name=role);assign_role(user,role);users[role]=user",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/premium_live_e2e.py:33",
+    "current_value": "        demo_user=User.objects.create_user('demo_m07_face_qa',password='Unused-QA');assign_role(demo_user,'STAFF')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/premium_live_e2e.py:34",
+    "current_value": "        demo=Employee.objects.create(user=demo_user,employee_code='DEMO-UQA',full_name='Hidden seed employee',position=position,hire_date=timezone.localdate())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/premium_live_e2e.py:76",
+    "current_value": "        _,body=clients['MANAGER'].get(paths[0]);assert 'DEMO-UQA' not in body and 'NV-QA' in body",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/premium_live_e2e.py:77",
+    "current_value": "        assert Employee.objects.filter(pk=demo.pk).exists()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/staff_live_e2e.py:30",
+    "current_value": "            user=User.objects.create_user('face-qa-'+role.lower(),password='LiveDemo_2026!',first_name='QA',last_name=role);assign_role(user,role);users[role]=user",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/staff_live_e2e.py:33",
+    "current_value": "        demo_user=User.objects.create_user('demo_m07_face_qa',password='Unused-QA');assign_role(demo_user,'STAFF')",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/staff_live_e2e.py:34",
+    "current_value": "        demo=Employee.objects.create(user=demo_user,employee_code='DEMO-UQA',full_name='Hidden seed employee',position=position,hire_date=timezone.localdate())",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/staff_live_e2e.py:76",
+    "current_value": "        _,body=clients['MANAGER'].get(paths[0]);assert 'DEMO-UQA' not in body and 'NV-QA' in body",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/staff_live_e2e.py:77",
+    "current_value": "        assert Employee.objects.filter(pk=demo.pk).exists()",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  },
+  {
+    "location": "scripts/write_ai_report.py:56",
+    "current_value": "text+=['','Artifact/log được tạo: `ai_models/` (dataset/model/RAG/evaluation versions + manifest), `ai_verification/`, `qa_browser/results.json`, các `ai-*.log`. Các version cũ được giữ.','', 'Hướng dẫn chạy/demo/calibration và giới hạn: [AI_PHASE.md](AI_PHASE.md). Không triển khai GIS/GPS/Haversine/Leaflet.']",
+    "type": "TEST_QA",
+    "visible_to_user": false,
+    "action": "KEEP test/technical/provenance"
+  }
+]

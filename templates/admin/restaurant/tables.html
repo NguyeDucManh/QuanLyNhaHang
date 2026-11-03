@@ -1,0 +1,6 @@
+﻿{% extends management_base %}{% block admin_title %}Quản lý bàn{% endblock %}
+{% block admin_content %}
+<div class="module-heading"><div><h1>Quản lý bàn</h1><p>Trạng thái vận hành hiện tại và lịch Booking được quản lý riêng.</p></div>{% if can_add %}<a class="primary-button" href="{% url 'admin_table_add' %}">Thêm bàn</a>{% endif %}</div>
+{% include "admin/restaurant/_messages.html" %}
+<section class="panel"><form class="resource-search" method="get"><label for="table-search">Mã bàn</label><input id="table-search" name="q" value="{{ query }}"><button class="view-button">Tìm kiếm</button></form><div class="table-scroll"><table><thead><tr><th>Mã bàn</th><th>Khu vực</th><th>Sức chứa</th><th>Trạng thái</th><th>Hoạt động</th><th>Thao tác</th></tr></thead><tbody>{% for table in pagination %}<tr><td>{{ table.code }}</td><td>{{ table.area.name }}</td><td>{{ table.capacity }}</td><td>{{ table.get_status_display }}</td><td>{% if table.is_active %}Active{% else %}Inactive{% endif %}</td><td>{% if can_change %}<a class="view-button" href="{% url 'admin_table_edit' table.pk %}">Sửa / Trạng thái</a>{% endif %}</td></tr>{% empty %}<tr><td colspan="6">Chưa có bàn thực tế. Hãy thêm khu vực và bàn trước khi nhận Booking.</td></tr>{% endfor %}</tbody></table></div>{% include "admin/restaurant/_pagination.html" %}</section>
+{% endblock %}

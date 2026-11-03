@@ -1,0 +1,56 @@
+[
+  {
+    "command": [
+      "C:\\Users\\ADMIN\\Downloads\\Quản Lý Nhà Hàng\\.venv\\Scripts\\python.exe",
+      "manage.py",
+      "check"
+    ],
+    "exit_code": 0,
+    "seconds": 1.849,
+    "log": "0.log"
+  },
+  {
+    "command": [
+      "C:\\Users\\ADMIN\\Downloads\\Quản Lý Nhà Hàng\\.venv\\Scripts\\python.exe",
+      "manage.py",
+      "makemigrations",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 1.977,
+    "log": "1.log"
+  },
+  {
+    "command": [
+      "C:\\Users\\ADMIN\\Downloads\\Quản Lý Nhà Hàng\\.venv\\Scripts\\python.exe",
+      "manage.py",
+      "migrate",
+      "--noinput"
+    ],
+    "exit_code": 0,
+    "seconds": 1.963,
+    "log": "2.log"
+  },
+  {
+    "command": [
+      "C:\\Users\\ADMIN\\Downloads\\Quản Lý Nhà Hàng\\.venv\\Scripts\\python.exe",
+      "manage.py",
+      "test",
+      "--noinput"
+    ],
+    "exit_code": 0,
+    "seconds": 547.475,
+    "log": "3.log"
+  },
+  {
+    "command": [
+      "C:\\Users\\ADMIN\\Downloads\\Quản Lý Nhà Hàng\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0,
+    "seconds": 1.995,
+    "log": "4.log"
+  }
+]

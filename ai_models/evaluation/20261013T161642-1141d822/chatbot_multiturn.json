@@ -1,0 +1,1562 @@
+[
+  {
+    "turns": [
+      "Giá Súp bào ngư hải sâm?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Súp bào ngư hải sâm hiện có giá 289.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 1
+          }
+        ],
+        "menu_ids": [
+          1
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Súp bào ngư hải sâm hiện có giá 289.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 1
+          }
+        ],
+        "menu_ids": [
+          1
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Súp cua tuyết trứng cá?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Súp cua tuyết trứng cá hiện có giá 219.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 2
+          }
+        ],
+        "menu_ids": [
+          2
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Súp cua tuyết trứng cá hiện có giá 219.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 2
+          }
+        ],
+        "menu_ids": [
+          2
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Gỏi cá hồi sốt mè rang?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Gỏi cá hồi sốt mè rang hiện có giá 229.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 3
+          }
+        ],
+        "menu_ids": [
+          3
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Gỏi cá hồi sốt mè rang hiện có giá 229.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 3
+          }
+        ],
+        "menu_ids": [
+          3
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Gỏi sò điệp kiểu Nhật?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Gỏi sò điệp kiểu Nhật hiện có giá 279.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 4
+          }
+        ],
+        "menu_ids": [
+          4
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Gỏi sò điệp kiểu Nhật hiện có giá 279.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 4
+          }
+        ],
+        "menu_ids": [
+          4
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Mắt cá ngừ đại dương hầm thuốc Bắc?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Mắt cá ngừ đại dương hầm thuốc Bắc hiện có giá 259.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 5
+          }
+        ],
+        "menu_ids": [
+          5
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Mắt cá ngừ đại dương hầm thuốc Bắc hiện có giá 259.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 5
+          }
+        ],
+        "menu_ids": [
+          5
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Bào ngư sốt dầu hào?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Bào ngư sốt dầu hào hiện có giá 459.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 6
+          }
+        ],
+        "menu_ids": [
+          6
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Bào ngư sốt dầu hào hiện có giá 459.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 6
+          }
+        ],
+        "menu_ids": [
+          6
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Hải sâm hầm nấm đông cô?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Hải sâm hầm nấm đông cô hiện có giá 399.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 7
+          }
+        ],
+        "menu_ids": [
+          7
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Hải sâm hầm nấm đông cô hiện có giá 399.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 7
+          }
+        ],
+        "menu_ids": [
+          7
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Sò điệp áp chảo sốt chanh bơ?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Sò điệp áp chảo sốt chanh bơ hiện có giá 349.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 8
+          }
+        ],
+        "menu_ids": [
+          8
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Sò điệp áp chảo sốt chanh bơ hiện có giá 349.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 8
+          }
+        ],
+        "menu_ids": [
+          8
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Tôm hùm nướng phô mai?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Tôm hùm nướng phô mai hiện có giá 799.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 9
+          }
+        ],
+        "menu_ids": [
+          9
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Tôm hùm nướng phô mai hiện có giá 799.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 9
+          }
+        ],
+        "menu_ids": [
+          9
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Tôm hùm sốt bơ tỏi?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Tôm hùm sốt bơ tỏi hiện có giá 759.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 10
+          }
+        ],
+        "menu_ids": [
+          10
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Tôm hùm sốt bơ tỏi hiện có giá 759.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 10
+          }
+        ],
+        "menu_ids": [
+          10
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Cua sốt tiêu đen?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Cua sốt tiêu đen hiện có giá 599.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 11
+          }
+        ],
+        "menu_ids": [
+          11
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Cua sốt tiêu đen hiện có giá 599.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 11
+          }
+        ],
+        "menu_ids": [
+          11
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Cua rang sốt trứng muối?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Cua rang sốt trứng muối hiện có giá 629.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 12
+          }
+        ],
+        "menu_ids": [
+          12
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Cua rang sốt trứng muối hiện có giá 629.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 12
+          }
+        ],
+        "menu_ids": [
+          12
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Hàu nướng phô mai?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Hàu nướng phô mai hiện có giá 229.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 13
+          }
+        ],
+        "menu_ids": [
+          13
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Hàu nướng phô mai hiện có giá 229.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 13
+          }
+        ],
+        "menu_ids": [
+          13
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Bạch tuộc nướng sốt cay?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Bạch tuộc nướng sốt cay hiện có giá 289.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 14
+          }
+        ],
+        "menu_ids": [
+          14
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Bạch tuộc nướng sốt cay hiện có giá 289.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 14
+          }
+        ],
+        "menu_ids": [
+          14
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Cá hồi áp chảo sốt chanh dây?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Cá hồi áp chảo sốt chanh dây hiện có giá 349.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 15
+          }
+        ],
+        "menu_ids": [
+          15
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Cá hồi áp chảo sốt chanh dây hiện có giá 349.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 15
+          }
+        ],
+        "menu_ids": [
+          15
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Cá tuyết nướng sốt Miso?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Cá tuyết nướng sốt Miso hiện có giá 449.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 16
+          }
+        ],
+        "menu_ids": [
+          16
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Cá tuyết nướng sốt Miso hiện có giá 449.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 16
+          }
+        ],
+        "menu_ids": [
+          16
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Cá chẽm hấp kiểu Hồng Kông?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Cá chẽm hấp kiểu Hồng Kông hiện có giá 389.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 17
+          }
+        ],
+        "menu_ids": [
+          17
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Cá chẽm hấp kiểu Hồng Kông hiện có giá 389.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 17
+          }
+        ],
+        "menu_ids": [
+          17
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Thăn bò áp chảo sốt tiêu xanh?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Thăn bò áp chảo sốt tiêu xanh hiện có giá 489.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 18
+          }
+        ],
+        "menu_ids": [
+          18
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Thăn bò áp chảo sốt tiêu xanh hiện có giá 489.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 18
+          }
+        ],
+        "menu_ids": [
+          18
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Bít tết bò Ribeye sốt nấm?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Bít tết bò Ribeye sốt nấm hiện có giá 549.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 19
+          }
+        ],
+        "menu_ids": [
+          19
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Bít tết bò Ribeye sốt nấm hiện có giá 549.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 19
+          }
+        ],
+        "menu_ids": [
+          19
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Sườn cừu nướng thảo mộc?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Sườn cừu nướng thảo mộc hiện có giá 559.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 20
+          }
+        ],
+        "menu_ids": [
+          20
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Sườn cừu nướng thảo mộc hiện có giá 559.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 20
+          }
+        ],
+        "menu_ids": [
+          20
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Ức vịt áp chảo sốt cam?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Ức vịt áp chảo sốt cam hiện có giá 369.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 21
+          }
+        ],
+        "menu_ids": [
+          21
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Ức vịt áp chảo sốt cam hiện có giá 369.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 21
+          }
+        ],
+        "menu_ids": [
+          21
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Cơm chiên hải sản sốt XO?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Cơm chiên hải sản sốt XO hiện có giá 249.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 22
+          }
+        ],
+        "menu_ids": [
+          22
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Cơm chiên hải sản sốt XO hiện có giá 249.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 22
+          }
+        ],
+        "menu_ids": [
+          22
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Mì xào hải sản kiểu Hồng Kông?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Mì xào hải sản kiểu Hồng Kông hiện có giá 269.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 23
+          }
+        ],
+        "menu_ids": [
+          23
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Mì xào hải sản kiểu Hồng Kông hiện có giá 269.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 23
+          }
+        ],
+        "menu_ids": [
+          23
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Bánh Tiramisu?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Bánh Tiramisu hiện có giá 139.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 24
+          }
+        ],
+        "menu_ids": [
+          24
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Bánh Tiramisu hiện có giá 139.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 24
+          }
+        ],
+        "menu_ids": [
+          24
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Bánh Lava sô-cô-la?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Bánh Lava sô-cô-la hiện có giá 159.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 25
+          }
+        ],
+        "menu_ids": [
+          25
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Bánh Lava sô-cô-la hiện có giá 159.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 25
+          }
+        ],
+        "menu_ids": [
+          25
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Vi cá hầm thịt cua?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Vi cá hầm thịt cua hiện có giá 399.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 26
+          }
+        ],
+        "menu_ids": [
+          26
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Vi cá hầm thịt cua hiện có giá 399.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 26
+          }
+        ],
+        "menu_ids": [
+          26
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Bào ngư hấp tỏi?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Bào ngư hấp tỏi hiện có giá 429.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 27
+          }
+        ],
+        "menu_ids": [
+          27
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Bào ngư hấp tỏi hiện có giá 429.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 27
+          }
+        ],
+        "menu_ids": [
+          27
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Ốc hương rang muối Hồng Kông?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Ốc hương rang muối Hồng Kông hiện có giá 329.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 28
+          }
+        ],
+        "menu_ids": [
+          28
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Ốc hương rang muối Hồng Kông hiện có giá 329.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 28
+          }
+        ],
+        "menu_ids": [
+          28
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Tu hài nướng mỡ hành?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Tu hài nướng mỡ hành hiện có giá 359.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 29
+          }
+        ],
+        "menu_ids": [
+          29
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Tu hài nướng mỡ hành hiện có giá 359.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 29
+          }
+        ],
+        "menu_ids": [
+          29
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Sashimi cá ngừ đại dương?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Sashimi cá ngừ đại dương hiện có giá 329.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 30
+          }
+        ],
+        "menu_ids": [
+          30
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Sashimi cá ngừ đại dương hiện có giá 329.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 30
+          }
+        ],
+        "menu_ids": [
+          30
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Cá mú hấp xì dầu Hồng Kông?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Cá mú hấp xì dầu Hồng Kông hiện có giá 489.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 31
+          }
+        ],
+        "menu_ids": [
+          31
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Cá mú hấp xì dầu Hồng Kông hiện có giá 489.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 31
+          }
+        ],
+        "menu_ids": [
+          31
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Tôm càng xanh nướng bơ tỏi?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Tôm càng xanh nướng bơ tỏi hiện có giá 459.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 32
+          }
+        ],
+        "menu_ids": [
+          32
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Tôm càng xanh nướng bơ tỏi hiện có giá 459.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 32
+          }
+        ],
+        "menu_ids": [
+          32
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Sườn bò hầm sốt vang?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Sườn bò hầm sốt vang hiện có giá 449.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 33
+          }
+        ],
+        "menu_ids": [
+          33
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Sườn bò hầm sốt vang hiện có giá 449.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 33
+          }
+        ],
+        "menu_ids": [
+          33
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Chim câu quay mật ong?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Chim câu quay mật ong hiện có giá 389.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 34
+          }
+        ],
+        "menu_ids": [
+          34
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Chim câu quay mật ong hiện có giá 389.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 34
+          }
+        ],
+        "menu_ids": [
+          34
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Xôi cua hoàng kim?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Xôi cua hoàng kim hiện có giá 329.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 35
+          }
+        ],
+        "menu_ids": [
+          35
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Xôi cua hoàng kim hiện có giá 329.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 35
+          }
+        ],
+        "menu_ids": [
+          35
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Rượu vang đỏ Bordeaux (18+)?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Rượu vang đỏ Bordeaux (18+) hiện có giá 1.200.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 36
+          }
+        ],
+        "menu_ids": [
+          36
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Rượu vang đỏ Bordeaux (18+) hiện có giá 1.200.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 36
+          }
+        ],
+        "menu_ids": [
+          36
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Rượu vang đỏ Cabernet Sauvignon (18+)?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Rượu vang đỏ Cabernet Sauvignon (18+) hiện có giá 1.350.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 37
+          }
+        ],
+        "menu_ids": [
+          37
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Rượu vang đỏ Cabernet Sauvignon (18+) hiện có giá 1.350.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 37
+          }
+        ],
+        "menu_ids": [
+          37
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Rượu vang trắng Chardonnay (18+)?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Rượu vang trắng Chardonnay (18+) hiện có giá 1.100.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 38
+          }
+        ],
+        "menu_ids": [
+          38
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Rượu vang trắng Chardonnay (18+) hiện có giá 1.100.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 38
+          }
+        ],
+        "menu_ids": [
+          38
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Champagne (18+)?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Champagne (18+) hiện có giá 1.800.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 39
+          }
+        ],
+        "menu_ids": [
+          39
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Champagne (18+) hiện có giá 1.800.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 39
+          }
+        ],
+        "menu_ids": [
+          39
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  },
+  {
+    "turns": [
+      "Giá Whisky Scotch (18+)?",
+      "Giá nó bao nhiêu?"
+    ],
+    "responses": [
+      {
+        "answer": "Whisky Scotch (18+) hiện có giá 2.200.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 40
+          }
+        ],
+        "menu_ids": [
+          40
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      },
+      {
+        "answer": "Whisky Scotch (18+) hiện có giá 2.200.000đ.",
+        "tool": "get_menu_price",
+        "sources": [
+          {
+            "source_type": "MENU_ITEM",
+            "source_id": 40
+          }
+        ],
+        "menu_ids": [
+          40
+        ],
+        "intent": "MENU_PRICE",
+        "handoff": false
+      }
+    ],
+    "passed": true
+  }
+]

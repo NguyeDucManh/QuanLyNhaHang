@@ -1,0 +1,6 @@
+{% load static %}
+<div class="pos-layout pos-workspace" data-pos-structure="service-catalog-kitchen" data-kitchen-access="{{ rbac_access.view_kitchen|yesno:'true,false' }}">
+<div class="pos-service-row">{% include 'staff/pos_floor.html' %}{% include 'staff/pos_bill.html' %}</div>
+<div class="pos-catalog-row"><section class="panel pos-menu">{% include 'staff/pos_catalog.html' %}</section>{% include 'staff/pos_recent.html' %}</div>
+<div class="pos-production-row">{% include 'staff/pos_kitchen_board.html' %}</div>
+</div><script defer src="{% static 'ui/pos.js' %}"></script>

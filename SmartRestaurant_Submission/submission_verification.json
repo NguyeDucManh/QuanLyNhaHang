@@ -1,0 +1,28 @@
+{
+  "isolated_database": true,
+  "source_root": "C:\\Users\\ADMIN\\Downloads\\Quản Lý Nhà Hàng\\SmartRestaurant_Submission",
+  "fresh_pip_install": "NOT RUN; reused prepared interpreter, checked requirements compatibility",
+  "checks": [
+    "check PASS",
+    "migrate PASS",
+    "seed_menu PASS",
+    "seed_rbac PASS",
+    "/ HTTP200",
+    "/login/ HTTP200",
+    "/register/ HTTP200",
+    "/menu/ HTTP200",
+    "/cart/ HTTP200",
+    "/staff/ HTTP200",
+    "/work/ HTTP200",
+    "/work/faceid/ HTTP200",
+    "/account/ HTTP200",
+    "/ai/chat/ HTTP200",
+    "FaceNet/MediaPipe CPU initialization PASS; not biometric accuracy",
+    "Embedding CPU inference PASS",
+    "FAISS packaged index PASS; Unicode Windows path via bytes",
+    "forecast latest artifact PASS",
+    "recommendation latest artifact PASS"
+  ],
+  "success": true,
+  "QA_database_deleted": true
+}

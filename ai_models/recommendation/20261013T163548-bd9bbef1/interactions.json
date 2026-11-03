@@ -1,0 +1,2242 @@
+[
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 29,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-04T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 22,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-04T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 29,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-05T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 30,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-05T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 9,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-05T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-05T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 38,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-08-06T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 38,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-07T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 29,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-07T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-08T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 9,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-08T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-08T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 42,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-09T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 12,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-09T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 11,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-09T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 42,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-08-09T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 18,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-09T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 30,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-09T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-10T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 6,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-10T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 28,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-10T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-10T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-10T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 29,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-11T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-11T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 38,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-08-11T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-12T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 3,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-12T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 14,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-12T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-12T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 14,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-12T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-12T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 17,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-12T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-12T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-12T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-13T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 2,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-13T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-13T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 30,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-13T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-13T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 22,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-13T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-13T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 25,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-13T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 7,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-14T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 33,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-14T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 10,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-14T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 15,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-14T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-15T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 25,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-15T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 6,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-16T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 27,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-16T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 4,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-16T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-16T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-16T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 9,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-16T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 36,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-08-17T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-17T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 9,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-17T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-17T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 22,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-17T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 39,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-19T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 13,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-19T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 24,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-20T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-20T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 22,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-20T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 8,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-20T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 40,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-20T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 22,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-21T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-21T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 6,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-21T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 13,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-21T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 7,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-08-21T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 32,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-21T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-21T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 19,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-22T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 31,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-22T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-22T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 2,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-22T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 40,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-23T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 31,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-23T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-24T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 15,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-24T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 24,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-24T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 10,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-08-24T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-24T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-24T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-25T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-25T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 10,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-25T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 25,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-26T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-26T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 24,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-26T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-27T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 15,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-27T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-27T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 25,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-27T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-28T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-28T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 37,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-28T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-29T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 41,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-29T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 3,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-29T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-29T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 1,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-30T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 9,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-30T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 14,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-31T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 32,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-31T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 7,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-01T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 32,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-01T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-02T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 20,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-09-03T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-03T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 14,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-03T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 9,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-03T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 31,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-03T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 45,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-03T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-03T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-03T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-04T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 7,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-04T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 27,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-09-04T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 27,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-09-05T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-05T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 2,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-05T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 6,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-05T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 9,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-06T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 41,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-06T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-06T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 24,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-06T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 22,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-07T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 32,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-07T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 24,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-07T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-07T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-08T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-08T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-08T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-08T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 22,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-08T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 12,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-08T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 30,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-09T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 32,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-09T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 31,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-09T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 39,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-09T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 8,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-09T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-10T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 36,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-10T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 17,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-09-10T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 33,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-11T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 30,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-11T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 38,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-11T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 8,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-11T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-11T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 32,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-11T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 18,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-12T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 7,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-12T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 28,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-13T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 37,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-13T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 14,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-13T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 6,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-13T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 17,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-14T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 32,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-14T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 23,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-14T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-14T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-14T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-14T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-14T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 13,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-14T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 24,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-14T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 27,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-15T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 42,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-09-15T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 27,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-15T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 15,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-15T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 21,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-15T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 2,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-16T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 14,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-16T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 17,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-16T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-17T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-17T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 8,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-17T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-18T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-18T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-18T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 27,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-18T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 19,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-18T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 36,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-09-19T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 21,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-19T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 11,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-20T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 23,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-20T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-20T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 7,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-21T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 30,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-21T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-21T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 37,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-21T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 20,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-22T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 17,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-24T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-24T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 37,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-09-24T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 16,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-24T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 1,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-24T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 21,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-24T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 2,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-24T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 12,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-25T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-25T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 40,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-25T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 25,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-25T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-25T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 16,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-26T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-27T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 2,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-27T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 17,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-27T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 28,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-28T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-28T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 7,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-28T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-28T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 16,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-28T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 9,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-28T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 24,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-29T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-29T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 19,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-29T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-29T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 18,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-09-30T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-30T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 31,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-30T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 15,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-30T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 27,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-30T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 25,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-30T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 31,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-30T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-10-01T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 17,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-01T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 18,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-01T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 27,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-01T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 8,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-01T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-10-01T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 17,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-01T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-10-01T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-01T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-01T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-10-02T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-02T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 33,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-10-02T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 30,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-02T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-10-02T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 12,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-10-02T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 17,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-02T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-03T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 7,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-03T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-03T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 6,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-03T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 35,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-03T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 13,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-10-03T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-03T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 17,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-04T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 29,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-05T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 38,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-05T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 34,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-05T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-06T03:24:40.028484+00:00",
+    "source": "REAL"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 2,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-06T03:24:40.028484+00:00",
+    "source": "REAL"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 3,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-06T03:24:40.028484+00:00",
+    "source": "REAL"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 4,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-06T03:24:40.028484+00:00",
+    "source": "REAL"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 14,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-06T03:24:40.028484+00:00",
+    "source": "REAL"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 22,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-07T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 12,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-07T13:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-07T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-10-07T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 6,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-10-07T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-08T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-08T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 9,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-10-08T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 34,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-09T14:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 13,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-10-09T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 45,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-09T19:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-10T12:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 3,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-10T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-10-10T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-10T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 12,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-11T15:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-11T16:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 44,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-11T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-12T17:00:00+07:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 27,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-12T18:00:00+07:00",
+    "source": "SYNTHETIC"
+  }
+]

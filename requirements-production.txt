@@ -1,0 +1,3 @@
+# Optional Redis Channels backend. Local demo retains InMemoryChannelLayer.
+# Install only for production after verifying compatibility with its environment.
+channels-redis>=4.2,<5

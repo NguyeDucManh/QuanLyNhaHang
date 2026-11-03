@@ -1,0 +1,18 @@
+/* Components added to the existing cream/forest management shell. */
+.operations-heading h1{overflow-wrap:anywhere;font-size:clamp(21px,2.2vw,30px)}
+.operations-panel form{display:block}
+.operations-panel form.table-controls,.operations-panel .table-controls{display:flex;align-items:end;gap:10px;flex-wrap:wrap}
+.operations-panel form>p{display:block;margin:12px 0}
+.operations-panel label{display:block;margin-bottom:5px}
+.operations-panel textarea{width:100%;max-width:600px}
+.operations-panel .form-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;border-bottom:1px solid var(--border);padding:8px 0}
+.operations-panel .form-grid>p{margin:0}
+.operations-panel .form-grid select,.operations-panel .form-grid input{width:100%}
+.operations-panel td input{width:115px;min-width:85px}
+.operations-panel td details{max-width:400px;overflow-wrap:anywhere}
+.operations-panel h2{margin:20px 0 12px}
+.operations-panel table{font-size:13px}
+.operations-panel th,.operations-panel td{padding:12px}
+.pos-service-tools{font-size:11px;margin-bottom:8px;color:#476b55}
+.pos-service-tools summary{cursor:pointer}
+@media(max-width:650px){.operations-panel .form-grid{grid-template-columns:1fr}.operations-panel .table-controls>*{max-width:100%}.operations-panel input{max-width:100%}}

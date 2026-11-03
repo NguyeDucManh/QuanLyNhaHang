@@ -1,0 +1,4 @@
+{% extends management_base %}{% load static l10n %}{% load ui_vi %}{% block admin_content %}
+<h1>Tổng quan / Báo cáo</h1><p>Dữ liệu PostgreSQL hiện tại. Thực thu chỉ từ Payment SUCCEEDED; doanh số món theo danh mục là giá dòng món trước giảm giá.</p>
+{% for title,rows in sections %}<section class="panel"><h2>{{ title }}</h2><div class="report-bars" aria-label="Biểu đồ {{ title }}">{% for label,value in rows %}<div class="report-bar" data-value="{{ value|unlocalize }}"><span>{{ label }}</span><div class="report-bar-track"><i></i></div><strong>{{ value }}</strong></div>{% endfor %}</div><div class="table-scroll"><table><tbody>{% for label,value in rows %}<tr><th>{{ label }}</th><td>{{ value }}</td></tr>{% empty %}<tr><td>Chưa có dữ liệu (0).</td></tr>{% endfor %}</tbody></table></div></section>{% endfor %}
+<script src="{% static 'ui/reports.js' %}" defer></script>{% endblock %}

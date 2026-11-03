@@ -1,0 +1,695 @@
+[
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 1,
+    "title": "Súp bào ngư hải sâm",
+    "content": "Súp bào ngư hải sâm. Nhóm: Súp. ",
+    "updated_at": "2026-10-05T09:35:52.189433+00:00",
+    "metadata": {},
+    "chunk_id": 0
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 2,
+    "title": "Súp cua tuyết trứng cá",
+    "content": "Súp cua tuyết trứng cá. Nhóm: Súp. ",
+    "updated_at": "2026-10-05T09:35:52.193277+00:00",
+    "metadata": {},
+    "chunk_id": 1
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 3,
+    "title": "Gỏi cá hồi sốt mè rang",
+    "content": "Gỏi cá hồi sốt mè rang. Nhóm: Khai vị. ",
+    "updated_at": "2026-10-05T09:35:52.197344+00:00",
+    "metadata": {},
+    "chunk_id": 2
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 4,
+    "title": "Gỏi sò điệp kiểu Nhật",
+    "content": "Gỏi sò điệp kiểu Nhật. Nhóm: Khai vị. ",
+    "updated_at": "2026-10-05T09:35:52.201220+00:00",
+    "metadata": {},
+    "chunk_id": 3
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 5,
+    "title": "Mắt cá ngừ đại dương hầm thuốc Bắc",
+    "content": "Mắt cá ngừ đại dương hầm thuốc Bắc. Nhóm: Đặc sản. ",
+    "updated_at": "2026-10-05T09:35:52.206996+00:00",
+    "metadata": {},
+    "chunk_id": 4
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 6,
+    "title": "Bào ngư sốt dầu hào",
+    "content": "Bào ngư sốt dầu hào. Nhóm: Hải sản cao cấp. ",
+    "updated_at": "2026-10-05T09:35:52.213379+00:00",
+    "metadata": {},
+    "chunk_id": 5
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 7,
+    "title": "Hải sâm hầm nấm đông cô",
+    "content": "Hải sâm hầm nấm đông cô. Nhóm: Hải sản cao cấp. ",
+    "updated_at": "2026-10-05T09:35:52.217207+00:00",
+    "metadata": {},
+    "chunk_id": 6
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 8,
+    "title": "Sò điệp áp chảo sốt chanh bơ",
+    "content": "Sò điệp áp chảo sốt chanh bơ. Nhóm: Hải sản. ",
+    "updated_at": "2026-10-05T09:35:52.222724+00:00",
+    "metadata": {},
+    "chunk_id": 7
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 9,
+    "title": "Tôm hùm nướng phô mai",
+    "content": "Tôm hùm nướng phô mai. Nhóm: Hải sản cao cấp. ",
+    "updated_at": "2026-10-05T09:35:52.226672+00:00",
+    "metadata": {},
+    "chunk_id": 8
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 10,
+    "title": "Tôm hùm sốt bơ tỏi",
+    "content": "Tôm hùm sốt bơ tỏi. Nhóm: Hải sản cao cấp. ",
+    "updated_at": "2026-10-05T09:35:52.230091+00:00",
+    "metadata": {},
+    "chunk_id": 9
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 11,
+    "title": "Cua sốt tiêu đen",
+    "content": "Cua sốt tiêu đen. Nhóm: Hải sản. ",
+    "updated_at": "2026-10-05T09:35:52.233262+00:00",
+    "metadata": {},
+    "chunk_id": 10
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 12,
+    "title": "Cua rang sốt trứng muối",
+    "content": "Cua rang sốt trứng muối. Nhóm: Hải sản. ",
+    "updated_at": "2026-10-05T09:35:52.236593+00:00",
+    "metadata": {},
+    "chunk_id": 11
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 13,
+    "title": "Hàu nướng phô mai",
+    "content": "Hàu nướng phô mai. Nhóm: Hải sản. ",
+    "updated_at": "2026-10-05T09:35:52.239870+00:00",
+    "metadata": {},
+    "chunk_id": 12
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 14,
+    "title": "Bạch tuộc nướng sốt cay",
+    "content": "Bạch tuộc nướng sốt cay. Nhóm: Hải sản. ",
+    "updated_at": "2026-10-05T09:35:52.243395+00:00",
+    "metadata": {},
+    "chunk_id": 13
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 15,
+    "title": "Cá hồi áp chảo sốt chanh dây",
+    "content": "Cá hồi áp chảo sốt chanh dây. Nhóm: Cá. ",
+    "updated_at": "2026-10-05T09:35:52.248502+00:00",
+    "metadata": {},
+    "chunk_id": 14
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 16,
+    "title": "Cá tuyết nướng sốt Miso",
+    "content": "Cá tuyết nướng sốt Miso. Nhóm: Cá. ",
+    "updated_at": "2026-10-05T09:35:52.252397+00:00",
+    "metadata": {},
+    "chunk_id": 15
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 17,
+    "title": "Cá chẽm hấp kiểu Hồng Kông",
+    "content": "Cá chẽm hấp kiểu Hồng Kông. Nhóm: Cá. ",
+    "updated_at": "2026-10-05T09:35:52.256248+00:00",
+    "metadata": {},
+    "chunk_id": 16
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 18,
+    "title": "Thăn bò áp chảo sốt tiêu xanh",
+    "content": "Thăn bò áp chảo sốt tiêu xanh. Nhóm: Bò. ",
+    "updated_at": "2026-10-05T09:35:52.262773+00:00",
+    "metadata": {},
+    "chunk_id": 17
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 19,
+    "title": "Bít tết bò Ribeye sốt nấm",
+    "content": "Bít tết bò Ribeye sốt nấm. Nhóm: Bò. ",
+    "updated_at": "2026-10-05T09:35:52.266431+00:00",
+    "metadata": {},
+    "chunk_id": 18
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 20,
+    "title": "Sườn cừu nướng thảo mộc",
+    "content": "Sườn cừu nướng thảo mộc. Nhóm: Cừu. ",
+    "updated_at": "2026-10-05T09:35:52.272118+00:00",
+    "metadata": {},
+    "chunk_id": 19
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 21,
+    "title": "Ức vịt áp chảo sốt cam",
+    "content": "Ức vịt áp chảo sốt cam. Nhóm: Gia cầm. ",
+    "updated_at": "2026-10-05T09:35:52.277743+00:00",
+    "metadata": {},
+    "chunk_id": 20
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 22,
+    "title": "Cơm chiên hải sản sốt XO",
+    "content": "Cơm chiên hải sản sốt XO. Nhóm: Món chính. ",
+    "updated_at": "2026-10-05T09:35:52.282616+00:00",
+    "metadata": {},
+    "chunk_id": 21
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 23,
+    "title": "Mì xào hải sản kiểu Hồng Kông",
+    "content": "Mì xào hải sản kiểu Hồng Kông. Nhóm: Món chính. ",
+    "updated_at": "2026-10-05T09:35:52.286008+00:00",
+    "metadata": {},
+    "chunk_id": 22
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 24,
+    "title": "Bánh Tiramisu",
+    "content": "Bánh Tiramisu. Nhóm: Tráng miệng. ",
+    "updated_at": "2026-10-05T09:35:52.291899+00:00",
+    "metadata": {},
+    "chunk_id": 23
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 25,
+    "title": "Bánh Lava sô-cô-la",
+    "content": "Bánh Lava sô-cô-la. Nhóm: Tráng miệng. ",
+    "updated_at": "2026-10-05T09:35:52.295803+00:00",
+    "metadata": {},
+    "chunk_id": 24
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 26,
+    "title": "Vi cá hầm thịt cua",
+    "content": "Vi cá hầm thịt cua. Nhóm: Súp cao cấp. ",
+    "updated_at": "2026-10-05T09:35:52.300280+00:00",
+    "metadata": {},
+    "chunk_id": 25
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 27,
+    "title": "Bào ngư hấp tỏi",
+    "content": "Bào ngư hấp tỏi. Nhóm: Hải sản cao cấp. ",
+    "updated_at": "2026-10-05T09:35:52.303471+00:00",
+    "metadata": {},
+    "chunk_id": 26
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 28,
+    "title": "Ốc hương rang muối Hồng Kông",
+    "content": "Ốc hương rang muối Hồng Kông. Nhóm: Hải sản. ",
+    "updated_at": "2026-10-05T09:35:52.306475+00:00",
+    "metadata": {},
+    "chunk_id": 27
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 29,
+    "title": "Tu hài nướng mỡ hành",
+    "content": "Tu hài nướng mỡ hành. Nhóm: Hải sản. ",
+    "updated_at": "2026-10-05T09:35:52.309756+00:00",
+    "metadata": {},
+    "chunk_id": 28
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 30,
+    "title": "Sashimi cá ngừ đại dương",
+    "content": "Sashimi cá ngừ đại dương. Nhóm: Hải sản. ",
+    "updated_at": "2026-10-05T09:35:52.312437+00:00",
+    "metadata": {},
+    "chunk_id": 29
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 31,
+    "title": "Cá mú hấp xì dầu Hồng Kông",
+    "content": "Cá mú hấp xì dầu Hồng Kông. Nhóm: Cá. ",
+    "updated_at": "2026-10-05T09:35:52.316215+00:00",
+    "metadata": {},
+    "chunk_id": 30
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 32,
+    "title": "Tôm càng xanh nướng bơ tỏi",
+    "content": "Tôm càng xanh nướng bơ tỏi. Nhóm: Hải sản. ",
+    "updated_at": "2026-10-05T09:35:52.318592+00:00",
+    "metadata": {},
+    "chunk_id": 31
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 33,
+    "title": "Sườn bò hầm sốt vang",
+    "content": "Sườn bò hầm sốt vang. Nhóm: Bò. ",
+    "updated_at": "2026-10-05T09:35:52.320955+00:00",
+    "metadata": {},
+    "chunk_id": 32
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 34,
+    "title": "Chim câu quay mật ong",
+    "content": "Chim câu quay mật ong. Nhóm: Gia cầm. ",
+    "updated_at": "2026-10-05T09:35:52.323318+00:00",
+    "metadata": {},
+    "chunk_id": 33
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 35,
+    "title": "Xôi cua hoàng kim",
+    "content": "Xôi cua hoàng kim. Nhóm: Món đặc biệt. ",
+    "updated_at": "2026-10-05T09:35:52.327444+00:00",
+    "metadata": {},
+    "chunk_id": 34
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 36,
+    "title": "Rượu vang đỏ Bordeaux (18+)",
+    "content": "Rượu vang đỏ Bordeaux (18+). Nhóm: Rượu vang đỏ. ",
+    "updated_at": "2026-10-05T09:35:52.330872+00:00",
+    "metadata": {},
+    "chunk_id": 35
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 37,
+    "title": "Rượu vang đỏ Cabernet Sauvignon (18+)",
+    "content": "Rượu vang đỏ Cabernet Sauvignon (18+). Nhóm: Rượu vang đỏ. ",
+    "updated_at": "2026-10-05T09:35:52.333297+00:00",
+    "metadata": {},
+    "chunk_id": 36
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 38,
+    "title": "Rượu vang trắng Chardonnay (18+)",
+    "content": "Rượu vang trắng Chardonnay (18+). Nhóm: Rượu vang trắng. ",
+    "updated_at": "2026-10-05T09:35:52.336588+00:00",
+    "metadata": {},
+    "chunk_id": 37
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 39,
+    "title": "Champagne (18+)",
+    "content": "Champagne (18+). Nhóm: Vang sủi. ",
+    "updated_at": "2026-10-05T09:35:52.339977+00:00",
+    "metadata": {},
+    "chunk_id": 38
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 40,
+    "title": "Whisky Scotch (18+)",
+    "content": "Whisky Scotch (18+). Nhóm: Rượu mạnh. ",
+    "updated_at": "2026-10-05T09:35:52.343936+00:00",
+    "metadata": {},
+    "chunk_id": 39
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 41,
+    "title": "Cognac (18+)",
+    "content": "Cognac (18+). Nhóm: Rượu mạnh. ",
+    "updated_at": "2026-10-05T09:35:52.346293+00:00",
+    "metadata": {},
+    "chunk_id": 40
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 42,
+    "title": "Bia Heineken (18+)",
+    "content": "Bia Heineken (18+). Nhóm: Bia. ",
+    "updated_at": "2026-10-05T09:35:52.349554+00:00",
+    "metadata": {},
+    "chunk_id": 41
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 43,
+    "title": "Bia Sapporo (18+)",
+    "content": "Bia Sapporo (18+). Nhóm: Bia. ",
+    "updated_at": "2026-10-05T09:35:52.351783+00:00",
+    "metadata": {},
+    "chunk_id": 42
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 44,
+    "title": "Nước khoáng có ga San Pellegrino",
+    "content": "Nước khoáng có ga San Pellegrino. Nhóm: Nước khoáng. ",
+    "updated_at": "2026-10-05T09:35:52.355063+00:00",
+    "metadata": {},
+    "chunk_id": 43
+  },
+  {
+    "source_type": "MENU_ITEM",
+    "source_id": 45,
+    "title": "Nước khoáng Evian",
+    "content": "Nước khoáng Evian. Nhóm: Nước khoáng. ",
+    "updated_at": "2026-10-05T09:35:52.357953+00:00",
+    "metadata": {},
+    "chunk_id": 44
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 1,
+    "title": "Súp",
+    "content": "Súp",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 45
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 2,
+    "title": "Khai vị",
+    "content": "Khai vị",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 46
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 3,
+    "title": "Đặc sản",
+    "content": "Đặc sản",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 47
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 4,
+    "title": "Hải sản cao cấp",
+    "content": "Hải sản cao cấp",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 48
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 5,
+    "title": "Hải sản",
+    "content": "Hải sản",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 49
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 6,
+    "title": "Cá",
+    "content": "Cá",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 50
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 7,
+    "title": "Bò",
+    "content": "Bò",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 51
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 8,
+    "title": "Cừu",
+    "content": "Cừu",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 52
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 9,
+    "title": "Gia cầm",
+    "content": "Gia cầm",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 53
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 10,
+    "title": "Món chính",
+    "content": "Món chính",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 54
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 11,
+    "title": "Tráng miệng",
+    "content": "Tráng miệng",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 55
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 12,
+    "title": "Súp cao cấp",
+    "content": "Súp cao cấp",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 56
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 13,
+    "title": "Món đặc biệt",
+    "content": "Món đặc biệt",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 57
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 14,
+    "title": "Rượu vang đỏ",
+    "content": "Rượu vang đỏ",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 58
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 15,
+    "title": "Rượu vang trắng",
+    "content": "Rượu vang trắng",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 59
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 16,
+    "title": "Vang sủi",
+    "content": "Vang sủi",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 60
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 17,
+    "title": "Rượu mạnh",
+    "content": "Rượu mạnh",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 61
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 18,
+    "title": "Bia",
+    "content": "Bia",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 62
+  },
+  {
+    "source_type": "CATEGORY",
+    "source_id": 19,
+    "title": "Nước khoáng",
+    "content": "Nước khoáng",
+    "updated_at": null,
+    "metadata": {},
+    "chunk_id": 63
+  },
+  {
+    "source_type": "COMBO",
+    "source_id": 1,
+    "title": "DEMO - Combo 2 người",
+    "content": "[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.",
+    "updated_at": "2026-10-13T06:35:09.548532+00:00",
+    "metadata": {},
+    "chunk_id": 64
+  },
+  {
+    "source_type": "COMBO",
+    "source_id": 2,
+    "title": "DEMO - Combo hải sản",
+    "content": "[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.",
+    "updated_at": "2026-10-13T06:35:09.560886+00:00",
+    "metadata": {},
+    "chunk_id": 65
+  },
+  {
+    "source_type": "COMBO",
+    "source_id": 3,
+    "title": "DEMO - Combo bò",
+    "content": "[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.",
+    "updated_at": "2026-10-13T06:35:09.574671+00:00",
+    "metadata": {},
+    "chunk_id": 66
+  },
+  {
+    "source_type": "COMBO",
+    "source_id": 4,
+    "title": "DEMO - Combo gia đình",
+    "content": "[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu.",
+    "updated_at": "2026-10-13T06:35:09.587165+00:00",
+    "metadata": {},
+    "chunk_id": 67
+  },
+  {
+    "source_type": "RESTAURANT_INFO",
+    "source_id": 1,
+    "title": "Smart Restaurant DEMO",
+    "content": "Nhà hàng minh họa ẩm thực hải sản và món Âu. Hồ sơ DEMO, không sử dụng thông tin liên hệ cá nhân.",
+    "updated_at": "2026-10-13T06:35:08.631172+00:00",
+    "metadata": {},
+    "chunk_id": 68
+  },
+  {
+    "source_type": "BOOKING_POLICY",
+    "source_id": "booking-window",
+    "title": "Đặt bàn",
+    "content": "Đặt bàn cần đăng nhập, ngày và giờ trong tương lai, từ 1 đến 20 khách, tên và số điện thoại hợp lệ. Khung giữ bàn mặc định là 120 phút.",
+    "updated_at": null,
+    "metadata": {
+      "code_source": "customers/booking_service.py",
+      "code_sha256": "53bd385c56fbf8db11962fb696599d8fb861b355e1eb5a43308c166f3168f60c"
+    },
+    "chunk_id": 69
+  },
+  {
+    "source_type": "BOOKING_POLICY",
+    "source_id": "booking-cancel",
+    "title": "Hủy đặt bàn",
+    "content": "Bạn có thể hủy đặt bàn của mình khi hệ thống cho phép chuyển trạng thái. Đặt bàn đã mở đơn hàng không thể tự hủy; hãy nhắn nhân viên hỗ trợ.",
+    "updated_at": null,
+    "metadata": {
+      "code_source": "customers/booking_service.py",
+      "code_sha256": "53bd385c56fbf8db11962fb696599d8fb861b355e1eb5a43308c166f3168f60c"
+    },
+    "chunk_id": 70
+  },
+  {
+    "source_type": "PAYMENT_POLICY",
+    "source_id": "payment-confirm",
+    "title": "Thanh toán",
+    "content": "Khách có thể xem hóa đơn của mình và báo đã thanh toán. Nhân viên xác nhận thanh toán; không suy đoán trạng thái từ thông báo của khách.",
+    "updated_at": null,
+    "metadata": {
+      "code_source": "customers/payment_service.py",
+      "code_sha256": "4dbf7179118d35544863fe3930dfdf2d139dad5063b8d5da2665aee95e137e35"
+    },
+    "chunk_id": 71
+  },
+  {
+    "source_type": "WEBSITE_GUIDE",
+    "source_id": "cart",
+    "title": "Giỏ món",
+    "content": "Mở Thực đơn, chọn món và thêm vào giỏ. Kiểm tra giỏ món rồi mở Đặt bàn để gửi thông tin đặt bàn và món chọn trước.",
+    "updated_at": null,
+    "metadata": {
+      "code_source": "customers/views.py",
+      "code_sha256": "06d5c5bcce2bc0c3e511ca1e679e567bc7a6713b0758b27ca59573e587cea19e"
+    },
+    "chunk_id": 72
+  },
+  {
+    "source_type": "WEBSITE_GUIDE",
+    "source_id": "support",
+    "title": "Nhắn nhân viên",
+    "content": "Mở Nhắn nhân viên để trao đổi với bộ phận hỗ trợ. Trợ lý AI và trò chuyện với nhân viên là hai chức năng riêng.",
+    "updated_at": null,
+    "metadata": {
+      "code_source": "customers/module07_views.py",
+      "code_sha256": "496d023033c49b1c6deb0f6f491b37e695448aefe2c0d6f91c0f25f5431d1cd5"
+    },
+    "chunk_id": 73
+  },
+  {
+    "source_type": "WEBSITE_GUIDE",
+    "source_id": "order",
+    "title": "Theo dõi đơn hàng",
+    "content": "Đăng nhập và mở Lịch sử mua hàng để xem đơn của mình. Mở Hóa đơn của tôi để xem thông tin thanh toán.",
+    "updated_at": null,
+    "metadata": {
+      "code_source": "customers/module07_views.py",
+      "code_sha256": "496d023033c49b1c6deb0f6f491b37e695448aefe2c0d6f91c0f25f5431d1cd5"
+    },
+    "chunk_id": 74
+  }
+]

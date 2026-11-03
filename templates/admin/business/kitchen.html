@@ -1,0 +1,8 @@
+{% extends management_base %}
+{% block admin_title %}Bếp{% endblock %}
+{% block admin_content %}
+<div data-realtime-root data-realtime-socket="/ws/management/kitchen/" data-realtime-partial="{% url 'admin_kitchen' %}">
+<p class="realtime-status" data-realtime-status role="status">Đang kết nối trực tiếp…</p>
+<div data-realtime-region>{% if business_role == 'STAFF' %}{% include 'staff/kitchen_board.html' %}{% else %}{% include 'admin/business/_kitchen_content.html' %}{% endif %}</div>
+</div>
+{% endblock %}

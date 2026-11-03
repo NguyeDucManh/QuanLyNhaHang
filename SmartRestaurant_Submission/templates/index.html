@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121e2b">
+  <link rel="icon" href="{% static 'ui/favicon.svg' %}" type="image/svg+xml">
+  <title>{% block admin_title %}Tổng quan{% endblock %} | Smart Restaurant</title>
+  <link rel="stylesheet" href="{% static 'admin/css/style.css' %}?v=ai01-ai02-20261013-1">
+  <script defer src="{% static 'admin/js/main.js' %}?v=ai01-ai02-20261013-1"></script>
+  <script defer src="{% static 'admin/js/realtime.js' %}?v=ai01-ai02-20261013-1"></script>
+  <script defer src="{% static 'customer/js/chat.js' %}?v=module07"></script>
+  <script defer src="{% static 'ai/ai.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'ui/design-system.css' %}?v=final1">
+  <script defer src="{% static 'ui/product.js' %}?v=final1"></script>
+  {% if admin_page == 'location-settings' %}<link rel="stylesheet" href="{% static 'vendor/leaflet/leaflet.css' %}"><script defer src="{% static 'vendor/leaflet/leaflet.js' %}"></script><script defer src="{% static 'location/maps.js' %}"></script>{% endif %}
+  <script defer src="{% static 'ai/face-ui-vi.js' %}"></script><script defer src="{% static 'ai/face-flow.js' %}"></script>
+  <script defer src="{% static 'ai/face-realtime.js' %}"></script>
+  <script defer src="{% static 'ui/dashboard.js' %}"></script>
+<link rel="stylesheet" href="{% static 'ai/face-realtime.css' %}"><link rel="stylesheet" href="{% static 'ai/face-guide.css' %}">
+<link rel="stylesheet" href="{% static 'ui/product-polish.css' %}"><link rel="stylesheet" href="{% static 'ui/premium.css' %}"><script defer src="{% static 'ui/premium.js' %}"></script><link rel="stylesheet" href="{% static 'ui/workspace.css' %}"><script defer src="{% static 'ui/booking-workspace.js' %}"></script></head>
+<body data-admin-page="{{ admin_page|default:'' }}">
+  {{ admin_identity|json_script:"admin-identity" }}
+  {{ dishes|json_script:"restaurant-catalog" }}
+  {{ rbac_access|json_script:"rbac-access" }}
+  {{ admin_routes|json_script:"admin-routes" }}
+  {{ table_summary|json_script:"table-summary" }}
+  {{ business_summary|json_script:"business-summary" }}
+  {{ recent_orders|json_script:"recent-orders" }}
+  {{ low_stocks|json_script:"low-stocks" }}
+  <form id="admin-logout-form" action="{% url 'logout' %}" method="post" hidden>{% csrf_token %}</form>
+  <a class="skip-link" href="#main">Đến nội dung chính</a>
+  {% if rbac_access.add_menu %}<a id="menu-add-link" href="{% url 'admin_menu_add' %}" hidden>Thêm món</a>{% endif %}
+  {% if rbac_access.is_admin %}<a id="accounts-link" href="{% url 'admin_accounts' %}" hidden>Tài khoản</a>{% endif %}
+  <template id="server-content">{% block admin_content %}{% endblock %}</template>
+  <div id="app"></div>
+  <noscript>Vui lòng bật JavaScript để xem bảng quản trị.</noscript>
+</body>
+</html>

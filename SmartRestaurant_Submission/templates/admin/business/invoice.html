@@ -1,0 +1,3 @@
+{% extends management_base %}
+{% block admin_title %}{{ invoice.invoice_number }}{% endblock %}
+{% block admin_content %}<div data-realtime-root {% if can_view_payments %}data-realtime-socket="/ws/management/invoices/{{ invoice.pk }}/"{% endif %} data-realtime-partial="{% url 'admin_invoice_detail' invoice.pk %}"><p data-realtime-status role="status">{% if can_view_payments %}Đang kết nối realtime…{% endif %}</p><div data-realtime-region>{% include "admin/business/_invoice_content.html" %}</div></div>{% endblock %}

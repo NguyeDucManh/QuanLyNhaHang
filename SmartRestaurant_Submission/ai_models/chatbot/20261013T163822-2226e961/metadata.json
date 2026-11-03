@@ -1,0 +1,28 @@
+{
+  "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "model_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "device": "cpu",
+  "documents": 79,
+  "chunks": 79,
+  "features": [
+    "normalized multilingual embeddings",
+    "FAISS inner product",
+    "BM25 lexical reranking"
+  ],
+  "hyperparameters": {
+    "top_k": 10,
+    "context_k": 3,
+    "semantic_threshold": 0.42,
+    "reranker_weights": [
+      0.65,
+      0.25,
+      0.1
+    ]
+  },
+  "index_sha256": "8f2cb13d71e31d15d50c948c81954eef4b4aff0753431c32cf29dfdf6a997993",
+  "chunks_sha256": "ca7cf04ca19c8844b5216138eab2b87a32102702bf6300c2598964ba0c63b012",
+  "reranker": "0.65 semantic + 0.25 normalized BM25 + 0.10 token coverage",
+  "version": "20261013T163822-2226e961",
+  "created_at": "2026-10-13T16:38:22.385105+00:00",
+  "trained_at": "2026-10-13T16:38:22.385121+00:00"
+}

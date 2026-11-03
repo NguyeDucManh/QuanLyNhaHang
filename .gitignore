@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Django environment
+.env
+.env.*
+!.env.example
+
+# Local database
+db.sqlite3
+*.sqlite3
+*.dump
+*.backup
+*.bak
+database_backups/
+backups/
+
+# Logs
+*.log
+logs/
+
+# Generated static
+staticfiles/
+
+# Private user data
+media/private/
+private_uploads/
+face_uploads/
+face_data/
+
+# AI model/cache
+model_cache/
+ai_cache/
+faiss_indexes/
+vector_store/
+*.onnx
+*.pt
+*.pth
+*.safetensors
+
+# QA artifacts
+artifacts/
+submission_audit/
+
+# Build
+node_modules/
+dist/
+build/
+*.tmp
+
+# Archive
+*.zip
+*.7z
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+# QA test artifacts
+qa_*/
+evidence/
+
+# Sensitive audit files
+docs/OPERATIONAL_*.json
+docs/employee_accounts_*.json
+docs/*_AUDIT*.json
+

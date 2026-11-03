@@ -1,0 +1,1 @@
+{% load money %}{% if item.extras.combo %}<small>Combo: {{ item.extras.combo.name }} · Giá combo đã lưu {{ item.extras.combo.price }} · {{ item.extras.combo.quantity }} combo</small>{% endif %}{% for top in item.extras.toppings %}<small>+ {{ top.name }} ({{ top.price }})</small>{% endfor %}

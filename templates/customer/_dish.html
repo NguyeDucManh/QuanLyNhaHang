@@ -1,0 +1,5 @@
+<article class="dish-card {% if compact %}compact-card{% endif %}">
+<a href="{% url 'customer_food_detail' dish.id %}{% if booking_menu %}?from=booking{% endif %}" class="dish-image"><img src="{{ dish.image }}" alt="{{ dish.name }}" loading="lazy"></a>
+<div class="dish-body"><h3><a href="{% url 'customer_food_detail' dish.id %}{% if booking_menu %}?from=booking{% endif %}">{{ dish.name }}</a></h3><p class="rating">{{ dish.category_label }}</p><div class="dish-bottom"><strong>{{ dish.price_display }}</strong><form class="add-form" action="{% url 'update_cart' dish.id %}" method="post">{% csrf_token %}{% if booking_menu %}<input name="return_to" type="hidden" value="booking_menu">{% endif %}<button class="button button-small" aria-label="Thêm {{ dish.name }} vào giỏ"><svg class="icon"><use href="#i-cart"/></svg> Thêm</button></form></div></div>
+{% if dish.rating %}<p class="recommendation-reason">★ {{ dish.rating|floatformat:1 }}/5 · {{ dish.review_count }} đánh giá</p>{% endif %}{% if dish.recommendation_reason %}<p class="recommendation-reason">{{ dish.recommendation_reason }}</p>{% endif %}</article>
+

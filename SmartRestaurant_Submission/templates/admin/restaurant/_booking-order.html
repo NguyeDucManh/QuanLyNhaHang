@@ -1,0 +1,5 @@
+{% if booking.service_order %}
+{% if can_view_order %}<a class="view-button" href="{% url 'admin_order_detail' booking.service_order.pk %}">Xem đơn hàng</a>{% endif %}
+{% elif booking.status == 'CONFIRMED' and booking.table and can_open_order %}
+<form class="inline-action" method="post" action="{% url 'admin_booking_open_order' booking.pk %}">{% csrf_token %}<button class="primary-button" type="submit">Mở đơn hàng</button></form>
+{% endif %}

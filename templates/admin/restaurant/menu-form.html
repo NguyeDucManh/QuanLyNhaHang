@@ -1,0 +1,6 @@
+{% extends management_base %}
+{% block admin_title %}Thực đơn{% endblock %}{% load money %}
+{% block admin_content %}<div class="module-heading"><div><h1>{% if item %}Sửa món: {{ item.name }}{% else %}Thêm món ăn / đồ uống{% endif %}</h1><p>Smart Restaurant / Thực đơn</p></div><a class="view-button" href="{% url 'admin_home' %}#menu">Về thực đơn</a></div>
+<section class="panel" style="max-width:760px;padding:24px"><form method="post">{% csrf_token %}{{ form.non_field_errors }}
+{% for field in form %}<div style="margin-bottom:18px"><label for="{{ field.id_for_label }}" style="display:block;margin-bottom:8px">{{ field.label }}</label>{{ field }}{{ field.errors }}</div>{% endfor %}
+<button class="primary-button" type="submit">Lưu món</button></form></section>{% if food_cost %}<section class="panel"><h2>Giá vốn ước tính</h2><p>Giá bán {{ item.price|money }} · {{ food_cost.status }}</p>{% if food_cost.cost != None %}<p>Giá vốn {{ food_cost.cost|money }} · Lợi nhuận gộp {{ food_cost.profit|money }}{% if food_cost.percentage != None %} · {{ food_cost.percentage|floatformat:2 }}%{% endif %}</p>{% endif %}{% for line in food_cost.contributions %}<p>{{ line.ingredient }}: {{ line.cost|money }}</p>{% endfor %}<a href="{% url 'food_cost' %}">Báo cáo giá vốn</a></section>{% endif %}{% endblock %}

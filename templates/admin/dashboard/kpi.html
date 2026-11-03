@@ -1,0 +1,1 @@
+{% load money %}<article class="stat"><div class="stat-icon {{ tone }}">{% include 'admin/dashboard/icon.html' %}</div><div><p class="stat-label">{{ label }}</p><div class="stat-value">{% if cash %}{{ value|money }}{% else %}{{ value|default:0 }}{% endif %}</div><div class="stat-change">{{ note }}</div></div></article>

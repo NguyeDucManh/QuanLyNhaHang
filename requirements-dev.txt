@@ -1,0 +1,2 @@
+# Optional Chrome DevTools smoke checks; independent of production AI stack.
+websocket-client==1.9.2

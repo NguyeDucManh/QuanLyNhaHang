@@ -1,0 +1,2247 @@
+[
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 29,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-04T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 22,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-04T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 29,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-05T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 30,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-05T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 9,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-05T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-05T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 38,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-08-06T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 38,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-07T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 29,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-07T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-08T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 9,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-08T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-08T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 42,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-09T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 12,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-09T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 11,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-09T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 42,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-08-09T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 18,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-09T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 30,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-09T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-10T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 6,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-10T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 28,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-10T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-10T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-10T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 29,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-11T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-11T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 38,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-08-11T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-12T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 3,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-12T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 14,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-12T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-12T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 14,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-12T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-12T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 17,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-12T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-12T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-12T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-13T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 2,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-13T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-13T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 30,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-13T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-13T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 22,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-13T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-13T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 25,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-13T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 7,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-14T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 33,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-14T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 10,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-14T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 15,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-14T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-15T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 25,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-15T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 6,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-16T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 27,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-16T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 4,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-16T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-16T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-16T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 9,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-16T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 36,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-08-17T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-17T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 9,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-17T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-17T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 22,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-17T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 39,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-19T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 13,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-19T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 24,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-20T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-20T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 22,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-20T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 8,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-20T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 40,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-20T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 22,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-21T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-21T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 6,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-21T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 13,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-21T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 7,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-08-21T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 32,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-21T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-21T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 19,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-22T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 31,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-22T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-22T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 2,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-22T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 40,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-23T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 31,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-23T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-24T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 15,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-24T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 24,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-24T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 10,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-08-24T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-24T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-24T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-25T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-25T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 10,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-25T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 25,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-08-26T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-26T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 24,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-26T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-27T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 15,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-27T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-27T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 25,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-27T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-08-28T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-28T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 37,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-08-28T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-29T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 41,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-08-29T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 3,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-08-29T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-08-29T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 1,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-08-30T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 9,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-30T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 14,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-08-31T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 32,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-08-31T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 7,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-01T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 32,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-01T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-02T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 20,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-09-03T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-03T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 14,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-03T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 9,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-03T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 31,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-03T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 45,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-03T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-03T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-03T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-04T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 7,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-04T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 27,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-09-04T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 27,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-09-05T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-05T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 2,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-05T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 6,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-05T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 9,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-06T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 41,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-06T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-06T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 24,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-06T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 22,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-07T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 32,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-07T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 24,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-07T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-07T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-08T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-08T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-08T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-08T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 22,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-08T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 12,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-08T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 30,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-09T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 32,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-09T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 31,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-09T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 39,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-09T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 8,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-09T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-10T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 36,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-10T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 17,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-09-10T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 33,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-11T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 30,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-11T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 38,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-11T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 8,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-11T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-11T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 32,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-11T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 18,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-12T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 7,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-12T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 28,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-13T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 37,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-13T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 14,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-13T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 6,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-13T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 17,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-14T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 32,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-14T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 23,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-14T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-14T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 10,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-14T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-14T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-14T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 13,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-14T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 24,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-14T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 27,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-15T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 42,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-09-15T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 27,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-15T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 15,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-15T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 21,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-15T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 2,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-16T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 14,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-16T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 17,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-16T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-17T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-17T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 8,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-17T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 33,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-18T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-18T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-18T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 27,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-18T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 19,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-18T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 36,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-09-19T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 21,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-19T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:7",
+    "menu_item_id": 11,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-20T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 23,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-20T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-20T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 7,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-21T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 30,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-21T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-21T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 37,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-21T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 20,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-22T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 17,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-24T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-24T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 37,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-09-24T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 16,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-24T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 1,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-24T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 21,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-24T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 2,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-24T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 12,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-25T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 4,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-25T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 40,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-25T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 25,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-25T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-25T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 16,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-26T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-09-27T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 2,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-27T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 17,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-27T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 28,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-28T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-28T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 7,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-28T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-28T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:0",
+    "menu_item_id": 16,
+    "quantity": 3,
+    "rating": 2,
+    "at": "2026-09-28T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 9,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-28T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 24,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-29T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 26,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-09-29T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 19,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-29T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-09-29T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 18,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-09-30T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-09-30T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:25",
+    "menu_item_id": 31,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-09-30T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 15,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-09-30T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 27,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-09-30T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 25,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-09-30T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 31,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-09-30T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:17",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-10-01T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 17,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-01T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 18,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-01T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 27,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-01T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 8,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-01T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-10-01T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:11",
+    "menu_item_id": 17,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-01T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-10-01T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-01T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-01T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-10-02T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:14",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-02T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:18",
+    "menu_item_id": 33,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-10-02T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 30,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-02T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:23",
+    "menu_item_id": 16,
+    "quantity": 2,
+    "rating": 2,
+    "at": "2026-10-02T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 12,
+    "quantity": 3,
+    "rating": 3,
+    "at": "2026-10-02T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 17,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-02T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-03T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 7,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-03T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:3",
+    "menu_item_id": 3,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-03T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 6,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-03T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 35,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-03T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 13,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-10-03T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:6",
+    "menu_item_id": 6,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-03T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:5",
+    "menu_item_id": 17,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-04T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:1",
+    "menu_item_id": 29,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-05T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:8",
+    "menu_item_id": 38,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-05T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:26",
+    "menu_item_id": 34,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-05T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 3,
+    "quantity": 1,
+    "rating": 3,
+    "purchased_at": "2026-10-06T03:24:40.028484+00:00",
+    "at": "2026-10-06T03:24:40.028484+00:00",
+    "source": "REAL"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 4,
+    "quantity": 1,
+    "rating": 3,
+    "purchased_at": "2026-10-06T03:24:40.028484+00:00",
+    "at": "2026-10-06T03:24:40.028484+00:00",
+    "source": "REAL"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 14,
+    "quantity": 1,
+    "rating": 3,
+    "purchased_at": "2026-10-06T03:24:40.028484+00:00",
+    "at": "2026-10-06T03:24:40.028484+00:00",
+    "source": "REAL"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 22,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-07T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 12,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-07T06:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-07T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:24",
+    "menu_item_id": 29,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-10-07T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 6,
+    "quantity": 2,
+    "rating": 3,
+    "at": "2026-10-07T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 8,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-08T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-08T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:16",
+    "menu_item_id": 9,
+    "quantity": 1,
+    "rating": 2,
+    "at": "2026-10-08T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:13",
+    "menu_item_id": 34,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-09T07:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:27",
+    "menu_item_id": 13,
+    "quantity": 3,
+    "rating": 5,
+    "at": "2026-10-09T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:22",
+    "menu_item_id": 45,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-09T12:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:21",
+    "menu_item_id": 23,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-10T05:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:2",
+    "menu_item_id": 3,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-10T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:20",
+    "menu_item_id": 34,
+    "quantity": 1,
+    "rating": 4,
+    "at": "2026-10-10T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:12",
+    "menu_item_id": 11,
+    "quantity": 1,
+    "rating": 3,
+    "at": "2026-10-10T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:10",
+    "menu_item_id": 12,
+    "quantity": 1,
+    "rating": 5,
+    "at": "2026-10-11T08:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:19",
+    "menu_item_id": 20,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-11T09:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:15",
+    "menu_item_id": 44,
+    "quantity": 2,
+    "rating": 5,
+    "at": "2026-10-11T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:4",
+    "menu_item_id": 5,
+    "quantity": 3,
+    "rating": 4,
+    "at": "2026-10-12T10:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "simulated:9",
+    "menu_item_id": 27,
+    "quantity": 2,
+    "rating": 4,
+    "at": "2026-10-12T11:00:00+00:00",
+    "source": "SYNTHETIC"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 1,
+    "quantity": 1,
+    "rating": 5,
+    "purchased_at": "2026-10-06T03:24:40.028484+00:00",
+    "at": "2026-10-13T06:35:09.634271+00:00",
+    "source": "REAL"
+  },
+  {
+    "customer_key": "real:7",
+    "menu_item_id": 2,
+    "quantity": 1,
+    "rating": 5,
+    "purchased_at": "2026-10-06T03:24:40.028484+00:00",
+    "at": "2026-10-13T06:35:09.641444+00:00",
+    "source": "REAL"
+  }
+]

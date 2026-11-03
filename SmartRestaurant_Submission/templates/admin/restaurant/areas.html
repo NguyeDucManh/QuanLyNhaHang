@@ -1,0 +1,6 @@
+﻿{% extends management_base %}{% block admin_title %}Quản lý khu vực{% endblock %}
+{% block admin_content %}
+<div class="module-heading"><div><h1>Quản lý khu vực</h1><p>Khu vực nhà hàng</p></div>{% if can_add %}<a class="primary-button" href="{% url 'admin_area_add' %}">Thêm khu vực</a>{% endif %}</div>
+{% include "admin/restaurant/_messages.html" %}
+<section class="panel"><form class="resource-search" method="get"><label for="area-search">Tên khu vực</label><input id="area-search" name="q" value="{{ query }}"><button class="view-button">Tìm kiếm</button></form><div class="table-scroll"><table><thead><tr><th>Tên</th><th>Mô tả</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody>{% for area in pagination %}<tr><td>{{ area.name }}</td><td>{{ area.description|truncatechars:100 }}</td><td>{% if area.is_active %}Active{% else %}Inactive{% endif %}</td><td>{% if can_change %}<a class="view-button" href="{% url 'admin_area_edit' area.pk %}">Sửa / Bật-tắt</a>{% endif %}</td></tr>{% empty %}<tr><td colspan="4">Chưa có khu vực. Hãy thêm khu vực thực tế của nhà hàng.</td></tr>{% endfor %}</tbody></table></div>{% include "admin/restaurant/_pagination.html" %}</section>
+{% endblock %}

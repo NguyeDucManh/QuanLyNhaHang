@@ -1,0 +1,6 @@
+<section class="booking-payment" data-payment-state="{{ payment.state }}"><h3>Thanh toán</h3><p>Đơn hàng: {% if payment.order %}{{ payment.order.get_status_display }}{% else %}Chưa có{% endif %} · Hóa đơn: {% if payment.invoice %}{{ payment.invoice.get_status_display }}{% else %}Chưa có{% endif %}</p>
+{% if payment.payment_label %}<p>{{ payment.payment_label }}</p>{% endif %}
+{% if payment.state == 'payable' %}<a class="button" href="{% url 'customer_invoice_detail' payment.invoice.pk %}">💳 THANH TOÁN NGAY</a>
+{% elif payment.state == 'paid' %}<strong>✓ ĐÃ THANH TOÁN</strong><a class="button button-secondary" href="{% url 'customer_invoice_detail' payment.invoice.pk %}">Xem hóa đơn</a>
+{% elif payment.state == 'pending' %}<p>Yêu cầu thanh toán đang chờ nhân viên xác nhận.</p><a class="button button-secondary" href="{% url 'customer_invoice_detail' payment.invoice.pk %}">Theo dõi thanh toán / Xem hóa đơn</a>
+{% else %}<p>Thanh toán sẽ khả dụng sau khi đơn hàng được hoàn tất và hóa đơn được tạo.</p><button class="button" disabled>CHƯA THỂ THANH TOÁN</button>{% if payment.invoice %}<a href="{% url 'customer_invoice_detail' payment.invoice.pk %}">Xem hóa đơn</a>{% endif %}{% endif %}</section>

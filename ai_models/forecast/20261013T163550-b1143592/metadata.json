@@ -1,0 +1,4184 @@
+{
+  "model_name": "Linear Regression / Random Forest / XGBoost",
+  "dataset_version": "20261013T161546-86d4ac55",
+  "features": [
+    "day_of_week",
+    "weekend",
+    "promotion_flag",
+    "lag_1",
+    "lag_7",
+    "lag_14",
+    "rolling_mean_7",
+    "rolling_mean_14"
+  ],
+  "hyperparameters": {
+    "random_seed": 42,
+    "trees": 100,
+    "rf_max_depth": 5,
+    "xgb_max_depth": 3,
+    "xgb_learning_rate": 0.05
+  },
+  "series": {
+    "revenue": {
+      "best_model": "Linear Regression",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 11776514.590503989,
+          "RMSE": 16999206.652114313,
+          "MAPE": 19.607152057708305,
+          "mape_excluded_zeros": 0
+        },
+        "Random Forest": {
+          "MAE": 14771401.262507547,
+          "RMSE": 19281032.79379028,
+          "MAPE": 25.545837427068776,
+          "mape_excluded_zeros": 0
+        },
+        "XGBoost": {
+          "MAE": 17528848.0,
+          "RMSE": 22793159.662540372,
+          "MAPE": 32.59028023543982,
+          "mape_excluded_zeros": 0
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 18107943.275433958,
+          "RMSE": 23931861.01199834,
+          "MAPE": 417.3715306085037,
+          "mape_excluded_zeros": 0
+        },
+        "Random Forest": {
+          "MAE": 16395897.710876668,
+          "RMSE": 22680837.584829114,
+          "MAPE": 387.15610658232856,
+          "mape_excluded_zeros": 0
+        },
+        "XGBoost": {
+          "MAE": 19717040.727272727,
+          "RMSE": 25824359.326787792,
+          "MAPE": 401.26972832545806,
+          "mape_excluded_zeros": 0
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 54622000.0,
+            "predicted": 45884213.05058831
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 53329000.0,
+            "predicted": 75093785.85333446
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 79705000.0,
+            "predicted": 67462334.53909029
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 36258000.0,
+            "predicted": 46527699.75928192
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1305000.0,
+            "predicted": 56735945.756009325
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 34588000.0,
+            "predicted": 52374926.65431878
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 41244000.0,
+            "predicted": 46665685.30191305
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 49404000.0,
+            "predicted": 47827606.84662633
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 37390000.0,
+            "predicted": 79443555.10425346
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 36765000.0,
+            "predicted": 51850832.041951105
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 40548600.0,
+            "predicted": 49365699.99501635
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 54622000.0,
+            "predicted": 42594717.75822661
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 53329000.0,
+            "predicted": 60455738.02741687
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 79705000.0,
+            "predicted": 82286881.78021978
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 36258000.0,
+            "predicted": 44414311.830626994
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1305000.0,
+            "predicted": 52677498.65426895
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 34588000.0,
+            "predicted": 44501233.84960342
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 41244000.0,
+            "predicted": 43079629.47559135
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 49404000.0,
+            "predicted": 43821218.53319747
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 37390000.0,
+            "predicted": 79926580.9007326
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 36765000.0,
+            "predicted": 60820245.64047619
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 40548600.0,
+            "predicted": 55715290.95213128
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 54622000.0,
+            "predicted": 42938412.0
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 53329000.0,
+            "predicted": 77196088.0
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 79705000.0,
+            "predicted": 69150928.0
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 36258000.0,
+            "predicted": 48401888.0
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1305000.0,
+            "predicted": 53764132.0
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 34588000.0,
+            "predicted": 46145848.0
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 41244000.0,
+            "predicted": 50157988.0
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 49404000.0,
+            "predicted": 51366544.0
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 37390000.0,
+            "predicted": 91780392.0
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 36765000.0,
+            "predicted": 53976336.0
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 40548600.0,
+            "predicted": 52692172.0
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 7.817088779832541e-08,
+        "weekend": 1.1741469463366627e-08,
+        "promotion_flag": -1.465477604355015e-08,
+        "lag_1": -0.09112470547931245,
+        "lag_7": 0.19013484632561964,
+        "lag_14": 0.4107937844870163,
+        "rolling_mean_7": 0.500104355917451,
+        "rolling_mean_14": -0.22420814981135062
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "revenue"
+    },
+    "order_count": {
+      "best_model": "Random Forest",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 2.9836961699562305,
+          "RMSE": 3.527790726601229,
+          "MAPE": 19.068345765084533,
+          "mape_excluded_zeros": 0
+        },
+        "Random Forest": {
+          "MAE": 2.80106813301078,
+          "RMSE": 3.5628904521294773,
+          "MAPE": 16.609877373414765,
+          "mape_excluded_zeros": 0
+        },
+        "XGBoost": {
+          "MAE": 2.950851249694824,
+          "RMSE": 3.4121063942062797,
+          "MAPE": 18.371154810011074,
+          "mape_excluded_zeros": 0
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 3.594203351470562,
+          "RMSE": 5.045775631091835,
+          "MAPE": 123.97907970074795,
+          "mape_excluded_zeros": 0
+        },
+        "Random Forest": {
+          "MAE": 3.956046983025907,
+          "RMSE": 5.230353049835517,
+          "MAPE": 135.17253079618365,
+          "mape_excluded_zeros": 0
+        },
+        "XGBoost": {
+          "MAE": 4.1039557890458545,
+          "RMSE": 5.523403628363863,
+          "MAPE": 141.1309260345915,
+          "mape_excluded_zeros": 0
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 18.0,
+            "predicted": 14.492923707794649
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 21.0,
+            "predicted": 20.02705907219006
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 22.0,
+            "predicted": 21.51199185208307
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 15.0,
+            "predicted": 14.916692734637145
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 12.568062785383376
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 15.0,
+            "predicted": 13.195142841297308
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 12.0,
+            "predicted": 13.277957419051166
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 13.0,
+            "predicted": 13.398817381858565
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 12.0,
+            "predicted": 19.521890460523146
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 13.0,
+            "predicted": 18.678414092843887
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 13.0,
+            "predicted": 19.23490493451828
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 18.0,
+            "predicted": 14.115042717413308
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 21.0,
+            "predicted": 16.486584126984127
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 22.0,
+            "predicted": 19.236666666666665
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 15.0,
+            "predicted": 14.06577857142857
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 13.785291370909794
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 15.0,
+            "predicted": 13.783455214745695
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 12.0,
+            "predicted": 12.57165177603465
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 13.0,
+            "predicted": 12.608647845944907
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 12.0,
+            "predicted": 18.298113888888885
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 13.0,
+            "predicted": 17.7105
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 13.0,
+            "predicted": 18.44713492063492
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 18.0,
+            "predicted": 14.863869667053223
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 21.0,
+            "predicted": 18.370073318481445
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 22.0,
+            "predicted": 20.43692398071289
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 15.0,
+            "predicted": 14.624405860900879
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 14.198737144470215
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 15.0,
+            "predicted": 14.546109199523926
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 12.0,
+            "predicted": 14.546109199523926
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 13.0,
+            "predicted": 14.734127044677734
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 12.0,
+            "predicted": 20.397016525268555
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 13.0,
+            "predicted": 18.294231414794922
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 13.0,
+            "predicted": 18.814674377441406
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.1915274118803813,
+        "weekend": 0.14424513184483956,
+        "promotion_flag": 0.16645545474542495,
+        "lag_1": 0.06962940124812902,
+        "lag_7": 0.10211533292860189,
+        "lag_14": 0.12431056383392708,
+        "rolling_mean_7": 0.09275554313303709,
+        "rolling_mean_14": 0.1089611603856592
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "order_count"
+    },
+    "menu_1": {
+      "best_model": "Random Forest",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.671811862851646,
+          "RMSE": 2.128552440477401,
+          "MAPE": 34.65218474816481,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.65326052003552,
+          "RMSE": 2.093905328234173,
+          "MAPE": 35.577587767171096,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.9326080143451692,
+          "RMSE": 2.5761761393660425,
+          "MAPE": 35.19668247964647,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.3756268179996392,
+          "RMSE": 1.8121236054666796,
+          "MAPE": 44.43412678608039,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.455105746452003,
+          "RMSE": 1.8882721258998112,
+          "MAPE": 44.81680677748955,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.6222905868833715,
+          "RMSE": 2.017990117487677,
+          "MAPE": 54.43114851202283,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 2.607405347654364
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 1.0,
+            "predicted": 1.1478510785344407
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 1.0,
+            "predicted": 1.2001271509859603
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 1.3644210335267664
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 0.06446737206617925
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 2.0,
+            "predicted": 1.0749609863071568
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 5.0,
+            "predicted": 1.0454383053459133
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 2.0,
+            "predicted": 1.963247213980472
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 1.5550697787844028
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 2.297589702784943
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 2.107544783424875
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 2.164699592074592
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 1.0,
+            "predicted": 1.2590490424608074
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 1.0,
+            "predicted": 1.9514628704628705
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 1.8521931508034453
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 0.8319556219923869
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 2.0,
+            "predicted": 1.8828467227217225
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 5.0,
+            "predicted": 1.1969170078287727
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 2.0,
+            "predicted": 1.3998538928391868
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 1.639353892839187
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 2.6988134055487
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 2.752164502164502
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.9986462593078613
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 1.0,
+            "predicted": 2.0319485664367676
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 1.0,
+            "predicted": 1.6438777446746826
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 2.3150103092193604
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 0.42869117856025696
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 2.0,
+            "predicted": 1.36152184009552
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 5.0,
+            "predicted": 1.1764979362487793
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 2.0,
+            "predicted": 1.1195734739303589
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 0.9611074924468994
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 2.4995779991149902
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 3.4035274982452393
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.1796093204774012,
+        "weekend": 0.009770941632506592,
+        "promotion_flag": 0.09974749066925179,
+        "lag_1": 0.0910139911710439,
+        "lag_7": 0.1087192325978305,
+        "lag_14": 0.16033807488812482,
+        "rolling_mean_7": 0.1865293827021339,
+        "rolling_mean_14": 0.16427156586170732
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_2": {
+      "best_model": "Random Forest",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.693243819575401,
+          "RMSE": 2.0846905156889584,
+          "MAPE": 84.6192707138506,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.4768942925495554,
+          "RMSE": 1.8759278081977753,
+          "MAPE": 41.1499746841852,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.7207811579108239,
+          "RMSE": 2.043397383893445,
+          "MAPE": 71.10950004723337,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.6045403678962857,
+          "RMSE": 1.9018319406475914,
+          "MAPE": 95.8615944419107,
+          "mape_excluded_zeros": 3
+        },
+        "Random Forest": {
+          "MAE": 1.9394521629588475,
+          "RMSE": 2.2857132621186254,
+          "MAPE": 113.41332492777187,
+          "mape_excluded_zeros": 3
+        },
+        "XGBoost": {
+          "MAE": 1.9986606294458562,
+          "RMSE": 2.5415550831833644,
+          "MAPE": 129.66312197347483,
+          "mape_excluded_zeros": 3
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 3.0,
+            "predicted": 1.520179529340812
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 0.0,
+            "predicted": 1.0915996841956643
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 3.0,
+            "predicted": 2.3031894068164216
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 1.0,
+            "predicted": 4.463183945006401
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 1.8814582395467139
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 5.0,
+            "predicted": 1.5769066501973388
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 3.0,
+            "predicted": 0.5869203432458125
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 0.626716311541581
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 3.028303562785631
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 1.950266887469462
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.40438865408592406
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 3.0,
+            "predicted": 1.661308097770374
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 0.0,
+            "predicted": 1.0775641285043456
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 3.0,
+            "predicted": 2.1443599096981445
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 1.0,
+            "predicted": 5.405
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 1.8721499880838113
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 5.0,
+            "predicted": 1.7543691706843878
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 3.0,
+            "predicted": 0.6030042994445168
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 2.184894020834239
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 5.039686147186147
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 1.8212167832167827
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 1.0965042023194198
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 3.0,
+            "predicted": 1.6095776557922363
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 0.0,
+            "predicted": 0.4805976450443268
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 3.0,
+            "predicted": 1.8673720359802246
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 1.0,
+            "predicted": 7.086865425109863
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 1.6975921392440796
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 5.0,
+            "predicted": 2.6719882488250732
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 3.0,
+            "predicted": 0.4044094979763031
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 3.393571376800537
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 4.038175582885742
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 1.4441237449645996
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.6023115515708923
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.13383941001741126,
+        "weekend": 0.01910853647639409,
+        "promotion_flag": 0.007679014469415209,
+        "lag_1": 0.12998949712775693,
+        "lag_7": 0.11571332377897275,
+        "lag_14": 0.30156899829659856,
+        "rolling_mean_7": 0.16010425412310555,
+        "rolling_mean_14": 0.13199696571034572
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_3": {
+      "best_model": "XGBoost",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.983058818822562,
+          "RMSE": 2.485144114461016,
+          "MAPE": 50.69240841776663,
+          "mape_excluded_zeros": 3
+        },
+        "Random Forest": {
+          "MAE": 1.7692949834479248,
+          "RMSE": 1.9929208186744392,
+          "MAPE": 56.88851434513199,
+          "mape_excluded_zeros": 3
+        },
+        "XGBoost": {
+          "MAE": 1.7257297463715076,
+          "RMSE": 1.9870429806953354,
+          "MAPE": 57.10115509019011,
+          "mape_excluded_zeros": 3
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.61748355630937,
+          "RMSE": 1.9963077967518021,
+          "MAPE": 46.41254509290313,
+          "mape_excluded_zeros": 5
+        },
+        "Random Forest": {
+          "MAE": 2.2406520364662073,
+          "RMSE": 2.701918742046066,
+          "MAPE": 58.438599669665834,
+          "mape_excluded_zeros": 5
+        },
+        "XGBoost": {
+          "MAE": 2.1784280267628757,
+          "RMSE": 2.795847429404188,
+          "MAPE": 61.27560089031855,
+          "mape_excluded_zeros": 5
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 4.0,
+            "predicted": 1.960416944025781
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 8.0,
+            "predicted": 3.7006511726118245
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 4.0,
+            "predicted": 3.445392109540035
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 0.15749280067548566
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 1.0486498361769387
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.250767381258858
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 1.6351290962190526
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 1.8437386397034237
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 0.0,
+            "predicted": 2.862728532816588
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 2.0,
+            "predicted": 3.218373523952826
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 0.11810046522246465
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 4.0,
+            "predicted": 2.2942510610304727
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 8.0,
+            "predicted": 2.1575396825396824
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 4.0,
+            "predicted": 2.3817619047619045
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 1.5267423687423687
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 1.4714835703512172
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.2482967571644041
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 1.9255515873015872
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 3.7953521184697645
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 0.0,
+            "predicted": 3.566242424242424
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 2.0,
+            "predicted": 4.297182040182039
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 1.3501258169934638
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 4.0,
+            "predicted": 1.4084997177124023
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 8.0,
+            "predicted": 2.4601166248321533
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 4.0,
+            "predicted": 3.8300745487213135
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 1.161344289779663
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 2.283590078353882
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 0.6237823367118835
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 4.648891925811768
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 1.8169257640838623
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 0.0,
+            "predicted": 4.106656551361084
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 2.0,
+            "predicted": 3.8302390575408936
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 1.8100308179855347
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.24338413774967194,
+        "weekend": 0.0,
+        "promotion_flag": 0.05871782824397087,
+        "lag_1": 0.02845427580177784,
+        "lag_7": 0.19533582031726837,
+        "lag_14": 0.14748583734035492,
+        "rolling_mean_7": 0.20990855991840363,
+        "rolling_mean_14": 0.11671345680952072
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_4": {
+      "best_model": "Linear Regression",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.1689184412749374,
+          "RMSE": 1.4151072095125194,
+          "MAPE": 55.95500022804964,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.3260818070818068,
+          "RMSE": 1.6374993645834803,
+          "MAPE": 64.84383214144243,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.397851911187172,
+          "RMSE": 1.6729837686571152,
+          "MAPE": 70.89417241513729,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.6141491556125056,
+          "RMSE": 1.8039632274889756,
+          "MAPE": 78.62925516657377,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.5934607071361575,
+          "RMSE": 1.9003733813127122,
+          "MAPE": 57.33032132133895,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.4624940427866848,
+          "RMSE": 1.8797671440392532,
+          "MAPE": 47.44582878691809,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.4452519913386217
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 2.52512677117548
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 2.0,
+            "predicted": 2.93532957261404
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 2.0,
+            "predicted": 0.24961473878266194
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 0.7621674042055386
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 0.9582934677644999
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 1.1416080386018335
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 1.9245148104567953
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 2.794212908685008
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 3.009925771969444
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.0
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.6058195802735273
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 1.9011134566869692
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 2.0,
+            "predicted": 3.2208535353535352
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 2.0,
+            "predicted": 0.7167154095904097
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 0.7268451829500422
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 0.8213445989107585
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 0.9457112739024335
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 2.2026021640580287
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 2.0262166312901435
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 3.5505867465867467
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.8577035048285049
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.6376311779022217
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 1.8940834999084473
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 2.0,
+            "predicted": 3.120863437652588
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 2.0,
+            "predicted": 1.5482922792434692
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 1.2818866968154907
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 0.7731029391288757
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 0.8158279657363892
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 1.5263885259628296
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 1.8940834999084473
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 4.00048303604126
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.9742511510848999
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.3456594741970637,
+        "weekend": 0.769109270548095,
+        "promotion_flag": -1.368956090205203,
+        "lag_1": -0.0846259969291584,
+        "lag_7": -0.0996034901860191,
+        "lag_14": 0.0002391648564070148,
+        "rolling_mean_7": -0.5815550211078611,
+        "rolling_mean_14": -0.4833458381579873
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_5": {
+      "best_model": "Linear Regression",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.8110152227290008,
+          "RMSE": 2.182283458529549,
+          "MAPE": 40.737089652293186,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.893594537162184,
+          "RMSE": 2.229753755165788,
+          "MAPE": 46.80177513798837,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 2.1577640235424043,
+          "RMSE": 2.5232588473185187,
+          "MAPE": 61.511524352762436,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.5697488645310829,
+          "RMSE": 1.8906658008493484,
+          "MAPE": 77.66075566353369,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.5594163379884909,
+          "RMSE": 1.8401795358667854,
+          "MAPE": 64.85421002735637,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.6187542351809414,
+          "RMSE": 1.9710249258202677,
+          "MAPE": 59.8123037815094,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 2.3259882429790677
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 2.0,
+            "predicted": 1.4650650235898501
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 5.0,
+            "predicted": 2.045822331704148
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 5.0,
+            "predicted": 1.3734014840821267
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.641958291851079
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.2877294745982808
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 0.815144221164823
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 1.0,
+            "predicted": 1.0480565273196976
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 1.543848105549502
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 1.0,
+            "predicted": 2.5430515331106447
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 3.033446163743948
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 2.403902217665375
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 2.0,
+            "predicted": 1.5362076648841358
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 5.0,
+            "predicted": 2.6940703463203466
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 5.0,
+            "predicted": 1.2417857537797299
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.4490675308262135
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.6398164624501448
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 1.9291687213024036
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 1.0,
+            "predicted": 1.5944001364132947
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 2.2172375924728867
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 1.0,
+            "predicted": 2.3402282554047256
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 2.051822566322566
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.9804500341415405
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 2.0,
+            "predicted": 1.3608893156051636
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 5.0,
+            "predicted": 2.7815048694610596
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 5.0,
+            "predicted": 0.6871073246002197
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 2.60744309425354
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.3790053129196167
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 1.8975777626037598
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 1.0,
+            "predicted": 1.9414106607437134
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 2.4205870628356934
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 1.0,
+            "predicted": 2.2162585258483887
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.8069343566894531
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": -0.1943832606707494,
+        "weekend": 1.6327836351811442,
+        "promotion_flag": 1.8609902352214303,
+        "lag_1": 0.14860308672471823,
+        "lag_7": -0.1673450319849059,
+        "lag_14": -0.21045426371242887,
+        "rolling_mean_7": 0.10626763074817411,
+        "rolling_mean_14": -0.6628240719963836
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_6": {
+      "best_model": "XGBoost",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 2.042257159357782,
+          "RMSE": 2.6512554989382986,
+          "MAPE": 54.44783031043748,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 2.087554305601519,
+          "RMSE": 2.6706389236526435,
+          "MAPE": 54.954966594508015,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.7910441964864732,
+          "RMSE": 2.4492302014820284,
+          "MAPE": 44.33560098210971,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.639483995260904,
+          "RMSE": 1.73006189627303,
+          "MAPE": 54.835791247246256,
+          "mape_excluded_zeros": 5
+        },
+        "Random Forest": {
+          "MAE": 1.4918504966675987,
+          "RMSE": 1.678553162178179,
+          "MAPE": 43.56507998708253,
+          "mape_excluded_zeros": 5
+        },
+        "XGBoost": {
+          "MAE": 1.7743440107865767,
+          "RMSE": 2.0050928029879334,
+          "MAPE": 57.348852935764526,
+          "mape_excluded_zeros": 5
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 4.0,
+            "predicted": 1.5808721233552436
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 1.8368328073067846
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 0.0,
+            "predicted": 1.7600637445254894
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 1.5411129175526304
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.2843903859065167
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 2.2468816077364573
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 1.4224975339962072
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 2.397470323216923
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 3.0,
+            "predicted": 1.7326241935942943
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 1.0,
+            "predicted": 1.9950842742972648
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 1.8759105683601054
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 4.0,
+            "predicted": 1.636755835109163
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 1.3043921176862352
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 0.0,
+            "predicted": 1.5334148865840038
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 1.4816876267474766
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.551473339826668
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 1.970567930353399
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 1.970715835634953
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 1.0910136713169427
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 3.0,
+            "predicted": 2.03926424865498
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 1.0,
+            "predicted": 1.506946437381287
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 2.1675154689259375
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 4.0,
+            "predicted": 0.822102963924408
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 1.80977201461792
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 0.0,
+            "predicted": 0.4009760022163391
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 2.570948839187622
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 2.6268601417541504
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 3.547816753387451
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 0.8944764137268066
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 2.2004024982452393
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 3.0,
+            "predicted": 1.9679476022720337
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 1.0,
+            "predicted": 2.0890748500823975
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 2.671637535095215
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.0703880712389946,
+        "weekend": 0.0,
+        "promotion_flag": 0.08775771409273148,
+        "lag_1": 0.17379994690418243,
+        "lag_7": 0.1508217751979828,
+        "lag_14": 0.09731116890907288,
+        "rolling_mean_7": 0.24768070876598358,
+        "rolling_mean_14": 0.17224065959453583
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_7": {
+      "best_model": "Random Forest",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 2.4520889683096443,
+          "RMSE": 2.907140371847371,
+          "MAPE": 117.18434728776035,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.6140524531024532,
+          "RMSE": 1.9858105292918689,
+          "MAPE": 96.57800810686228,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.7596793174743652,
+          "RMSE": 2.474638436815054,
+          "MAPE": 139.66224292914075,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 2.9873750359794795,
+          "RMSE": 3.687460521223017,
+          "MAPE": 57.20784378075741,
+          "mape_excluded_zeros": 7
+        },
+        "Random Forest": {
+          "MAE": 2.9817127655352746,
+          "RMSE": 3.418599255928902,
+          "MAPE": 110.38259597247682,
+          "mape_excluded_zeros": 7
+        },
+        "XGBoost": {
+          "MAE": 2.930908880450509,
+          "RMSE": 3.3089070511121372,
+          "MAPE": 99.99827325344086,
+          "mape_excluded_zeros": 7
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 2.0,
+            "predicted": 2.296327707554166
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 7.0,
+            "predicted": 1.7752604262675389
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 1.0,
+            "predicted": 0.41147569378459226
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 4.379550294152077
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.5396745449395621
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 2.4630868404842805
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 3.4053700702925935
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 2.7406817114521846
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 10.0,
+            "predicted": 1.947657764382606
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 1.1979779746259391
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 2.9728501367082085
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 2.0,
+            "predicted": 4.0867830073693066
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 7.0,
+            "predicted": 2.354976037851038
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 1.0,
+            "predicted": 3.102628191253191
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 4.353452380952381
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 0.034
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 2.8960500610500612
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 2.85625
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 4.147289112375412
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 10.0,
+            "predicted": 3.9429070777433775
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 0.7465241412354415
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 2.8737466422466422
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 2.0,
+            "predicted": 4.239134788513184
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 7.0,
+            "predicted": 1.9447983503341675
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 1.0,
+            "predicted": 2.587712287902832
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 4.300305366516113
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 0.5083377957344055
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 2.9211018085479736
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 2.494544744491577
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 3.864798069000244
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 10.0,
+            "predicted": 4.295204162597656
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 1.7162959575653076
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 1.8477693796157837
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.08040465727507375,
+        "weekend": 0.00587980295117924,
+        "promotion_flag": 0.0002566659921284148,
+        "lag_1": 0.10919126253893399,
+        "lag_7": 0.24662237250188052,
+        "lag_14": 0.30099102220096224,
+        "rolling_mean_7": 0.13744195713245252,
+        "rolling_mean_14": 0.11921225940738946
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_8": {
+      "best_model": "XGBoost",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.3482959489547128,
+          "RMSE": 1.5782803923741022,
+          "MAPE": 40.0958117133572,
+          "mape_excluded_zeros": 5
+        },
+        "Random Forest": {
+          "MAE": 1.2766387057387056,
+          "RMSE": 1.4584539378460948,
+          "MAPE": 37.90450179450179,
+          "mape_excluded_zeros": 5
+        },
+        "XGBoost": {
+          "MAE": 1.1330452293157578,
+          "RMSE": 1.3384041326002432,
+          "MAPE": 53.059506018956505,
+          "mape_excluded_zeros": 5
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 2.1420797076958107,
+          "RMSE": 2.543612682792323,
+          "MAPE": 94.93239143330422,
+          "mape_excluded_zeros": 2
+        },
+        "Random Forest": {
+          "MAE": 2.266545868273141,
+          "RMSE": 2.7167323167112993,
+          "MAPE": 98.24904589631693,
+          "mape_excluded_zeros": 2
+        },
+        "XGBoost": {
+          "MAE": 2.139118167148395,
+          "RMSE": 2.8731889642898936,
+          "MAPE": 110.77873697711362,
+          "mape_excluded_zeros": 2
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 6.0,
+            "predicted": 1.8427191750917742
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 1.0,
+            "predicted": 2.9528224466751216
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 1.0,
+            "predicted": 3.5083326112897226
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 3.0,
+            "predicted": 0.10681145479568332
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.2939882485504028
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 1.0137315465071954
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 5.0,
+            "predicted": 0.49296881177716045
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 2.0,
+            "predicted": 1.343658415157781
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 5.0,
+            "predicted": 3.0468801741164335
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 3.0,
+            "predicted": 3.1761472295924045
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 0.4783558259923004
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 6.0,
+            "predicted": 0.35300102675102674
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 1.0,
+            "predicted": 4.166666666666667
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 1.0,
+            "predicted": 2.3414545454545452
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 3.0,
+            "predicted": 0.3953292464759183
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 0.961601379571581
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 1.3118600375802387
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 5.0,
+            "predicted": 1.4199032634032633
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 2.0,
+            "predicted": 1.380272311022311
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 5.0,
+            "predicted": 2.1205000000000003
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 3.0,
+            "predicted": 3.753253968253968
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 0.6898938762905482
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 6.0,
+            "predicted": 0.5692313313484192
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 1.0,
+            "predicted": 6.073828220367432
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 1.0,
+            "predicted": 2.284349203109741
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 3.0,
+            "predicted": 0.0541958250105381
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 0.8403958678245544
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 0.5024217963218689
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 5.0,
+            "predicted": 1.5415807962417603
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 2.0,
+            "predicted": 2.0805160999298096
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 5.0,
+            "predicted": 5.402210235595703
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 3.0,
+            "predicted": 3.1142027378082275
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 0.4022272229194641
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.35946395993232727,
+        "weekend": 0.0,
+        "promotion_flag": 0.07699919492006302,
+        "lag_1": 0.14920344948768616,
+        "lag_7": 0.13517959415912628,
+        "lag_14": 0.10512304306030273,
+        "rolling_mean_7": 0.07590003311634064,
+        "rolling_mean_14": 0.09813070297241211
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_9": {
+      "best_model": "Linear Regression",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 2.43211602821114,
+          "RMSE": 2.8485983394668644,
+          "MAPE": 51.68959904771647,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 2.8979616078366077,
+          "RMSE": 3.0617765435082993,
+          "MAPE": 75.70429476002393,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 3.2928449541330336,
+          "RMSE": 3.5353564163484754,
+          "MAPE": 80.54666128896531,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 2.237607447082421,
+          "RMSE": 3.2232501375785945,
+          "MAPE": 73.78080216411914,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 2.1285351722597805,
+          "RMSE": 2.9853006189823192,
+          "MAPE": 60.40855280234576,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 2.2426791042089462,
+          "RMSE": 3.4292802780416625,
+          "MAPE": 87.05780743520496,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 2.2358795877103197
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 3.0,
+            "predicted": 1.6179203228661132
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 11.0,
+            "predicted": 1.7258684955571062
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 3.0,
+            "predicted": 1.7244876950480421
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 0.36970620482806016
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 1.0,
+            "predicted": 2.9307158663426396
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 3.0,
+            "predicted": 2.1804163830660386
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 2.5427467781133593
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 0.0,
+            "predicted": 2.0741866703081584
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 3.0,
+            "predicted": 2.2632542071688366
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 3.9723939143102265
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.6144132720751372
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 3.0,
+            "predicted": 2.2510235152031823
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 11.0,
+            "predicted": 2.5262443385647724
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 3.0,
+            "predicted": 1.4541187532984208
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.9586457153957153
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 1.0,
+            "predicted": 2.66380901522088
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 3.0,
+            "predicted": 2.13017810081365
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 2.7899170938467615
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 0.0,
+            "predicted": 1.796386392092376
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 3.0,
+            "predicted": 1.5804899393691962
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 1.467229946524064
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.1507612466812134
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 3.0,
+            "predicted": 3.9238338470458984
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 11.0,
+            "predicted": 1.6778587102890015
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 3.0,
+            "predicted": 3.321438789367676
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.0964231491088867
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 1.0,
+            "predicted": 4.557518482208252
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 3.0,
+            "predicted": 0.5653356909751892
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 4.389418125152588
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 0.0,
+            "predicted": 0.2127767950296402
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 3.0,
+            "predicted": 4.006992340087891
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 1.7464982271194458
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.18601785490636594,
+        "weekend": -0.4992887081680427,
+        "promotion_flag": 2.368593543941231,
+        "lag_1": -0.13498424659950511,
+        "lag_7": -0.16157963694551541,
+        "lag_14": -0.02127024806455044,
+        "rolling_mean_7": -0.5943572378958184,
+        "rolling_mean_14": -0.7577929106905135
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_10": {
+      "best_model": "XGBoost",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.893708921074643,
+          "RMSE": 2.651205994737563,
+          "MAPE": 81.35085453060452,
+          "mape_excluded_zeros": 3
+        },
+        "Random Forest": {
+          "MAE": 1.8200239319160372,
+          "RMSE": 2.4644441331765283,
+          "MAPE": 76.20279971685994,
+          "mape_excluded_zeros": 3
+        },
+        "XGBoost": {
+          "MAE": 1.5067561209201812,
+          "RMSE": 2.247886227738408,
+          "MAPE": 49.3099789230191,
+          "mape_excluded_zeros": 3
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.604534106535976,
+          "RMSE": 2.134546016667253,
+          "MAPE": 45.399890489879844,
+          "mape_excluded_zeros": 3
+        },
+        "Random Forest": {
+          "MAE": 2.136653595158395,
+          "RMSE": 2.68677078668848,
+          "MAPE": 59.03749173251751,
+          "mape_excluded_zeros": 3
+        },
+        "XGBoost": {
+          "MAE": 2.1266599649732765,
+          "RMSE": 2.7923859302679945,
+          "MAPE": 67.08393004678545,
+          "mape_excluded_zeros": 3
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 7.0,
+            "predicted": 1.6491189150702983
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 1.0,
+            "predicted": 1.7395678341334764
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 3.0,
+            "predicted": 1.7205786421730251
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 1.0,
+            "predicted": 1.0415512431600953
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 0.6944565996367942
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 1.8553686299264083
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 1.9718217462758383
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 4.0,
+            "predicted": 1.7196539906463348
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 3.0,
+            "predicted": 2.3095863357975177
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 2.1331797028343162
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 1.3236045594687964
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 7.0,
+            "predicted": 1.405755129741484
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 1.0,
+            "predicted": 1.6487753003603385
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 3.0,
+            "predicted": 1.4371895250245634
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 1.0,
+            "predicted": 0.8615036978400519
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 2.2029939069171807
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 1.1116110990387846
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 0.647978345681031
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 4.0,
+            "predicted": 0.8477599240699625
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 3.0,
+            "predicted": 0.7398746426846813
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 4.0550553030303025
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.6479192908469763
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 7.0,
+            "predicted": 1.4136574268341064
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 1.0,
+            "predicted": 2.3813302516937256
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 3.0,
+            "predicted": 1.6129144430160522
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 1.0,
+            "predicted": 1.2869393825531006
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.0386594533920288
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 4.0,
+            "predicted": 1.4529250860214233
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 0.32916155457496643
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 4.0,
+            "predicted": 1.2137926816940308
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 3.0,
+            "predicted": 0.8657531142234802
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 5.522913932800293
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 1.393297791481018
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.06227172911167145,
+        "weekend": 0.0,
+        "promotion_flag": 0.05198485031723976,
+        "lag_1": 0.08522557467222214,
+        "lag_7": 0.19642724096775055,
+        "lag_14": 0.08910968154668808,
+        "rolling_mean_7": 0.4115135669708252,
+        "rolling_mean_14": 0.10346736758947372
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_11": {
+      "best_model": "XGBoost",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 3.0921310692179746,
+          "RMSE": 3.617723505006242,
+          "MAPE": 84.37567593046548,
+          "mape_excluded_zeros": 6
+        },
+        "Random Forest": {
+          "MAE": 2.288728052503053,
+          "RMSE": 2.722424453751187,
+          "MAPE": 58.85280882616409,
+          "mape_excluded_zeros": 6
+        },
+        "XGBoost": {
+          "MAE": 2.1707340478897095,
+          "RMSE": 2.7191306408038494,
+          "MAPE": 62.2489912311236,
+          "mape_excluded_zeros": 6
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 2.0892848220444034,
+          "RMSE": 2.402683892115383,
+          "MAPE": 69.50511191412878,
+          "mape_excluded_zeros": 5
+        },
+        "Random Forest": {
+          "MAE": 1.8616941281386468,
+          "RMSE": 2.228610029138247,
+          "MAPE": 64.00997529159295,
+          "mape_excluded_zeros": 5
+        },
+        "XGBoost": {
+          "MAE": 3.226754505187273,
+          "RMSE": 3.544152674171106,
+          "MAPE": 144.2758713952369,
+          "mape_excluded_zeros": 5
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 4.005538809059625
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 2.0,
+            "predicted": 0.0
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 0.0,
+            "predicted": 2.6586717377177
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 0.506325862220641
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 3.8200034268917746
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 3.0,
+            "predicted": 0.7089632581200602
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 3.3154782924781467
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 3.0,
+            "predicted": 1.7559619788652592
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 1.8428567699131326
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 2.0,
+            "predicted": 1.2981291160237056
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 3.5963124972164398
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 4.433428571428571
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 2.0,
+            "predicted": 0.3921387721755369
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 0.0,
+            "predicted": 3.6323120213120212
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 1.1364880952380954
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 2.6791704904572553
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 3.0,
+            "predicted": 1.0137919107036755
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 1.3428214285714284
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 3.0,
+            "predicted": 1.5481383281750931
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 2.5728054861804868
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 2.0,
+            "predicted": 1.367424847211612
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 2.0031031746031744
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 5.1365556716918945
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 2.0,
+            "predicted": 0.0
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 0.0,
+            "predicted": 3.1115036010742188
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 0.7135995030403137
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 5.689717769622803
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 3.0,
+            "predicted": 0.044302698224782944
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 0.0,
+            "predicted": 4.969504356384277
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 3.0,
+            "predicted": 0.0882430449128151
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 4.395503997802734
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 2.0,
+            "predicted": 0.4548224210739136
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 5.065282821655273
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.08458032459020615,
+        "weekend": 0.0,
+        "promotion_flag": 0.16353337466716766,
+        "lag_1": 0.20302383601665497,
+        "lag_7": 0.22862990200519562,
+        "lag_14": 0.04623815044760704,
+        "rolling_mean_7": 0.1226111352443695,
+        "rolling_mean_14": 0.15138322114944458
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_12": {
+      "best_model": "XGBoost",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.7450155452504377,
+          "RMSE": 2.2218169034445303,
+          "MAPE": 41.06762334159006,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.7515538766788765,
+          "RMSE": 2.4187789168494938,
+          "MAPE": 37.475781890067594,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.5449385523796082,
+          "RMSE": 2.0357250654393364,
+          "MAPE": 36.17173587519025,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.6511635953784258,
+          "RMSE": 1.9795191787938975,
+          "MAPE": 62.72133979516106,
+          "mape_excluded_zeros": 3
+        },
+        "Random Forest": {
+          "MAE": 1.3920068784292512,
+          "RMSE": 1.6003024322790893,
+          "MAPE": 60.87300654872811,
+          "mape_excluded_zeros": 3
+        },
+        "XGBoost": {
+          "MAE": 1.3462690223347058,
+          "RMSE": 1.5022894388787034,
+          "MAPE": 57.3363759368658,
+          "mape_excluded_zeros": 3
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 2.0,
+            "predicted": 3.61703010878409
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 3.1016281639215904
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 5.0,
+            "predicted": 3.595735354780545
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 1.0,
+            "predicted": 1.3282786015758385
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 2.784689215558356
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.549983609534427
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 0.0
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 1.0,
+            "predicted": 2.874096514694985
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 2.1211507905422473
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 4.26254703832868
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 3.0,
+            "predicted": 1.677612811153804
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 2.0,
+            "predicted": 2.603139917528143
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 2.7433333333333336
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 5.0,
+            "predicted": 3.622843278066962
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 1.0,
+            "predicted": 2.7091666666666665
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 3.0691915584415583
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.171547619047619
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 0.6333333333333333
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 1.0,
+            "predicted": 2.2067670440565847
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 1.5928896103896104
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 2.61711146644706
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 3.0,
+            "predicted": 2.47244905434263
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 2.0,
+            "predicted": 2.658104181289673
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 4.685170650482178
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 5.0,
+            "predicted": 3.357468366622925
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 1.0,
+            "predicted": 0.7138978838920593
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.5517680644989014
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.806935429573059
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 0.3079003691673279
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 1.0,
+            "predicted": 2.5862698554992676
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 3.689425230026245
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 2.6257786750793457
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 3.0,
+            "predicted": 2.4152262210845947
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.11505206674337387,
+        "weekend": 0.0,
+        "promotion_flag": 0.06791441887617111,
+        "lag_1": 0.16518795490264893,
+        "lag_7": 0.13086815178394318,
+        "lag_14": 0.24251016974449158,
+        "rolling_mean_7": 0.17437906563282013,
+        "rolling_mean_14": 0.10408813506364822
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_13": {
+      "best_model": "Random Forest",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 3.4196662077291164,
+          "RMSE": 3.8752783458985296,
+          "MAPE": 67.76599802988498,
+          "mape_excluded_zeros": 7
+        },
+        "Random Forest": {
+          "MAE": 2.9631964285714285,
+          "RMSE": 3.264265866111426,
+          "MAPE": 56.787257495590836,
+          "mape_excluded_zeros": 7
+        },
+        "XGBoost": {
+          "MAE": 3.520081639289856,
+          "RMSE": 3.9401906572899934,
+          "MAPE": 81.00415335761177,
+          "mape_excluded_zeros": 7
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.8352510744950592,
+          "RMSE": 2.4244955024613586,
+          "MAPE": 59.051474139462975,
+          "mape_excluded_zeros": 3
+        },
+        "Random Forest": {
+          "MAE": 2.3111269986541583,
+          "RMSE": 2.6852876644800197,
+          "MAPE": 80.74243240379438,
+          "mape_excluded_zeros": 3
+        },
+        "XGBoost": {
+          "MAE": 2.138910862532529,
+          "RMSE": 2.700025604326498,
+          "MAPE": 69.15172465145587,
+          "mape_excluded_zeros": 3
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 4.0,
+            "predicted": 0.0
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 5.0,
+            "predicted": 2.082165055219237
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 2.0,
+            "predicted": 1.9664652418301207
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 1.0583352364335297
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 0.9580267511996934
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 0.7701583004126713
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 3.0,
+            "predicted": 1.0062538062573771
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 6.0,
+            "predicted": 0.6934160435454744
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 4.033237337531407
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 2.0,
+            "predicted": 3.1158555150618747
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 1.9995511743413141
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 4.0,
+            "predicted": 0.26756520375908915
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 5.0,
+            "predicted": 1.6820149819221026
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 2.0,
+            "predicted": 3.2219047619047614
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 1.4953930930180932
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.7813909921777569
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.106159390446155
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 3.0,
+            "predicted": 0.7553917030681737
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 6.0,
+            "predicted": 0.726820274496745
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 3.82617377067377
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 2.0,
+            "predicted": 5.163055555555555
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 2.2601115846657636
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 4.0,
+            "predicted": 0.0
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 5.0,
+            "predicted": 1.09228515625
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 2.0,
+            "predicted": 3.0618345737457275
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 0.0,
+            "predicted": 0.9716780781745911
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.726637601852417
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 0.7345777750015259
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 3.0,
+            "predicted": 0.313778817653656
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 6.0,
+            "predicted": 0.313778817653656
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 2.0,
+            "predicted": 2.1884350776672363
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 2.0,
+            "predicted": 3.7595856189727783
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 2.0,
+            "predicted": 1.1948864459991455
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.20782842818432648,
+        "weekend": 0.09098763295079654,
+        "promotion_flag": 0.006277775276160389,
+        "lag_1": 0.06882685862507017,
+        "lag_7": 0.16445104550360817,
+        "lag_14": 0.10228432790722598,
+        "rolling_mean_7": 0.19221332331663946,
+        "rolling_mean_14": 0.1671306082361728
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_14": {
+      "best_model": "XGBoost",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.3188363999936066,
+          "RMSE": 1.3544949580631878,
+          "MAPE": 55.590732038370874,
+          "mape_excluded_zeros": 5
+        },
+        "Random Forest": {
+          "MAE": 1.2800198623787633,
+          "RMSE": 1.3627367473098064,
+          "MAPE": 39.43912331619762,
+          "mape_excluded_zeros": 5
+        },
+        "XGBoost": {
+          "MAE": 1.2465310871601105,
+          "RMSE": 1.414404167978962,
+          "MAPE": 46.08939727147421,
+          "mape_excluded_zeros": 5
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.594591740058423,
+          "RMSE": 2.0015096755795616,
+          "MAPE": 46.7217479690618,
+          "mape_excluded_zeros": 5
+        },
+        "Random Forest": {
+          "MAE": 1.6731938528916432,
+          "RMSE": 2.0080426578832626,
+          "MAPE": 44.57958105656861,
+          "mape_excluded_zeros": 5
+        },
+        "XGBoost": {
+          "MAE": 1.719567515633323,
+          "RMSE": 2.1394660383920963,
+          "MAPE": 54.03595798545414,
+          "mape_excluded_zeros": 5
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.486824572177162
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 2.3458533073041834
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 6.0,
+            "predicted": 2.4966559015698255
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 5.0,
+            "predicted": 0.8621562769341045
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 1.3555080754975184
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.2204480553199577
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 1.3207874318633843
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 1.4725101522876014
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 3.0,
+            "predicted": 2.1504167468428403
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 2.181087949874751
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 0.0
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.4718181274350002
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 2.418028680770554
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 6.0,
+            "predicted": 2.9211111111111108
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 5.0,
+            "predicted": 0.9123697431739228
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 1.2041715860678708
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.3444595758558606
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 1.0779544355713087
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 0.9872322688491418
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 3.0,
+            "predicted": 2.149759602626476
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 2.828888888888889
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 1.0477855079646874
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 2.229454755783081
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 4.0,
+            "predicted": 2.2213046550750732
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 6.0,
+            "predicted": 1.9968912601470947
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 5.0,
+            "predicted": 1.061105728149414
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 1.0,
+            "predicted": 2.0644752979278564
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 0.31848442554473877
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 2.1895108222961426
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 0.0,
+            "predicted": 1.7533913850784302
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 3.0,
+            "predicted": 2.450132131576538
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 0.0,
+            "predicted": 2.3375256061553955
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 0.0,
+            "predicted": 0.7518341541290283
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.17906075716018677,
+        "weekend": 0.0,
+        "promotion_flag": 0.14079558849334717,
+        "lag_1": 0.09300481528043747,
+        "lag_7": 0.1424797624349594,
+        "lag_14": 0.13710813224315643,
+        "rolling_mean_7": 0.1734658032655716,
+        "rolling_mean_14": 0.13408513367176056
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    },
+    "menu_15": {
+      "best_model": "XGBoost",
+      "validation": {
+        "Linear Regression": {
+          "MAE": 1.223219905249438,
+          "RMSE": 1.4554294396253897,
+          "MAPE": 64.96791728708172,
+          "mape_excluded_zeros": 5
+        },
+        "Random Forest": {
+          "MAE": 1.243421565788013,
+          "RMSE": 1.6023909370445921,
+          "MAPE": 44.85747088924721,
+          "mape_excluded_zeros": 5
+        },
+        "XGBoost": {
+          "MAE": 1.2185871481895447,
+          "RMSE": 1.6397962050885622,
+          "MAPE": 55.136442383130394,
+          "mape_excluded_zeros": 5
+        }
+      },
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 1.5712054936205482,
+          "RMSE": 1.7333444186608655,
+          "MAPE": 58.33330249179765,
+          "mape_excluded_zeros": 4
+        },
+        "Random Forest": {
+          "MAE": 1.2240900929899616,
+          "RMSE": 1.4399391347335653,
+          "MAPE": 51.04420133228089,
+          "mape_excluded_zeros": 4
+        },
+        "XGBoost": {
+          "MAE": 1.3964990987019106,
+          "RMSE": 1.6547450260535657,
+          "MAPE": 56.526149724211,
+          "mape_excluded_zeros": 4
+        }
+      },
+      "actual_vs_predicted": {
+        "Linear Regression": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 1.8141601480829834
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 0.0,
+            "predicted": 1.7636388754504326
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 5.0,
+            "predicted": 2.323339443166616
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 3.0,
+            "predicted": 1.1846704647187962
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 1.8544003944359133
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.8411271996555176
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 2.135775517240522
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 3.0,
+            "predicted": 2.2853864948570184
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 2.309358074492268
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 5.0,
+            "predicted": 2.461552824909681
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.18025055187949546
+          }
+        ],
+        "Random Forest": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 0.7794508570205164
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 0.0,
+            "predicted": 0.6953912222108817
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 5.0,
+            "predicted": 3.445178703649292
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 3.0,
+            "predicted": 0.6119103752063156
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 0.6546638912980669
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.2379576573015851
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 2.5297872454343038
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 3.0,
+            "predicted": 0.691955516339692
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 0.43493151256568824
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 5.0,
+            "predicted": 2.6438417878768923
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.604441954737895
+          }
+        ],
+        "XGBoost": [
+          {
+            "date": "2026-10-02",
+            "actual": 0.0,
+            "predicted": 0.7370613217353821
+          },
+          {
+            "date": "2026-10-03",
+            "actual": 0.0,
+            "predicted": 1.91431725025177
+          },
+          {
+            "date": "2026-10-04",
+            "actual": 5.0,
+            "predicted": 4.335690498352051
+          },
+          {
+            "date": "2026-10-05",
+            "actual": 3.0,
+            "predicted": 0.45889440178871155
+          },
+          {
+            "date": "2026-10-06",
+            "actual": 0.0,
+            "predicted": 0.7615435123443604
+          },
+          {
+            "date": "2026-10-07",
+            "actual": 0.0,
+            "predicted": 1.389762043952942
+          },
+          {
+            "date": "2026-10-08",
+            "actual": 2.0,
+            "predicted": 0.9474170207977295
+          },
+          {
+            "date": "2026-10-09",
+            "actual": 3.0,
+            "predicted": 1.3758376836776733
+          },
+          {
+            "date": "2026-10-10",
+            "actual": 1.0,
+            "predicted": 0.5478262305259705
+          },
+          {
+            "date": "2026-10-11",
+            "actual": 5.0,
+            "predicted": 1.540761113166809
+          },
+          {
+            "date": "2026-10-12",
+            "actual": 1.0,
+            "predicted": 0.2347670942544937
+          }
+        ]
+      },
+      "feature_importance": {
+        "day_of_week": 0.247969850897789,
+        "weekend": 0.0,
+        "promotion_flag": 0.054817717522382736,
+        "lag_1": 0.0964495837688446,
+        "lag_7": 0.14940062165260315,
+        "lag_14": 0.10876214504241943,
+        "rolling_mean_7": 0.14191848039627075,
+        "rolling_mean_14": 0.2006816416978836
+      },
+      "train_range": [
+        "2026-08-04",
+        "2026-09-21"
+      ],
+      "validation_range": [
+        "2026-09-22",
+        "2026-10-01"
+      ],
+      "test_range": [
+        "2026-10-02",
+        "2026-10-12"
+      ],
+      "split": "Chronological; recursive predictions in validation/test; model selected only by validation MAE.",
+      "target": "quantity_sold"
+    }
+  },
+  "data_provenance": {
+    "seed": 42,
+    "label": "REAL + SYNTHETIC research data; not operational orders",
+    "real_interactions": 5,
+    "synthetic_interactions": 275,
+    "real_days": 1,
+    "synthetic_days": 69,
+    "start": "2026-08-04",
+    "end": "2026-10-12",
+    "recipe_menu_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "prices": {
+      "1": 289000.0,
+      "2": 219000.0,
+      "3": 229000.0,
+      "4": 279000.0,
+      "5": 259000.0,
+      "6": 459000.0,
+      "7": 399000.0,
+      "8": 349000.0,
+      "9": 799000.0,
+      "10": 759000.0,
+      "11": 599000.0,
+      "12": 629000.0,
+      "13": 229000.0,
+      "14": 289000.0,
+      "15": 349000.0,
+      "16": 449000.0,
+      "17": 389000.0,
+      "18": 489000.0,
+      "19": 549000.0,
+      "20": 559000.0,
+      "21": 369000.0,
+      "22": 249000.0,
+      "23": 269000.0,
+      "24": 139000.0,
+      "25": 159000.0,
+      "26": 399000.0,
+      "27": 429000.0,
+      "28": 329000.0,
+      "29": 359000.0,
+      "30": 329000.0,
+      "31": 489000.0,
+      "32": 459000.0,
+      "33": 449000.0,
+      "34": 389000.0,
+      "35": 329000.0,
+      "36": 1200000.0,
+      "37": 1350000.0,
+      "38": 1100000.0,
+      "39": 1800000.0,
+      "40": 2200000.0,
+      "41": 2500000.0,
+      "42": 45000.0,
+      "43": 50000.0,
+      "44": 65000.0,
+      "45": 55000.0
+    },
+    "validation": "Schema, catalog FK, contiguous dates, nonnegative totals; simulated revenue = sum(menu prices × quantity × promotion discount).",
+    "version": "20261013T161546-86d4ac55",
+    "created_at": "2026-10-13T16:15:46.174979+00:00"
+  },
+  "limitation": "70-day research dataset; 30-day recursive forecast is exploratory, future promotions assumed absent unless explicitly supplied.",
+  "version": "20261013T163550-b1143592",
+  "created_at": "2026-10-13T16:35:57.900804+00:00",
+  "trained_at": "2026-10-13T16:35:57.900816+00:00"
+}

@@ -1,0 +1,351 @@
+{
+  "before": {
+    "Booking": {
+      "count": 6,
+      "relations_sha256": "4685d2d7b50ca2fe9030e93e37ba1e075f883cd9a501eb14b03d4e7588fd64ec"
+    },
+    "Category": {
+      "count": 19,
+      "relations_sha256": "a6300c1041f7f04d7ff58930ec2e5287dcecd3806b8b3750c7774fd02db8a859"
+    },
+    "MenuItem": {
+      "count": 45,
+      "relations_sha256": "8341dbeb589fdcc9a9c58ee0e5d125c624c909430ce9dd344b3155c7f10cf179"
+    },
+    "BookingItem": {
+      "count": 11,
+      "relations_sha256": "f2cb77ec40727bcc3d4ff5d8a1522d0f7078af959d1905d1cee98f04f46bc467"
+    },
+    "Area": {
+      "count": 4,
+      "relations_sha256": "3ddbf1a57115592891cf7e753787622b4b08f5b3ed66eaa5f59f70122754ac7a"
+    },
+    "RestaurantTable": {
+      "count": 20,
+      "relations_sha256": "9889712968d1183e12812f86dcb679d61e15932bcfa4f33d195aea203a6474f3"
+    },
+    "Supplier": {
+      "count": 3,
+      "relations_sha256": "65c289111bf5aabb43fb1967c2f6f78aadbe8cd96e74bd682ab49d9f8eba7503"
+    },
+    "Ingredient": {
+      "count": 71,
+      "relations_sha256": "0b547b8ff310a7fdccc53fe24a1beaffeade7f6686b8e94d0f91b3942b550a6f"
+    },
+    "RecipeIngredient": {
+      "count": 174,
+      "relations_sha256": "c80e8948bd0447aec60a26ffd948353e9533269539bd9cb3bdb0ba9b91c07383"
+    },
+    "Order": {
+      "count": 1,
+      "relations_sha256": "409e3b13e257ed926b1c96f24d30aa01574c81ee7152bd4ccfcf23f93a5c222e"
+    },
+    "OrderItem": {
+      "count": 5,
+      "relations_sha256": "2729ce09ba789cbd82dfe1a97b6442026f52748dfcb90f91886e3a5a955d4015"
+    },
+    "Invoice": {
+      "count": 1,
+      "relations_sha256": "0ff9c1b404c7645a041be3401a5f4ce9d33a86f695eb5ef7f0b5c05441949241"
+    },
+    "Payment": {
+      "count": 1,
+      "relations_sha256": "842b01e574b3b2feb445186551e204306d14994be060daab09ea1b4f8a5dc155"
+    },
+    "StockReceipt": {
+      "count": 1,
+      "relations_sha256": "5201ba65d255969c78fb805d24e0dce3c70a2ea7faed6e4b605b272bcadcf44e"
+    },
+    "StockIssue": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "StockReceiptItem": {
+      "count": 71,
+      "relations_sha256": "a87fb6a3dcfb914556fcdc0a45d11b9caa17e466d3ed3314c90d6ba30d23d2ca"
+    },
+    "StockIssueItem": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "StockMovement": {
+      "count": 71,
+      "relations_sha256": "47f04112bbbf6d387882004bb11d3081b30cc284a419933b5e728514a74a1a88"
+    },
+    "Topping": {
+      "count": 5,
+      "relations_sha256": "2f4e89c9d5378b78d472616b3b38cef6b04a873fb9ef980303e6a7c03f9279fa"
+    },
+    "Combo": {
+      "count": 4,
+      "relations_sha256": "3ddbf1a57115592891cf7e753787622b4b08f5b3ed66eaa5f59f70122754ac7a"
+    },
+    "ComboItem": {
+      "count": 17,
+      "relations_sha256": "ba0ce4f7d7d740a64957466b3e9da629a8eb3806028630940062ad83cc933948"
+    },
+    "Promotion": {
+      "count": 4,
+      "relations_sha256": "3ddbf1a57115592891cf7e753787622b4b08f5b3ed66eaa5f59f70122754ac7a"
+    },
+    "Review": {
+      "count": 2,
+      "relations_sha256": "aa9009a123ba6976fc06a03cf832f6404d2f8564616ae37c77b90be4a80ef64a"
+    },
+    "RestaurantInfo": {
+      "count": 1,
+      "relations_sha256": "c6855e1dbc9a0ca4371a193b099b09478399971d2290cda4543ff78a4e8f24c1"
+    },
+    "Position": {
+      "count": 4,
+      "relations_sha256": "3ddbf1a57115592891cf7e753787622b4b08f5b3ed66eaa5f59f70122754ac7a"
+    },
+    "Employee": {
+      "count": 6,
+      "relations_sha256": "62e1d87c2172b904ffa0938ffd6345763f3f8183f28426a0d3df681fc216de8e"
+    },
+    "Shift": {
+      "count": 3,
+      "relations_sha256": "65c289111bf5aabb43fb1967c2f6f78aadbe8cd96e74bd682ab49d9f8eba7503"
+    },
+    "WorkSchedule": {
+      "count": 35,
+      "relations_sha256": "eac6874894b1ed93f580a2d26aa5160a35dc3754e36dc51bfa17a5fc2cb8ed62"
+    },
+    "Attendance": {
+      "count": 16,
+      "relations_sha256": "548f5896d87f26f88a99fb2ee0d370bafbfaa22a6ce853c5044d8778a61cbcd6"
+    },
+    "PayrollPeriod": {
+      "count": 1,
+      "relations_sha256": "c6855e1dbc9a0ca4371a193b099b09478399971d2290cda4543ff78a4e8f24c1"
+    },
+    "Payroll": {
+      "count": 5,
+      "relations_sha256": "93653d678b453a90c87454676637f878b9563df76b1d7a32e7926628cd6c5e10"
+    },
+    "Conversation": {
+      "count": 4,
+      "relations_sha256": "09a4581182b1a5daa864b3f7036fa760a97ba3772e548c6fdb47b9b999800410"
+    },
+    "ConversationParticipant": {
+      "count": 8,
+      "relations_sha256": "c558b8dd22438dc2d47142e948f4a9b3a4d32c7a80bcfc502929206035802354"
+    },
+    "Message": {
+      "count": 1,
+      "relations_sha256": "c5cdee89fd395ecaba184a5777415b994fce2cc090da66246829a8b8033cf39f"
+    },
+    "IngredientSupplyPolicy": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "FaceProfile": {
+      "count": 3,
+      "relations_sha256": "85c9d7e4e3130daa0ff33e9d938515fbd8f5b7eb211614efb0ad3adb5d23ddac"
+    },
+    "FaceEmbedding": {
+      "count": 45,
+      "relations_sha256": "290170f1569fd5b39ee95b75d2d7f4c6d80426f8af494454b7e3461399973353"
+    },
+    "FaceAudit": {
+      "count": 18,
+      "relations_sha256": "cfb69e2b2ad77c9bfabd2827e1fdcbda110acd14a506d54b0124a08441f23773"
+    },
+    "FaceChallenge": {
+      "count": 25,
+      "relations_sha256": "ab36f8d0d818feb5f3bb9ee1eb026f4e74e2aa6594250f4d8bbefb363d75d73d"
+    },
+    "AIConversation": {
+      "count": 3,
+      "relations_sha256": "3293d1be8a946e0cc5fcafb1f4766fc2924f0246b874ac1eced6aea3e1a3259b"
+    },
+    "AIMessage": {
+      "count": 20,
+      "relations_sha256": "7dfa996c6c59770a555159588962e739998411447d56520ad7d8b9433864f29a"
+    },
+    "AttendanceLocationPolicy": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "AttendanceLocationEvent": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "after": {
+    "Booking": {
+      "count": 6,
+      "relations_sha256": "4685d2d7b50ca2fe9030e93e37ba1e075f883cd9a501eb14b03d4e7588fd64ec"
+    },
+    "Category": {
+      "count": 19,
+      "relations_sha256": "a6300c1041f7f04d7ff58930ec2e5287dcecd3806b8b3750c7774fd02db8a859"
+    },
+    "MenuItem": {
+      "count": 45,
+      "relations_sha256": "8341dbeb589fdcc9a9c58ee0e5d125c624c909430ce9dd344b3155c7f10cf179"
+    },
+    "BookingItem": {
+      "count": 11,
+      "relations_sha256": "f2cb77ec40727bcc3d4ff5d8a1522d0f7078af959d1905d1cee98f04f46bc467"
+    },
+    "Area": {
+      "count": 4,
+      "relations_sha256": "3ddbf1a57115592891cf7e753787622b4b08f5b3ed66eaa5f59f70122754ac7a"
+    },
+    "RestaurantTable": {
+      "count": 20,
+      "relations_sha256": "9889712968d1183e12812f86dcb679d61e15932bcfa4f33d195aea203a6474f3"
+    },
+    "Supplier": {
+      "count": 3,
+      "relations_sha256": "65c289111bf5aabb43fb1967c2f6f78aadbe8cd96e74bd682ab49d9f8eba7503"
+    },
+    "Ingredient": {
+      "count": 71,
+      "relations_sha256": "0b547b8ff310a7fdccc53fe24a1beaffeade7f6686b8e94d0f91b3942b550a6f"
+    },
+    "RecipeIngredient": {
+      "count": 174,
+      "relations_sha256": "c80e8948bd0447aec60a26ffd948353e9533269539bd9cb3bdb0ba9b91c07383"
+    },
+    "Order": {
+      "count": 1,
+      "relations_sha256": "409e3b13e257ed926b1c96f24d30aa01574c81ee7152bd4ccfcf23f93a5c222e"
+    },
+    "OrderItem": {
+      "count": 5,
+      "relations_sha256": "2729ce09ba789cbd82dfe1a97b6442026f52748dfcb90f91886e3a5a955d4015"
+    },
+    "Invoice": {
+      "count": 1,
+      "relations_sha256": "0ff9c1b404c7645a041be3401a5f4ce9d33a86f695eb5ef7f0b5c05441949241"
+    },
+    "Payment": {
+      "count": 1,
+      "relations_sha256": "842b01e574b3b2feb445186551e204306d14994be060daab09ea1b4f8a5dc155"
+    },
+    "StockReceipt": {
+      "count": 1,
+      "relations_sha256": "5201ba65d255969c78fb805d24e0dce3c70a2ea7faed6e4b605b272bcadcf44e"
+    },
+    "StockIssue": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "StockReceiptItem": {
+      "count": 71,
+      "relations_sha256": "a87fb6a3dcfb914556fcdc0a45d11b9caa17e466d3ed3314c90d6ba30d23d2ca"
+    },
+    "StockIssueItem": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "StockMovement": {
+      "count": 71,
+      "relations_sha256": "47f04112bbbf6d387882004bb11d3081b30cc284a419933b5e728514a74a1a88"
+    },
+    "Topping": {
+      "count": 5,
+      "relations_sha256": "2f4e89c9d5378b78d472616b3b38cef6b04a873fb9ef980303e6a7c03f9279fa"
+    },
+    "Combo": {
+      "count": 4,
+      "relations_sha256": "3ddbf1a57115592891cf7e753787622b4b08f5b3ed66eaa5f59f70122754ac7a"
+    },
+    "ComboItem": {
+      "count": 17,
+      "relations_sha256": "ba0ce4f7d7d740a64957466b3e9da629a8eb3806028630940062ad83cc933948"
+    },
+    "Promotion": {
+      "count": 4,
+      "relations_sha256": "3ddbf1a57115592891cf7e753787622b4b08f5b3ed66eaa5f59f70122754ac7a"
+    },
+    "Review": {
+      "count": 2,
+      "relations_sha256": "aa9009a123ba6976fc06a03cf832f6404d2f8564616ae37c77b90be4a80ef64a"
+    },
+    "RestaurantInfo": {
+      "count": 1,
+      "relations_sha256": "c6855e1dbc9a0ca4371a193b099b09478399971d2290cda4543ff78a4e8f24c1"
+    },
+    "Position": {
+      "count": 4,
+      "relations_sha256": "3ddbf1a57115592891cf7e753787622b4b08f5b3ed66eaa5f59f70122754ac7a"
+    },
+    "Employee": {
+      "count": 6,
+      "relations_sha256": "62e1d87c2172b904ffa0938ffd6345763f3f8183f28426a0d3df681fc216de8e"
+    },
+    "Shift": {
+      "count": 3,
+      "relations_sha256": "65c289111bf5aabb43fb1967c2f6f78aadbe8cd96e74bd682ab49d9f8eba7503"
+    },
+    "WorkSchedule": {
+      "count": 35,
+      "relations_sha256": "eac6874894b1ed93f580a2d26aa5160a35dc3754e36dc51bfa17a5fc2cb8ed62"
+    },
+    "Attendance": {
+      "count": 16,
+      "relations_sha256": "548f5896d87f26f88a99fb2ee0d370bafbfaa22a6ce853c5044d8778a61cbcd6"
+    },
+    "PayrollPeriod": {
+      "count": 1,
+      "relations_sha256": "c6855e1dbc9a0ca4371a193b099b09478399971d2290cda4543ff78a4e8f24c1"
+    },
+    "Payroll": {
+      "count": 5,
+      "relations_sha256": "93653d678b453a90c87454676637f878b9563df76b1d7a32e7926628cd6c5e10"
+    },
+    "Conversation": {
+      "count": 4,
+      "relations_sha256": "09a4581182b1a5daa864b3f7036fa760a97ba3772e548c6fdb47b9b999800410"
+    },
+    "ConversationParticipant": {
+      "count": 8,
+      "relations_sha256": "c558b8dd22438dc2d47142e948f4a9b3a4d32c7a80bcfc502929206035802354"
+    },
+    "Message": {
+      "count": 1,
+      "relations_sha256": "c5cdee89fd395ecaba184a5777415b994fce2cc090da66246829a8b8033cf39f"
+    },
+    "IngredientSupplyPolicy": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "FaceProfile": {
+      "count": 3,
+      "relations_sha256": "85c9d7e4e3130daa0ff33e9d938515fbd8f5b7eb211614efb0ad3adb5d23ddac"
+    },
+    "FaceEmbedding": {
+      "count": 45,
+      "relations_sha256": "290170f1569fd5b39ee95b75d2d7f4c6d80426f8af494454b7e3461399973353"
+    },
+    "FaceAudit": {
+      "count": 18,
+      "relations_sha256": "cfb69e2b2ad77c9bfabd2827e1fdcbda110acd14a506d54b0124a08441f23773"
+    },
+    "FaceChallenge": {
+      "count": 25,
+      "relations_sha256": "ab36f8d0d818feb5f3bb9ee1eb026f4e74e2aa6594250f4d8bbefb363d75d73d"
+    },
+    "AIConversation": {
+      "count": 3,
+      "relations_sha256": "3293d1be8a946e0cc5fcafb1f4766fc2924f0246b874ac1eced6aea3e1a3259b"
+    },
+    "AIMessage": {
+      "count": 20,
+      "relations_sha256": "7dfa996c6c59770a555159588962e739998411447d56520ad7d8b9433864f29a"
+    },
+    "AttendanceLocationPolicy": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "AttendanceLocationEvent": {
+      "count": 0,
+      "relations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "counts_and_PK_FK_unchanged": true
+}

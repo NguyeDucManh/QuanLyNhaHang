@@ -1,0 +1,9 @@
+{% extends management_base %}
+{% block admin_title %}{{ title }}{% endblock %}
+{% block admin_content %}
+<div class="module-heading"><h1>{{ title }}</h1></div>
+<section class="panel resource-form"><form method="post">{% csrf_token %}{{ form.non_field_errors }}{% for field in form %}{% if field.is_hidden %}{{ field }}{% else %}<div class="resource-field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</div>{% endif %}{% endfor %}
+{{ lines.management_form }}{{ lines.non_form_errors }}<h2>Chi tiết</h2><div id="business-lines">{% for line in lines %}<div class="business-line">{{ line.non_field_errors }}{% for field in line %}<div class="resource-field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</div>{% endfor %}</div>{% endfor %}</div>
+<template id="business-empty-line"><div class="business-line">{% for field in lines.empty_form %}<div class="resource-field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}</div>{% endfor %}</div></template>
+<div class="business-actions"><button type="button" class="view-button" data-add-line>Thêm dòng</button><button class="primary-button">Lưu yêu cầu</button></div><p>Bỏ trống toàn bộ dòng không sử dụng. Phiếu kho lưu nháp, chỉ cập nhật tồn khi xác nhận.</p></form></section>
+{% endblock %}

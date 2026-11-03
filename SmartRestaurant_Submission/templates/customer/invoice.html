@@ -1,0 +1,3 @@
+{% extends "customer/base.html" %}{% load static %}
+{% block title %}{{ invoice.invoice_number }} | Smart Restaurant{% endblock %}
+{% block content %}<link rel="stylesheet" href="{% static 'customer/css/payment.css' %}?v=module05"><section class="container section" data-realtime-root data-realtime-socket="/ws/customer/invoices/{{ invoice.pk }}/" data-realtime-partial="{% url 'customer_invoice_detail' invoice.pk %}"><p data-realtime-status role="status">Đang kết nối realtime…</p><div data-realtime-region>{% include "customer/_invoice_content.html" %}</div></section><script defer src="{% static 'admin/js/realtime.js' %}?v=module05"></script>{% endblock %}

@@ -1,0 +1,3317 @@
+{
+  "items": [
+    {
+      "path": "docs/AI_PHASE.md",
+      "size": 13394,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/AI_REPORT.md",
+      "size": 12963,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/chatbot_realistic_queries.json",
+      "size": 7181,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/FACEID_OPERATIONAL_REPORT.md",
+      "size": 16254,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/FINAL_DEMO.md",
+      "size": 4236,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/FINAL_FEATURE_AUDIT.md",
+      "size": 3916,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/FINAL_REPORT.md",
+      "size": 15744,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/PREMIUM_SUBMISSION_REPORT.md",
+      "size": 7920,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/STAFF_PORTAL_REPORT.md",
+      "size": 7361,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/STAFF_TEMPLATE_AUDIT.md",
+      "size": 24707,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/SUBMISSION_SETUP.md",
+      "size": 4066,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "docs/UI_FACEID_VI_REPORT.md",
+      "size": 10063,
+      "category": "DOCUMENTATION",
+      "reason": "Referenced reports retained; missing heavy QA links documented in submission",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/admin/css/style.css",
+      "size": 19648,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/admin/js/main.js",
+      "size": 27045,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/admin/js/realtime.js",
+      "size": 5466,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ai/ai.js",
+      "size": 4921,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ai/assistant.css",
+      "size": 4237,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ai/assistant.js",
+      "size": 2773,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ai/face-flow.js",
+      "size": 8373,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ai/face-guide.css",
+      "size": 1353,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ai/face-realtime.css",
+      "size": 2348,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ai/face-realtime.js",
+      "size": 13682,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ai/face-ui-vi.js",
+      "size": 2148,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/css/payment.css",
+      "size": 463,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/css/responsive.css",
+      "size": 0,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/css/style.css",
+      "size": 20518,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/images/salmon.jpg",
+      "size": 69518,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/images/steak.jpg",
+      "size": 68090,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/js/booking.js",
+      "size": 0,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/js/cart.js",
+      "size": 0,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/js/chat.js",
+      "size": 2267,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/js/chatbot.js",
+      "size": 0,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/customer/js/main.js",
+      "size": 1970,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/bachtuocsotcay.jpg",
+      "size": 17901,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/baongusotdauhao.jpg",
+      "size": 25738,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Bia Heineken.jpg",
+      "size": 4248,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Bia Sapporo.jpg",
+      "size": 13029,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Bào ngư hấp tỏi.jpg",
+      "size": 14765,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Bánh Lava sô-cô-la.jpg",
+      "size": 16524,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Bánh Tiramisu.jpg",
+      "size": 18748,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Bít tết bò Ribeye sốt nấm.jpg",
+      "size": 17449,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Champagne (18+).jpg",
+      "size": 3735,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Chim câu quay mật ong.jpg",
+      "size": 19380,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Cognac.jpg",
+      "size": 16759,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/cuarangsottrungmuoi.jpg",
+      "size": 14647,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/cuasottieuden.jpg",
+      "size": 20206,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Cá chẽm hấp kiểu Hồng Kông.jpg",
+      "size": 19700,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Cá hồi áp chảo sốt chanh dây.jpg",
+      "size": 14573,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Cá mú hấp xì dầu Hồng Kông.jpg",
+      "size": 22022,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Cá tuyết nướng sốt Miso.jpg",
+      "size": 15425,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Cơm chiên hải sản sốt XO.jpg",
+      "size": 20023,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/goicahoi.jpg",
+      "size": 30331,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/goisodiep.jpg",
+      "size": 28930,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/haisamhamnam.jpg",
+      "size": 28221,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/haunuongphomai.jpg",
+      "size": 23150,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/matcangu.jpg",
+      "size": 42731,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Mì xào hải sản kiểu Hồng Kông.jpg",
+      "size": 19518,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Nước khoáng có ga San Pellegrino.jpg",
+      "size": 3687,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Nước khoáng Evian.jpg",
+      "size": 3286,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Rượu vang trắng Chardonnay.jpg",
+      "size": 3869,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Rượu vang đỏ Bordeaux.jpg",
+      "size": 11507,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Rượu vang đỏ Cabernet Sauvignon.jpg",
+      "size": 10661,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Sashimi cá ngừ đại dương.jpg",
+      "size": 11764,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/sodiepsotbo.jpg",
+      "size": 34762,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/supbaonguhaisam.jpg",
+      "size": 132795,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/supcuatuyet.jpg",
+      "size": 20847,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Sườn bò hầm sốt vang.jpg",
+      "size": 21219,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Sườn cừu nướng thảo mộc.jpg",
+      "size": 18884,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Thăn bò áp chảo sốt tiêu xanh.jpg",
+      "size": 11905,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/tomhumphomai.jpg",
+      "size": 35138,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/tomhumsotbotoi.jpg",
+      "size": 17030,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Tu hài nướng mỡ hành.jpg",
+      "size": 18572,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Tôm càng xanh nướng bơ tỏi.jpg",
+      "size": 19433,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Vi cá hầm thịt cua.jpg",
+      "size": 7587,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Whisky Scotch.jpg",
+      "size": 21420,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Xôi cua hoàng kim.jpg",
+      "size": 7778,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Ốc hương rang muối Hồng Kông.jpg",
+      "size": 18715,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/Image/Ức vịt áp chảo sốt cam.jpg",
+      "size": 13393,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/location/maps.js",
+      "size": 2488,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/dashboard.js",
+      "size": 2326,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/design-system.css",
+      "size": 17448,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/favicon.svg",
+      "size": 276,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/premium.css",
+      "size": 11822,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/premium.js",
+      "size": 815,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/product-polish.css",
+      "size": 3903,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/product.js",
+      "size": 4524,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/reports.js",
+      "size": 555,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/staff-refinements.css",
+      "size": 1546,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/staff.css",
+      "size": 13212,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/ui/staff.js",
+      "size": 707,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/vendor/leaflet/leaflet.css",
+      "size": 14806,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/vendor/leaflet/leaflet.js",
+      "size": 147552,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/vendor/leaflet/LICENSE",
+      "size": 1395,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/vendor/leaflet/manifest.json",
+      "size": 1549,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/vendor/leaflet/images/layers-2x.png",
+      "size": 1259,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/vendor/leaflet/images/layers.png",
+      "size": 696,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/vendor/leaflet/images/marker-icon-2x.png",
+      "size": 2464,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/vendor/leaflet/images/marker-icon.png",
+      "size": 1466,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "static/vendor/leaflet/images/marker-shadow.png",
+      "size": 618,
+      "category": "REQUIRED_RUNTIME",
+      "reason": "Runtime assets; menu images and paths preserved",
+      "action": "KEEP"
+    },
+    {
+      "path": "restaurant_system/asgi.py",
+      "size": 842,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "restaurant_system/environment.py",
+      "size": 700,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "restaurant_system/settings.py",
+      "size": 6135,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "restaurant_system/urls.py",
+      "size": 10403,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "restaurant_system/wsgi.py",
+      "size": 427,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "restaurant_system/__init__.py",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/403.html",
+      "size": 350,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/404.html",
+      "size": 333,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/500.html",
+      "size": 445,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/index.html",
+      "size": 2853,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/base.html",
+      "size": 28,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/header.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/sidebar.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/chatbot.html",
+      "size": 16,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/chatbot_management.html",
+      "size": 1711,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/dashboard.html",
+      "size": 3179,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/demand-forecast.html",
+      "size": 16,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/employee_link.html",
+      "size": 1051,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/enrollment.html",
+      "size": 2301,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/faces.html",
+      "size": 130,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/faces_table.html",
+      "size": 2832,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/face_test.html",
+      "size": 126,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/forecast.html",
+      "size": 2405,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/inventory-ai.html",
+      "size": 16,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/inventory.html",
+      "size": 2769,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/metrics_cards.html",
+      "size": 1663,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/nav.html",
+      "size": 335,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/operational_faces.html",
+      "size": 3673,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/provenance.html",
+      "size": 436,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/recommendations.html",
+      "size": 1464,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/revenue-forecast.html",
+      "size": 16,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/schedules.html",
+      "size": 3078,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/ai/straight_test.html",
+      "size": 2585,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/entry.html",
+      "size": 1405,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/invoice.html",
+      "size": 531,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/kitchen.html",
+      "size": 531,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/list.html",
+      "size": 2351,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/order.html",
+      "size": 533,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/payments.html",
+      "size": 420,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/receipt.html",
+      "size": 471,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/stock.html",
+      "size": 1349,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/_invoice_content.html",
+      "size": 2181,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/_kitchen_content.html",
+      "size": 2810,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/_order_content.html",
+      "size": 5341,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/_payments_content.html",
+      "size": 3619,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/business/_receipt_content.html",
+      "size": 2337,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/communication/messages.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/customers/booking-history.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/customers/customers.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/customers/feedback.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/customers/order-history.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/employees/ai-schedule.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/employees/attendance.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/employees/employees.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/employees/payroll.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/employees/shifts.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/gis/attendance-map.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/inventory/ingredients.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/inventory/recipes.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/inventory/stock-alerts.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/inventory/suppliers.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/inventory/transactions.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/location/settings.html",
+      "size": 1348,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/module07/chat.html",
+      "size": 168,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/module07/form.html",
+      "size": 444,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/module07/payroll.html",
+      "size": 171,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/module07/reports.html",
+      "size": 937,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/reports/employees.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/reports/foods.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/reports/inventory.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/reports/orders.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/reports/revenue.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/areas.html",
+      "size": 1259,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/booking-detail.html",
+      "size": 1346,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/bookings.html",
+      "size": 2303,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/categories.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/combos.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/kitchen.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/menu-form.html",
+      "size": 796,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/menu.html",
+      "size": 2447,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/orders.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/payments.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/promotions.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/resource-form.html",
+      "size": 624,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/reviews.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/tables.html",
+      "size": 1426,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/toppings.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/_booking-order.html",
+      "size": 459,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/_messages.html",
+      "size": 124,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/restaurant/_pagination.html",
+      "size": 338,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/system/account-edit.html",
+      "size": 716,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/system/accounts.html",
+      "size": 1661,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/system/activity-logs.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/admin/system/settings.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/about.html",
+      "size": 1095,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/base.html",
+      "size": 2991,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/booking-success.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/booking.html",
+      "size": 4464,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/cart.html",
+      "size": 2259,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/chatbot.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/checkout.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/contact.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/food-detail.html",
+      "size": 1772,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/footer.html",
+      "size": 47,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/header.html",
+      "size": 3015,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/home.html",
+      "size": 4204,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/invoice.html",
+      "size": 672,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/invoices.html",
+      "size": 1194,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/menu.html",
+      "size": 1010,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/menu_filters.html",
+      "size": 1173,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/payment-result.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/portal_footer.html",
+      "size": 1187,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/recommendations.html",
+      "size": 677,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/_dish.html",
+      "size": 955,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/_invoice_content.html",
+      "size": 3891,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/account/change-password.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/account/edit-profile.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/account/favorites.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/account/profile.html",
+      "size": 909,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/account/reviews.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/account/staff-home.html",
+      "size": 744,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/ai/chat.html",
+      "size": 284,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/ai/chat_surface.html",
+      "size": 1829,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/ai/face_attendance.html",
+      "size": 436,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/ai/realtime_attendance.html",
+      "size": 3743,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/ai/recommendations.html",
+      "size": 387,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/auth/forgot-password.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/auth/login.html",
+      "size": 1341,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/auth/register.html",
+      "size": 1394,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/about.html",
+      "size": 503,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/cart_extras.html",
+      "size": 594,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/chat.html",
+      "size": 189,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/combos.html",
+      "size": 749,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/history.html",
+      "size": 599,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/history_detail.html",
+      "size": 2026,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/my_work.html",
+      "size": 1226,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/payroll.html",
+      "size": 192,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/promotions.html",
+      "size": 809,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/module07/reviews.html",
+      "size": 401,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/orders/order-detail.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/orders/order-tracking.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/customer/orders/orders.html",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/shared/module07/chat_app.html",
+      "size": 1849,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/shared/module07/chat_content.html",
+      "size": 47,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/shared/module07/chat_messages.html",
+      "size": 582,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/shared/module07/item_extras.html",
+      "size": 299,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/shared/module07/payroll_content.html",
+      "size": 1605,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/base.html",
+      "size": 4252,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/chat.html",
+      "size": 207,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/dashboard.html",
+      "size": 4606,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/empty.html",
+      "size": 125,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/icons.html",
+      "size": 1384,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/kitchen_board.html",
+      "size": 1659,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/management.html",
+      "size": 104,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/payroll.html",
+      "size": 508,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/payroll_stats.html",
+      "size": 877,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/profile.html",
+      "size": 1754,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/shift_card.html",
+      "size": 548,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "templates/staff/work.html",
+      "size": 2752,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/account_service.py",
+      "size": 1660,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/admin.py",
+      "size": 4143,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/admin_site.py",
+      "size": 381,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai_forms.py",
+      "size": 1392,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai_models.py",
+      "size": 3137,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai_phase_views.py",
+      "size": 10950,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai_views.py",
+      "size": 3901,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/apps.py",
+      "size": 185,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/booking_service.py",
+      "size": 9107,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/business_forms.py",
+      "size": 4213,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/business_service.py",
+      "size": 1567,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/business_views.py",
+      "size": 27434,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/cart_service.py",
+      "size": 869,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/catalog.py",
+      "size": 5033,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/chat_service.py",
+      "size": 2953,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/commerce_service.py",
+      "size": 8688,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/consumers.py",
+      "size": 4752,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/context_processors.py",
+      "size": 7011,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/employee_identity.py",
+      "size": 3126,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/employee_identity_views.py",
+      "size": 2925,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/final_views.py",
+      "size": 4689,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/forms.py",
+      "size": 3504,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ga_service.py",
+      "size": 11535,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/inventory_service.py",
+      "size": 8010,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/kitchen_service.py",
+      "size": 3594,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/location_models.py",
+      "size": 1645,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/location_service.py",
+      "size": 7374,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/location_views.py",
+      "size": 4684,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management_views.py",
+      "size": 6025,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/menu_service.py",
+      "size": 4944,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/models.py",
+      "size": 27991,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/module07_cart.py",
+      "size": 1570,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/module07_forms.py",
+      "size": 3350,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/module07_models.py",
+      "size": 14117,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/module07_views.py",
+      "size": 20612,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/operational_seed_data.py",
+      "size": 4681,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/order_numbers.py",
+      "size": 231,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/order_service.py",
+      "size": 13083,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/payment_demo.py",
+      "size": 744,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/payment_numbers.py",
+      "size": 90,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/payment_service.py",
+      "size": 6685,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/payment_views.py",
+      "size": 6870,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/personnel_service.py",
+      "size": 10994,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/rbac.py",
+      "size": 6569,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/realtime.py",
+      "size": 2402,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/recommendation_service.py",
+      "size": 7691,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/report_service.py",
+      "size": 6221,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/routing.py",
+      "size": 749,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/staff_portal.py",
+      "size": 5110,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/tests.py",
+      "size": 31766,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_ai01_ai02.py",
+      "size": 17125,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_ai_phase.py",
+      "size": 18623,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_booking_flow.py",
+      "size": 4365,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_business.py",
+      "size": 26520,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_face_operational.py",
+      "size": 14773,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_face_ui_vi.py",
+      "size": 5242,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_final_phase.py",
+      "size": 10935,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_module02.py",
+      "size": 17278,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_module03.py",
+      "size": 28024,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_module04.py",
+      "size": 26852,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_module04b.py",
+      "size": 11498,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_module05.py",
+      "size": 19916,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_module06.py",
+      "size": 16891,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_module07.py",
+      "size": 33736,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_operational_seed.py",
+      "size": 7042,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_preorder.py",
+      "size": 10710,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/test_staff_portal.py",
+      "size": 7042,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ui_labels.py",
+      "size": 6380,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/views.py",
+      "size": 16817,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/__init__.py",
+      "size": 1,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/artifacts.py",
+      "size": 1722,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/collaborative_service.py",
+      "size": 3032,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/forecast_service.py",
+      "size": 6276,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/hybrid_service.py",
+      "size": 5735,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/inventory_ai_service.py",
+      "size": 2188,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/research_data.py",
+      "size": 5951,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/__init__.py",
+      "size": 80,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/answer_guard.py",
+      "size": 977,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/assistant_service.py",
+      "size": 1508,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/evaluation.py",
+      "size": 9375,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/intent_router.py",
+      "size": 3840,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/memory_service.py",
+      "size": 3054,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/normalization.py",
+      "size": 1899,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/rag_service.py",
+      "size": 7962,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/reranker.py",
+      "size": 768,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/tool_registry.py",
+      "size": 13366,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/chatbot/__init__.py",
+      "size": 75,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/face/evaluation.py",
+      "size": 933,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/face/facenet_service.py",
+      "size": 4971,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/face/face_enrollment_service.py",
+      "size": 6676,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/face/liveness_service.py",
+      "size": 1508,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/face/policy.py",
+      "size": 1257,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/ai/face/__init__.py",
+      "size": 71,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/__init__.py",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/audit_employee_accounts.py",
+      "size": 673,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/calibrate_faceid.py",
+      "size": 2890,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/download_ai_models.py",
+      "size": 3740,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/evaluate_ai_models.py",
+      "size": 1773,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/prepare_ai_research_data.py",
+      "size": 805,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/rebuild_chatbot_index.py",
+      "size": 449,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/seed_initial_inventory.py",
+      "size": 4204,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/seed_menu.py",
+      "size": 1929,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/seed_module07_operational_data.py",
+      "size": 14505,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/seed_module07_recipes.py",
+      "size": 4382,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/seed_rbac.py",
+      "size": 1920,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/seed_restaurant.py",
+      "size": 1924,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/train_forecast_models.py",
+      "size": 441,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/train_recommendation_models.py",
+      "size": 434,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/management/commands/__init__.py",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0001_initial.py",
+      "size": 1512,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0002_category_menuitem.py",
+      "size": 2559,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0003_booking_end_time_booking_start_time_booking_status_and_more.py",
+      "size": 5321,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0004_legacy_booking_windows.py",
+      "size": 995,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0005_ingredient_order_invoice_orderitem_payment_and_more.py",
+      "size": 22307,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0006_alter_payment_confirmed_by_alter_stockmovement_issue_and_more.py",
+      "size": 1434,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0007_payment_bank_reference_once_and_more.py",
+      "size": 1001,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0008_bookingitem_booking_food_subtotal_and_more.py",
+      "size": 2985,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0009_order_booking_snapshots.py",
+      "size": 2473,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0010_orderitem_kitchen_status_orderitem_preparing_at_and_more.py",
+      "size": 2600,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0011_legacy_kitchen_states.py",
+      "size": 1396,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0012_remove_invoice_invoice_amounts_status_valid_and_more.py",
+      "size": 4489,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0013_remove_stockmovement_movement_order_once_and_more.py",
+      "size": 3743,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0014_attendance_combo_comboitem_conversation_and_more.py",
+      "size": 26643,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0015_remove_bookingitem_booking_menu_selection_unique_and_more.py",
+      "size": 1440,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0016_aiconversation_aimessage_faceaudit_facechallenge_and_more.py",
+      "size": 5751,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0017_attendancelocationevent_attendancelocationpolicy.py",
+      "size": 2907,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/0018_faceaudit_threshold_type.py",
+      "size": 469,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/migrations/__init__.py",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/templatetags/money.py",
+      "size": 218,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/templatetags/ui_vi.py",
+      "size": 1930,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "customers/templatetags/__init__.py",
+      "size": 0,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/chatbot/latest.json",
+      "size": 45,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/chatbot/20261013T163822-2226e961/chunks.json",
+      "size": 22432,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/chatbot/20261013T163822-2226e961/index.faiss",
+      "size": 121389,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/chatbot/20261013T163822-2226e961/metadata.json",
+      "size": 902,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/datasets/latest.json",
+      "size": 45,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/datasets/20261013T164031-7087f743/daily.json",
+      "size": 17395,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/datasets/20261013T164031-7087f743/interactions.json",
+      "size": 49926,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/datasets/20261013T164031-7087f743/item_daily.json",
+      "size": 147351,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/datasets/20261013T164031-7087f743/metadata.json",
+      "size": 1654,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/evaluation/latest.json",
+      "size": 45,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_cases.json",
+      "size": 77225,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_multiturn.json",
+      "size": 41840,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/evaluation/20261013T164050-29731cf4/chatbot_results.json",
+      "size": 200731,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/evaluation/20261013T164050-29731cf4/metadata.json",
+      "size": 122347,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/latest.json",
+      "size": 45,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_1.joblib",
+      "size": 241809,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_10.joblib",
+      "size": 120528,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_10_history.json",
+      "size": 9869,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_11.joblib",
+      "size": 122839,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_11_history.json",
+      "size": 9868,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_12.joblib",
+      "size": 120381,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_12_history.json",
+      "size": 9868,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_13.joblib",
+      "size": 255057,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_13_history.json",
+      "size": 9868,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_14.joblib",
+      "size": 118688,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_14_history.json",
+      "size": 9868,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_15.joblib",
+      "size": 120319,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_15_history.json",
+      "size": 9868,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_1_history.json",
+      "size": 9798,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_2.joblib",
+      "size": 234465,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_2_history.json",
+      "size": 9798,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_3.joblib",
+      "size": 123786,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_3_history.json",
+      "size": 9798,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_4.joblib",
+      "size": 1079,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_4_history.json",
+      "size": 9798,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_5.joblib",
+      "size": 1079,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_5_history.json",
+      "size": 9798,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_6.joblib",
+      "size": 113066,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_6_history.json",
+      "size": 9798,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_7.joblib",
+      "size": 246129,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_7_history.json",
+      "size": 9799,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_8.joblib",
+      "size": 119847,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_8_history.json",
+      "size": 9798,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_9.joblib",
+      "size": 1079,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/menu_9_history.json",
+      "size": 9799,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/metadata.json",
+      "size": 115348,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/order_count.joblib",
+      "size": 242385,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/order_count_history.json",
+      "size": 17395,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/revenue.joblib",
+      "size": 1079,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/forecast/20261013T164036-a510e288/revenue_history.json",
+      "size": 17395,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/pretrained/manifest.json",
+      "size": 2195,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/recommendation/latest.json",
+      "size": 45,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/recommendation/20261013T164033-66fd84d3/interactions.json",
+      "size": 49926,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "ai_models/recommendation/20261013T164033-66fd84d3/metadata.json",
+      "size": 4437,
+      "category": "REQUIRED_MODEL",
+      "reason": "Preserve manifests, trained artifacts, RAG index and research provenance",
+      "action": "KEEP"
+    },
+    {
+      "path": "scripts/ai_final_checks.py",
+      "size": 1119,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "scripts/build_submission.ps1",
+      "size": 634,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "scripts/cleanup_cache.ps1",
+      "size": 2177,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "scripts/model_asset_audit.py",
+      "size": 2829,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "scripts/setup_models.py",
+      "size": 2013,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "scripts/submission_audit.py",
+      "size": 4731,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "scripts/submission_builder.py",
+      "size": 7463,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "scripts/verify_submission.py",
+      "size": 3467,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Source/setup/tests retained",
+      "action": "KEEP"
+    },
+    {
+      "path": "README.md",
+      "size": 4352,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Required source/setup",
+      "action": "KEEP"
+    },
+    {
+      "path": "requirements.txt",
+      "size": 370,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Required source/setup",
+      "action": "KEEP"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "size": 101,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Required source/setup",
+      "action": "KEEP"
+    },
+    {
+      "path": "manage.py",
+      "size": 695,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Required source/setup",
+      "action": "KEEP"
+    },
+    {
+      "path": "requirements-production.txt",
+      "size": 181,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Required source/setup",
+      "action": "KEEP"
+    },
+    {
+      "path": ".gitignore",
+      "size": 188,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Required source/setup",
+      "action": "KEEP"
+    },
+    {
+      "path": ".env.example",
+      "size": 208,
+      "category": "REQUIRED_SOURCE",
+      "reason": "Required source/setup",
+      "action": "KEEP"
+    }
+  ],
+  "excluded_artifact_versions": [
+    "ai_models/chatbot/20261013T161639-b459d614/chunks.json",
+    "ai_models/chatbot/20261013T161639-b459d614/index.faiss",
+    "ai_models/chatbot/20261013T161639-b459d614/metadata.json",
+    "ai_models/datasets/20261013T161546-86d4ac55/daily.json",
+    "ai_models/datasets/20261013T161546-86d4ac55/interactions.json",
+    "ai_models/datasets/20261013T161546-86d4ac55/item_daily.json",
+    "ai_models/datasets/20261013T161546-86d4ac55/metadata.json",
+    "ai_models/evaluation/20261013T161642-1141d822/chatbot_cases.json",
+    "ai_models/evaluation/20261013T161642-1141d822/chatbot_multiturn.json",
+    "ai_models/evaluation/20261013T161642-1141d822/chatbot_results.json",
+    "ai_models/evaluation/20261013T161642-1141d822/metadata.json",
+    "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_cases.json",
+    "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_multiturn.json",
+    "ai_models/evaluation/20261013T162256-9ac351cb/chatbot_results.json",
+    "ai_models/evaluation/20261013T162256-9ac351cb/metadata.json",
+    "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_cases.json",
+    "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_multiturn.json",
+    "ai_models/evaluation/20261013T162632-23ca4aa2/chatbot_results.json",
+    "ai_models/evaluation/20261013T162632-23ca4aa2/metadata.json",
+    "ai_models/evaluation/20261013T163600-a8302f25/chatbot_cases.json",
+    "ai_models/evaluation/20261013T163600-a8302f25/chatbot_multiturn.json",
+    "ai_models/evaluation/20261013T163600-a8302f25/chatbot_results.json",
+    "ai_models/evaluation/20261013T163600-a8302f25/metadata.json",
+    "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_cases.json",
+    "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_multiturn.json",
+    "ai_models/evaluation/20261013T163912-b50b1d3a/chatbot_results.json",
+    "ai_models/evaluation/20261013T163912-b50b1d3a/metadata.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_1.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_10.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_10_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_11.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_11_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_12.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_12_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_13.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_13_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_14.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_14_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_15.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_15_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_1_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_2.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_2_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_3.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_3_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_4.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_4_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_5.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_5_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_6.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_6_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_7.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_7_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_8.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_8_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_9.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/menu_9_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/metadata.json",
+    "ai_models/forecast/20261013T161551-2cce638a/order_count.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/order_count_history.json",
+    "ai_models/forecast/20261013T161551-2cce638a/revenue.joblib",
+    "ai_models/forecast/20261013T161551-2cce638a/revenue_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_1.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_10.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_10_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_11.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_11_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_12.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_12_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_13.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_13_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_14.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_14_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_15.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_15_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_1_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_2.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_2_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_3.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_3_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_4.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_4_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_5.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_5_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_6.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_6_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_7.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_7_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_8.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_8_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/menu_9.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/menu_9_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/metadata.json",
+    "ai_models/forecast/20261013T163550-b1143592/order_count.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/order_count_history.json",
+    "ai_models/forecast/20261013T163550-b1143592/revenue.joblib",
+    "ai_models/forecast/20261013T163550-b1143592/revenue_history.json",
+    "ai_models/recommendation/20261013T161548-605bbf35/interactions.json",
+    "ai_models/recommendation/20261013T161548-605bbf35/metadata.json",
+    "ai_models/recommendation/20261013T163548-bd9bbef1/interactions.json",
+    "ai_models/recommendation/20261013T163548-bd9bbef1/metadata.json",
+    "ai_models/recommendation/20261013T163909-fadfe0c9/interactions.json",
+    "ai_models/recommendation/20261013T163909-fadfe0c9/metadata.json"
+  ],
+  "secrets_excluded": true,
+  "local_environment_kept": true
+}

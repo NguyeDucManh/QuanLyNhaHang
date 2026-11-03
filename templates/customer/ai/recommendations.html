@@ -1,0 +1,1 @@
+{% extends 'customer/base.html' %}{% block title %}Gợi ý dành cho bạn | Smart Restaurant{% endblock %}{% block content %}<section class="container section"><h1>Gợi ý dành cho bạn</h1><div class="dish-grid">{% for dish in dishes %}{% include 'customer/_dish.html' %}{% empty %}<p>Chưa có món đang phục vụ để gợi ý.</p>{% endfor %}</div></section>{% endblock %}

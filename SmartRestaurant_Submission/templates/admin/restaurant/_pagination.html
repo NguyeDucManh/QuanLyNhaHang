@@ -1,0 +1,1 @@
+<div class="table-footer">{% if pagination.has_previous %}<a href="{% querystring page=pagination.previous_page_number %}">Trước</a>{% endif %}<span>Trang {{ pagination.number }}/{{ pagination.paginator.num_pages }}</span>{% if pagination.has_next %}<a href="{% querystring page=pagination.next_page_number %}">Sau</a>{% endif %}</div>

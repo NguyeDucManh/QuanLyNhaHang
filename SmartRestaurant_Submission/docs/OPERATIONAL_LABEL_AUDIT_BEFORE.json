@@ -1,0 +1,595 @@
+{
+  "counts": {
+    "Booking": 6,
+    "Category": 19,
+    "MenuItem": 45,
+    "BookingItem": 11,
+    "Area": 4,
+    "RestaurantTable": 20,
+    "Supplier": 3,
+    "Ingredient": 71,
+    "RecipeIngredient": 174,
+    "Order": 1,
+    "OrderItem": 5,
+    "Invoice": 1,
+    "Payment": 1,
+    "StockReceipt": 1,
+    "StockIssue": 0,
+    "StockReceiptItem": 71,
+    "StockIssueItem": 0,
+    "StockMovement": 71,
+    "Topping": 5,
+    "Combo": 4,
+    "ComboItem": 17,
+    "Promotion": 4,
+    "Review": 2,
+    "RestaurantInfo": 1,
+    "Position": 4,
+    "Employee": 6,
+    "Shift": 3,
+    "WorkSchedule": 35,
+    "Attendance": 16,
+    "PayrollPeriod": 1,
+    "Payroll": 5,
+    "Conversation": 4,
+    "ConversationParticipant": 8,
+    "Message": 1,
+    "IngredientSupplyPolicy": 0,
+    "FaceProfile": 3,
+    "FaceEmbedding": 45,
+    "FaceAudit": 18,
+    "FaceChallenge": 25,
+    "AIConversation": 3,
+    "AIMessage": 20,
+    "AttendanceLocationPolicy": 0,
+    "AttendanceLocationEvent": 0
+  },
+  "matches": [
+    {
+      "model": "StockReceipt",
+      "pk": 1,
+      "field": "note",
+      "value": "[DEMO INITIAL INVENTORY V1]"
+    },
+    {
+      "model": "Topping",
+      "pk": 1,
+      "field": "name",
+      "value": "Phô mai thêm (DEMO)"
+    },
+    {
+      "model": "Topping",
+      "pk": 2,
+      "field": "name",
+      "value": "Sốt bơ tỏi (DEMO)"
+    },
+    {
+      "model": "Topping",
+      "pk": 3,
+      "field": "name",
+      "value": "Sốt tiêu (DEMO)"
+    },
+    {
+      "model": "Topping",
+      "pk": 4,
+      "field": "name",
+      "value": "Rau thêm (DEMO)"
+    },
+    {
+      "model": "Topping",
+      "pk": 5,
+      "field": "name",
+      "value": "Trứng thêm (DEMO)"
+    },
+    {
+      "model": "Combo",
+      "pk": 1,
+      "field": "name",
+      "value": "DEMO - Combo 2 người"
+    },
+    {
+      "model": "Combo",
+      "pk": 2,
+      "field": "name",
+      "value": "DEMO - Combo hải sản"
+    },
+    {
+      "model": "Combo",
+      "pk": 3,
+      "field": "name",
+      "value": "DEMO - Combo bò"
+    },
+    {
+      "model": "Combo",
+      "pk": 4,
+      "field": "name",
+      "value": "DEMO - Combo gia đình"
+    },
+    {
+      "model": "Combo",
+      "pk": 1,
+      "field": "description",
+      "value": "[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu."
+    },
+    {
+      "model": "Combo",
+      "pk": 2,
+      "field": "description",
+      "value": "[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu."
+    },
+    {
+      "model": "Combo",
+      "pk": 3,
+      "field": "description",
+      "value": "[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu."
+    },
+    {
+      "model": "Combo",
+      "pk": 4,
+      "field": "description",
+      "value": "[DEMO MODULE07 OPERATIONAL] Giá khởi tạo ưu đãi so với tổng món lẻ; không thay đổi giá menu."
+    },
+    {
+      "model": "Promotion",
+      "pk": 1,
+      "field": "name",
+      "value": "DEMO - WELCOME10"
+    },
+    {
+      "model": "Promotion",
+      "pk": 2,
+      "field": "name",
+      "value": "DEMO - GIAM50K"
+    },
+    {
+      "model": "Promotion",
+      "pk": 3,
+      "field": "name",
+      "value": "DEMO - COMBO15"
+    },
+    {
+      "model": "Promotion",
+      "pk": 4,
+      "field": "name",
+      "value": "DEMO - KHACHVIP"
+    },
+    {
+      "model": "Review",
+      "pk": 1,
+      "field": "comment",
+      "value": "Đánh giá DEMO: món trình bày đẹp, khẩu vị phù hợp."
+    },
+    {
+      "model": "Review",
+      "pk": 2,
+      "field": "comment",
+      "value": "Đánh giá DEMO: món trình bày đẹp, khẩu vị phù hợp."
+    },
+    {
+      "model": "RestaurantInfo",
+      "pk": 1,
+      "field": "name",
+      "value": "Smart Restaurant DEMO"
+    },
+    {
+      "model": "RestaurantInfo",
+      "pk": 1,
+      "field": "description",
+      "value": "Nhà hàng minh họa ẩm thực hải sản và món Âu. Hồ sơ DEMO, không sử dụng thông tin liên hệ cá nhân."
+    },
+    {
+      "model": "RestaurantInfo",
+      "pk": 1,
+      "field": "address",
+      "value": "123 Đường Nhà Hàng DEMO, TP.HCM (địa chỉ minh họa)"
+    },
+    {
+      "model": "RestaurantInfo",
+      "pk": 1,
+      "field": "email",
+      "value": "demo@smart-restaurant.example"
+    },
+    {
+      "model": "Position",
+      "pk": 1,
+      "field": "description",
+      "value": "[DEMO MODULE07 OPERATIONAL] Vị trí công việc, độc lập quyền hệ thống."
+    },
+    {
+      "model": "Position",
+      "pk": 2,
+      "field": "description",
+      "value": "[DEMO MODULE07 OPERATIONAL] Vị trí công việc, độc lập quyền hệ thống."
+    },
+    {
+      "model": "Position",
+      "pk": 3,
+      "field": "description",
+      "value": "[DEMO MODULE07 OPERATIONAL] Vị trí công việc, độc lập quyền hệ thống."
+    },
+    {
+      "model": "Position",
+      "pk": 4,
+      "field": "description",
+      "value": "[DEMO MODULE07 OPERATIONAL] Vị trí công việc, độc lập quyền hệ thống."
+    },
+    {
+      "model": "Employee",
+      "pk": 2,
+      "field": "employee_code",
+      "value": "DEMO-U0003"
+    },
+    {
+      "model": "Employee",
+      "pk": 3,
+      "field": "employee_code",
+      "value": "DEMO-U0004"
+    },
+    {
+      "model": "Employee",
+      "pk": 4,
+      "field": "employee_code",
+      "value": "DEMO-U0005"
+    },
+    {
+      "model": "Employee",
+      "pk": 5,
+      "field": "employee_code",
+      "value": "DEMO-U0006"
+    },
+    {
+      "model": "Employee",
+      "pk": 2,
+      "field": "full_name",
+      "value": "Nhân viên DEMO 03"
+    },
+    {
+      "model": "Employee",
+      "pk": 3,
+      "field": "full_name",
+      "value": "Nhân viên DEMO 04"
+    },
+    {
+      "model": "Employee",
+      "pk": 4,
+      "field": "full_name",
+      "value": "Nhân viên DEMO 05"
+    },
+    {
+      "model": "Employee",
+      "pk": 5,
+      "field": "full_name",
+      "value": "Nhân viên DEMO 06"
+    },
+    {
+      "model": "Shift",
+      "pk": 1,
+      "field": "name",
+      "value": "Ca sáng (DEMO)"
+    },
+    {
+      "model": "Shift",
+      "pk": 2,
+      "field": "name",
+      "value": "Ca chiều (DEMO)"
+    },
+    {
+      "model": "Shift",
+      "pk": 3,
+      "field": "name",
+      "value": "Ca tối (DEMO)"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 1,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 2,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 3,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 4,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 5,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 6,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 7,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 8,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 9,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 10,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 11,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 12,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 13,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 14,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 15,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 16,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 17,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 18,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 19,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 20,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 21,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 22,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 23,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 24,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 25,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 26,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 27,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 28,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 29,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 30,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 31,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 32,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 33,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 34,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "WorkSchedule",
+      "pk": 35,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 1,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 2,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 3,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 4,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 5,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 6,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 7,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 8,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 9,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 10,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 11,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 12,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 13,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 14,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "Attendance",
+      "pk": 15,
+      "field": "note",
+      "value": "[DEMO MODULE07 OPERATIONAL]"
+    },
+    {
+      "model": "PayrollPeriod",
+      "pk": 1,
+      "field": "name",
+      "value": "DEMO - Lương 10/2026"
+    },
+    {
+      "model": "AIMessage",
+      "pk": 19,
+      "field": "answer",
+      "value": "DEMO - Combo 2 người hiện có giá 1.080.000đ."
+    }
+  ]
+}
