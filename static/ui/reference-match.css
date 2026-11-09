@@ -30,3 +30,9 @@
 @media(max-width:1024px){.pos-filters{position:static;margin:7px 0;flex-wrap:wrap}.customer-home-hero h1,.customer-home-hero>p,.customer-home-hero>div{width:100%;max-width:none}.pos-table-grid{height:300px}}
 @media(max-width:540px){.customer-home-hero{align-items:center}.pos-floor>header{height:27px}.pos-layout .panel{padding:9px}.ref-orders-table td{font-size:10px}.workspace .ref-kpis .stat-value{font-size:17px}.customer-home-hero h1{font-size:38px}.customer-home .home-quick{margin-top:0!important}}
 @media(min-width:1100px) and (max-height:850px){.pos-table-grid{grid-auto-rows:minmax(40px,1fr);gap:12px 24px;padding:14px 30px}.pos-table,.pos-table:nth-of-type(5n+2){height:43px;min-height:43px;max-height:43px;padding:3px;gap:1px}.pos-table:nth-of-type(5n+2){width:49px;min-width:49px}.pos-table span{white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;font-size:7px;line-height:8px}.pos-table small{line-height:8px}.pos-table strong{line-height:16px}}
+
+/* Native date/time controls must shrink inside the tablet booking column. */
+.customer-home .booking-quick-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+.customer-home .booking-quick-fields>label{min-width:0}
+.customer-home .home-booking input{min-width:0;max-width:100%;box-sizing:border-box}
+@media(max-width:1024px){.customer-shell:has(.customer-home) .site-footer>.container{flex-wrap:wrap;gap:12px}.customer-shell:has(.customer-home) .site-footer .footer-bottom{white-space:normal}}

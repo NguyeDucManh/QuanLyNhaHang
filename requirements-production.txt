@@ -1,3 +1,3 @@
-# Optional Redis Channels backend. Local demo retains InMemoryChannelLayer.
-# Install only for production after verifying compatibility with its environment.
+-r requirements.txt
+# Multiple ASGI processes/instances require CHANNEL_REDIS_URL.
 channels-redis>=4.2,<5

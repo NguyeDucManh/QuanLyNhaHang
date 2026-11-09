@@ -2,6 +2,7 @@
 from decimal import Decimal
 from django.core.exceptions import ValidationError
 from django.templatetags.static import static
+from django.contrib.staticfiles import finders
 from django.urls import reverse
 from .models import Category, MenuItem
 
@@ -23,11 +24,12 @@ def menu_items(include_unavailable=False):
 
 def serialize_item(item, for_admin=False):
     available = item.is_available and item.category.is_active
+    image_path = item.image if item.image and finders.find(item.image) else 'ui/images/dish-placeholder.svg'
     data = {
         'id': item.pk, 'name': item.name, 'category': item.category.slug,
         'category_label': item.category.name, 'price': item.price,
         'price_display': format_money(item.price) + ' ₫' if item.price is not None else 'Liên hệ',
-        'image_path': item.image, 'image': static(item.image), 'description': item.description,
+        'image_path': item.image, 'image': static(image_path), 'description': item.description,
         'is_available': item.is_available,
         'status': 'Đang phục vụ' if available else 'Ngừng phục vụ',
     }

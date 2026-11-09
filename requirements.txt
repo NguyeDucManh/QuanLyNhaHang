@@ -19,3 +19,5 @@ rank-bm25==0.2.2
 torch==2.14.1
 transformers==5.19.0
 stripe==16.0.1
+whitenoise[brotli]==6.12.0
+dj-database-url==3.1.2
