@@ -161,7 +161,9 @@ class SEOTests(TestCase):
 
     def test_home_keeps_ai_lazy(self):
         with patch('customers.ai.hybrid_service.recommend', side_effect=AssertionError('unused ML')) as recommend:
-            self.assertEqual(self.client.get('/').status_code, 200)
+            response = self.client.get('/')
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, 'name="guests" type="number" min="1" max="20"')
             recommend.assert_not_called()
 
     @override_settings(GOOGLE_SITE_VERIFICATION='qa-verification-token')
