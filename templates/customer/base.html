@@ -17,7 +17,7 @@
 <main id="content">{% if messages %}<div class="container messages" role="status">{% for message in messages %}<p class="message {{ message.tags }}">{{ message }}</p>{% endfor %}</div>{% endif %}{% block content %}{% endblock %}</main>
 {% include 'customer/booking_menu_bar.html' %}{% include "customer/footer.html" %}
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<button class="chat-launcher" id="help-toggle" aria-expanded="false" aria-controls="help-panel"><span class="chat-avatar"><svg class="icon"><use href="#i-chat"/></svg></span><span><strong>Hỗ trợ đặt món</strong><small>Thực đơn, đặt bàn và tài khoản</small></span><span class="online-dot"></span></button>
+<button class="chat-launcher" id="help-toggle" aria-label="Hỗ trợ đặt món" aria-expanded="false" aria-controls="help-panel"><span class="chat-avatar"><svg class="icon"><use href="#i-chat"/></svg></span><span><strong>Hỗ trợ đặt món</strong><small>Thực đơn, đặt bàn và tài khoản</small></span><span class="online-dot"></span></button>
 <section id="help-panel" class="help-panel" hidden aria-label="Trợ lý AI">{% include 'customer/ai/chat_surface.html' with mini=True %}</section>
 <link rel="stylesheet" href="{% static 'ai/assistant.css' %}?v=final1"><script defer src="{% static 'ai/assistant.js' %}?v=final1"></script>
 </body></html>
