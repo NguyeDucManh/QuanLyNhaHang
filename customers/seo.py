@@ -145,7 +145,8 @@ def metadata(context):
         if name != 'customer_home':
             crumbs.append({'@type': 'ListItem', 'position': len(crumbs) + 1,
                            'name': clean(dish['name']) if dish else title.split(' | ')[0], 'item': canonical})
-        graph.append({'@type': 'BreadcrumbList', 'itemListElement': crumbs})
+        if len(crumbs) > 1:
+            graph.append({'@type': 'BreadcrumbList', 'itemListElement': crumbs})
         if name == 'customer_menu':
             graph.append({'@type': 'Menu', '@id': canonical + '#menu', 'name': 'Thực đơn Smart Restaurant',
                           'url': canonical, 'hasMenuItem': [menu_schema(row) for row in context.get('dishes', [])]})
