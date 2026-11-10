@@ -28,9 +28,14 @@ def home(request):
     if get_role(request.user) in ("ADMIN", "MANAGER", "STAFF"):
         return redirect(role_home(request.user))
     dishes = get_dishes()
-    from .ai.hybrid_service import recommend
-    result=recommend(request.user,n=4)
-    suggestions=[{**serialize_item(row['item']),'recommendation_reason':row['reason']} for row in result['recommendations']]
+    from django.utils.functional import SimpleLazyObject
+    def load_suggestions():
+        from .ai.hybrid_service import recommend
+        result = recommend(request.user, n=4)
+        return [{**serialize_item(row['item']), 'recommendation_reason': row['reason']}
+                for row in result['recommendations']]
+    # Preserve the context without loading ML when the template only renders its link.
+    suggestions = SimpleLazyObject(load_suggestions)
     from .models import Combo,Promotion,RestaurantInfo,Review
     from django.utils import timezone
     now=timezone.now()

@@ -10,8 +10,16 @@ from customers import employee_identity_views as identities
 from customers.booking_workspace import availability
 from customers import operations_views as ops
 from customers import deposit_views as deposits
+from .health import health
+from django.contrib.sitemaps.views import sitemap
+from customers.seo import robots, SITEMAPS
+
+handler404 = 'restaurant_system.errors.page_not_found'
 
 urlpatterns = [
+    path('robots.txt', robots, name='seo_robots'),
+    path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}, name='seo_sitemap'),
+    path('healthz/', health, name='health'),
     path('booking/<int:pk>/deposit/',deposits.deposit_page,name='booking_deposit'),
     path('booking/<int:pk>/deposit/checkout/',deposits.checkout_start,name='booking_deposit_checkout'),
     path('booking/<int:pk>/deposit/success/',deposits.deposit_page,{'success':True},name='booking_deposit_success'),
