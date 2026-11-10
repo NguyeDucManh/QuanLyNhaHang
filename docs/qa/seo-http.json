@@ -1,0 +1,245 @@
+{
+  "environment": "local clean checkout 20d0929; DEBUG=false; canonical production origin; not a deployed production check",
+  "responses": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html",
+      "x_robots_tag": null,
+      "final_url": "http://127.0.0.1:8767/",
+      "titles": [
+        "Smart Restaurant | Thực đơn và đặt bàn trực tuyến"
+      ],
+      "description": "Khám phá thực đơn Smart Restaurant, xem món ăn, combo và ưu đãi đang phục vụ. Chọn món và đặt bàn trực tuyến theo nhu cầu của bạn.",
+      "canonical": [
+        "https://smart-restaurant-demo.onrender.com/"
+      ],
+      "robots": "index, follow",
+      "h1_count": 1,
+      "schema_types": [
+        "WebSite",
+        "Restaurant"
+      ],
+      "og_image": "https://smart-restaurant-demo.onrender.com/static/ui/images/garden-restaurant-hero.2a53485f32f7.webp",
+      "twitter_card": "summary_large_image"
+    },
+    {
+      "path": "/menu/",
+      "status": 200,
+      "content_type": "text/html",
+      "x_robots_tag": null,
+      "final_url": "http://127.0.0.1:8767/menu/",
+      "titles": [
+        "Thực đơn | Smart Restaurant"
+      ],
+      "description": "Xem thực đơn Smart Restaurant với hình ảnh, giá niêm yết và thông tin từng món. Tìm kiếm, chọn món và chuẩn bị cho bữa ăn của bạn.",
+      "canonical": [
+        "https://smart-restaurant-demo.onrender.com/menu/"
+      ],
+      "robots": "index, follow",
+      "h1_count": 1,
+      "schema_types": [
+        "WebSite",
+        "Restaurant",
+        "BreadcrumbList",
+        "Menu"
+      ],
+      "og_image": "https://smart-restaurant-demo.onrender.com/static/ui/images/garden-restaurant-hero.2a53485f32f7.webp",
+      "twitter_card": "summary_large_image"
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "content_type": "text/html",
+      "x_robots_tag": null,
+      "final_url": "http://127.0.0.1:8767/about/",
+      "titles": [
+        "Thông tin nhà hàng | Smart Restaurant"
+      ],
+      "description": "Tìm hiểu Smart Restaurant, thông tin liên hệ, địa chỉ và giờ mở cửa được nhà hàng cập nhật.",
+      "canonical": [
+        "https://smart-restaurant-demo.onrender.com/about/"
+      ],
+      "robots": "index, follow",
+      "h1_count": 1,
+      "schema_types": [
+        "WebSite",
+        "Restaurant",
+        "BreadcrumbList"
+      ],
+      "og_image": "https://smart-restaurant-demo.onrender.com/static/ui/images/garden-restaurant-hero.2a53485f32f7.webp",
+      "twitter_card": "summary_large_image"
+    },
+    {
+      "path": "/offers/",
+      "status": 200,
+      "content_type": "text/html",
+      "x_robots_tag": null,
+      "final_url": "http://127.0.0.1:8767/offers/",
+      "titles": [
+        "Ưu đãi đang áp dụng | Smart Restaurant"
+      ],
+      "description": "Xem ưu đãi Smart Restaurant đang áp dụng, mã khuyến mãi và điều kiện sử dụng được nhà hàng công bố.",
+      "canonical": [
+        "https://smart-restaurant-demo.onrender.com/offers/"
+      ],
+      "robots": "index, follow",
+      "h1_count": 1,
+      "schema_types": [
+        "WebSite",
+        "Restaurant",
+        "BreadcrumbList"
+      ],
+      "og_image": "https://smart-restaurant-demo.onrender.com/static/ui/images/garden-restaurant-hero.2a53485f32f7.webp",
+      "twitter_card": "summary_large_image"
+    },
+    {
+      "path": "/combos/",
+      "status": 200,
+      "content_type": "text/html",
+      "x_robots_tag": null,
+      "final_url": "http://127.0.0.1:8767/combos/",
+      "titles": [
+        "Combo nhà hàng | Smart Restaurant"
+      ],
+      "description": "Khám phá combo Smart Restaurant đang phục vụ, thành phần và giá niêm yết. Chọn lựa phù hợp cho bữa ăn cùng gia đình và bạn bè.",
+      "canonical": [
+        "https://smart-restaurant-demo.onrender.com/combos/"
+      ],
+      "robots": "index, follow",
+      "h1_count": 1,
+      "schema_types": [
+        "WebSite",
+        "Restaurant",
+        "BreadcrumbList"
+      ],
+      "og_image": "https://smart-restaurant-demo.onrender.com/static/ui/images/garden-restaurant-hero.2a53485f32f7.webp",
+      "twitter_card": "summary_large_image"
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "content_type": "text/plain",
+      "x_robots_tag": null,
+      "final_url": "http://127.0.0.1:8767/robots.txt",
+      "body": "User-agent: *\nDisallow:\nAllow: /static/\nSitemap: https://smart-restaurant-demo.onrender.com/sitemap.xml\n"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "content_type": "application/xml",
+      "x_robots_tag": "noindex, noodp, noarchive",
+      "final_url": "http://127.0.0.1:8767/sitemap.xml",
+      "locations": [
+        "https://smart-restaurant-demo.onrender.com/",
+        "https://smart-restaurant-demo.onrender.com/menu/",
+        "https://smart-restaurant-demo.onrender.com/about/",
+        "https://smart-restaurant-demo.onrender.com/offers/",
+        "https://smart-restaurant-demo.onrender.com/combos/",
+        "https://smart-restaurant-demo.onrender.com/menu/1/",
+        "https://smart-restaurant-demo.onrender.com/menu/2/",
+        "https://smart-restaurant-demo.onrender.com/menu/3/",
+        "https://smart-restaurant-demo.onrender.com/menu/4/",
+        "https://smart-restaurant-demo.onrender.com/menu/5/",
+        "https://smart-restaurant-demo.onrender.com/menu/6/",
+        "https://smart-restaurant-demo.onrender.com/menu/7/",
+        "https://smart-restaurant-demo.onrender.com/menu/8/",
+        "https://smart-restaurant-demo.onrender.com/menu/9/",
+        "https://smart-restaurant-demo.onrender.com/menu/10/",
+        "https://smart-restaurant-demo.onrender.com/menu/11/",
+        "https://smart-restaurant-demo.onrender.com/menu/12/",
+        "https://smart-restaurant-demo.onrender.com/menu/13/",
+        "https://smart-restaurant-demo.onrender.com/menu/14/",
+        "https://smart-restaurant-demo.onrender.com/menu/15/",
+        "https://smart-restaurant-demo.onrender.com/menu/16/",
+        "https://smart-restaurant-demo.onrender.com/menu/17/",
+        "https://smart-restaurant-demo.onrender.com/menu/18/",
+        "https://smart-restaurant-demo.onrender.com/menu/19/",
+        "https://smart-restaurant-demo.onrender.com/menu/20/",
+        "https://smart-restaurant-demo.onrender.com/menu/21/",
+        "https://smart-restaurant-demo.onrender.com/menu/22/",
+        "https://smart-restaurant-demo.onrender.com/menu/23/",
+        "https://smart-restaurant-demo.onrender.com/menu/24/",
+        "https://smart-restaurant-demo.onrender.com/menu/25/",
+        "https://smart-restaurant-demo.onrender.com/menu/26/",
+        "https://smart-restaurant-demo.onrender.com/menu/27/",
+        "https://smart-restaurant-demo.onrender.com/menu/28/",
+        "https://smart-restaurant-demo.onrender.com/menu/29/",
+        "https://smart-restaurant-demo.onrender.com/menu/30/",
+        "https://smart-restaurant-demo.onrender.com/menu/31/",
+        "https://smart-restaurant-demo.onrender.com/menu/32/",
+        "https://smart-restaurant-demo.onrender.com/menu/33/",
+        "https://smart-restaurant-demo.onrender.com/menu/34/",
+        "https://smart-restaurant-demo.onrender.com/menu/35/",
+        "https://smart-restaurant-demo.onrender.com/menu/36/",
+        "https://smart-restaurant-demo.onrender.com/menu/37/",
+        "https://smart-restaurant-demo.onrender.com/menu/38/",
+        "https://smart-restaurant-demo.onrender.com/menu/39/",
+        "https://smart-restaurant-demo.onrender.com/menu/40/",
+        "https://smart-restaurant-demo.onrender.com/menu/41/",
+        "https://smart-restaurant-demo.onrender.com/menu/42/",
+        "https://smart-restaurant-demo.onrender.com/menu/43/",
+        "https://smart-restaurant-demo.onrender.com/menu/44/",
+        "https://smart-restaurant-demo.onrender.com/menu/45/"
+      ]
+    },
+    {
+      "path": "/login/",
+      "status": 200,
+      "content_type": "text/html",
+      "x_robots_tag": "noindex, nofollow, nosnippet",
+      "final_url": "http://127.0.0.1:8767/login/",
+      "titles": [
+        "Đăng nhập | Smart Restaurant"
+      ],
+      "description": "Thực đơn, đặt bàn và dịch vụ nhà hàng Smart Restaurant.",
+      "canonical": [],
+      "robots": "noindex, nofollow",
+      "h1_count": 2,
+      "schema_types": [],
+      "og_image": "https://smart-restaurant-demo.onrender.com/static/ui/images/garden-restaurant-hero.2a53485f32f7.webp",
+      "twitter_card": "summary_large_image"
+    },
+    {
+      "path": "/cart/",
+      "status": 200,
+      "content_type": "text/html",
+      "x_robots_tag": "noindex, nofollow, nosnippet",
+      "final_url": "http://127.0.0.1:8767/cart/",
+      "titles": [
+        "Giỏ món | Smart Restaurant"
+      ],
+      "description": "Thực đơn, đặt bàn và dịch vụ nhà hàng Smart Restaurant.",
+      "canonical": [],
+      "robots": "noindex, nofollow",
+      "h1_count": 1,
+      "schema_types": [],
+      "og_image": "https://smart-restaurant-demo.onrender.com/static/ui/images/garden-restaurant-hero.2a53485f32f7.webp",
+      "twitter_card": "summary_large_image"
+    },
+    {
+      "path": "/menu/1/",
+      "status": 200,
+      "content_type": "text/html",
+      "x_robots_tag": null,
+      "final_url": "http://127.0.0.1:8767/menu/1/",
+      "titles": [
+        "Súp bào ngư hải sâm | Smart Restaurant"
+      ],
+      "description": "Khám phá Súp bào ngư hải sâm trong nhóm Súp tại Smart Restaurant. Xem thông tin món ăn và lựa chọn cho bữa ăn của bạn.",
+      "canonical": [
+        "https://smart-restaurant-demo.onrender.com/menu/1/"
+      ],
+      "robots": "index, follow",
+      "h1_count": 1,
+      "schema_types": [
+        "WebSite",
+        "Restaurant",
+        "BreadcrumbList",
+        "MenuItem"
+      ],
+      "og_image": "https://smart-restaurant-demo.onrender.com/static/Image/supbaonguhaisam.3a400a6c30d3.jpg",
+      "twitter_card": "summary_large_image"
+    }
+  ]
+}

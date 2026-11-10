@@ -1,0 +1,1872 @@
+{
+  "environment": "local clean checkout 20d0929; DEBUG=false; Daphne",
+  "asset_count": 233,
+  "http_200_count": 233,
+  "correct_mime_count": 233,
+  "assets": [
+    {
+      "source": "Image/Bia Heineken.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Bia Sapporo.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Bào ngư hấp tỏi.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Bánh Lava sô-cô-la.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Bánh Tiramisu.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Bít tết bò Ribeye sốt nấm.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Champagne (18+).jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Chim câu quay mật ong.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Cognac.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Cá chẽm hấp kiểu Hồng Kông.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Cá hồi áp chảo sốt chanh dây.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Cá mú hấp xì dầu Hồng Kông.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Cá tuyết nướng sốt Miso.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Cơm chiên hải sản sốt XO.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Mì xào hải sản kiểu Hồng Kông.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Nước khoáng Evian.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Nước khoáng có ga San Pellegrino.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Rượu vang trắng Chardonnay.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Rượu vang đỏ Bordeaux.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Rượu vang đỏ Cabernet Sauvignon.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Sashimi cá ngừ đại dương.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Sườn bò hầm sốt vang.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Sườn cừu nướng thảo mộc.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Thăn bò áp chảo sốt tiêu xanh.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Tu hài nướng mỡ hành.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Tôm càng xanh nướng bơ tỏi.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Vi cá hầm thịt cua.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Whisky Scotch.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Xôi cua hoàng kim.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/bachtuocsotcay.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/baongusotdauhao.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/cuarangsottrungmuoi.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/cuasottieuden.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/goicahoi.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/goisodiep.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/haisamhamnam.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/haunuongphomai.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/matcangu.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/sodiepsotbo.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/supbaonguhaisam.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/supcuatuyet.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/tomhumphomai.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/tomhumsotbotoi.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Ốc hương rang muối Hồng Kông.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "Image/Ức vịt áp chảo sốt cam.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/autocomplete.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/base.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/changelists.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/dark_mode.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/dashboard.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/forms.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/login.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/nav_sidebar.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/responsive.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/responsive_rtl.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/rtl.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/style.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/unusable_password_field.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/vendor/select2/LICENSE-SELECT2.md",
+      "status": 200,
+      "mime": "text/markdown",
+      "expected_mime": "text/markdown",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/vendor/select2/select2.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/vendor/select2/select2.min.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/css/widgets.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/README.md",
+      "status": 200,
+      "mime": "text/markdown",
+      "expected_mime": "text/markdown",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/calendar-icons.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-addlink.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-alert-dark.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-alert.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-calendar.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-changelink.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-clock.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-debug-dark.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-debug.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-deletelink.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-hidelink.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-info-dark.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-info.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-no-dark.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-no.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-unknown-alt.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-unknown.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-viewlink.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-yes-dark.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/icon-yes.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/inline-delete.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/search.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/selector-icons.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/sorting-icons.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/tooltag-add.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/img/tooltag-arrowright.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/SelectBox.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/SelectFilter2.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/actions.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/admin/DateTimeShortcuts.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/admin/RelatedObjectLookups.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/autocomplete.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/calendar.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/cancel.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/change_form.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/core.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/filters.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/inlines.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/jquery.init.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/main.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/nav_sidebar.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/popup_response.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/prepopulate.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/prepopulate_init.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/realtime.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/theme.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/urlify.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/jquery/LICENSE.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "expected_mime": "text/plain",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/jquery/jquery.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/jquery/jquery.min.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/LICENSE.md",
+      "status": 200,
+      "mime": "text/markdown",
+      "expected_mime": "text/markdown",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/af.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ar.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/az.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/bg.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/bn.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/bs.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ca.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/cs.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/da.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/de.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/dsb.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/el.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/en.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/es.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/et.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/eu.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/fa.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/fi.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/fr.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/gl.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/he.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/hi.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/hr.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/hsb.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/hu.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/hy.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/id.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/is.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/it.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ja.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ka.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/km.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ko.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/lt.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/lv.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/mk.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ms.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/nb.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ne.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/nl.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/pl.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ps.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/pt-BR.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/pt.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ro.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/ru.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/sk.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/sl.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/sq.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/sr-Cyrl.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/sr.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/sv.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/th.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/tk.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/tr.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/uk.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/vi.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/zh-CN.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/i18n/zh-TW.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/select2.full.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/select2/select2.full.min.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/xregexp/LICENSE.txt",
+      "status": 200,
+      "mime": "text/plain",
+      "expected_mime": "text/plain",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/xregexp/xregexp.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "admin/js/vendor/xregexp/xregexp.min.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ai/ai.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ai/assistant.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ai/assistant.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ai/face-flow.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ai/face-guide.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ai/face-realtime.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ai/face-realtime.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ai/face-ui-vi.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/css/payment.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/css/responsive.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/css/style.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/images/salmon.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/images/steak.jpg",
+      "status": 200,
+      "mime": "image/jpeg",
+      "expected_mime": "image/jpeg",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/js/booking.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/js/cart.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/js/chat.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/js/chatbot.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "customer/js/main.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "location/maps.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/booking-deposit.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/booking-deposit.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/booking-workspace.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/customer-booking.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/dashboard.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/design-system.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/favicon.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/images/botanical-floor.png",
+      "status": 200,
+      "mime": "image/png",
+      "expected_mime": "image/png",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/images/dish-placeholder.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "expected_mime": "image/svg+xml",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/images/garden-restaurant-hero.png",
+      "status": 200,
+      "mime": "image/png",
+      "expected_mime": "image/png",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/images/garden-restaurant-hero.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "expected_mime": "image/webp",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/inventory-updates.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/operations.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/pos.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/premium.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/premium.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/product-polish.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/product.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/reference-match.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/reference.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/reports.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/staff-pos.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/staff-refinements.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/staff.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/staff.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/structure-layout.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "ui/workspace.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "vendor/leaflet/LICENSE",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "expected_mime": "application/octet-stream",
+      "mime_ok": true,
+      "immutable": false
+    },
+    {
+      "source": "vendor/leaflet/images/layers-2x.png",
+      "status": 200,
+      "mime": "image/png",
+      "expected_mime": "image/png",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "vendor/leaflet/images/layers.png",
+      "status": 200,
+      "mime": "image/png",
+      "expected_mime": "image/png",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "vendor/leaflet/images/marker-icon-2x.png",
+      "status": 200,
+      "mime": "image/png",
+      "expected_mime": "image/png",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "vendor/leaflet/images/marker-icon.png",
+      "status": 200,
+      "mime": "image/png",
+      "expected_mime": "image/png",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "vendor/leaflet/images/marker-shadow.png",
+      "status": 200,
+      "mime": "image/png",
+      "expected_mime": "image/png",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "vendor/leaflet/leaflet.css",
+      "status": 200,
+      "mime": "text/css",
+      "expected_mime": "text/css",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "vendor/leaflet/leaflet.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "expected_mime": "text/javascript",
+      "mime_ok": true,
+      "immutable": true
+    },
+    {
+      "source": "vendor/leaflet/manifest.json",
+      "status": 200,
+      "mime": "application/json",
+      "expected_mime": "application/json",
+      "mime_ok": true,
+      "immutable": true
+    }
+  ]
+}

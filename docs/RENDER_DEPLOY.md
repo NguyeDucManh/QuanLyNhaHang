@@ -16,10 +16,12 @@ Build logs và Events để đối chiếu commit trước khi sửa cấu hình
 # Build Command
 bash build.sh
 # Start Command (một process ASGI; Render mở rộng biến PORT)
-daphne -b 0.0.0.0 -p "$PORT" restaurant_system.asgi:application
+daphne -b 0.0.0.0 -p $PORT restaurant_system.asgi:application
 ```
 
-Python local đã kiểm tra: 3.14.8. Chọn runtime tương thích các phiên bản khóa trong requirements;
+Python local đã kiểm tra: 3.14.8; `.python-version` khóa cùng phiên bản cho Render.
+Nếu Dashboard có `PYTHON_VERSION`, biến đó ưu tiên hơn file: đặt 3.14.8 hoặc bỏ biến để dùng file.
+`.gitattributes` giữ LF cho build.sh khi làm việc trên Windows.
 chưa có kết quả cài sạch Linux/Render nên phải kiểm tra build log, wheel availability và disk/RAM thực tế.
 `requirements-production.txt` bao gồm requirements gốc, WhiteNoise và Redis backend.
 Build chỉ cài dependency, system check và collectstatic; lỗi manifest làm build dừng.
@@ -39,6 +41,7 @@ Static dùng `STORAGES` và WhiteNoise ngay sau SecurityMiddleware; collectstati
 | Cọc | `BOOKING_DEPOSIT_REQUIRED`, `BOOKING_DEPOSIT_TYPE`, `BOOKING_DEPOSIT_VALUE`, `BOOKING_DEPOSIT_MINIMUM`, `BOOKING_DEPOSIT_TIMEOUT_MINUTES` |
 | Chính sách có sẵn | `BOOKING_HOLD_MINUTES`, `FACEID_DEFAULT_THRESHOLD`, `FACEID_REQUIRE_LIVENESS`, `LOYALTY_VND_PER_POINT`, `FOOD_COST_WARNING_PERCENT` |
 | Kiểm thử riêng | `DB_TEST_NAME` |
+| SEO | `SEO_SITE_URL`, `SEO_INDEXING_ENABLED`, `GOOGLE_SITE_VERIFICATION` |
 
 Render bắt buộc `DJANGO_DEBUG=false` (code từ chối true trên Render).
 Tạo SECRET_KEY ngẫu nhiên đủ mạnh trong hệ quản lý bí mật; không ghi vào Git hoặc log.

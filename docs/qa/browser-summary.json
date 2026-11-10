@@ -1,0 +1,394 @@
+{
+  "admin": {
+    "context": "read-only HTML snapshot, not authenticated browser E2E",
+    "measurements": [
+      {
+        "width": 320,
+        "scrollWidth": 305,
+        "font": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 375,
+        "scrollWidth": 360,
+        "font": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 390,
+        "scrollWidth": 375,
+        "font": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 768,
+        "scrollWidth": 753,
+        "font": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 1024,
+        "scrollWidth": 1009,
+        "font": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "font": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      }
+    ],
+    "javascript_errors": [],
+    "failed_assets": []
+  },
+  "booking-login-redirect": {
+    "context": "public HTTP browser check",
+    "measurements": [
+      {
+        "width": 320,
+        "scrollWidth": 305,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 375,
+        "scrollWidth": 360,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 390,
+        "scrollWidth": 375,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 768,
+        "scrollWidth": 753,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1024,
+        "scrollWidth": 1009,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1425,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      }
+    ],
+    "javascript_errors": [],
+    "failed_assets": []
+  },
+  "cart": {
+    "context": "public HTTP browser check",
+    "measurements": [
+      {
+        "width": 320,
+        "scrollWidth": 305,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 375,
+        "scrollWidth": 360,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 390,
+        "scrollWidth": 375,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 768,
+        "scrollWidth": 768,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1024,
+        "scrollWidth": 1024,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      }
+    ],
+    "javascript_errors": [],
+    "failed_assets": []
+  },
+  "home": {
+    "context": "public HTTP browser check",
+    "measurements": [
+      {
+        "width": 320,
+        "scrollWidth": 305,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": "20"
+      },
+      {
+        "width": 375,
+        "scrollWidth": 360,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": "20"
+      },
+      {
+        "width": 390,
+        "scrollWidth": 375,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": "20"
+      },
+      {
+        "width": 768,
+        "scrollWidth": 753,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": "20"
+      },
+      {
+        "width": 1024,
+        "scrollWidth": 1024,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": "20"
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": "20"
+      }
+    ],
+    "javascript_errors": [],
+    "failed_assets": []
+  },
+  "login": {
+    "context": "public HTTP browser check",
+    "measurements": [
+      {
+        "width": 320,
+        "scrollWidth": 305,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 375,
+        "scrollWidth": 360,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 390,
+        "scrollWidth": 375,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 768,
+        "scrollWidth": 753,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1024,
+        "scrollWidth": 1009,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1425,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      }
+    ],
+    "javascript_errors": [],
+    "failed_assets": []
+  },
+  "menu": {
+    "context": "public HTTP browser check",
+    "measurements": [
+      {
+        "width": 320,
+        "scrollWidth": 305,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 375,
+        "scrollWidth": 360,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 390,
+        "scrollWidth": 375,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 768,
+        "scrollWidth": 753,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1024,
+        "scrollWidth": 1009,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1425,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      }
+    ],
+    "javascript_errors": [],
+    "failed_assets": []
+  },
+  "register": {
+    "context": "public HTTP browser check",
+    "measurements": [
+      {
+        "width": 320,
+        "scrollWidth": 305,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 375,
+        "scrollWidth": 360,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 390,
+        "scrollWidth": 375,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 768,
+        "scrollWidth": 753,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1024,
+        "scrollWidth": 1009,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1425,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": true,
+        "guestMax": null
+      }
+    ],
+    "javascript_errors": [],
+    "failed_assets": []
+  },
+  "staff": {
+    "context": "read-only HTML snapshot, not authenticated browser E2E",
+    "measurements": [
+      {
+        "width": 320,
+        "scrollWidth": 305,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 375,
+        "scrollWidth": 360,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 390,
+        "scrollWidth": 375,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 768,
+        "scrollWidth": 753,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 1024,
+        "scrollWidth": 1024,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "font": "\"Segoe UI\", Arial, sans-serif",
+        "mobileMenuToggle": null,
+        "guestMax": null
+      }
+    ],
+    "javascript_errors": [],
+    "failed_assets": []
+  }
+}

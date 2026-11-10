@@ -1,5 +1,31 @@
 # Kết quả QA Render — 10/11/2026
 
+## Cập nhật kiểm thử đúng mã Pull Request
+
+Đã kiểm tra lại trên checkout sạch của nhánh `fix/render-production-readiness`, tách khỏi
+các thay đổi có sẵn chưa commit trong workspace. Nhánh sửa đã được push lên đúng repository
+`NguyeDucManh/QuanLyNhaHang`; chưa merge hoặc triển khai production.
+
+- Full suite tại commit `20d0929`: **606/606 PASS**, 493.892 giây, PostgreSQL test riêng, hai worker.
+- Commit cuối phần code `a4e04c4`: **26/26 test tập trung PASS** sau khi đồng bộ HTML max khách=20
+  với quy tắc server hiện hữu; Chrome xác nhận max=20 và responsive không tràn ngang.
+- **233/233 static assets** của checkout sạch trả HTTP200 đúng MIME khi DEBUG=false/Daphne.
+- System check, migration drift check, collectstatic và pip check qua; deploy check vẫn còn
+  W005/W009/W021 đã giải thích ở báo cáo trước. Không có migration mới hoặc ghi dữ liệu production.
+- Home/menu/detail thật/robots/sitemap và các trang công khai kiểm tra đều 200 local;
+  private routes có noindex và giữ nguyên xác thực/CSRF/RBAC.
+- Browser kiểm tra home/menu/login/register/cart, redirect booking và snapshot admin/staff tại
+  320/375/390/768/1024/1440px: không tràn ngang, không lỗi JS. Booking có xác thực và thao tác ghi
+  admin/staff chưa có browser E2E production; snapshot không thay thế luồng tương tác thực.
+
+Chi tiết bổ sung SEO, kết quả Lighthouse local, lỗi placeholder schema đã phát hiện/sửa,
+và thao tác chủ tài khoản: [SEO_DEPLOY_QA.md](SEO_DEPLOY_QA.md).
+Bằng chứng có trong repository: [static HTTP](qa/static-http.json),
+[browser](qa/browser-summary.json), [metadata/sitemap HTTP](qa/seo-http.json).
+
+Các mục tiếp theo là báo cáo lịch sử của lần sửa đầu, giữ nguyên nguồn gốc số đếm 616/235
+trên workspace cũ; dùng số đếm 606/233 ở trên khi đánh giá mã sạch trong PR.
+
 ## Phạm vi và bằng chứng
 
 Đã sửa và kiểm tra bản local. **Chưa deploy lên Render**; chưa truy cập Dashboard Render/Stripe,
