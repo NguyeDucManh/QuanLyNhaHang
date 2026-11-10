@@ -10,6 +10,7 @@ from django.utils.html import strip_tags
 from django.utils.safestring import mark_safe
 from django.views.decorators.http import require_safe
 from .models import MenuItem
+from .operational_labels import MARKER, operational_text
 
 
 PUBLIC_PAGES = {
@@ -95,7 +96,8 @@ def robots(request):
 
 
 def clean(value, limit=160):
-    return ' '.join(strip_tags(str(value or '')).split())[:limit]
+    text = operational_text(' '.join(strip_tags(str(value or '')).split()))
+    return '' if text in ('Chưa cập nhật', 'Hồ sơ cần xác nhận') else text[:limit]
 
 
 def menu_schema(dish):
@@ -128,16 +130,16 @@ def metadata(context):
         graph.append({'@type': 'WebSite', '@id': absolute('/#website'), 'url': absolute('/'),
                       'name': 'Smart Restaurant', 'inLanguage': 'vi-VN'})
         info = context.get('footer_restaurant')
-        if info and info.name.strip():
+        if info and clean(info.name) and not MARKER.search(info.name):
             restaurant = {'@type': 'Restaurant', '@id': absolute('/#restaurant'), 'url': absolute('/'),
                           'name': clean(info.name, 150), 'hasMenu': absolute(reverse('customer_menu'))}
             # Only fields actually rendered by the public footer/about page; no made-up ratings/hours.
-            if info.address.strip():
+            if clean(info.address):
                 restaurant['address'] = clean(info.address, 500)
-            if info.phone.strip():
+            if clean(info.phone):
                 restaurant['telephone'] = clean(info.phone, 30)
-            if info.email.strip():
-                restaurant['email'] = info.email
+            if clean(info.email):
+                restaurant['email'] = clean(info.email)
             graph.append(restaurant)
         crumbs = [{'@type': 'ListItem', 'position': 1, 'name': 'Trang chủ', 'item': absolute('/')}]
         if dish:

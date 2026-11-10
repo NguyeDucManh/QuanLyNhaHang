@@ -90,6 +90,17 @@ class SEOTests(TestCase):
         RestaurantInfo.objects.update(is_active=False)
         self.assertFalse(any(row['@type'] == 'Restaurant' for row in head(self.client.get('/'))['graph']))
 
+    def test_placeholder_restaurant_contacts_never_enter_schema(self):
+        RestaurantInfo.objects.update(name='Nhà hàng DEMO', address='123 Đường DEMO', phone='0000000000', email='demo@restaurant.example')
+        data = head(self.client.get('/'))
+        self.assertFalse(any(row['@type'] == 'Restaurant' for row in data['graph']))
+        self.assertNotIn('demo@', json.dumps(data['graph']))
+        RestaurantInfo.objects.update(name='Nhà hàng có tên thật')
+        info = next(row for row in head(self.client.get('/'))['graph'] if row['@type'] == 'Restaurant')
+        self.assertNotIn('email', info)
+        self.assertNotIn('telephone', info)
+        self.assertNotIn('address', info)
+
     def test_canonical_ignores_host_and_query_variants_are_noindex(self):
         with override_settings(ALLOWED_HOSTS=['testserver', 'alternate.example']):
             response = self.client.get('/menu/?q=secret&from=booking', HTTP_HOST='alternate.example')
