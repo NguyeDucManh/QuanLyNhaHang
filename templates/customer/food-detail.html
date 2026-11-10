@@ -2,9 +2,9 @@
 {% block title %}{{ dish.name }} | Smart Restaurant{% endblock %}
 {% block content %}
 <section class="container section">
-<a class="text-link" href="{% url 'customer_menu' %}{% if booking_menu %}?from=booking{% endif %}">← Thực đơn</a>
+<nav aria-label="Đường dẫn trang"><a class="text-link" href="{% url 'customer_home' %}">Trang chủ</a> / <a class="text-link" href="{% url 'customer_menu' %}{% if booking_menu %}?from=booking{% endif %}">Thực đơn</a> / <span aria-current="page">{{ dish.name }}</span></nav>
 <div class="booking-layout">
-<img class="detail-image" src="{{ dish.image }}" alt="{{ dish.name }}">
+<img class="detail-image" src="{{ dish.image }}" alt="{{ dish.name }}" width="640" height="480" fetchpriority="high" decoding="async">
 <div class="form-card"><p class="eyebrow">{{ dish.category_label }}</p><h1>{{ dish.name }}</h1><p>{{ dish.status }}</p>{% if dish.description %}<p>{{ dish.description }}</p>{% endif %}<h2>{{ dish.price_display }}</h2>
 {% if dish.price == None %}<p>Vui lòng liên hệ nhà hàng để biết giá.</p>{% endif %}
 {% if recipe_summary %}<details><summary>Nguyên liệu trong công thức</summary><p>{% for line in recipe_summary %}{{ line.ingredient.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p><p class="help-text">Nếu có dị ứng, hãy trao đổi với nhân viên khi đặt món.</p></details>{% endif %}

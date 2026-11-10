@@ -1,0 +1,19 @@
+<meta name="description" content="{{ seo.description }}">
+{% if seo.is_home and seo.google_verification %}<meta name="google-site-verification" content="{{ seo.google_verification }}">{% endif %}
+<meta name="robots" content="{{ seo.robots }}">
+{% if seo.canonical %}<link rel="canonical" href="{{ seo.canonical }}">{% endif %}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Smart Restaurant">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="{{ seo.title }}">
+<meta property="og:description" content="{{ seo.description }}">
+{% if seo.canonical %}<meta property="og:url" content="{{ seo.canonical }}">{% endif %}
+<meta property="og:image" content="{{ seo.image }}">
+<meta property="og:image:alt" content="{{ seo.image_alt }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo.title }}">
+<meta name="twitter:description" content="{{ seo.description }}">
+<meta name="twitter:image" content="{{ seo.image }}">
+<meta name="twitter:image:alt" content="{{ seo.image_alt }}">
+{% if seo.json_ld %}<script type="application/ld+json">{{ seo.json_ld }}</script>{% endif %}
+{% if seo.is_home %}{% load static %}<link rel="preload" as="image" href="{% static 'ui/images/garden-restaurant-hero.webp' %}" fetchpriority="high">{% endif %}
