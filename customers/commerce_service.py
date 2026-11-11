@@ -45,6 +45,8 @@ def combo_values(combo_id,quantity):
 
 @transaction.atomic
 def add_combo_to_order(order_id,combo_id,quantity,*,actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     if not has_capability(actor,'customers.change_order') or not has_capability(actor,'customers.add_orderitem'): raise PermissionDenied
     from .order_service import active_order,recalculate_totals
     order=active_order(order_id)
@@ -84,6 +86,8 @@ def discount_for(snapshot,subtotal):
 
 @transaction.atomic
 def apply_voucher(order_id,code,*,actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     order=Order.objects.select_for_update().get(pk=order_id)
     if order.customer_id!=actor.pk and not has_capability(actor,'customers.change_order'): raise PermissionDenied
     if not actor.is_active or order.status!='PENDING': raise ValidationError('Chỉ áp dụng voucher cho đơn đang chờ xác nhận.')
@@ -102,6 +106,8 @@ def apply_voucher(order_id,code,*,actor):
 
 @transaction.atomic
 def add_toppings_to_line(order_id,line_id,ids,*,actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     if not has_capability(actor,'customers.change_order') or not has_capability(actor,'customers.change_orderitem'): raise PermissionDenied
     order=Order.objects.select_for_update().get(pk=order_id)
     line=OrderItem.objects.select_for_update().get(pk=line_id,order=order)

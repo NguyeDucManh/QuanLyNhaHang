@@ -24,6 +24,23 @@ TRANSITION_LABELS = {'CONFIRMED':'Xác nhận đơn','PREPARING':'Chuyển sang 
 ACTIVE_ORDER_STATUSES = (Order.Status.PENDING, Order.Status.CONFIRMED, Order.Status.PREPARING)
 
 
+def lock_service_order(order_id):
+    """Area -> Table -> Booking -> Order for mutations that may call transitions."""
+    snapshot=Order.objects.get(pk=order_id)
+    if snapshot.table_id:
+        from .booking_service import lock_areas
+        lock_areas()
+        RestaurantTable.objects.select_for_update().get(pk=snapshot.table_id)
+    if snapshot.booking_id:Booking.objects.select_for_update().get(pk=snapshot.booking_id)
+    order=Order.objects.select_for_update().get(pk=order_id)
+    from .table_session_service import enabled
+    if enabled() and order.table_id:
+        from .models import TableSession
+        if TableSession.objects.filter(order=order,ended_at__isnull=False).exists():raise ValidationError('Phiên bàn đã kết thúc; không gửi/chế biến thêm món.')
+    if (order.table_id,order.booking_id)!=(snapshot.table_id,snapshot.booking_id):raise ValidationError('Bàn/booking vừa thay đổi, tải lại đơn.')
+    return order
+
+
 @with_actor
 @transaction.atomic
 def create_order(*, actor, items, request_key, customer=None, table=None, order_type=Order.Type.TAKEAWAY, discount_amount=0, note=''):
@@ -40,9 +57,19 @@ def create_order(*, actor, items, request_key, customer=None, table=None, order_
     if order_type not in Order.Type.values:
         raise ValidationError('Hình thức đặt món không hợp lệ.')
     if order_type==Order.Type.DINE_IN:
+        from .booking_service import lock_areas, overlaps
+        from .table_session_service import busy
+        from .service_scope import require_table
+        from django.utils import timezone
+        from django.conf import settings
+        lock_areas()
         table=RestaurantTable.objects.select_for_update(of=('self',)).select_related('area').filter(pk=getattr(table,'pk',None)).first()
         if not table or not table.is_active or not table.area.is_active or table.status==RestaurantTable.Status.MAINTENANCE:
             raise ValidationError('Bàn không phù hợp để tạo đơn.')
+        require_table(actor,table.pk)
+        now=timezone.now()
+        if busy(table) or overlaps(table.pk,now,now+timezone.timedelta(minutes=settings.DEFAULT_BOOKING_DURATION_MINUTES)):
+            raise ValidationError('Bàn đang sử dụng hoặc có lịch đặt giao nhau; chọn bàn khác.')
     elif table is not None:
         raise ValidationError('Đơn mang đi không gán bàn.')
     requested={}
@@ -82,6 +109,9 @@ def create_order(*, actor, items, request_key, customer=None, table=None, order_
     for line in lines:
         line.order=order
         save_validated(line)
+    if table:
+        from .table_session_service import start
+        start(table,order=order)
     notify_order_changed(order.pk)
     return order
 
@@ -89,7 +119,13 @@ def create_order(*, actor, items, request_key, customer=None, table=None, order_
 @with_actor
 @transaction.atomic
 def transition_order(order_id,new_status,*,actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     require_actor(actor, 'change_order')
+    from .table_session_service import enabled
+    if enabled() and new_status!='CANCELLED':
+        from .models import TableSession
+        if TableSession.objects.filter(order_id=order_id,ended_at__isnull=False).exists():raise ValidationError('Phiên phục vụ đã kết thúc; cần quản lý đối soát đơn treo.')
     snapshot=Order.objects.get(pk=order_id)
     table=None;booking=None
     if snapshot.table_id:
@@ -123,11 +159,7 @@ def transition_order(order_id,new_status,*,actor):
             raise ValidationError('Chỉ hoàn thành đơn có ít nhất một món và tất cả món chưa hủy đã làm xong.')
     order.status=new_status
     save_validated(order)
-    if new_status==Order.Status.COMPLETED:
-        if booking and booking.status==Booking.Status.CONFIRMED:
-            booking.status=Booking.Status.COMPLETED;booking.save(update_fields=['status'])
-        if table and table.status==RestaurantTable.Status.OCCUPIED and not Order.objects.filter(table=table,status__in=ACTIVE_ORDER_STATUSES).exists():
-            table.status=RestaurantTable.Status.AVAILABLE;table.save(update_fields=['status'])
+    # COMPLETED means the order is ready for invoicing, never that guests left.
     notify_order_changed(order.pk)
     return order
 
@@ -140,6 +172,8 @@ def open_order_from_booking(booking_id, *, actor):
     # Same lock order as allocation/cancellation: Area -> Table -> Booking -> Order.
     from .booking_service import lock_areas
     areas = lock_areas()
+    from .service_scope import require_booking
+    require_booking(actor,booking_id)
     snapshot = Booking.objects.get(pk=booking_id)
     table = RestaurantTable.objects.select_for_update().get(pk=snapshot.table_id) if snapshot.table_id else None
     booking = Booking.objects.select_for_update().get(pk=booking_id)
@@ -162,6 +196,11 @@ def open_order_from_booking(booking_id, *, actor):
         raise ValidationError('Booking cần có bàn và khu vực đang phục vụ.')
     if table.capacity < booking.guests:
         raise ValidationError('Bàn không đủ sức chứa cho Booking.')
+    from .table_session_service import enabled, busy, start
+    from .models import BookingVisit
+    if enabled() and not BookingVisit.objects.filter(booking=booking,state='CHECKED_IN').exists():
+        raise ValidationError('Cần ghi nhận khách đã đến trước khi mở đơn.')
+    if enabled() and busy(table,exclude_booking=booking.pk):raise ValidationError('Bàn đang có phiên phục vụ khác chưa trả bàn.')
     from .table_availability import blocking_orders
     if blocking_orders(booking.start_time,booking.end_time).filter(table=table).exists():
         raise ValidationError('Bàn đang có đơn phục vụ chưa hoàn thành; không mở trùng bàn.')
@@ -176,6 +215,7 @@ def open_order_from_booking(booking_id, *, actor):
         from .commerce_service import apply_voucher
         apply_voucher(order.pk,booking.promotion_code,actor=actor)
         order.refresh_from_db()
+    start(table,booking=booking,order=order)
     notify_order_changed(order.pk)
     return order
 
@@ -194,6 +234,10 @@ def recalculate_totals(order):
 
 def active_order(order_id):
     order = Order.objects.select_for_update().get(pk=order_id)
+    from .table_session_service import enabled
+    if enabled():
+        from .models import TableSession
+        if TableSession.objects.filter(order=order,ended_at__isnull=False).exists():raise ValidationError('Phiên bàn đã kết thúc; không thêm/sửa món.')
     if order.status not in ACTIVE_ORDER_STATUSES:
         raise ValidationError('Đơn đã kết thúc; không thể thay đổi món.')
     return order
@@ -207,6 +251,8 @@ def validate_quantity(quantity):
 @with_actor
 @transaction.atomic
 def add_order_item(order_id, *, actor, menu_item_id, quantity, note='', toppings=None):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     require_actor(actor, 'change_order')
     require_actor(actor, 'add_orderitem')
     order = active_order(order_id)
@@ -228,6 +274,8 @@ def add_order_item(order_id, *, actor, menu_item_id, quantity, note='', toppings
 @with_actor
 @transaction.atomic
 def update_order_item(order_id, item_id, *, actor, quantity):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     require_actor(actor, 'change_order')
     require_actor(actor, 'change_orderitem')
     order = active_order(order_id)
@@ -255,6 +303,8 @@ def update_order_item(order_id, item_id, *, actor, quantity):
 @with_actor
 @transaction.atomic
 def remove_order_item(order_id, item_id, *, actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     require_actor(actor, 'change_order')
     require_actor(actor, 'change_orderitem')
     order = active_order(order_id)

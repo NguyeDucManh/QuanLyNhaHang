@@ -28,7 +28,10 @@ def board(request):
     if request.GET.get('assigned')=='mine':tables=[t for t in tables if t.pk in own_ids]
     ids=[t.pk for t in tables]
     can_orders=has_capability(request.user,'customers.view_order')
-    order_query=Order.objects.exclude(status__in=['COMPLETED','CANCELLED'])
+    from .service_scope import orders as scoped_orders
+    order_query=scoped_orders(request.user).exclude(status__in=['COMPLETED','CANCELLED'])
+    from .table_session_service import enabled as lifecycle_enabled
+    if lifecycle_enabled():order_query=order_query.exclude(table_session__ended_at__isnull=False)
     if not global_tables:order_query=order_query.filter(table_id__in=ids)
     orders=list(order_query.select_related('customer','booking','table').prefetch_related('items__menu_item')) if can_orders else []
     can_details=has_capability(request.user,'customers.view_booking')
@@ -49,22 +52,33 @@ def board(request):
     counts=dict.fromkeys(['AVAILABLE','UPCOMING','RESERVED','OCCUPIED','MAINTENANCE','INACTIVE'],0)
     by_assignment={a.table_id:a for a in assignments}
     by_order={o.table_id:o for o in reversed(orders) if not selected_at and (not o.booking_id or o.booking.start_time<=now+timezone.timedelta(hours=1))}
+    from .table_session_service import enabled as lifecycle_enabled
+    sessions={}
+    if lifecycle_enabled() and not selected_at:
+        from .models import TableSession
+        sessions={s.table_id:s for s in TableSession.objects.filter(table_id__in=ids,ended_at__isnull=True).select_related('order')}
+        visible_session_orders=set(scoped_orders(request.user).filter(pk__in=[s.order_id for s in sessions.values() if s.order_id]).values_list('pk',flat=True)) if can_orders else set()
+        for table_id,session in sessions.items():
+            if session.order_id in visible_session_orders:by_order[table_id]=session.order
     rows=[]
+    from .models import BookingVisit
+    arrived_ids=set(BookingVisit.objects.filter(booking_id__in=[b.pk for b in current],state='CHECKED_IN').values_list('booking_id',flat=True)) if lifecycle_enabled() else None
     for b in timeline:
         deposit=getattr(b,'deposit',None)
         hold='Không yêu cầu cọc' if deposit is None else deposit.get_status_display()
         if b.status=='PENDING_DEPOSIT' and not active(b):hold='Giữ chỗ hết hạn/không còn hiệu lực; không giữ bàn'
         table=next((t for t in tables if t.pk==b.table_id),None)
         allowed_open=has_capability(request.user,'customers.add_order') and has_capability(request.user,'customers.add_orderitem') and (not enabled() or get_role(request.user)!='STAFF' or b.table_id in own_ids)
-        rows.append({'booking':safe(b),'table':table,'table_id':b.table_id,'status_label':b.get_status_display(),'deposit_label':hold,'active_hold':active(b) and b.end_time>now,'can_open':not selected_at and allowed_open and b.status=='CONFIRMED' and b.start_time<=actual_now<b.end_time})
+        rows.append({'booking':safe(b),'table':table,'table_id':b.table_id,'status_label':b.get_status_display(),'deposit_label':hold,'active_hold':active(b) and b.end_time>now,'can_open':not selected_at and (arrived_ids is None or b.pk in arrived_ids) and allowed_open and b.status=='CONFIRMED' and b.start_time<=actual_now<b.end_time})
     for table in tables:
         live=next((b for b in current if b.table_id==table.pk and active(b)),None)
         future=next((b for b in upcoming if b.table_id==table.pk and active(b)),None)
         table.live_order=by_order.get(table.pk);table.live_booking=safe(live) if live else None
         table.upcoming_booking=safe(future) if future else None
         table.service_assignment=by_assignment.get(table.pk)
-        table.can_open_booking=bool(not selected_at and live and live.status=='CONFIRMED' and has_capability(request.user,'customers.add_order') and has_capability(request.user,'customers.add_orderitem') and (not enabled() or get_role(request.user)!='STAFF' or table.pk in own_ids))
-        table.visual_status=('INACTIVE' if not table.is_active or not table.area.is_active else 'MAINTENANCE' if table.status=='MAINTENANCE' else 'OCCUPIED' if table.live_order or (not selected_at and table.status=='OCCUPIED') else 'RESERVED' if live else 'UPCOMING' if future else 'AVAILABLE')
+        arrived=bool(live and live.pk in arrived_ids) if arrived_ids is not None else True
+        table.can_open_booking=bool(not selected_at and arrived and live and live.status=='CONFIRMED' and has_capability(request.user,'customers.add_order') and has_capability(request.user,'customers.add_orderitem') and (not enabled() or get_role(request.user)!='STAFF' or table.pk in own_ids))
+        table.visual_status=('INACTIVE' if not table.is_active or not table.area.is_active else 'MAINTENANCE' if table.status=='MAINTENANCE' else 'OCCUPIED' if table.live_order or table.pk in sessions or (not selected_at and table.status=='OCCUPIED') else 'RESERVED' if live else 'UPCOMING' if future else 'AVAILABLE')
         table.visual_label={'INACTIVE':'Ngừng hoạt động','MAINTENANCE':'Bảo trì','OCCUPIED':'Đang phục vụ','RESERVED':'Đang giữ/đã đặt trong khung giờ','UPCOMING':'Có đặt trước','AVAILABLE':'Trống hiện tại'}[table.visual_status]
         table.current_guests=live.guests if live else None;table.service_elapsed=''
         reservation=live or future

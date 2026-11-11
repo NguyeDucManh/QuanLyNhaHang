@@ -1,4 +1,5 @@
-﻿"""Server-rendered Admin Area/Table/Booking pages using the existing Admin shell."""
+from . import service_scope as service_scope
+"""Server-rendered Admin Area/Table/Booking pages using the existing Admin shell."""
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
@@ -29,7 +30,7 @@ def areas(request):
 @capability_required('customers.view_restauranttable')
 def tables(request):
     query = request.GET.get('q', '').strip()
-    rows = RestaurantTable.objects.select_related('area').filter(code__icontains=query)
+    rows = service_scope.tables(request.user).select_related('area').filter(code__icontains=query)
     return render(request, 'admin/restaurant/tables.html', {
         'pagination': page_context(request, rows), 'query': query, 'admin_page': 'tables',
         'can_add': has_capability(request.user, 'customers.add_restauranttable'),
@@ -38,6 +39,9 @@ def tables(request):
 
 
 def edit_resource(request, *, model, form_class, save, pk, permission, page, title, destination):
+    if model in (Area,RestaurantTable) and not service_scope.management(request.user):
+        from django.core.exceptions import PermissionDenied
+        raise PermissionDenied
     if not has_capability(request.user, permission):
         from django.core.exceptions import PermissionDenied
         raise PermissionDenied('Bạn chưa có quyền thay đổi dữ liệu này.')
@@ -99,8 +103,8 @@ def bookings(request):
             else:
                 messages.success(request,'Đã tạo đặt bàn và tự gán bàn phù hợp.')
                 return redirect('admin_bookings')
-    panel=booking_panel(request,Booking.objects.all())
-    upcoming=Booking.objects.select_related('user','table__area','service_order').filter(date__gt=timezone.localdate(),status__in=['PENDING','CONFIRMED','PENDING_DEPOSIT']).order_by('date','time')[:5]
+    panel=booking_panel(request,service_scope.bookings(request.user).all())
+    upcoming=service_scope.bookings(request.user).select_related('user','table__area','service_order').filter(date__gt=timezone.localdate(),status__in=['PENDING','CONFIRMED','PENDING_DEPOSIT']).order_by('date','time')[:5]
     return render(request,'admin/restaurant/bookings.html',{
         **panel,'form':form,'can_add':can_add,'workspace_future':[{'booking':b,'transitions':[]} for b in upcoming],
         'rows':panel['workspace_rows'],'pagination':panel['booking_pagination'],'statuses':Booking.Status.choices,
@@ -111,7 +115,7 @@ def bookings(request):
 
 @capability_required('customers.view_booking')
 def booking_detail(request, pk):
-    booking = get_object_or_404(Booking.objects.select_related('user','table__area','service_order').prefetch_related('preorder_items'), pk=pk)
+    booking = get_object_or_404(service_scope.bookings(request.user).select_related('user','table__area','service_order').prefetch_related('preorder_items'), pk=pk)
     return render(request, 'admin/restaurant/booking-detail.html', {'booking':booking,'admin_page':'bookings',
         'can_open_order':has_capability(request.user,'customers.add_order') and has_capability(request.user,'customers.add_orderitem'),
         'can_view_order':has_capability(request.user,'customers.view_order')})
@@ -120,9 +124,9 @@ def booking_detail(request, pk):
 @capability_required('customers.change_booking')
 @require_POST
 def booking_status(request, pk):
-    get_object_or_404(Booking, pk=pk)
+    get_object_or_404(service_scope.bookings(request.user), pk=pk)
     try:
-        transition_booking(pk, request.POST.get('status', ''))
+        transition_booking(pk, request.POST.get('status', ''),actor=request.user)
     except ValidationError as exc:
         messages.error(request, ' '.join(exc.messages))
     else:

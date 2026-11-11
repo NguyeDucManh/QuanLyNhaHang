@@ -132,6 +132,14 @@ class ServiceAssignmentTests(Module07Fixtures,TestCase):
                 transition_kitchen_item(order.pk,item.pk,'PREPARING',actor=self.staff)
                 transition_kitchen_item(order.pk,item.pk,'READY',actor=self.manager)
             transition_order(order.pk,'COMPLETED',actor=self.staff)
+            b.refresh_from_db();self.assertEqual(b.status,'CONFIRMED')
+            from .payment_service import issue_invoice,create_payment,confirm_payment
+            from .table_session_service import release
+            import uuid
+            invoice=issue_invoice(order.pk,actor=self.admin)
+            payment=create_payment(invoice_id=invoice.pk,actor=self.admin,payment_method='CASH',request_key=uuid.uuid4())
+            confirm_payment(payment.pk,actor=self.admin)
+            release(actor=self.staff,order_id=order.pk,reason='Khách đã rời, bàn được dọn',confirm=True)
             b.refresh_from_db();self.assertEqual(b.status,'COMPLETED')
             self.assertEqual(next(t for t in board(self.request(self.staff))['tables'] if t.pk==b.table_id).visual_status,'AVAILABLE')
             self.assertEqual(Order.objects.count(),1)

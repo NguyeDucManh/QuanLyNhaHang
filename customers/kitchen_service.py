@@ -4,7 +4,7 @@ from django.db import transaction
 from django.utils import timezone
 from .models import Order, OrderItem
 from .business_service import save_validated
-from .order_service import require_actor, recalculate_totals, ACTIVE_ORDER_STATUSES
+from .order_service import require_actor, recalculate_totals, ACTIVE_ORDER_STATUSES, lock_service_order
 from .realtime import notify_order_changed
 
 TRANSITIONS = {
@@ -41,9 +41,11 @@ def queue_drafts(order):
 
 @transaction.atomic
 def send_order_to_kitchen(order_id, *, actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     require_actor(actor, 'change_order')
     require_actor(actor, 'change_orderitem')
-    order = Order.objects.select_for_update().get(pk=order_id)
+    order = lock_service_order(order_id)
     if order.status not in (Order.Status.CONFIRMED, Order.Status.PREPARING):
         raise ValidationError('Xác nhận đơn trước khi gửi món mới vào bếp; đơn kết thúc không thể gửi.')
     count=queue_drafts(order)
@@ -54,9 +56,11 @@ def send_order_to_kitchen(order_id, *, actor):
 
 @transaction.atomic
 def transition_kitchen_item(order_id, item_id, status, *, actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     require_actor(actor, 'change_order')
     require_actor(actor, 'change_orderitem')
-    order = Order.objects.select_for_update().get(pk=order_id)
+    order = lock_service_order(order_id)
     if order.status not in ACTIVE_ORDER_STATUSES:
         raise ValidationError('Đơn đã kết thúc; không thể thao tác bếp.')
     item = OrderItem.objects.select_for_update().filter(pk=item_id, order=order).first()

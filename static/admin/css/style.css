@@ -27,3 +27,5 @@ dialog{border:1px solid #e3e9f2;border-radius:15px;box-shadow:0 25px 90px #14233
 .resource-field select{max-width:100%}
 
 .kitchen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:16px}.kitchen-card{border:1px solid var(--border);border-radius:10px;padding:18px;min-width:0}.kitchen-card-heading{display:flex;justify-content:space-between;gap:10px;align-items:center}.kitchen-card p{line-height:1.7;overflow-wrap:anywhere}.kitchen-card h2{margin:16px 0 10px;line-height:1.5}.kitchen-order-number{display:block;white-space:normal;overflow-wrap:anywhere}.kitchen-card .business-actions{margin-top:16px}
+
+.module-heading{min-width:0;flex-wrap:wrap}.module-heading h1{min-width:0;max-width:100%;overflow-wrap:anywhere}

@@ -2,6 +2,7 @@
 from django.utils import timezone
 from .models import RestaurantTable, Booking, Order
 from .rbac import has_capability
+from .service_scope import orders as scoped_orders
 
 
 def workspace(request):
@@ -29,7 +30,7 @@ def workspace(request):
     return {**{k:v for k,v in state.items() if k.startswith('pos_')}, 'pos_enabled': can_tables, 'pos_tables': tables, 'pos_counts': counts, 'pos_selected': selected,
             'pos_kitchen_orders': kitchen_orders, 'pos_kitchen_counts': kitchen_counts,
             'pos_dishes': catalog, 'pos_categories': categories, 'pos_kitchen': kitchen[:8],
-            'pos_recent': list(Order.objects.filter(**({} if state['global_tables'] else {'table_id__in':[t.pk for t in tables]})).select_related('table').prefetch_related('items').order_by('-created_at')[:4]) if can_orders else [],
+            'pos_recent': list(scoped_orders(request.user).filter(**({} if state['global_tables'] else {'table_id__in':[t.pk for t in tables]})).select_related('table').prefetch_related('items').order_by('-created_at')[:4]) if can_orders else [],
             'pos_areas': list({t.area_id: t.area for t in tables}.values()),
             'pos_orders': orders[:6], 'pos_can_orders': can_orders,
             'pos_can_items': has_capability(request.user, 'customers.view_orderitem'),

@@ -2,8 +2,19 @@ from django.contrib import admin
 from .models import Booking
 
 
+def scoped_queryset(user,queryset):
+    from . import service_scope
+    name=queryset.model.__name__
+    method={'Booking':'bookings','RestaurantTable':'tables','Order':'orders','Invoice':'invoices','Payment':'payments'}.get(name)
+    if method:return getattr(service_scope,method)(user,queryset)
+    if name=='OrderItem':return queryset.filter(order__in=service_scope.orders(user))
+    if name=='BookingItem':return queryset.filter(booking__in=service_scope.bookings(user))
+    return queryset
+
+
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
+    def get_queryset(self,request):return scoped_queryset(request.user,super().get_queryset(request))
     list_display = ('id', 'name', 'phone', 'date', 'start_time', 'end_time', 'guests', 'table', 'status')
     search_fields = ('name', 'phone')
     list_filter = ('date', 'status')
@@ -91,6 +102,7 @@ from .models import Area, RestaurantTable
 
 
 class ReadOnlyResourceAdmin(admin.ModelAdmin):
+    def get_queryset(self,request):return scoped_queryset(request.user,super().get_queryset(request))
     def has_add_permission(self, request):
         return False
 
