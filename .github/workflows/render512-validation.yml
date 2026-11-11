@@ -1,0 +1,52 @@
+name: Render512 actual cgroup validation
+on:
+  pull_request:
+    branches: [main, integration/master-readiness, fix/master-service-audit]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: render512-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  memory512:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ci-disposable-only
+          POSTGRES_DB: restaurant_ci512
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres -d restaurant_ci512"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Build production dependencies and actual face assets
+        run: docker build -f Dockerfile.ci512 -t smart-restaurant-ci512 .
+      - name: Enforce cgroup512MiB, no swap, one CPU
+        run: docker run -d --name smart-restaurant-ci512 --memory=512m --memory-swap=512m --cpus=1 --pids-limit=256 --network=host smart-restaurant-ci512
+      - name: Real Django HTTP, native FaceNet and memory measurements
+        run: python3 scripts/render512_probe.py
+      - name: Preserve container state and diagnostics
+        if: always()
+        run: |
+          docker inspect --format '{{json .State}}' smart-restaurant-ci512 || true
+          docker logs smart-restaurant-ci512 || true
+          docker exec smart-restaurant-ci512 sh -c 'cat /sys/fs/cgroup/memory.max /sys/fs/cgroup/memory.peak /sys/fs/cgroup/memory.events' || true
+      - name: Upload only CI fixture measurements
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: render512-measurements
+          path: render512-results.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Remove disposable container
+        if: always()
+        run: docker rm -f smart-restaurant-ci512 || true

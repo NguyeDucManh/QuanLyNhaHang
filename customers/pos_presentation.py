@@ -27,7 +27,9 @@ def workspace(request):
                 kitchen_orders.append({'order': order, 'items': lines, 'states': ' '.join(sorted({item.kitchen_status for item in lines}))})
     kitchen_orders = kitchen_orders[:8]
     kitchen_counts = {state: sum(state in group['states'].split() for group in kitchen_orders) for state in ('QUEUED', 'PREPARING', 'READY')}
-    return {**{k:v for k,v in state.items() if k.startswith('pos_')}, 'pos_enabled': can_tables, 'pos_tables': tables, 'pos_counts': counts, 'pos_selected': selected,
+    from .membership_service import discount_context
+    member_discount=discount_context(selected.live_order) if selected and selected.live_order else None
+    return {'membership_discount':member_discount,**{k:v for k,v in state.items() if k.startswith('pos_')}, 'pos_enabled': can_tables, 'pos_tables': tables, 'pos_counts': counts, 'pos_selected': selected,
             'pos_kitchen_orders': kitchen_orders, 'pos_kitchen_counts': kitchen_counts,
             'pos_dishes': catalog, 'pos_categories': categories, 'pos_kitchen': kitchen[:8],
             'pos_recent': list(scoped_orders(request.user).filter(**({} if state['global_tables'] else {'table_id__in':[t.pk for t in tables]})).select_related('table').prefetch_related('items').order_by('-created_at')[:4]) if can_orders else [],

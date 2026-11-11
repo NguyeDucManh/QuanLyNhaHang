@@ -150,7 +150,8 @@ def loyalty_adjust(request,pk):
 
 @login_required
 def loyalty_customer(request):
-    return render(request,'customer/operations.html',{'page':'membership','kind':'loyalty','account':CustomerLoyalty.objects.filter(customer=request.user).first(),'pagination':paginate(request,LoyaltyTransaction.objects.filter(customer=request.user))})
+    from .membership_service import status,enabled,policy
+    return render(request,'customer/operations.html',{'page':'membership','kind':'loyalty','member':status(request.user.pk),'membership_enabled':enabled(),'tiers':policy()[0],'account':CustomerLoyalty.objects.filter(customer=request.user).first(),'pagination':paginate(request,LoyaltyTransaction.objects.filter(customer=request.user))})
 
 
 class WaitlistForm(forms.Form):

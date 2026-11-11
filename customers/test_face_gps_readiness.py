@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.utils import timezone
 from .test_module07 import Module07Fixtures
 from .attendance_status import attendance_context
-from .location_service import haversine
+from .face_attendance_views import public_config
 from .models import Attendance, FaceAudit, FaceChallenge, WorkSchedule
 
 
@@ -18,10 +18,9 @@ class AttendanceReadinessTests(Module07Fixtures, TestCase):
         self.client.force_login(self.staff)
 
     def test_actual_reported_coordinates_are_outside_150_metres(self):
-        distance = haversine(10.809695,106.629683,10.776900,106.700900)
-        self.assertAlmostEqual(distance,8591.2,delta=1.)
-        self.assertGreater(distance,150)
-        self.assertEqual(haversine(10,106,10,106),0)
+        config=public_config()
+        self.assertEqual(config['mode'],'FACE_ONLY')
+        self.assertTrue({'latitude','longitude','radius','max_accuracy'}.isdisjoint(config))
 
     def test_missing_unapproved_cancelled_and_outside_window_are_distinct(self):
         self.assertEqual(attendance_context(self.staff)['schedule_status'],'NO_SCHEDULE')

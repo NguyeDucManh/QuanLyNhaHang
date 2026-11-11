@@ -6,12 +6,16 @@ import math,os
 # large buffer per hardware thread on this local Django/Chrome demo machine.
 for _thread_env in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS'):
     os.environ.setdefault(_thread_env,'1')
-import numpy as np
-import pandas as pd
-from sklearn.feature_extraction import DictVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.preprocessing import normalize
 from threadpoolctl import threadpool_limits
+
+def _offline_dependencies():
+    global np,pd,DictVectorizer,cosine_similarity,normalize
+    import numpy as np
+    import pandas as pd
+    from sklearn.feature_extraction import DictVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+    from sklearn.preprocessing import normalize
+
 from django.db.models import Sum,Avg,Count
 from .models import MenuItem,Order,OrderItem,Review
 
@@ -23,6 +27,7 @@ def price_band(price):
 
 @threadpool_limits.wrap(limits=1,user_api='blas')
 def item_vectors():
+    _offline_dependencies()
     items=list(MenuItem.objects.select_related('category').prefetch_related('recipe_lines__ingredient').order_by('pk'))
     frame=pd.DataFrame([{'id':m.pk,'category':m.category_id,'price_band':price_band(m.price),'ingredients':[r.ingredient_id for r in m.recipe_lines.all()]} for m in items],columns=['id','category','price_band','ingredients'])
     if not items:return items,frame,None,None
@@ -42,6 +47,7 @@ def purchase_history(user_id,order_ids=None):
     return {r['menu_item_id']:r['quantity'] for r in qs.values('menu_item_id').annotate(quantity=Sum('quantity'))}
 
 def user_profile(user_id,items,matrix,order_ids=None):
+    _offline_dependencies()
     history=purchase_history(user_id,order_ids)
     reviews=Review.objects.filter(customer_id=user_id,order__customer_id=user_id,order__status='COMPLETED')
     if order_ids is not None:reviews=reviews.filter(order_id__in=order_ids)
@@ -64,6 +70,7 @@ def cold_start(items,n):
 
 @threadpool_limits.wrap(limits=1,user_api='blas')
 def recommend(user=None,*,n=4,order_ids=None,catalog=None):
+    _offline_dependencies()
     n=max(1,min(int(n),20));items,frame,matrix,encoder=catalog or item_vectors()
     if not items:return {'mode':'cold_start','recommendations':[]}
     profile,history=user_profile(user.pk,items,matrix,order_ids) if user is not None and user.is_authenticated and user.is_active else (None,{})
@@ -91,6 +98,7 @@ def precision_recall_at_k(predicted,relevant,k):
     return {'precision':hits/k,'recall':hits/len(relevant) if relevant else 0.0}
 
 def evaluate_recommendations(*,k=5):
+    _offline_dependencies()
     """Last completed order held out, at least two earlier orders and two train items.
 
     Uses only each user's training-order ratings; no held-out purchase popularity.

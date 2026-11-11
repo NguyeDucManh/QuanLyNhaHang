@@ -1,3 +1,4 @@
+from .membership_service import discount_context,enabled as membership_enabled
 from . import service_scope as service_scope
 """Existing Admin shell, real ORM lists and forms, explicit permission on every mutation."""
 from django.contrib import messages
@@ -196,7 +197,7 @@ def order_detail(request,pk):
     if not allowed(request,'change_orderitem'):
         transitions=[state for state in transitions if state not in ('CONFIRMED','CANCELLED')]
     template='admin/business/_order_content.html' if request.headers.get('X-Realtime-Partial')=='1' else 'admin/business/order.html'
-    response=render(request,template,dict(admin_page='orders',order=order,items=items if allowed(request,'view_orderitem') else [],
+    response=render(request,template,dict(admin_page='orders',order=order,membership_discount=discount_context(order),items=items if allowed(request,'view_orderitem') else [],
         can_view_items=allowed(request,'view_orderitem'),item_form=OrderLineForm(),can_add_item=active and allowed(request,'add_orderitem'),can_edit_item=can_edit,
         combos=Combo.objects.filter(is_active=True),can_release_table=allowed(request,'change_order'),can_override_release=service_scope.management(request.user),
         release_ready=order.status=='COMPLETED' and Invoice.objects.filter(order=order,status='PAID').exists(),
@@ -365,9 +366,9 @@ def invoice_detail(request,pk):
     can_view_payments=allowed(request,'view_payment')
     from .payment_views import partial
     template='admin/business/_invoice_content.html' if request.headers.get('X-Realtime-Partial')=='1' else 'admin/business/invoice.html'
-    return partial(request,template,dict(admin_page='payments',invoice=invoice,form=form,
+    return partial(request,template,dict(admin_page='payments',invoice=invoice,membership_discount=discount_context(invoice.order),form=form,
         payments=invoice.payments.select_related('confirmed_by','created_by').all() if can_view_payments else [],
-        can_view_payments=can_view_payments,can_pay=allowed(request,'add_payment') and invoice.status=='UNPAID' and not invoice.payments.filter(status__in=['PENDING','SUCCEEDED']).exists(),can_confirm=allowed(request,'change_payment')))
+        can_record_refund=membership_enabled() and allowed(request,'record_invoice_refund') and invoice.status=='PAID',can_view_payments=can_view_payments,can_pay=allowed(request,'add_payment') and invoice.status=='UNPAID' and not invoice.payments.filter(status__in=['PENDING','SUCCEEDED']).exists(),can_confirm=allowed(request,'change_payment')))
 
 
 @capability_required('customers.add_payment')

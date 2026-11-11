@@ -152,7 +152,8 @@ def cart(request):
             rows.append({**dish, "quantity": quantity, "subtotal": format_money(dish["price"] * quantity) + " ₫" if dish["price"] is not None else "Liên hệ"})
     from .module07_cart import enrich_preview
     preview=enrich_preview(request,rows)
-    return render(request, "customer/cart.html", {"rows": preview['rows'], "total": format_money(preview['total']), "combo_rows":preview['combo_rows'], "cart_errors":preview['errors'], "has_unpriced": any(d["price"] is None for d in rows), "page": "cart"})
+    from .membership_service import quote
+    return render(request, "customer/cart.html", {"membership_quote":quote(request.user,preview['total']),"rows": preview['rows'], "total": format_money(preview['total']), "combo_rows":preview['combo_rows'], "cart_errors":preview['errors'], "has_unpriced": any(d["price"] is None for d in rows), "page": "cart"})
 
 
 @require_POST

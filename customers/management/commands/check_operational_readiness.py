@@ -15,12 +15,16 @@ class Command(BaseCommand):
         p.add_argument('--require-redis',action='store_true')
     def handle(self,*args,**options):
         failures=[]
-        report={'read_only':True,'flags':{k:getattr(settings,k,False) for k in ('TABLE_SERVICE_ASSIGNMENTS_ENABLED','TABLE_SERVICE_LIFECYCLE_ENABLED')}}
+        report={'read_only':True,'flags':{k:getattr(settings,k,False) for k in ('TABLE_SERVICE_ASSIGNMENTS_ENABLED','TABLE_SERVICE_LIFECYCLE_ENABLED','MEMBERSHIP_DISCOUNTS_ENABLED')}}
         with transaction.atomic():
             with connection.cursor() as cursor:cursor.execute('SET TRANSACTION READ ONLY')
             tables=set(connection.introspection.table_names())
-            required={'TABLE_SERVICE_ASSIGNMENTS_ENABLED':'customers_tableserviceassignment','TABLE_SERVICE_LIFECYCLE_ENABLED':'customers_tablesession'}
+            required={'TABLE_SERVICE_ASSIGNMENTS_ENABLED':'customers_tableserviceassignment','TABLE_SERVICE_LIFECYCLE_ENABLED':'customers_tablesession','MEMBERSHIP_DISCOUNTS_ENABLED':'customers_membershipdiscount'}
             report['schema']={table:table in tables for table in required.values()}
+            for table in ('customers_membershippolicy','customers_invoicerefund'):
+                report['schema'][table]=table in tables
+                if report['flags']['MEMBERSHIP_DISCOUNTS_ENABLED'] and table not in tables:
+                    failures.append('Enabled feature schema missing: '+table)
             for flag,table in required.items():
                 if report['flags'][flag] and table not in tables:failures.append('Enabled feature schema missing: '+table)
                 if options['require_enabled'] and not report['flags'][flag]:failures.append('Feature not enabled: '+flag)
@@ -29,12 +33,8 @@ class Command(BaseCommand):
                                 'external_schedule_verified':False}
             report['legacy_review']={'occupied_tables':RestaurantTable.objects.filter(status='OCCUPIED').count(),
                                      'active_orders':Order.objects.filter(status__in=['PENDING','CONFIRMED','PREPARING']).count()}
-        folder=Path(settings.BASE_DIR)/'static/vendor/maplibre'
-        try:
-            manifest=json.loads((folder/'manifest.json').read_text(encoding='utf-8'))
-            report['map_vendor_hashes']=all(hashlib.sha256((folder/name).read_bytes()).hexdigest()==entry['sha256'] for name,entry in manifest['files'].items())
-        except (OSError,KeyError,ValueError):report['map_vendor_hashes']=False
-        if not report['map_vendor_hashes']:failures.append('Map vendor assets/hash invalid')
+        report['retired_gis_assets_absent']=not any((Path(settings.BASE_DIR)/'static/vendor'/name).exists() for name in ('leaflet','maplibre'))
+        if not report['retired_gis_assets_absent']:failures.append('Retired GIS vendor assets still present')
         report['redis']={'backend':settings.CHANNEL_LAYERS['default']['BACKEND'],'ping':None}
         url=getattr(settings,'CHANNEL_LAYERS',{}).get('default',{}).get('CONFIG',{}).get('hosts',[])
         if 'RedisChannelLayer' in report['redis']['backend']:

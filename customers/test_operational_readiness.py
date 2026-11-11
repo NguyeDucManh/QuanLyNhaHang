@@ -10,7 +10,7 @@ class OperationalReadinessTests(TestCase):
     def test_default_readonly_reports_flags_and_scheduler_unknown(self):
         output=StringIO();call_command('check_operational_readiness',stdout=output)
         report=json.loads(output.getvalue())
-        self.assertTrue(report['read_only']);self.assertTrue(report['map_vendor_hashes'])
+        self.assertTrue(report['read_only']);self.assertTrue(report['retired_gis_assets_absent'])
         self.assertFalse(report['deposits']['external_schedule_verified'])
         self.assertTrue(report['deposits']['scheduler_command_present'])
     def test_require_flags_fails_instead_of_claiming_scope_is_enabled(self):
@@ -22,3 +22,14 @@ class OperationalReadinessTests(TestCase):
     @override_settings(CHANNEL_LAYERS={'default':{'BACKEND':'channels.layers.InMemoryChannelLayer'}})
     def test_redis_required_does_not_accept_inmemory(self):
         with self.assertRaises(CommandError):call_command('check_operational_readiness',require_redis=True,stdout=StringIO())
+
+    @override_settings(MEMBERSHIP_DISCOUNTS_ENABLED=True)
+    def test_membership_requires_policy_and_refund_schema_as_well_as_discounts(self):
+        output=StringIO()
+        with patch('django.db.connection.introspection.table_names',return_value=['customers_membershipdiscount']):
+            with self.assertRaises(CommandError):
+                call_command('check_operational_readiness',stdout=output)
+        report=json.loads(output.getvalue())
+        self.assertFalse(report['schema']['customers_membershippolicy'])
+        self.assertFalse(report['schema']['customers_invoicerefund'])
+        self.assertEqual(len(report['failures']),2)

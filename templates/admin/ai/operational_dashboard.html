@@ -1,0 +1,8 @@
+{% extends 'index.html' %}{% block admin_content %}
+<h1>Trợ lý và công cụ vận hành</h1>{% include 'admin/ai/nav.html' %}
+<div class="module-grid">
+{% if can_faces %}<section class="panel"><h2>Chấm công khuôn mặt</h2><p>{{ profiles }} hồ sơ · {{ embeddings }} mẫu đã lưu · {{ calibrated }} hồ sơ có ngưỡng hiệu chỉnh.</p><p>Số hồ sơ không chứng minh runtime hoặc camera đã sẵn sàng. Mở kiểm tra nhận diện để xem lỗi model/camera cụ thể.</p><a href="{% url 'ai_faces' %}">Quản lý khuôn mặt</a></section>{% endif %}
+<section class="panel"><h2>Trợ lý nhà hàng</h2><p>Tra cứu thực đơn, giá, đặt bàn và chính sách từ dữ liệu nhà hàng. Nếu semantic model chưa sẵn sàng, chỉ dùng công cụ dữ liệu thật hoặc chính sách có nguồn.</p><a href="{% url 'ai_chatbot_management' %}">Theo dõi hội thoại</a></section>
+{% if can_schedule_ai %}<section class="panel"><h2>Đề xuất lịch làm việc</h2><p>Genetic Algorithm tạo lịch nháp để quản lý xem và duyệt; không tự thay lịch đã duyệt.</p><a href="{% url 'ai_schedules' %}">Đề xuất lịch nháp</a></section>{% endif %}
+<section class="panel"><h2>Số liệu kinh doanh</h2><p>Xem doanh thu, tiền cọc, đơn hàng và kho từ PostgreSQL. Không hiển thị điểm thí nghiệm hoặc dự báo mô phỏng như số liệu kinh doanh.</p><a href="{% url 'admin_reports' %}">Báo cáo dữ liệu thật</a></section>
+</div>{% endblock %}

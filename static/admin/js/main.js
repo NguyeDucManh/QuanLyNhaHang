@@ -54,18 +54,18 @@ const groups=[
 ['QUẢN LÝ KHO',[['ingredients','leaf','Nguyên liệu'],['transactions','truck','Nhập / Xuất kho'],['suppliers','users','Nhà cung cấp'],['recipes','tools','Công thức món'],['stock-alerts','alert','Tồn kho & Cảnh báo']]],
 ['NHÂN SỰ',[['employees','user','Danh sách nhân viên'],['positions','briefcase','Chức vụ'],['shifts','clock','Ca làm việc'],['schedules','calendar','Lịch làm việc'],['attendance','clock','Chấm công'],['payroll','wallet','Bảng lương']]],
 
-['AI',[['ai-faces','user','Quản lý khuôn mặt'],['ai-chatbot','bot','Trợ lý nhà hàng']]],
-['BÁO CÁO',[['reports','chart','Thống kê & Báo cáo']]],
-['HỆ THỐNG',[['messages','chat','Chat hỗ trợ'],['location-settings','pin','Vị trí & chấm công'],['accounts','shield','Quản lý tài khoản']]]
+['AI',[['ai-faces','user','Quản lý khuôn mặt'],['ai-chatbot','bot','Trợ lý nhà hàng'],['ai-schedule','calendar','Đề xuất lịch làm việc']]],
+['BÁO CÁO',[['reports','chart','Thống kê & Báo cáo'],['loyalty','users','Thành viên khách hàng']]],
+['HỆ THỐNG',[['messages','chat','Chat hỗ trợ'],['accounts','shield','Quản lý tài khoản']]]
 ];
 const moduleAccess={menu:'view_menu',areas:'view_areas',tables:'view_tables',bookings:'view_bookings',orders:'view_orders',kitchen:'view_kitchen',payments:'view_payments',ingredients:'view_ingredients',transactions:'view_transactions',suppliers:'view_suppliers',recipes:'view_recipes','stock-alerts':'view_stock_alerts'};
 groups.find(g=>g[0]==='QUẢN LÝ KHO')[1].push(['purchase-orders','truck','Đơn mua hàng'],['food-cost','chart','Giá vốn món']);
 groups.find(g=>g[0]==='QUẢN LÝ NHÀ HÀNG')[1].push(['waitlist','calendar','Danh sách chờ bàn'],['loyalty','users','Thành viên']);
 groups.find(g=>g[0]==='HỆ THỐNG')[1].push(['audit-log','receipt','Nhật ký hệ thống']);
 Object.assign(moduleAccess,Object.fromEntries(['purchase-orders','food-cost','loyalty','audit-log','waitlist'].map(k=>[k,k])));
-Object.assign(moduleAccess,{'ai-schedule':'ai-schedule','recommendation-demo':'recommendation-demo'});
+Object.assign(moduleAccess,{'ai-schedule':'ai-schedule',});
 Object.assign(moduleAccess,Object.fromEntries(['ai-dashboard','ai-forecast','ai-inventory','ai-faces'].map(k=>[k,k])));
-Object.assign(moduleAccess,{'categories':'view_menu','location-settings':'ai-dashboard','ai-chatbot':'ai-dashboard'});
+Object.assign(moduleAccess,{'categories':'view_menu','ai-chatbot':'ai-dashboard'});
 Object.assign(moduleAccess,Object.fromEntries(['toppings','combos','combo-items','promotions','reviews','restaurant-info','employees','positions','shifts','schedules','attendance','payroll','periods','messages','reports'].map(k=>[k,k])));
 const visibleGroups=groups.map(g=>[g[0],g[1].filter(e=>(!!adminRoutes[e[0]])&&(access.is_admin||access[moduleAccess[e[0]]]))]).filter(g=>g[1].length);
 const entries=[...(access.role==='STAFF'?[]:[['dashboard','grid','Tổng quan']]),...visibleGroups.flatMap(g=>g[1])];
@@ -81,7 +81,7 @@ document.getElementById('app').innerHTML=`
 <aside class="sidebar" aria-label="Điều hướng chính"><a href="${escapeHTML(pageHref('dashboard'))}" class="brand"><span class="brand-mark">${icon('utensils')}</span><span><strong>SMART RESTAURANT</strong><small>Không gian quản trị</small></span></a>
 <nav class="navigation">${access.role==='STAFF'?'':navLink(entries[0])}${visibleGroups.map(g=>'<p class="nav-group">'+g[0]+'</p>'+g[1].map(navLink).join('')).join('')}</nav><div class="sidebar-foot"><span class="live-dot"></span>Không gian quản trị nhà hàng</div></aside>
 <button class="sidebar-backdrop" aria-label="Đóng menu"></button>
-<div class="workspace"><header class="topbar"><div class="top-left"><button class="icon-button" id="menu-toggle" aria-label="Ẩn hoặc hiện menu" aria-expanded="true">${icon('menu')}</button><form class="search" id="search-form" role="search">${icon('search')}<input id="global-search" type="search" aria-label="Tìm kiếm" placeholder="Tìm kiếm món ăn, đơn hàng, nhân viên, bàn..." autocomplete="off"><kbd>Ctrl K</kbd></form></div><div class="top-right"><button class="icon-button" data-action="notifications" aria-label="Thông báo">${icon('bell')}<span class="badge">${businessSummary.low_stock_count}</span></button><button class="icon-button" data-action="messages" aria-label="Tin nhắn">${icon('chat')}</button><span class="top-divider"></span><button class="profile" data-action="profile" aria-label="Thông tin quản trị viên"><span class="avatar">ĐM</span><span class="profile-text"><strong>Nguyễn Đức Mạnh</strong><small>Quản trị viên</small></span>${icon('chevron')}</button></div></header>
+<div class="workspace"><header class="topbar"><div class="top-left"><button class="icon-button" id="menu-toggle" aria-label="Ẩn hoặc hiện menu" aria-expanded="true">${icon('menu')}</button><form class="search" id="search-form" role="search">${icon('search')}<input id="global-search" type="search" aria-label="Tìm kiếm" placeholder="Tìm kiếm món ăn, đơn hàng, nhân viên, bàn..." autocomplete="off"><kbd>Ctrl K</kbd></form></div><div class="top-right"><button class="icon-button" data-action="notifications" aria-label="Thông báo">${icon('bell')}<span class="badge">${businessSummary.low_stock_count}</span></button><button class="icon-button" data-action="messages" aria-label="Tin nhắn">${icon('chat')}</button><span class="top-divider"></span><button class="profile" data-action="profile" aria-label="Thông tin quản trị viên"><span class="avatar">${escapeHTML(adminName().slice(0,2))}</span><span class="profile-text"><strong>${escapeHTML(adminName())}</strong><small>Quản trị viên</small></span>${icon('chevron')}</button></div></header>
 <main id="main" tabindex="-1"></main></div>
 <dialog id="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-head"><h2 id="dialog-title"></h2><button class="icon-button" id="close-dialog" aria-label="Đóng">${icon('close')}</button></div><div class="dialog-body" id="dialog-body"></div></dialog>`;
 const main=document.getElementById('main');
@@ -146,9 +146,8 @@ let body='';
 if(page==='orders')body='<section class="panel">'+ordersTable(true)+'</section>';
 else if(page==='menu'||page==='recommendations')body=(access.add_menu?'<p><a class="primary-button" href="'+escapeHTML(document.getElementById('menu-add-link').href)+'">Thêm món</a></p>':'')+'<div class="module-grid">'+dishes.map((d,i)=>'<button class="table-card menu-card" data-dish="'+i+'"><img src="'+foodImage(d,600)+'" alt="'+escapeHTML(d.name)+'"><div><h2>'+escapeHTML(d.name)+'</h2><p>'+escapeHTML(d.category_label)+'</p><p>'+escapeHTML(d.status)+'</p><strong>'+currency(d.price)+'</strong></div></button>').join('')+'</div>';
 
-else if(page==='shifts'||page==='ai-schedule')body='<section class="panel"><div class="panel-head"><h2>Phân bổ ca làm việc hôm nay</h2></div>'+shifts()+'<p class="dialog-note">Dữ liệu ca làm việc minh họa. Chưa kết nối hệ thống nhân sự.</p></section>';
-else body='<section class="panel module-placeholder">'+icon(entry[1])+'<h2>'+entry[2]+'</h2><p>Không gian quản lý '+entry[2].toLocaleLowerCase('vi-VN')+'. Chức năng này chưa có dữ liệu và cần kết nối hệ thống để sử dụng.</p><a class="primary-button" href="#dashboard">Trở về tổng quan</a></section>';
-main.innerHTML=heading(entry[2],'Smart Restaurant / '+entry[2]+((page==='menu'||page==='recommendations')?' · Thực đơn chính thức':' · Dữ liệu minh họa'))+body+footer();
+else {location.href=adminRoutes.home;return;}
+main.innerHTML=heading(entry[2],'Smart Restaurant / '+entry[2])+body+footer();
 }
 updateIdentity();
 const crumb=document.createElement('nav');crumb.className='breadcrumb';crumb.setAttribute('aria-label','Breadcrumb');crumb.innerHTML='<a href="'+escapeHTML(adminRoutes.home)+'">Smart Restaurant</a> / '+escapeHTML(entry[2]);main.prepend(crumb);

@@ -9,7 +9,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.urls import reverse
 from .test_module07 import Module07Fixtures
 from .models import RestaurantInfo,AttendanceLocationPolicy,AttendanceLocationEvent,Attendance,AIMessage,MenuItem,FaceChallenge,FaceAudit
-from .location_service import haversine,evaluate_location,secure_punch
+from .face_attendance_service import secure_punch
 from .ai.chatbot.normalization import price_entities,normalize
 from .ai.chatbot.assistant_service import respond
 from .ai.chatbot.intent_router import route
@@ -29,15 +29,17 @@ class ParserAndGeographyTests(SimpleTestCase):
     def test_realistic_routing(self):
         for query,intent in [('nhà hàng có gì','MENU_SEARCH'),('mua dưới 700k','MENU_SEARCH'),('combo 2 ng nhiu','COMBO_INFO'),('đơn tui đâu','MY_ORDER_STATUS'),('t trả tiền chưa','MY_PAYMENT_STATUS'),('giỏ có gì','CART_VIEW')]: self.assertEqual(route(query),intent)
     def test_haversine_known_distance_symmetry_dateline(self):
-        self.assertAlmostEqual(haversine(0,0,0,1),111195.08,places=1); self.assertEqual(haversine(10,100,10,100),0); self.assertAlmostEqual(haversine(10,100,11,101),haversine(11,101,10,100)); self.assertLess(haversine(0,179.999,0,-179.999),225)
+        from django.urls import NoReverseMatch
+        for name in ('location_check','location_settings'):
+            with self.assertRaises(NoReverseMatch):reverse(name)
     def test_invalid_coordinates_nan_boolean(self):
-        for value in [float('nan'),float('inf'),True,None,'abc',91]:
-            with self.assertRaises(ValidationError): haversine(value,0,0,0)
+        from .face_attendance_views import public_config
+        self.assertTrue({'latitude','longitude','accuracy','radius'}.isdisjoint(public_config()))
     def test_geofence_inside_outside_accuracy_and_boundary(self):
-        info=SimpleNamespace(latitude=0,longitude=0); policy=SimpleNamespace(attendance_radius_m=150,max_accuracy_m=50)
-        for point,status in [({'latitude':0,'longitude':0,'accuracy':10},'ALLOWED'),({'latitude':0,'longitude':.01,'accuracy':10},'DENIED'),({'latitude':0,'longitude':0,'accuracy':51},'ACCURACY_LOW')]: self.assertEqual(evaluate_location(point,info,policy)['geo_status'],status)
-        lng=math.degrees(150/6371008.8); self.assertLessEqual(haversine(0,0,0,lng),150.000001)
-        self.assertEqual(evaluate_location({'latitude':0,'longitude':0,'accuracy':50},info,policy)['geo_status'],'ALLOWED')
+        from .face_attendance_views import public_config
+        from .models import AttendanceLocationEvent
+        self.assertEqual(public_config()['mode'],'FACE_ONLY')
+        self.assertEqual(AttendanceLocationEvent._meta.db_table,'customers_attendancelocationevent')
 
 class FinalIntegrationTests(Module07Fixtures,TestCase):
     @classmethod
@@ -56,36 +58,46 @@ class FinalIntegrationTests(Module07Fixtures,TestCase):
     def test_generic_menu_is_grounded_not_fallback(self):
         result=respond('nha hang co gi',{},self.request()); self.assertEqual(result['intent'],'MENU_SEARCH'); self.assertIn('Nhà hàng hiện có',result['answer']); self.assertNotIn('chưa có đủ thông tin',result['answer'])
     def test_secure_gps_success_and_no_duplicate(self):
+        from .models import FaceProfile,FaceEmbedding
+        profile=FaceProfile.objects.create(employee=self.employee,model_version='test')
+        FaceEmbedding.objects.create(profile=profile,vector=[1.,0.],image_hash='test')
         schedule=self.approved_schedule()
-        with patch('customers.personnel_service.timezone.now',return_value=schedule.start_at+timedelta(minutes=1)):
-            attendance,geo=secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',point=self.point); self.assertEqual(geo['geo_status'],'ALLOWED'); self.assertEqual(AttendanceLocationEvent.objects.get().attendance,attendance)
-            with self.assertRaises(ValidationError): secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',point=self.point)
-        self.assertEqual(AttendanceLocationEvent.objects.count(),1)
+        with patch('django.utils.timezone.now',return_value=schedule.start_at),patch('customers.ai.face.face_enrollment_service.verify_identity',return_value=(profile,.99)):
+            row,evidence=secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in')
+            self.assertEqual(evidence['mode'],'FACE_ONLY')
+            with self.assertRaises(ValidationError):secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in')
+        self.assertEqual(Attendance.objects.count(),1);self.assertFalse(AttendanceLocationEvent.objects.exists())
     def test_outside_or_low_accuracy_no_attendance_mutation(self):
-        schedule=self.approved_schedule()
-        for point in [{**self.point,'longitude':107},{**self.point,'accuracy':90}]:
-            with self.assertRaises(ValidationError): secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',point=point)
-        self.assertEqual(Attendance.objects.count(),0); self.assertEqual(AttendanceLocationEvent.objects.count(),2)
+        client=Client();client.force_login(self.staff);schedule=self.approved_schedule()
+        for point in ({**self.point,'longitude':107},{**self.point,'accuracy':90}):
+            response=client.post(reverse('secure_attendance'),json.dumps({'schedule':schedule.pk,'action':'in','location':point}),content_type='application/json')
+            self.assertEqual(response.status_code,400)
+        self.assertFalse(Attendance.objects.exists());self.assertFalse(AttendanceLocationEvent.objects.exists())
     def test_client_fake_distance_and_verified_cannot_bypass(self):
         client=Client(); client.force_login(self.staff); schedule=self.approved_schedule(); data={'schedule':schedule.pk,'action':'in','location':{**self.point,'longitude':107,'distance':0,'inside':True},'verified':True,'employee_id':self.employee.pk}; response=client.post(reverse('secure_attendance'),json.dumps(data),content_type='application/json'); self.assertEqual(response.status_code,400); self.assertEqual(Attendance.objects.count(),0)
     def test_legacy_punch_and_old_face_endpoint_do_not_bypass_policy(self):
         self.policy.mode='FACE_AND_GPS'; self.policy.save(); client=Client(); client.force_login(self.staff); schedule=self.approved_schedule(); self.assertEqual(client.post(reverse('attendance_punch',args=[schedule.pk]),{'action':'in'}).status_code,302); response=client.post(reverse('face_verify'),json.dumps({'schedule':schedule.pk,'action':'in','verified':True}),content_type='application/json'); self.assertEqual(response.status_code,400); self.assertEqual(Attendance.objects.count(),0)
     def test_policy_missing_or_disabled_fails_closed(self):
-        self.policy.is_active=False; self.policy.save()
-        with self.assertRaises(ValidationError): secure_punch(actor=self.staff,schedule_id=1,action='in',point=self.point)
+        self.policy.is_active=False;self.policy.save();schedule=self.approved_schedule()
+        with patch('django.utils.timezone.now',return_value=schedule.start_at):
+            with self.assertRaises(ValidationError):secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',frames=[])
+        self.assertFalse(Attendance.objects.exists());self.assertFalse(AttendanceLocationEvent.objects.exists())
     def test_face_failure_is_audited_and_never_writes_attendance(self):
         self.policy.mode='FACE_AND_GPS'; self.policy.save(); schedule=self.approved_schedule()
-        with patch('customers.ai.face.face_enrollment_service.verify_identity',side_effect=ValidationError('liveness failed')):
-            with self.assertRaises(ValidationError): secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',point=self.point,frames=[])
+        with patch('django.utils.timezone.now',return_value=schedule.start_at),patch('customers.ai.face.face_enrollment_service.verify_identity',side_effect=ValidationError('liveness failed')):
+            with self.assertRaises(ValidationError): secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',frames=[])
         self.assertEqual(Attendance.objects.count(),0); self.assertEqual(FaceAudit.objects.count(),1)
     def test_preview_does_not_track_location(self):
-        client=Client(); client.force_login(self.staff); response=client.post(reverse('location_check'),json.dumps({'location':self.point}),content_type='application/json'); self.assertEqual(response.status_code,200); self.assertEqual(AttendanceLocationEvent.objects.count(),0)
+        client=Client();client.force_login(self.staff)
+        response=client.post('/work/location/check/',json.dumps({'location':self.point}),content_type='application/json')
+        self.assertEqual(response.status_code,404);self.assertFalse(AttendanceLocationEvent.objects.exists())
     def test_geo_settings_and_face_pages_rbac(self):
-        client=Client(); client.force_login(self.customer)
-        for name in ['location_settings','face_test_page','ai_chatbot_management']: self.assertEqual(client.get(reverse(name)).status_code,403)
+        client=Client();client.force_login(self.customer)
+        for name in ('face_test_page','ai_chatbot_management'):self.assertEqual(client.get(reverse(name)).status_code,403)
+        for user in (self.admin,self.manager,self.staff,self.customer):
+            client.force_login(user);self.assertEqual(client.get('/management/settings/location/').status_code,404)
         client.force_login(self.manager)
-        self.assertEqual(client.get(reverse('location_settings')).status_code,403)
-        for name in ['face_test_page','ai_chatbot_management','ai_faces']: self.assertEqual(client.get(reverse(name)).status_code,200)
+        for name in ('face_test_page','ai_chatbot_management','ai_faces'):self.assertEqual(client.get(reverse(name)).status_code,200)
     def test_csrf_and_http_method_security(self):
         client=Client(enforce_csrf_checks=True); client.force_login(self.staff); self.assertEqual(client.post(reverse('secure_attendance'),'{}',content_type='application/json').status_code,403); self.assertEqual(client.get(reverse('secure_attendance')).status_code,405)
     def test_invalid_topping_does_not_mutate_cart(self):

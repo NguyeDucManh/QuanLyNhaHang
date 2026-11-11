@@ -7,7 +7,13 @@ from django.db.models import Count
 from .rbac import role_required,capability_required
 from .models import Employee,AIMessage,FaceAudit
 from .ai_phase_views import payload,metadata
-from .ai.face.face_enrollment_service import require_management,verify_identity
+def require_management(actor):
+    from .ai.face.face_enrollment_service import require_management as check
+    return check(actor)
+
+def verify_identity(**kwargs):
+    from .ai.face.face_enrollment_service import verify_identity as verify
+    return verify(**kwargs)
 
 @role_required('ADMIN','MANAGER')
 @capability_required('customers.change_employee')

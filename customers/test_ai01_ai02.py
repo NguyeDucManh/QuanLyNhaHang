@@ -194,10 +194,10 @@ class RecommendationTests(BusinessData,TestCase):
     def test_public_no_technical_scores_or_client_customer_override_manager_only(self):
         self.completed();c=Client();c.force_login(self.customer)
         response=c.get(reverse('customer_home'));self.assertContains(response,'Gợi ý dành cho bạn');self.assertNotContains(response,'cosine_similarity');self.assertNotContains(response,'similarity score')
-        self.assertEqual(c.get(reverse('recommendation_demo')).status_code,403)
+        self.assertEqual(c.get('/management/recommendations/').status_code,404)
         self.assertEqual(c.get(reverse('customer_recommendations')+'?customer='+str(self.manager.pk)).status_code,200)
-        c.force_login(self.staff);self.assertEqual(c.get(reverse('recommendation_demo')).status_code,403)
-        c.force_login(self.manager);self.assertContains(c.get(reverse('recommendation_demo')),'Cosine similarity')
+        c.force_login(self.staff);self.assertEqual(c.get('/management/recommendations/').status_code,404)
+        c.force_login(self.manager);self.assertEqual(c.get('/management/recommendations/').status_code,404)
 
 class AISaveConcurrencyTests(Module07Fixtures,TransactionTestCase):
     def setUp(self):self.initialize();self.personnel()

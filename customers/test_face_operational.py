@@ -15,7 +15,7 @@ from .employee_identity import operational_employees,account_audit
 from .ai.face.face_enrollment_service import verify_identity,enroll
 from .ai.face.liveness_service import issue
 from .ai.face.policy import effective_threshold,verification_options
-from .location_service import secure_punch,evaluate_location,haversine
+from .face_attendance_service import secure_punch
 
 @override_settings(FACEID_REQUIRE_LIVENESS=False,FACEID_DEFAULT_THRESHOLD=.8)
 class OperationalFaceTests(Module07Fixtures,TestCase):
@@ -123,29 +123,34 @@ class AttendanceOperationalTests(Module07Fixtures,TestCase):
         profile=FaceProfile.objects.create(employee=self.employee,model_version='mock');FaceEmbedding.objects.create(profile=profile,vector=[1,0],image_hash='mock')
         for mode in ['FACE_ONLY','GPS_ONLY','FACE_AND_GPS']:
             self.policy.mode=mode;self.policy.save();schedule=self.approved_schedule()
-            with patch('customers.location_service.punch',return_value=Attendance.objects.create(employee=self.employee,work_schedule=schedule,work_date=schedule.work_date)) as punch,patch('customers.ai.face.face_enrollment_service.verify_identity',return_value=(profile,1.0)) as verify:
-                result,geo=secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',point=None if mode=='FACE_ONLY' else self.point,frames=['a','b','c']);self.assertEqual(result.employee,self.employee);punch.assert_called_once();self.assertEqual(verify.call_count,0 if mode=='GPS_ONLY' else 1)
+            with patch('django.utils.timezone.now',return_value=schedule.start_at),patch('customers.face_attendance_service.punch',return_value=Attendance.objects.create(employee=self.employee,work_schedule=schedule,work_date=schedule.work_date)) as punch,patch('customers.ai.face.face_enrollment_service.verify_identity',return_value=(profile,1.0)) as verify:
+                result,geo=secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',frames=['a','b','c']);self.assertEqual(result.employee,self.employee);punch.assert_called_once();self.assertEqual(verify.call_count,1)
             AttendanceLocationEvent.objects.all().delete();Attendance.objects.all().delete();schedule.delete()
     def test_missing_gps_is_event_and_never_mutates_attendance(self):
-        with self.assertRaises(ValidationError):secure_punch(actor=self.staff,schedule_id=1,action='in',point=None)
-        self.assertEqual(AttendanceLocationEvent.objects.get().geo_status,'GPS_UNAVAILABLE');self.assertEqual(Attendance.objects.count(),0)
+        schedule=self.approved_schedule()
+        with patch('django.utils.timezone.now',return_value=schedule.start_at):
+            with self.assertRaises(ValidationError):secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in')
+        self.assertFalse(Attendance.objects.exists());self.assertFalse(AttendanceLocationEvent.objects.exists())
+        self.assertTrue(FaceAudit.objects.exists())
     def test_invalid_coordinates_are_rejected_and_audited(self):
-        for key,value in [('latitude',91),('longitude',181),('latitude',float('nan')),('longitude',float('inf'))]:
-            with self.assertRaises(ValidationError):secure_punch(actor=self.staff,schedule_id=1,action='in',point={**self.point,key:value})
-        self.assertEqual(AttendanceLocationEvent.objects.filter(geo_status='GPS_INVALID').count(),4)
+        self.client=Client();self.client.force_login(self.staff)
+        for key,value in [('latitude',91),('longitude',181),('latitude','nan'),('longitude','inf')]:
+            response=self.client.post(reverse('secure_attendance'),json.dumps({'schedule':1,'action':'in','location':{key:value}}),content_type='application/json')
+            self.assertEqual(response.status_code,400)
+        self.assertFalse(AttendanceLocationEvent.objects.exists());self.assertFalse(Attendance.objects.exists())
     def test_geofence_inside_outside_accuracy_boundary(self):
-        self.assertEqual(evaluate_location(self.point,self.info,self.policy)['geo_status'],'ALLOWED')
-        self.assertEqual(evaluate_location({**self.point,'longitude':107},self.info,self.policy)['geo_status'],'DENIED')
-        self.assertEqual(evaluate_location({**self.point,'accuracy':51},self.info,self.policy)['geo_status'],'ACCURACY_LOW')
-        boundary=SimpleNamespace(attendance_radius_m=haversine(10,106,10.001,106),max_accuracy_m=50)
-        self.assertEqual(evaluate_location({**self.point,'latitude':10.001},self.info,boundary)['geo_status'],'ALLOWED')
+        from .face_attendance_views import public_config
+        self.assertEqual(public_config()['mode'],'FACE_ONLY')
+        self.assertNotIn('radius',public_config());self.assertNotIn('max_accuracy',public_config())
+        self.policy.refresh_from_db();self.assertEqual(self.policy.mode,'GPS_ONLY')
     def test_face_missing_fails_without_attendance(self):
-        self.policy.mode='FACE_ONLY';self.policy.save()
-        with self.assertRaises(ValidationError):secure_punch(actor=self.staff,schedule_id=1,action='in')
-        self.assertEqual(Attendance.objects.count(),0);self.assertEqual(FaceAudit.objects.count(),1)
+        schedule=self.approved_schedule()
+        with patch('django.utils.timezone.now',return_value=schedule.start_at):
+            with self.assertRaises(ValidationError):secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in')
+        self.assertFalse(Attendance.objects.exists());self.assertEqual(FaceAudit.objects.count(),1)
     def test_seed_employee_cannot_self_punch(self):
         self.employee.employee_code='DEMO-U0001';self.employee.save()
-        with self.assertRaises(ValidationError):secure_punch(actor=self.staff,schedule_id=1,action='in',point=self.point)
+        with self.assertRaises(ValidationError):secure_punch(actor=self.staff,schedule_id=1,action='in')
     def test_wrong_identity_and_foreign_schedule_never_write_attendance(self):
         from django.contrib.auth import get_user_model
         from .rbac import assign_role
@@ -154,9 +159,9 @@ class AttendanceOperationalTests(Module07Fixtures,TestCase):
         own_profile=FaceProfile.objects.create(employee=self.employee,model_version='mock');FaceEmbedding.objects.create(profile=own_profile,vector=[1,0],image_hash='mock')
         other_profile=FaceProfile.objects.create(employee=other_employee,model_version='mock')
         self.policy.mode='FACE_AND_GPS';self.policy.save();schedule=self.approved_schedule()
-        with patch('customers.ai.face.face_enrollment_service.verify_identity',return_value=(other_profile,1.0)),self.assertRaises(PermissionDenied):
-            secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',point=self.point,frames=['a','b','c'])
+        with patch('django.utils.timezone.now',return_value=schedule.start_at),patch('customers.ai.face.face_enrollment_service.verify_identity',return_value=(other_profile,1.0)),self.assertRaises(PermissionDenied):
+            secure_punch(actor=self.staff,schedule_id=schedule.pk,action='in',frames=['a','b','c'])
         self.assertEqual(Attendance.objects.count(),0)
         self.policy.mode='GPS_ONLY';self.policy.save()
-        with self.assertRaises(PermissionDenied):secure_punch(actor=self.staff,schedule_id=999999,action='in',point=self.point)
+        with self.assertRaises(PermissionDenied):secure_punch(actor=self.staff,schedule_id=999999,action='in')
         self.assertEqual(Attendance.objects.count(),0)

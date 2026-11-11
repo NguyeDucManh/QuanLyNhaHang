@@ -8,6 +8,19 @@ from django.core.exceptions import ValidationError
 from customers.ai.artifacts import root, read_json, sha256
 from .runtime import FaceServiceUnavailable, asset_path
 
+
+def release_unused_heap():
+    """Return already freed glibc pages between native model initializations."""
+    import sys
+    if sys.platform != 'linux':
+        return
+    import ctypes
+    trim = getattr(ctypes.CDLL(None), 'malloc_trim', None)
+    if trim is not None:
+        trim.argtypes = [ctypes.c_size_t]
+        trim.restype = ctypes.c_int
+        trim(0)
+
 def decode_frame(data):
     if not isinstance(data,str) or len(data)>1500000: raise ValidationError('Ảnh quá lớn/không hợp lệ.')
     try: raw=base64.b64decode(data.split(',')[-1],validate=True)
@@ -47,10 +60,13 @@ class FaceNet:
         for name in ['facenet.onnx','face_landmarker.task']:
             if sha256(paths[name])!=manifest[name]['sha256']: raise FaceServiceUnavailable('Model hash không khớp manifest: '+name)
         options=ort.SessionOptions(); options.intra_op_num_threads=1; options.inter_op_num_threads=1
+        options.enable_cpu_mem_arena=False; options.enable_mem_pattern=False
         self.session=ort.InferenceSession(str(paths['facenet.onnx']),options,providers=['CPUExecutionProvider'])
+        release_unused_heap()
         self.model_version=manifest['facenet.onnx']['sha256']
         self.landmarker=vision.FaceLandmarker.create_from_options(vision.FaceLandmarkerOptions(base_options=mp.tasks.BaseOptions(model_asset_buffer=paths['face_landmarker.task'].read_bytes()),num_faces=2,output_face_blendshapes=True))
-        self.mp=mp; self.lock=threading.Lock()
+        self.mp=mp; self.lock=threading.Lock(); self.process_lock=threading.Lock()
+        release_unused_heap()
         # MediaPipe uses a ThreadPoolExecutor for its C API. Close before Python
         # shuts down that executor; normal atexit runs too late on Python 3.14.
         threading._register_atexit(self.landmarker.close)
@@ -93,5 +109,6 @@ class FaceNet:
         return output/norm
 
     def process(self,data):
-        image,digest=decode_frame(data); face,quality=self.analyze(image)
-        return self.embedding(face),quality,digest
+        with self.process_lock:
+            image,digest=decode_frame(data); face,quality=self.analyze(image)
+            return self.embedding(face),quality,digest
