@@ -6,14 +6,25 @@
   const latInput=document.getElementById('id_latitude'),lngInput=document.getElementById('id_longitude'),radiusInput=document.getElementById('id_attendance_radius_m');
   const valid=(lat,lng)=>lat!==null&&lng!==null&&lat!==''&&lng!==''&&Number.isFinite(Number(lat))&&Number.isFinite(Number(lng))&&Math.abs(Number(lat))<=90&&Math.abs(Number(lng))<=180;
   const map=L.map(host).setView(valid(config.latitude,config.longitude)?[config.latitude,config.longitude]:[0,0],valid(config.latitude,config.longitude)?15:2);
-  // Browser requests retain normal referrer/caching. No proxy, bypass or prefetch.
-  const tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',maxZoom:19,referrerPolicy:'strict-origin-when-cross-origin'}).addTo(map);
-  let tileFailure=false,mapLoaded=false;
+  map.attributionControl.addAttribution('<a href="https://openfreemap.org/">OpenFreeMap</a> © <a href="https://openmaptiles.org/">OpenMapTiles</a> · Data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors');
+  // OpenFreeMap is an independent, keyless service. No proxy or OSM block bypass.
+  let tiles=null,tileFailure=false,mapLoaded=false,notice=null;
+  host.dataset.basemapState='pending';
   function fallback(){
-    if(tileFailure)return;tileFailure=true;map.removeLayer(tiles);
-    const notice=document.createElement('p');notice.className='map-unavailable';notice.setAttribute('role','status');notice.textContent='Không tải được tile OpenStreetMap (mạng, CSP hoặc nhà cung cấp từ chối). Kiểm tra Network để biết mã HTTP; chưa thể kết luận 403 chỉ từ tileerror. Tọa độ/GPS vẫn hoạt động. Có thể cấu hình nhà cung cấp hợp lệ sau khi được duyệt; không tự đổi sang dịch vụ trả phí.';host.after(notice);host.classList.add('map-fallback');
+    if(tileFailure)return;tileFailure=true;host.dataset.basemapState='error';
+    notice=document.createElement('p');notice.className='map-unavailable';notice.setAttribute('role','status');notice.textContent='Không tải đầy đủ nền OpenFreeMap. Kiểm tra kết nối, CSP hoặc WebGL trong trình duyệt. Tọa độ, marker GPS và xác thực máy chủ vẫn hoạt động. Không tự dùng vị trí mặc định hoặc đổi sang dịch vụ trả phí.';host.after(notice);host.classList.add('map-fallback');
   }
-  tiles.on('tileerror',fallback);tiles.once('load',()=>{mapLoaded=true;});setTimeout(()=>{if(!mapLoaded)fallback();},8000);
+  try{
+    if(!window.maplibregl||!L.maplibreGL||!host.dataset.mapWorker)throw new Error('Basemap renderer unavailable');
+    maplibregl.setWorkerUrl(host.dataset.mapWorker);
+    maplibregl.setWorkerCount(1);
+    tiles=L.maplibreGL({style:'https://tiles.openfreemap.org/styles/liberty',interactive:false,attributionControl:false,
+      attribution:'<a href="https://openfreemap.org/">OpenFreeMap</a> © <a href="https://openmaptiles.org/">OpenMapTiles</a> · Data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+    const renderer=tiles.getMaplibreMap();
+    renderer.on('error',fallback);
+    renderer.once('idle',()=>{mapLoaded=true;host.dataset.basemapState='ready';notice?.remove();host.classList.remove('map-fallback');tileFailure=false;});
+  }catch(error){fallback();}
+  setTimeout(()=>{if(!mapLoaded)fallback();},15000);
   const icon=L.icon({iconUrl:host.dataset.markerIcon,iconRetinaUrl:host.dataset.markerRetina,shadowUrl:host.dataset.markerShadow,iconSize:[25,41],iconAnchor:[12,41],popupAnchor:[1,-34],shadowSize:[41,41]});
   function restaurant(lat,lng,radius){
     if(!valid(lat,lng))return;

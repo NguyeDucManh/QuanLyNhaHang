@@ -61,3 +61,11 @@ Một request tile OSM từ máy kiểm thử bị ConnectionError, không có H
 PR #2 đã được push để review; chưa merge/deploy. Bổ sung này thuộc yêu cầu mới sau gói 23 file ban đầu; manifest/patch đã duyệt trước đó được giữ làm bằng chứng phiên bản cũ. Booking/bàn thuộc PR #3, kiểm thử kết hợp trên worktree riêng; không gộp PR.
 
 Kiểm thử chốt bổ sung trên cây kết hợp: **647/647 PASS, 455,408 giây**, Windows/Python 3.14 và PostgreSQL test riêng, parallel 2. Check/migration drift/collectstatic DEBUG=False PASS trên cây kết hợp và từng nhánh. Browser cuối 30/30, không JS exception hoặc local asset HTTP lỗi; GPS/camera/API mô phỏng, không nhận diện người thật trên Render. Không đổi binary/model_version hoặc chạy migration production. Linux build, Safari/iPhone/Android phần cứng và tải tile trên mạng thực vẫn cần xác minh sau phê duyệt.
+
+## Nguồn nền thay thế sau chẩn đoán DNS
+
+Kiểm tra local xác nhận tile.openstreetmap.org phân giải 127.0.0.1/::1 và TCP 443 bị từ chối; hosts không có dòng OSM. Không đổi DNS/proxy/hosts để vượt chặn. Chọn [OpenFreeMap](https://openfreemap.org/) (miễn phí, không API key, cho phép thương mại, không SLA), theo [hướng dẫn Leaflet chính thức](https://openfreemap.org/quick_start/) và [điều khoản](https://openfreemap.org/tos/). Không dùng OSM France sau đăng nhập hoặc endpoint CARTO không key trái điều kiện hiện hành.
+
+Leaflet được giữ nguyên, thêm nền vector qua MapLibre GL JS 5.24.0 và bridge 0.1.4 vendored, license/SHA-256 manifest, archive npm kiểm tra SHA-512. CSP worker cùng origin, một worker, chỉ tải asset trên trang bản đồ; không thêm npm build hoặc cấu hình trả phí. Attribution hiển thị OpenFreeMap/OpenMapTiles/OpenStreetMap. WebGL/network lỗi vẫn có marker/GPS và thông báo.
+
+Localhost 8783: 30/30 lượt browser cuối, 12 bản đồ ready với nguồn thật, không asset HTTP lỗi/JS exception/tràn ngang; GPS/camera mô phỏng. Bổ sung tile có 23 targeted tests PASS (worker WhiteNoise 200 JavaScript, hash vendor, quyền và attendance regression), check/drift/collectstatic DEBUG=False PASS, 241 nguồn. Full 647 ở trên là trước hai test tile mới; không báo full 649 chưa chạy. Chưa deploy Render, kiểm thử source/worker/CSP trên origin Render và điện thoại thật còn chờ phê duyệt.
