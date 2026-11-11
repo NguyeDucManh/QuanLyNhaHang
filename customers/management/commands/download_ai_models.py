@@ -11,6 +11,7 @@ REVISION='e8f8c211226b894fcb81acc59f3b34ba3efd5f42'
 class Command(BaseCommand):
     help='Download CPU FaceNet ONNX, MediaPipe landmarks and multilingual embedding with provenance.'
     def add_arguments(self,parser):
+        parser.add_argument('--face-only', action='store_true', help='Install only FaceID assets, without downloading the chatbot embedding model.')
         parser.add_argument('--embedding-cache',help='Optional cache on a drive with enough free space.')
         parser.add_argument('--assets-cache',help='Optional cache for FaceNet and MediaPipe assets.')
     def handle(self,*args,**options):
@@ -22,7 +23,7 @@ class Command(BaseCommand):
             'face_landmarker.task':'https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task',
         }
         for name,url in sources.items():
-            path=(Path(options['assets_cache']).resolve()/name) if options.get('assets_cache') else Path(manifest.get(name,{}).get('local_path',str(folder/name)))
+            path=(Path(options['assets_cache']).resolve()/name) if options.get('assets_cache') else (folder/name if options['face_only'] else Path(manifest.get(name,{}).get('local_path',str(folder/name))))
             path.parent.mkdir(parents=True,exist_ok=True)
             expected=manifest.get(name,{}).get('sha256')
             if path.exists() and expected and sha256(path)!=expected:
@@ -33,6 +34,10 @@ class Command(BaseCommand):
                 temporary=path.with_suffix('.download')
                 with urllib.request.urlopen(url,timeout=120) as response, temporary.open('wb') as output:
                     while block:=response.read(1024*1024): output.write(block)
+                if expected and sha256(temporary)!=expected:
+                    from django.core.management.base import CommandError
+                    temporary.unlink()
+                    raise CommandError('Downloaded model hash mismatch: '+name)
                 temporary.replace(path)
             manifest[name]={'source':url,'revision':commit if name=='facenet.onnx' else 'float16/1','local_path':str(path),'sha256':sha256(path),'bytes':path.stat().st_size}
         import onnxruntime as ort
@@ -40,6 +45,9 @@ class Command(BaseCommand):
         manifest['facenet.onnx']['inputs']=[{'name':i.name,'shape':i.shape,'type':i.type} for i in session.get_inputs()]
         manifest['facenet.onnx']['outputs']=[{'name':i.name,'shape':i.shape} for i in session.get_outputs()]
         write_json(folder/'manifest.json',manifest)
+        if options['face_only']:
+            self.stdout.write('FaceID assets installed and manifest verified; no database changes.')
+            return
         from huggingface_hub import snapshot_download
         embedding=Path(options['embedding_cache']).resolve() if options.get('embedding_cache') else Path(manifest.get('embedding',{}).get('local_path',str(folder/'embedding')))
         snapshot_download(EMBEDDING,revision=REVISION,local_dir=str(embedding),allow_patterns=['config.json','modules.json','config_sentence_transformers.json','sentence_bert_config.json','tokenizer.json','tokenizer_config.json','special_tokens_map.json','sentencepiece.bpe.model','model.safetensors','1_Pooling/*'])

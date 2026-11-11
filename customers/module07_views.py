@@ -65,6 +65,7 @@ def resource_list(request,resource):
 
 @transaction.atomic
 def save_resource(form,resource,actor):
+    if resource=='restaurantinfo' and get_role(actor)!='ADMIN':raise PermissionDenied
     model=RESOURCES[resource][0]
     if resource=='workschedule': return hr.save_schedule(form,actor=actor)
     if resource=='attendance': return hr.save_attendance(form,actor=actor)
@@ -87,6 +88,7 @@ def save_resource(form,resource,actor):
 
 @login_required
 def resource_edit(request,resource,pk=None):
+    if resource=='restaurantinfo' and get_role(request.user)!='ADMIN':raise PermissionDenied
     if resource not in RESOURCES: raise PermissionDenied
     model,Form,page,title,_=RESOURCES[resource]
     require(request.user,('change_' if pk else 'add_')+resource)
