@@ -24,6 +24,8 @@ def require_owner(invoice, actor):
 def issue_invoice(order_id, *, actor=None):
     if actor is not None:
         require_payment_actor(actor, 'add_invoice')
+        from .service_scope import require_order
+        require_order(actor,order_id)
     order=Order.objects.select_for_update().get(pk=order_id)
     if order.status!=Order.Status.COMPLETED:
         raise ValidationError('Chỉ xuất hóa đơn cho đơn đã hoàn thành.')
@@ -56,6 +58,8 @@ def issue_invoice(order_id, *, actor=None):
 def create_payment(*, invoice_id, actor, payment_method, request_key, amount=None, transaction_reference='', customer_initiated=False):
     if not customer_initiated:
         require_payment_actor(actor,'add_payment')
+        from .service_scope import require_invoice
+        require_invoice(actor,invoice_id)
     key=lock_request('payment',request_key)
     invoice=Invoice.objects.select_for_update().select_related('order').get(pk=invoice_id)
     if customer_initiated:
@@ -116,6 +120,8 @@ def confirm_payment(payment_id,*,actor,successful=True,outcome=None):
     if target not in ('SUCCEEDED','FAILED','CANCELLED'):
         raise ValidationError('Kết quả xác nhận không hợp lệ.')
     snapshot=Payment.objects.get(pk=payment_id)
+    from .service_scope import require_invoice
+    require_invoice(actor,snapshot.invoice_id)
     invoice=Invoice.objects.select_for_update().get(pk=snapshot.invoice_id)
     payment=Payment.objects.select_for_update().get(pk=payment_id)
     if payment.status!=Payment.Status.PENDING:

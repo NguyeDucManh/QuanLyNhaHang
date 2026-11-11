@@ -19,10 +19,15 @@ def blocking_orders(start, end, *, now=None):
     now = now or timezone.now()
     # A booked order can be prepared in advance. Only its interval blocks until
     # overdue; an overdue still-open order must be released before another arrival.
-    return Order.objects.exclude(status__in=['COMPLETED', 'CANCELLED']).filter(
+    from .table_session_service import enabled
+    predicate=Q(status__in=['PENDING','CONFIRMED','PREPARING']) & (
         Q(booking__isnull=True) |
         Q(booking__start_time__lt=end, booking__end_time__gt=start) |
         Q(booking__end_time__lte=now))
+    if enabled():predicate |= Q(table_session__ended_at__isnull=True,table_session__isnull=False)
+    rows=Order.objects.filter(predicate)
+    if enabled():rows=rows.exclude(table_session__ended_at__isnull=False)
+    return rows
 
 
 def conflict_message(table, booking):
@@ -37,6 +42,10 @@ def table_snapshot(start, end, guests, area_id=None):
     for booking in effective_bookings(start, end, now=now).order_by('start_time', 'pk'):
         bookings.setdefault(booking.table_id, booking)
     occupied = set(blocking_orders(start, end, now=now).values_list('table_id', flat=True))
+    from .table_session_service import enabled
+    if enabled():
+        from .models import TableSession
+        occupied.update(TableSession.objects.filter(ended_at__isnull=True).values_list('table_id',flat=True))
     rows = []
     for table in RestaurantTable.objects.select_related('area').order_by('area__name', 'code'):
         conflict = bookings.get(table.pk)

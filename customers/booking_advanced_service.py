@@ -75,6 +75,8 @@ def notify_floor_changed():
 def mark_arrival(pk, *, actor, state):
     if state not in ('CHECKED_IN','NO_SHOW'): raise ValidationError('Trạng thái đến không hợp lệ.')
     require(actor,'checkin_booking' if state=='CHECKED_IN' else 'noshow_booking')
+    from .service_scope import require_booking
+    require_booking(actor,pk)
     lock_areas()
     snapshot = Booking.objects.get(pk=pk)
     table = RestaurantTable.objects.select_for_update().get(pk=snapshot.table_id) if snapshot.table_id else None
@@ -95,7 +97,12 @@ def mark_arrival(pk, *, actor, state):
         if not booking.start_time <= now < booking.end_time: raise ValidationError('Check-in trong khung giờ đặt bàn.')
         if not table.is_active or not table.area.is_active or table.status=='MAINTENANCE': raise ValidationError('Bàn không sẵn sàng.')
         if Order.objects.filter(table=table,status__in=ACTIVE_ORDER_STATUSES).exclude(booking=booking).exists(): raise ValidationError('Bàn đang có đơn khác.')
-        table.status='OCCUPIED'; save_validated(table)
+        from .table_session_service import busy, start
+        if busy(table,exclude_booking=booking.pk):raise ValidationError('Bàn có khách chưa trả bàn.')
+        deposit=getattr(booking,'deposit',None)
+        if deposit and deposit.status!='SUCCEEDED':raise ValidationError('Cọc chưa được xác nhận.')
+        start(table,booking=booking)
+        if table.status!='OCCUPIED':table.status='OCCUPIED';save_validated(table)
     with audit_actor(actor):
         save_validated(booking)
         visit=save_validated(BookingVisit(booking=booking,state=state,actor=actor))
@@ -106,6 +113,10 @@ def mark_arrival(pk, *, actor, state):
 @transaction.atomic
 def transfer_table(*, actor, destination_id, booking_id=None, order_id=None, guests=None):
     require(actor,'transfer_table')
+    from .service_scope import require_order,require_booking,require_table
+    if order_id:require_order(actor,order_id)
+    if booking_id:require_booking(actor,booking_id)
+    require_table(actor,destination_id)
     areas=lock_areas()
     if bool(booking_id)==bool(order_id): raise ValidationError('Chọn một đặt bàn hoặc một đơn hàng.')
     order_snapshot=Order.objects.get(pk=order_id) if order_id else None
@@ -120,6 +131,8 @@ def transfer_table(*, actor, destination_id, booking_id=None, order_id=None, gue
     if booking and booking.table_id != source_id or order and order.table_id != source_id: raise ValidationError('Bàn vừa thay đổi; hãy tải lại.')
     if booking and booking.status!='CONFIRMED' or order and order.status not in ACTIVE_ORDER_STATUSES: raise ValidationError('Phiên phục vụ đã kết thúc.')
     if source.pk==dest.pk: return booking or order
+    from .table_session_service import busy,enabled
+    if busy(dest):raise ValidationError('Bàn đích có khách chưa trả bàn.')
     count=booking.guests if booking else guests
     if isinstance(count,bool) or not isinstance(count,int) or count<1: raise ValidationError('Cần số khách thực tế.')
     if not table_eligible(dest,areas[dest.area_id],count) or dest.status=='OCCUPIED': raise ValidationError('Bàn đích không phù hợp hoặc đang sử dụng.')
@@ -131,9 +144,14 @@ def transfer_table(*, actor, destination_id, booking_id=None, order_id=None, gue
         if order: order.table=dest;save_validated(order);notify_order_changed(order.pk)
         in_service=bool(order) or bool(booking and BookingVisit.objects.filter(booking=booking,state='CHECKED_IN').exists())
         if in_service:
+            if enabled():
+                from .models import TableSession
+                session=TableSession.objects.select_for_update().filter(table=source,ended_at__isnull=True).first()
+                if session:
+                    session.table=dest;session.save(update_fields=['table'])
             dest.status='OCCUPIED';save_validated(dest)
             other_order=Order.objects.filter(table=source,status__in=ACTIVE_ORDER_STATUSES).exists()
-            other_visit=BookingVisit.objects.filter(booking__table=source,booking__status='CONFIRMED',booking__end_time__gt=timezone.now(),state='CHECKED_IN').exists()
+            other_visit=BookingVisit.objects.filter(booking__table=source,booking__status='CONFIRMED',state='CHECKED_IN').exists()
             if not other_order and not other_visit and source.status=='OCCUPIED': source.status='AVAILABLE';save_validated(source)
         record(actor=actor,action='TABLE_TRANSFER',entity=booking or order,before={'table_id':source.pk},after={'table_id':dest.pk})
         record(actor=actor,action='TRANSFER_OUT',entity=source,after={'destination_id':dest.pk})

@@ -34,6 +34,7 @@ RESOURCES={
 }
 
 def require(user,perm):
+    if any(perm.endswith('_'+r) for r in ('employee','workschedule','attendance','payroll','payrollperiod','shift','position')) and get_role(user) not in ('ADMIN','MANAGER'):raise PermissionDenied
     if not has_capability(user,'customers.'+perm): raise PermissionDenied
 
 def nav_action(label,url,data=None): return {'label':label,'url':url,'post':data is not None,'data':data or {}}

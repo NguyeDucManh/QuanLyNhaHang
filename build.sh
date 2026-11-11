@@ -3,7 +3,8 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-python -m pip install -r requirements-production.txt
+bash scripts/install_production.sh
+python scripts/check_face_native.py
 python manage.py check
 python manage.py download_ai_models --face-only
 python manage.py collectstatic --noinput

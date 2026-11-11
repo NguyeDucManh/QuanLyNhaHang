@@ -19,7 +19,19 @@ class ManagementUpdatesConsumer(AsyncJsonWebsocketConsumer):
         user=get_user(SimpleNamespace(session=SessionStore(session_key=key)))
         if not has_capability(user,'customers.view_order') or not has_capability(user,'customers.view_orderitem'):
             return False
-        return self.stream=='kitchen' or Order.objects.filter(pk=self.order_id).exists()
+        from .service_scope import orders,management
+        return (management(user) or orders(user).exists()) if self.stream=='kitchen' else orders(user).filter(pk=self.order_id).exists()
+
+    @database_sync_to_async
+    def event_allowed(self,payload):
+        key=self.scope.get('session').session_key if self.scope.get('session') is not None else None
+        user=get_user(SimpleNamespace(session=SessionStore(session_key=key))) if key else None
+        if user is None:return False
+        from .service_scope import orders,invoices,management
+        if management(user):return True
+        if getattr(self,'stream',None)=='kitchen':return payload.get('order_id') is not None and orders(user).filter(pk=payload['order_id']).exists()
+        if getattr(self,'stream',None)=='payments':return payload.get('invoice_id') is not None and invoices(user).filter(pk=payload['invoice_id']).exists()
+        return True
 
     async def connect(self):
         self.stream=self.scope['url_route']['kwargs']['stream']
@@ -47,6 +59,7 @@ class ManagementUpdatesConsumer(AsyncJsonWebsocketConsumer):
         if not await self.authorized():
             await self.close(code=4403)
             return
+        if not await self.event_allowed(event['payload']):return
         await self.send_json(event['payload'])
 
 
@@ -70,7 +83,8 @@ class FinancialUpdatesConsumer(ManagementUpdatesConsumer):
             return user.is_authenticated and user.is_active and Invoice.objects.filter(pk=self.invoice_id,order__customer=user).exists()
         if not has_capability(user,'customers.view_invoice') or not has_capability(user,'customers.view_payment'):
             return False
-        return self.stream=='payments' or Invoice.objects.filter(pk=self.invoice_id).exists()
+        from .service_scope import invoices,management
+        return (management(user) or invoices(user).exists()) if self.stream=='payments' else invoices(user).filter(pk=self.invoice_id).exists()
 
     async def connect(self):
         self.stream=self.scope['url_route']['kwargs']['stream']

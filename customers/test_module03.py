@@ -323,8 +323,14 @@ class Module03HTTPTests(OrderFixtures,TestCase):
 
     def test_orders_search_status_pagination_and_dashboard_actual_data(self):
         order=self.open(); self.client.force_login(self.staff)
+        # Order access alone must not become an oracle for customer identity.
+        for query in (self.customer.username,'Khách Module03'):
+            with self.subTest(permission='order_only',query=query):
+                self.assertEqual(len(self.client.get('/management/orders/',{'q':query}).context['rows']),0)
+        self.staff.user_permissions.add(Permission.objects.get(codename='view_booking',content_type__app_label='customers'))
         for query in (order.order_number,self.customer.username,self.table.code,'Khách Module03'):
-            response=self.client.get('/management/orders/',{'q':query}); self.assertEqual(len(response.context['rows']),1)
+            with self.subTest(permission='view_booking',query=query):
+                response=self.client.get('/management/orders/',{'q':query}); self.assertEqual(len(response.context['rows']),1)
         self.assertEqual(len(self.client.get('/management/orders/',{'status':'COMPLETED'}).context['rows']),0)
         for _ in range(31): Order.objects.create(created_by=self.admin)
         response=self.client.get('/management/orders/'); self.assertEqual(response.context['pagination'].paginator.count,32)
