@@ -6,6 +6,7 @@ from customers import ai_phase_views as ai
 from customers import location_views as geo
 from customers import final_views as final
 from customers import employee_identity_views as identities
+from customers import table_assignment_views
 
 from customers.booking_workspace import availability
 from customers import operations_views as ops
@@ -17,6 +18,7 @@ from customers.seo import robots, SITEMAPS
 handler404 = 'restaurant_system.errors.page_not_found'
 
 urlpatterns = [
+    path('management/table-assignments/',table_assignment_views.assignments,name='table_assignments'),
     path('robots.txt', robots, name='seo_robots'),
     path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}, name='seo_sitemap'),
     path('healthz/', health, name='health'),
