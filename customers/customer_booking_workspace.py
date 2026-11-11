@@ -12,7 +12,7 @@ from .booking_workspace import booking_panel
 
 DRAFT_KEY = 'customer_booking_draft'
 DRAFT_FIELDS = {'name': 100, 'phone': 20, 'date': 10, 'time': 8,
-                'guests': 3, 'note': 2000, 'promotion_code': 40}
+                'guests': 3, 'note': 2000, 'promotion_code': 40, 'preferred_area': 12, 'preferred_table': 12}
 
 
 def draft_values(request):

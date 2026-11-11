@@ -495,3 +495,4 @@ from .ai_models import IngredientSupplyPolicy, FaceProfile, FaceEmbedding, FaceA
 from .location_models import AttendanceLocationPolicy,AttendanceLocationEvent
 from .operations_models import PurchaseOrder, PurchaseOrderItem, PurchaseReceiving, CustomerLoyalty, LoyaltyTransaction, AuditLog, BookingVisit, BookingWaitlist
 from .deposit_models import BookingDeposit, StripeCheckoutAttempt, StripeWebhookEvent
+from .table_assignment_models import TableServiceAssignment
