@@ -29,3 +29,15 @@ Không push dữ liệu PostgreSQL, .env, AI cache, model binary hoặc artifact
 - git diff --check và kiểm tra staged secret theo giá trị môi trường: PASS; chỉ 29 file nghiệp vụ/tài liệu. Cờ phân công mặc định false. Không thêm workflow hoặc thay đổi cấu hình Render.
 - Trong lượt test trước khi collectstatic hoàn tất có warning thiếu thư mục staticfiles; collectstatic sau đó thành công. Warning runpy settings cũng xuất hiện trong test cấu hình, không có failure/error.
 - Chưa chạy build Linux/Render thực tế hoặc full suite trên cây kết hợp PR #2. Kiểm tra áp dụng patch PR #2 chỉ xác nhận không xung đột văn bản.
+
+## Bổ sung chọn bàn và xem lịch theo giờ — 11/11/2026
+
+Kết quả 621 tests ở trên thuộc commit 573b794 trước bổ sung này. Hiện có thêm lựa chọn bàn cụ thể, snapshot toàn bộ bàn theo ngày/giờ/sức chứa/khu vực và gợi ý thay thế không chứa danh tính. Lưu vẫn kiểm tra dưới khóa PostgreSQL; có test hai kết nối cùng chọn một bàn, khoảng giao nhau/liền kề/khác ngày và cọc còn/hết hạn. Order còn mở quá giờ booking chặn bàn cho tới khi được giải phóng, không tự đóng order hoặc sửa booking cũ.
+
+Sơ đồ nhân viên nhận thời điểm xem lịch, chỉ hiển thị dữ liệu theo quyền. Xem thời điểm khác không cho thao tác mở đơn như hiện tại; trạng thái lịch sử là booking theo dữ liệu đang có, không tái dựng thời điểm Order đã kết thúc. Danh sách mở đơn cũng che tên khách khi thiếu view_booking. STAFF không được tự cấp quyền xem cả 20 bàn: người có quyền xem tất cả thấy toàn bộ; người chỉ được giao bàn thấy đúng phạm vi hiện tại.
+
+Không có migration mới hoặc đổi migration 0022. Cờ phân công vẫn mặc định false. Dữ liệu production chỉ được SELECT qua TLS verify-full. 26 booking được phân loại thành 6 hủy, 10 lịch sử, 10 lượt tương lai hết hạn cọc; không có booking còn hiệu lực tại thời điểm kiểm kê, nên không tạo đơn/đặt giả để lấp sơ đồ.
+
+Đã tạo cây kết hợp PR #2 + #3 để chạy regression; không merge hai nhánh. Focused booking 70 tests PASS; bộ cuối bổ sung privacy/concurrency/GPS gồm 23 tests PASS (10,859 giây). 30 lượt browser Chrome 320–1440 kiểm tra giao diện và GPS mô phỏng, không thiết bị thật. Một lượt full đầu lỗi 8 subtest static do worktree chưa collectstatic; đã chuẩn bị manifest DEBUG=False trước lượt full tiếp theo. Kết quả full kết hợp cuối được ghi trong PR khi hoàn tất; Linux/Render build vẫn chưa thực thi.
+
+Kết quả chốt trên cây kết hợp cuối: **647/647 PASS, 455,408 giây**, Windows/Python 3.14, PostgreSQL test riêng, parallel 2. Check/drift và collectstatic DEBUG=False PASS. Cả hai nhánh riêng cũng check/drift/collectstatic PASS. Không cộng 23 test focused vào 647 để tạo số full giả; lượt 646 trước đó chưa có test privacy cuối. Browser chạy lại sau sửa lựa chọn bàn xung đột: 30/30, không tràn ngang/JS exception/asset HTTP lỗi. Không thay migration 0022 hoặc môi trường Render; cờ phân công mặc định false.

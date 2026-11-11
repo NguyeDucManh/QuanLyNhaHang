@@ -59,21 +59,28 @@ def table_eligible(table, area, guests):
     return area.is_active and table.is_active and table.status != RestaurantTable.Status.MAINTENANCE and table.capacity >= guests
 
 
-def find_available_table(start, end, guests, areas, *, exclude_booking=None, area_id=None):
+def find_available_table(start, end, guests, areas, *, exclude_booking=None, area_id=None, table_id=None):
     # OCCUPIED describes now, not future reservation availability.
     candidates = RestaurantTable.objects.filter(is_active=True, capacity__gte=guests).exclude(
         status=RestaurantTable.Status.MAINTENANCE).order_by('capacity', 'pk')
     if area_id is not None:candidates=candidates.filter(area_id=area_id)
+    if table_id is not None:candidates=candidates.filter(pk=table_id)
+    from .table_availability import blocking_orders, effective_bookings, conflict_message
     for table in candidates.select_for_update():
         area = areas.get(table.area_id)
-        if area and table_eligible(table, area, guests) and not overlaps(table.pk, start, end, exclude_booking):
+        busy=blocking_orders(start,end).filter(table_id=table.pk).exists()
+        if table.status=='OCCUPIED' and start<=timezone.now()<end:busy=True
+        conflict=effective_bookings(start,end).filter(table_id=table.pk).exclude(pk=exclude_booking).order_by('start_time','pk').first()
+        if table_id is not None and busy:raise ValidationError('Bàn chưa được giải phóng khỏi lượt phục vụ hiện tại.')
+        if table_id is not None and conflict:raise ValidationError(conflict_message(table,conflict))
+        if area and table_eligible(table, area, guests) and not busy and conflict is None:
             return table
     raise ValidationError(NO_TABLE_MESSAGE)
 
 
 @with_actor
 @transaction.atomic
-def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=None, topping_cart=None, combo_cart=None, promotion_code='', online=False, area=None, preferred_area=None):
+def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=None, topping_cart=None, combo_cart=None, promotion_code='', online=False, area=None, preferred_area=None, preferred_table=None):
     if not user.is_authenticated or not user.is_active:
         raise ValidationError('Vui lòng đăng nhập tài khoản đang hoạt động.')
     if isinstance(guests, bool) or not isinstance(guests, int) or not 1 <= guests <= 20:
@@ -89,7 +96,7 @@ def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=
     area_id=getattr(area,'pk',None)
     if area is not None and (area_id not in areas or not areas[area_id].is_active):
         raise ValidationError('Khu vực không còn phục vụ.')
-    table = find_available_table(start, end, guests, areas, area_id=area_id)
+    table = find_available_table(start, end, guests, areas, area_id=area_id,table_id=getattr(preferred_table,'pk',None))
     needs_deposit=online and settings.BOOKING_DEPOSIT_REQUIRED
     booking = Booking(user=user, name=name, phone=phone.strip(), date=date, time=time, guests=guests,
                       note=note, table=table, status='PENDING_DEPOSIT' if needs_deposit else Booking.Status.CONFIRMED, start_time=start, end_time=end)

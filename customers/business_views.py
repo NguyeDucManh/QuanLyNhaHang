@@ -272,7 +272,7 @@ def order_bookings(request):
     if scoped is not None:bookings=bookings.filter(table_id__in=scoped)
     return list_page(request,page='orders',title='Mở đơn từ Booking',headers=['Booking','Khách','Bàn','Bắt đầu','Kết thúc'],
         queryset=bookings.select_related('table').order_by('start_time','pk'),
-        cells=lambda b:[f'#{b.pk}',b.name,b.table.code,b.start_time,b.end_time],
+        cells=lambda b:[f'#{b.pk}',b.name if has_capability(request.user,'customers.view_booking') else 'Khách đặt bàn',b.table.code,b.start_time,b.end_time],
         actions=lambda b:[action(request,'add_order','Mở đơn hàng',reverse('admin_booking_open_order',args=[b.pk]),post=True)],
         description='Chỉ mở đơn khi khách đến. Món đặt trước được sao chép theo tên và giá đã lưu.')
 

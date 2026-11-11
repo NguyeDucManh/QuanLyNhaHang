@@ -162,8 +162,8 @@ def open_order_from_booking(booking_id, *, actor):
         raise ValidationError('Booking cần có bàn và khu vực đang phục vụ.')
     if table.capacity < booking.guests:
         raise ValidationError('Bàn không đủ sức chứa cho Booking.')
-    if Order.objects.filter(table=table,status__in=ACTIVE_ORDER_STATUSES).filter(
-            Q(booking__isnull=True)|Q(booking__start_time__lt=booking.end_time,booking__end_time__gt=booking.start_time)).exists():
+    from .table_availability import blocking_orders
+    if blocking_orders(booking.start_time,booking.end_time).filter(table=table).exists():
         raise ValidationError('Bàn đang có đơn phục vụ chưa hoàn thành; không mở trùng bàn.')
     order = save_validated(Order(booking=booking, customer_id=booking.user_id, table=table,
                                 order_type=Order.Type.DINE_IN, created_by=actor, note=booking.note))
