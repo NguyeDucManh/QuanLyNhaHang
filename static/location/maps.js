@@ -5,13 +5,13 @@
   let config=JSON.parse(node.textContent),current=null,marker=null,circle=null,employeeMarker=null,accuracyCircle=null,follow=true;
   const latInput=document.getElementById('id_latitude'),lngInput=document.getElementById('id_longitude'),radiusInput=document.getElementById('id_attendance_radius_m');
   const valid=(lat,lng)=>lat!==null&&lng!==null&&lat!==''&&lng!==''&&Number.isFinite(Number(lat))&&Number.isFinite(Number(lng))&&Math.abs(Number(lat))<=90&&Math.abs(Number(lng))<=180;
-  const map=L.map(host).setView(valid(config.latitude,config.longitude)?[config.latitude,config.longitude]:[10.7769,106.7009],15);
+  const map=L.map(host).setView(valid(config.latitude,config.longitude)?[config.latitude,config.longitude]:[0,0],valid(config.latitude,config.longitude)?15:2);
   // Browser requests retain normal referrer/caching. No proxy, bypass or prefetch.
   const tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',maxZoom:19,referrerPolicy:'strict-origin-when-cross-origin'}).addTo(map);
   let tileFailure=false,mapLoaded=false;
   function fallback(){
     if(tileFailure)return;tileFailure=true;map.removeLayer(tiles);
-    const notice=document.createElement('p');notice.className='map-unavailable';notice.setAttribute('role','status');notice.textContent='Không tải được nền bản đồ. Hai điểm và tọa độ vẫn hiển thị; khoảng cách chấm công do máy chủ tính. Không tự đổi nhà cung cấp hoặc vượt chặn.';host.after(notice);host.classList.add('map-fallback');
+    const notice=document.createElement('p');notice.className='map-unavailable';notice.setAttribute('role','status');notice.textContent='Không tải được tile OpenStreetMap (mạng, CSP hoặc nhà cung cấp từ chối). Kiểm tra Network để biết mã HTTP; chưa thể kết luận 403 chỉ từ tileerror. Tọa độ/GPS vẫn hoạt động. Có thể cấu hình nhà cung cấp hợp lệ sau khi được duyệt; không tự đổi sang dịch vụ trả phí.';host.after(notice);host.classList.add('map-fallback');
   }
   tiles.on('tileerror',fallback);tiles.once('load',()=>{mapLoaded=true;});setTimeout(()=>{if(!mapLoaded)fallback();},8000);
   const icon=L.icon({iconUrl:host.dataset.markerIcon,iconRetinaUrl:host.dataset.markerRetina,shadowUrl:host.dataset.markerShadow,iconSize:[25,41],iconAnchor:[12,41],popupAnchor:[1,-34],shadowSize:[41,41]});
@@ -33,12 +33,21 @@
       if(employeeMarker)employeeMarker.setLatLng(coords);else employeeMarker=L.circleMarker(coords,{radius:8,color:'#286783',fillOpacity:1}).addTo(map).bindPopup('Vị trí hiện tại của bạn (GPS)');
       if(accuracyCircle)accuracyCircle.setLatLng(coords).setRadius(point.accuracy);else accuracyCircle=L.circle(coords,{radius:point.accuracy,color:'#286783',fillOpacity:.05}).addTo(map);
       if(first)map.setView(coords,16);
-      else if(follow&&map.getCenter().distanceTo(L.latLng(coords))>100)map.panTo(coords,{animate:false});
+      else if(follow)map.panTo(coords,{animate:false});
     },
+    clear(){current=null;if(employeeMarker)map.removeLayer(employeeMarker);if(accuracyCircle)map.removeLayer(accuracyCircle);employeeMarker=null;accuracyCircle=null;},
     configure(value){config=value;if(valid(value.latitude,value.longitude))restaurant(value.latitude,value.longitude,value.radius);else{if(marker)map.removeLayer(marker);if(circle)map.removeLayer(circle);marker=null;circle=null;}}
   };
   document.querySelector('[data-map-self]')?.addEventListener('click',()=>{follow=true;if(current)map.setView([current.latitude,current.longitude],16);});
   document.querySelector('[data-map-both]')?.addEventListener('click',both);
+  document.querySelector('[data-map-restaurant]')?.addEventListener('click',()=>{follow=false;if(marker)map.setView(marker.getLatLng(),16);});
+  document.querySelector('[data-location-edit]')?.addEventListener('click',()=>{
+    const fields=document.querySelector('[data-location-fields]');if(fields)fields.disabled=false;
+    marker?.dragging?.enable();host.dataset.editable='true';
+  });
+  document.getElementById('location-settings-form')?.addEventListener('submit',event=>{
+    if(!window.confirm('Xác nhận lưu vị trí cố định nhà hàng và chính sách chấm công?'))event.preventDefault();
+  });
   function sync(){restaurant(latInput?.value,lngInput?.value,radiusInput?.value);}
   [latInput,lngInput,radiusInput].forEach(input=>input?.addEventListener('change',sync));
   setTimeout(()=>map.invalidateSize(),250);

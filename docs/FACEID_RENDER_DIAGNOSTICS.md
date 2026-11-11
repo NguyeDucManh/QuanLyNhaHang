@@ -47,3 +47,17 @@ thời gian, kích thước payload, 5/25 frame theo challenge. Không đưa ả
 Kiểm tra video nguồn dọc được giữ tỷ lệ; không kéo méo sang 640×480.
 Trang chấm công phải có tài khoản liên kết nhân viên, profile tương thích, ca APPROVED và policy GPS hợp lệ.
 Không tạo ca/chấm công mẫu trên production để thử; kiểm tra vào/ra ở staging/test database riêng.
+
+## Bổ sung GPS trực tiếp và quyền cấu hình — 11/11/2026
+
+Trang chấm công tự xin GPS trong chế độ cần vị trí, dùng watchPosition high accuracy, maximumAge=0; marker theo vị trí thiết bị, không thay tọa độ nhà hàng. Có thời gian cập nhật, nút vị trí của tôi/nhà hàng/hai điểm. Khi GPS lỗi/cũ/dừng, bỏ marker thiết bị thay vì dùng mặc định. Preview máy chủ lần đầu và kiểm tra chủ động không ghi lịch sử di chuyển; secure_punch vẫn xác minh độc lập.
+
+Chỉ ADMIN có quyền change_restaurantinfo mới chỉnh cấu hình. GET không ghi; fieldset khóa đến khi bấm chỉnh sửa, cần checkbox xác nhận và dialog trước lưu. Editor RestaurantInfo chung cũng chặn MANAGER/STAFF để không vượt quyền qua đường khác. Không đổi policy mode, radius, accuracy hoặc threshold production trong tác vụ này. Test cấu hình dùng database test riêng và dữ liệu fixture.
+
+Chrome headless: 5 trang kết hợp × 6 viewport 320–1440, 30 lượt, kiểm tra map bám GPS mô phỏng, chuyển góc nhìn nhà hàng/thiết bị, từ chối quyền, accuracy thấp/cũ và khóa punch. Không phải Safari/iPhone/Android phần cứng hay FaceNet người thật. Model, ngưỡng, GPS geofence và liveness không được thay đổi bởi gói bổ sung.
+
+Một request tile OSM từ máy kiểm thử bị ConnectionError, không có HTTP status; browser cũng hiển thị fallback. Chưa thể kết luận 403/CSP hoặc lỗi Render. GET trang chủ Render 200 không có CSP, không thay thế kiểm tra trang quản lý đã xác thực. Thông báo tileerror hướng dẫn kiểm tra Network và giữ tọa độ hiển thị; không proxy/vượt chặn hoặc tự chuyển dịch vụ trả phí. Cần kiểm tra tile trên thiết bị/mạng thật sau triển khai được duyệt.
+
+PR #2 đã được push để review; chưa merge/deploy. Bổ sung này thuộc yêu cầu mới sau gói 23 file ban đầu; manifest/patch đã duyệt trước đó được giữ làm bằng chứng phiên bản cũ. Booking/bàn thuộc PR #3, kiểm thử kết hợp trên worktree riêng; không gộp PR.
+
+Kiểm thử chốt bổ sung trên cây kết hợp: **647/647 PASS, 455,408 giây**, Windows/Python 3.14 và PostgreSQL test riêng, parallel 2. Check/migration drift/collectstatic DEBUG=False PASS trên cây kết hợp và từng nhánh. Browser cuối 30/30, không JS exception hoặc local asset HTTP lỗi; GPS/camera/API mô phỏng, không nhận diện người thật trên Render. Không đổi binary/model_version hoặc chạy migration production. Linux build, Safari/iPhone/Android phần cứng và tải tile trên mạng thực vẫn cần xác minh sau phê duyệt.

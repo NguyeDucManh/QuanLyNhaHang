@@ -84,7 +84,8 @@ class FinalIntegrationTests(Module07Fixtures,TestCase):
         client=Client(); client.force_login(self.customer)
         for name in ['location_settings','face_test_page','ai_chatbot_management']: self.assertEqual(client.get(reverse(name)).status_code,403)
         client.force_login(self.manager)
-        for name in ['location_settings','face_test_page','ai_chatbot_management','ai_faces']: self.assertEqual(client.get(reverse(name)).status_code,200)
+        self.assertEqual(client.get(reverse('location_settings')).status_code,403)
+        for name in ['face_test_page','ai_chatbot_management','ai_faces']: self.assertEqual(client.get(reverse(name)).status_code,200)
     def test_csrf_and_http_method_security(self):
         client=Client(enforce_csrf_checks=True); client.force_login(self.staff); self.assertEqual(client.post(reverse('secure_attendance'),'{}',content_type='application/json').status_code,403); self.assertEqual(client.get(reverse('secure_attendance')).status_code,405)
     def test_invalid_topping_does_not_mutate_cart(self):

@@ -27,6 +27,7 @@ def attendance_status(request):
     return response
 
 class LocationForm(forms.Form):
+    confirm_location_change=forms.BooleanField(required=True,label='Tôi xác nhận lưu vị trí nhà hàng và chính sách đã chỉnh sửa')
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
         from .ui_labels import LABELS
@@ -46,7 +47,7 @@ class LocationForm(forms.Form):
                 if values.get(key) is None: self.add_error(key,'Nhập đủ tọa độ để sử dụng GPS.')
         return values
 
-@role_required('ADMIN','MANAGER')
+@role_required('ADMIN')
 @capability_required('customers.change_restaurantinfo')
 def settings_page(request):
     info=RestaurantInfo.objects.filter(is_active=True).first(); policy=AttendanceLocationPolicy.objects.filter(restaurant=info).first() if info else None
@@ -58,7 +59,7 @@ def settings_page(request):
         else:
             with transaction.atomic():
                 info=RestaurantInfo.objects.select_for_update().get(pk=info.pk)
-                values=form.cleaned_data.copy(); info.latitude=values.pop('latitude'); info.longitude=values.pop('longitude'); info.address=values.pop('address'); info.full_clean(); info.save()
+                values=form.cleaned_data.copy(); values.pop('confirm_location_change'); info.latitude=values.pop('latitude'); info.longitude=values.pop('longitude'); info.address=values.pop('address'); info.full_clean(); info.save()
                 AttendanceLocationPolicy.objects.update_or_create(restaurant=info,defaults=values)
             messages.success(request,'Đã lưu vị trí và chính sách chấm công.'); return redirect('location_settings')
     return render(request,'admin/location/settings.html',{'admin_page':'location-settings','form':form,'restaurant':info,'location_config':public_config()})

@@ -77,7 +77,7 @@ class FaceWorkflowHTTPTests(Module07Fixtures, TestCase):
         for user in (self.admin,self.staff):
             user.set_password('Workflow-test-only-2026!');user.save(update_fields=['password'])
         self.assertTrue(self.client.login(username=self.admin.username,password='Workflow-test-only-2026!'))
-        response=self.client.post(reverse('location_settings'),{'latitude':'10','longitude':'106','address':'Test workflow address','attendance_radius_m':150,'max_accuracy_m':50,'mode':'FACE_AND_GPS','is_active':'on'})
+        response=self.client.post(reverse('location_settings'),{'confirm_location_change':'on','latitude':'10','longitude':'106','address':'Test workflow address','attendance_radius_m':150,'max_accuracy_m':50,'mode':'FACE_AND_GPS','is_active':'on'})
         self.assertEqual(response.status_code,302)
         restaurant.refresh_from_db();self.assertEqual(float(restaurant.latitude),10)
         net=SimpleNamespace(model_version='test-workflow',process=lambda frame:(np.array([1.,0.]),{'yaw':0,'blink':0},frame))
