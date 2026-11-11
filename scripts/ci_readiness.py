@@ -32,6 +32,10 @@ elif mode=='face':
     from io import StringIO
     output=StringIO();call_command('check_face_runtime',load_engine=True,stdout=output)
     report=json.loads(output.getvalue())
+    if not report['engine']['ready']:
+        # CI has no user payload: preserve the chained native-library traceback.
+        from customers.ai.face.facenet_service import engine
+        engine()
     assert report['engine']['ready'],report
     assert report['engine']['tensor_smoke_dimensions']==128
     assert all(report['assets'][name]['hash_matches'] for name in ('facenet.onnx','face_landmarker.task'))

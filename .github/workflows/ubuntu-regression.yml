@@ -82,6 +82,7 @@ jobs:
           python manage.py migrate --noinput
           python manage.py migrate --check
           python scripts/ci_readiness.py migrated
+          python manage.py expire_booking_deposits
       - name: FaceNet assets and actual Linux initialization
         run: |
           python manage.py download_ai_models --face-only
@@ -89,7 +90,7 @@ jobs:
       - name: Production static build
         env:
           DJANGO_DEBUG: 'false'
-        run: python manage.py collectstatic --noinput
+        run: bash build.sh
       - name: Full regression (tests include feature flags ON and OFF)
         run: python manage.py test --noinput --parallel 2 --verbosity 2
       - name: Redis cross-client readiness
