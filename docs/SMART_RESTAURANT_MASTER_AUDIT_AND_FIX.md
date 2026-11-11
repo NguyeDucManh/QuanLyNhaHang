@@ -139,3 +139,47 @@ PR mới nên review diff so với integration/master-readiness để không l�
 - Không merge main, deploy, migrate, bật flag hoặc đổi dữ liệu production. **Trạng thái: sẵn sàng review gói sửa ưu tiên; chưa đủ điều kiện nghiệm thu toàn hệ thống hoặc triển khai production.** Những giới hạn BLOCKED/chưa kiểm chứng ở trên vẫn áp dụng, không được bỏ qua chỉ vì test PASS.
 
 Draft review: [PR #4](https://github.com/NguyeDucManh/QuanLyNhaHang/pull/4), base integration/master-readiness. Sau commit đầu, kiểm tra thêm phát hiện danh sách thanh toán vẫn có tên khách và tìm kiếm bằng tên khi thiếu view_booking. Đã che ở payment list/receipt, giới hạn search và thêm HTTP assertion; **73/73 tests tài chính/Stripe/quyền PASS,20,898s** (`booking-gps-masterfinancialprivacy-tests.log`). Đây là lượt targeted sau full658, không báo full660 hoặc cộng73 vào full. Gói cuối37 file mới/sửa so với base tích hợp; không thay PR #2/#3 hoặc main.
+
+## 12. Cập nhật CI và readiness — 12/11/2026
+
+### Git và tích hợp
+
+Đã đọc trạng thái GitHub: #2/#3 open, chưa merge, vẫn dựa trên main; #4 draft dựa trên integration/master-readiness. Không sửa nhánh #2/#3. Nhánh #4 thêm CI Ubuntu, operational-readiness command/tests, guard thư viện native, bộ cài CPU Linux và runbook. Không đưa dirty changes của workspace gốc, .env, database dump, AI binary/cache vào nhánh.
+
+Đã diễn tập trên worktree riêng: squash #2 → squash #3 → cherry-pick chỉ commit riêng #4 sau3107bbd. Cây mã nguồn khớp nhánh ứng viên, không conflict/mất thay đổi, main không đổi. Đây là diễn tập local, không phải merge GitHub. Sau owner merge #2/#3 phải lấy main mới, replay phần riêng #4, đối chiếu cây và chạy CI lại. Quy trình chi tiết: [RENDER_INTEGRATION_RELEASE_RUNBOOK.md](RENDER_INTEGRATION_RELEASE_RUNBOOK.md).
+
+### CI đã thực thi trên Linux
+
+[Run Ubuntu thành công đầu tiên](https://github.com/NguyeDucManh/QuanLyNhaHang/actions/runs/43071213008), code06cef54, Ubuntu24.04/Python3.14.8/PostgreSQL17/Redis7:
+
+- Cài production requirements và pip check PASS; Django checks/drift PASS.
+- Schema0021/flagsOFF/public GET PASS; áp dụng0022/0023, reverse và áp dụng lại PASS trên **DB CI rỗng**. Không làm tương tự production.
+- Scheduler cọc chạy trên DB CI; không gọi Stripe thật hoặc production.
+- Hai model thật tải đúng SHA-256, engine FaceNet+MediaPipe ready, CPUExecutionProvider, tensor128 chiều. Load0,943s, tensor0,028s; peakRSS595516KiB (khoảng582MiB). Không phải test danh tính người thật hoặc đo RAM Render.
+- `bash build.sh` DEBUG=False PASS;241 static source,969 post-process.
+- Full **664/664 PASS,116,382s**; hai Redis channel-layer client gửi/nhận thật PASS, readiness flagsON/Redis PASS.
+
+Windows full trên worktree tách biệt: **664/664 PASS,163,382s** (`booking-gps-ci_full_verified-tests.log`), sau sửa test tìm kiếm theo quyền. Test này kiểm tra cả việc không thể dùng tên khách làm search oracle khi thiếu view_booking và tìm kiếm thành công khi được cấp quyền; không nới quyền production.
+
+Lỗi CI đầu tiên là smoke schema cũ thiếu django_session: thêm migrate sessions vào DB CI. Lỗi tiếp theo đã có traceback chính xác: MediaPipe thiếu `libEGL.so.1`; CI cài libegl1/libgles2, build nạp native runtime thật trước khi tiếp tục. Không đổi model_version/threshold/GPS hoặc bỏ qua nhận diện.
+
+Sau run06cef54, bộ cài Linux được tối ưu sang wheel PyTorch CPU chính thức2.14.1+cpu cùng phiên bản2.14.1; CI có tensor smoke và assert không có CUDA. Cache CPU được tách khỏi cache tải CUDA cũ. **Run06cef54 không được dùng làm bằng chứng cho thay đổi sau nó**: xem Checks của SHA mới nhất tại [PR #4](https://github.com/NguyeDucManh/QuanLyNhaHang/pull/4) hoặc [lịch sử Actions](https://github.com/NguyeDucManh/QuanLyNhaHang/actions?query=branch%3Afix%2Fmaster-service-audit). Kết quả mới nhất cũng lưu local ở artifacts/CI_LINUX_LATEST.json; chỉ conclusion=success với mọi bước test thực sự chạy mới đạt cổng CI.
+
+### Readiness và phần chưa xác minh
+
+`check_operational_readiness` chỉ đọc PostgreSQL bằng transaction READ ONLY, kiểm tra schema theo flags, checksum map vendor, backlog cọc chưa xử lý, legacy occupied/orders và Redis PING nếu được cấu hình. `--require-enabled` không cho coi flagsOFF là đã bật scope; `--require-redis` từ chối InMemory. Nó luôn báo external_schedule_verified=false: có command không chứng minh cron đang chạy. Backlog chỉ đếm booking PENDING_DEPOSIT đã hết hạn, không gộp booking đã hủy.
+
+Render connector chưa được kết nối, không có Render API credential trong môi trường. Đã kiểm tra khả năng công cụ, **chưa đọc được Auto-Deploy, branch, Build/Start, logs, metrics, Redis topology hay cron production**. Không suy enabled/disabled từ GitHub. Plugin Render được đề xuất để chủ tài khoản kết nối; chưa thay cấu hình.
+
+Public probe phiên này: health/staticCSS/staticJS Render đều ReadTimeout40s; OpenFreeMap style200 application/json. Không quy lỗi timeout cho cold start/OOM khi chưa có logs, không tuyên bố website đã deploy bản mới. OpenFreeMap từng được browser kiểm tra thật ở localhost; chưa có iPhone/Android phần cứng hoặc hậu kiểm Render mới. Không gửi ảnh khuôn mặt, tạo challenge, đơn hàng, chấm công hoặc thanh toán production.
+
+Backup và restore rehearsal tại mục4 vẫn là bằng chứng có thực; phải lấy snapshot cuối mới ngay trước cửa sổ production được duyệt. Hai feature flags giữ mặc địnhfalse. CI dùng PostgreSQL/Redis tạm và fixture secret riêng, không nhận credential Render, không có bước deploy.
+
+### Phê duyệt còn cần
+
+1. Cấp kết nối Render hoặc đối chiếu Dashboard để chốt Auto-Deploy/currentSHA/topology trước merge main; mọi thay đổi setting cần duyệt.
+2. Duyệt thứ tự merge #2→#3→#4 sau CI đúng SHA; duyệt deploy tương thích flagsOFF và điều kiện EGL/GLES/RAM thực tế. Không tự nâng gói hay tạo dịch vụ có phí.
+3. Sau backup cuối, duyệt migration0022→0023 riêng; sau đó mới duyệt bật flags, Redis/scheduler và phân công dữ liệu thật.
+4. Smoke production chỉ đọc, xác minh logs/hash/model/API/static/map; kiểm thử ghi trên test/staging, thiết bị iPhone/Android và nhận diện người thật vẫn cần môi trường/thiết bị được cấp.
+
+Rollback giữ bảng/session/audit, không reverse migration có dữ liệu hoặc restore đè. Tắt assignment flag làm trở lại scope cũ, nên cần kế hoạch hạn chế truy cập được duyệt nếu rollback; không quảng bá việc tắt cờ là bảo mật đã nghiệm thu.
