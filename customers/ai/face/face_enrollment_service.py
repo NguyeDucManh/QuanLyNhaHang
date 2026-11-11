@@ -35,6 +35,8 @@ def identify(vectors,model_version,*,allow_provisional=False,operational_only=Fa
     if vectors.ndim!=2 or not np.isfinite(vectors).all(): raise ValidationError('Embedding không hợp lệ.')
     from .policy import effective_threshold
     profiles=FaceProfile.objects.filter(model_version=model_version,employee__is_active=True,employee__user__is_active=True,employee__employment_status='ACTIVE')
+    if not profiles.exists() and FaceProfile.objects.filter(employee__is_active=True).exclude(model_version=model_version).exists():
+        raise ValidationError('Model FaceID đang chạy không tương thích model_version của hồ sơ đã đăng ký. Cần kiểm tra đúng bộ model; không tự xóa hoặc đăng ký lại hồ sơ.')
     if not allow_provisional: profiles=profiles.filter(threshold__isnull=False)
     if operational_only:
         from customers.employee_identity import operational_employees

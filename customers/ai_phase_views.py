@@ -1,3 +1,4 @@
+from .ai.face.runtime import face_api
 import json
 from collections import Counter
 from django.contrib.auth.decorators import login_required
@@ -74,6 +75,8 @@ def payload(request):
     if not isinstance(data,dict): raise ValidationError('JSON phải là object.')
     return data
 
+@face_api
+
 @role_required('ADMIN','MANAGER')
 @require_POST
 def enrollment(request,pk):
@@ -89,6 +92,8 @@ def enrollment(request,pk):
     from .ai.face.policy import effective_threshold
     threshold,kind=effective_threshold(profile)
     return JsonResponse({'samples':profile.samples.count(),'threshold':threshold,'threshold_type':kind,'message':'Đã đăng ký. Ngưỡng tạm thời — chưa hiệu chỉnh bằng dữ liệu validation thật.'})
+
+@face_api
 
 @role_required('ADMIN','MANAGER','STAFF')
 @require_POST
@@ -120,10 +125,12 @@ def face_attendance(request):
     from .employee_identity import operational_employees
     from .ai.face.policy import effective_threshold
     from django.conf import settings
-    employee=operational_employees().select_related('face_profile','position').filter(user=request.user).first()
-    schedules=WorkSchedule.objects.filter(employee=employee,status='APPROVED',start_at__lte=timezone.now()+timezone.timedelta(hours=1),end_at__gte=timezone.now()-timezone.timedelta(hours=4)).select_related('shift').order_by('start_at')[:20] if employee else []
+    from .attendance_status import attendance_context
+    state=attendance_context(request.user)
     config=public_config(); config['require_liveness']=settings.FACEID_REQUIRE_LIVENESS
-    return render(request,'customer/ai/face_attendance.html',{'schedules':schedules,'employee':employee,'location_config':config,'require_liveness':settings.FACEID_REQUIRE_LIVENESS})
+    return render(request,'customer/ai/face_attendance.html',{**state,'location_config':config,'require_liveness':settings.FACEID_REQUIRE_LIVENESS})
+
+@face_api
 
 @role_required('STAFF','ADMIN','MANAGER')
 @require_POST
@@ -131,6 +138,8 @@ def challenge(request):
     from .ai.face.liveness_service import issue
     from django.conf import settings
     return JsonResponse(issue(request.user,require_liveness=settings.FACEID_REQUIRE_LIVENESS))
+
+@face_api
 
 @role_required('STAFF','ADMIN','MANAGER')
 @require_POST

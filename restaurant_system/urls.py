@@ -53,6 +53,7 @@ urlpatterns = [
     path('management/ai/faces/test/verify/',final.test_face,name='face_test_verify'),
     path('management/settings/location/',geo.settings_page,name='location_settings'),
     path('work/location/check/',geo.check_location,name='location_check'),
+    path('work/attendance/status/',geo.attendance_status,name='attendance_status'),
     path('work/attendance/verify/',geo.attendance,name='secure_attendance'),
     path('management/ai/',ai.dashboard,name='ai_dashboard'),
     path('management/ai/forecast/',ai.forecast,name='ai_forecast'),
