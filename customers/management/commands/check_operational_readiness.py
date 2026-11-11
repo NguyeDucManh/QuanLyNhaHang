@@ -24,7 +24,7 @@ class Command(BaseCommand):
             for flag,table in required.items():
                 if report['flags'][flag] and table not in tables:failures.append('Enabled feature schema missing: '+table)
                 if options['require_enabled'] and not report['flags'][flag]:failures.append('Feature not enabled: '+flag)
-            report['deposits']={'expired_unprocessed':BookingDeposit.objects.filter(status__in=['PENDING','FAILED'],expires_at__lte=timezone.now()).count(),
+            report['deposits']={'expired_unprocessed':BookingDeposit.objects.filter(booking__status='PENDING_DEPOSIT',status__in=['PENDING','FAILED'],expires_at__lte=timezone.now()).count(),
                                 'scheduler_command_present':'expire_booking_deposits' in get_commands(),
                                 'external_schedule_verified':False}
             report['legacy_review']={'occupied_tables':RestaurantTable.objects.filter(status='OCCUPIED').count(),

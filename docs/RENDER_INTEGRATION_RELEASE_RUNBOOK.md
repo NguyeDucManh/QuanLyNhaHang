@@ -18,7 +18,11 @@
 
 `.github/workflows/ubuntu-regression.yml`: Ubuntu24.04,Python3.14.8,PostgreSQL17,Redis7 containers tạm, secret fixture không dùng production. Actions pin SHA; token contents:read, checkout không lưu credential. Không có bước deploy, production URL/credential hoặc seed production.
 
-Pipeline: install requirements-production + pip check → schema0021/flagsOFF/public smoke → migrate latest test schema/check drift → pin FaceNet download/hash/engine128dim Linux → collectstatic DEBUG=False → full regression gồm flagsON/OFF → hai Redis channel clients → operational readiness flagsON/Redis.
+Pipeline: install requirements-production + pip check → schema0021/flagsOFF/public smoke → migrate0022/0023 → reverse/reapply trên DB CI rỗng → scheduler trên DB CI → pin FaceNet download/hash/engine128dim Linux → chạy đúng `bash build.sh` DEBUG=False → full regression gồm flagsON/OFF → hai Redis channel clients → operational readiness flagsON/Redis.
+
+CI đã phát hiện lỗi native thật: MediaPipe1.1.0 không nạp được vì thiếu `libEGL.so.1` trên Ubuntu runner. CI cài libegl1/libgles2 cùng libgl1/libglib2.0-0/libportaudio2. `build.sh` nay chạy `scripts/check_face_native.py` để nạp thư viện native thật, không chỉ import Python; không truy cập database. Trên Render phải xem build log bước này. Nếu image thiếu thư viện hệ thống, build phải dừng; cần owner review phương án image có EGL/GLES (hoặc Docker) trước khi triển khai, không giả định apt/sudo được phép trên native Render và không bỏ qua guard.
+
+Log CI ban đầu kéo cả NVIDIA/CUDA qua torch mặc định trên Linux. `scripts/install_production.sh` cài wheel CPU chính thức `torch==2.14.1+cpu` trước requirements (cùng phiên bản2.14.1), không đổi model hoặc threshold; CI kiểm tra version, không có CUDA và phép nhân tensor thật. Nguồn: [PyTorch CPU wheels](https://download.pytorch.org/whl/cpu/torch/). Build cũ có cache CUDA có thể còn package không dùng; không tự xóa cache production. Cần kiểm tra dung lượng build và RAM thực tế trên Render, không suy từ runner đủ RAM ra gói Free đủ RAM.
 
 Job full dùng flags mặc địnhOFF; các test an toàn overrideON để kiểm tra assignment/sessions/object scope. Không chạy toàn bộ fixture legacy với globalON rồi nới assert để cho qua. Redis smoke dùng DB15 trên container tạm, không publish vào Redis production. Chạy từ PR và push main/integration, tránh nhân đôi job push/head của cùng PR.
 

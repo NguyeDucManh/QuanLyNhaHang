@@ -69,8 +69,9 @@ jobs:
       - name: Install exact production dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r requirements-production.txt
+          bash scripts/install_production.sh
           python -m pip check
+          python -c "import torch; assert torch.__version__ == '2.14.1+cpu'; assert torch.version.cuda is None; assert torch.mm(torch.ones(2,2),torch.ones(2,2)).sum().item() == 8"
       - name: Checks and migration graph
         run: |
           python manage.py check

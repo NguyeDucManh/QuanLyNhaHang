@@ -1,6 +1,6 @@
 # Smart Restaurant — kiểm toán, sửa lỗi và điều kiện triển khai
 
-Tài liệu chốt theo bằng chứng trong phiên master task; chưa xác nhận production đã được sửa. Không merge main, deploy, migrate hoặc sửa dữ liệu Render. Bản tích hợp chạy trên Windows/Python 3.14.8 và PostgreSQL test riêng.
+Tài liệu chốt theo bằng chứng trong phiên master task; chưa xác nhận production đã được sửa. Không merge main, deploy, migrate hoặc sửa dữ liệu Render. Các mục 1–11 ghi lịch sử kiểm tra ban đầu; cập nhật CI Ubuntu và cổng triển khai ngày 12/11/2026 ở mục 12 có hiệu lực thay cho các giới hạn Linux cũ.
 
 ## 1. Tổng quan và ma trận
 
@@ -113,7 +113,7 @@ Thư mục SmartRestaurant_Submission chứa bản source nộp lặp được G
 | Backup và restore rehearsal local | PASS | Chưa restore production |
 | Linux wheel resolution | PASS | Không chứng minh libGL/MediaPipe/runtime Linux |
 | Auto-Deploy/Render logs/build/metrics | BLOCKED | Thiếu quyền/credential Render |
-| Linux clean build thực tế | BLOCKED | Chưa WSL/Docker/CI hoặc Shell Render được duyệt |
+| Linux clean build thực tế | Đã có CI Ubuntu | Xem bằng chứng mới ở mục12; vẫn chưa build/deploy Render |
 | Thiết bị iPhone/Android/FaceNet thật | BLOCKED | Không có thiết bị/camera dataset kiểm định |
 | Dự báo từ chuỗi dữ liệu thật đủ dài | BLOCKED | Artifact chủ yếu synthetic, không tạo dữ liệu giả |
 | Scheduler/Redis production | BLOCKED | Thiếu topology/config và duyệt chi phí/thay đổi |
