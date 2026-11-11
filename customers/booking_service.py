@@ -59,10 +59,11 @@ def table_eligible(table, area, guests):
     return area.is_active and table.is_active and table.status != RestaurantTable.Status.MAINTENANCE and table.capacity >= guests
 
 
-def find_available_table(start, end, guests, areas, *, exclude_booking=None):
+def find_available_table(start, end, guests, areas, *, exclude_booking=None, area_id=None):
     # OCCUPIED describes now, not future reservation availability.
     candidates = RestaurantTable.objects.filter(is_active=True, capacity__gte=guests).exclude(
         status=RestaurantTable.Status.MAINTENANCE).order_by('capacity', 'pk')
+    if area_id is not None:candidates=candidates.filter(area_id=area_id)
     for table in candidates.select_for_update():
         area = areas.get(table.area_id)
         if area and table_eligible(table, area, guests) and not overlaps(table.pk, start, end, exclude_booking):
@@ -72,7 +73,7 @@ def find_available_table(start, end, guests, areas, *, exclude_booking=None):
 
 @with_actor
 @transaction.atomic
-def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=None, topping_cart=None, combo_cart=None, promotion_code='', online=False):
+def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=None, topping_cart=None, combo_cart=None, promotion_code='', online=False, area=None, preferred_area=None):
     if not user.is_authenticated or not user.is_active:
         raise ValidationError('Vui lòng đăng nhập tài khoản đang hoạt động.')
     if isinstance(guests, bool) or not isinstance(guests, int) or not 1 <= guests <= 20:
@@ -84,7 +85,11 @@ def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=
     # Recheck clock after waiting for another request's lock.
     if start <= timezone.now():
         raise ValidationError('Vui lòng chọn thời gian đặt bàn trong tương lai.')
-    table = find_available_table(start, end, guests, areas)
+    area=preferred_area if preferred_area is not None else area
+    area_id=getattr(area,'pk',None)
+    if area is not None and (area_id not in areas or not areas[area_id].is_active):
+        raise ValidationError('Khu vực không còn phục vụ.')
+    table = find_available_table(start, end, guests, areas, area_id=area_id)
     needs_deposit=online and settings.BOOKING_DEPOSIT_REQUIRED
     booking = Booking(user=user, name=name, phone=phone.strip(), date=date, time=time, guests=guests,
                       note=note, table=table, status='PENDING_DEPOSIT' if needs_deposit else Booking.Status.CONFIRMED, start_time=start, end_time=end)
@@ -141,6 +146,8 @@ def transition_booking(booking_id, new_status, *, owner=None):
         if service_order and (owner is not None or service_order.status != Order.Status.CANCELLED):
             raise ValidationError('Booking đã mở đơn hàng; không thể tự hủy. Vui lòng liên hệ nhà hàng.')
     if new_status == Booking.Status.CONFIRMED:
+        if getattr(booking,'deposit',None) is not None and booking.deposit.status!='SUCCEEDED':
+            raise ValidationError('Chưa thể xác nhận booking khi tiền cọc bắt buộc chưa thành công.')
         if booking.start_time is None or booking.end_time is None:
             booking.start_time, booking.end_time = booking_window(booking.date, booking.time)
         validate_window(booking.start_time, booking.end_time)

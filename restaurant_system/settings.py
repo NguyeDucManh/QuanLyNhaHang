@@ -245,6 +245,7 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 35 * 1024 * 1024
 # L2 embeddings compared by cosine similarity. 0.80 is a conservative local
 # starting point, not an empirically calibrated biometric operating point.
 FACEID_DEFAULT_THRESHOLD = float(os.environ.get('FACEID_DEFAULT_THRESHOLD', '0.80'))
+TABLE_SERVICE_ASSIGNMENTS_ENABLED = os.environ.get('TABLE_SERVICE_ASSIGNMENTS_ENABLED','false').lower() in ('true','1','yes')
 FACEID_REQUIRE_LIVENESS = os.environ.get('FACEID_REQUIRE_LIVENESS', 'false').lower() in ('true', '1', 'yes')
 
 # Operational policies: one source for all backend calculations.

@@ -17,6 +17,7 @@ class CustomerRegistrationForm(UserCreationForm):
 
 
 class BookingForm(forms.ModelForm):
+    preferred_area = forms.ModelChoiceField(queryset=Area.objects.filter(is_active=True).order_by('name'),required=False,label='Khu vực ưu tiên',empty_label='Bất kỳ khu vực phù hợp')
     class Meta:
         model = Booking
         fields = ("name", "phone", "date", "time", "guests", "note")

@@ -29,7 +29,7 @@ def booking_panel(request,queryset,*,customer=False):
     elif tab=='upcoming':queryset=queryset.filter(date__gte=today,status__in=['PENDING','CONFIRMED','PENDING_DEPOSIT'])
     elif tab=='cancelled':queryset=queryset.filter(status='CANCELLED')
     elif tab=='completed':queryset=queryset.filter(status='COMPLETED')
-    elif not customer:queryset=queryset.filter(Q(date__lt=today)|Q(status='COMPLETED'))
+    elif not customer:queryset=queryset.filter(Q(end_time__lte=timezone.now())|Q(status__in=['CANCELLED','COMPLETED']))
     status=request.GET.get('status','');query=request.GET.get('q','').strip()[:100]
     if status in Booking.Status.values:queryset=queryset.filter(status=status)
     if query:queryset=queryset.filter(Q(name__icontains=query)|Q(phone__icontains=query))
@@ -51,6 +51,7 @@ def availability(request):
         date=fields['date'].clean(request.GET.get('date'));time=fields['time'].clean(request.GET.get('time'));guests=fields['guests'].clean(request.GET.get('guests'))
         if not 1<=guests<=20:raise ValidationError('Chọn từ 1 đến 20 khách.')
         start,end=booking_window(date,time)
-        with transaction.atomic():table=find_available_table(start,end,guests,lock_areas())
+        area=fields['preferred_area'].clean(request.GET.get('preferred_area'))
+        with transaction.atomic():table=find_available_table(start,end,guests,lock_areas(),area_id=area.pk if area else None)
         return JsonResponse({'available':True,'message':'Có bàn phù hợp. Hệ thống sẽ tự chọn bàn khi lưu đặt bàn; xem trước không giữ chỗ.'})
     except ValidationError as error:return JsonResponse({'available':False,'message':' '.join(error.messages)},status=400)
