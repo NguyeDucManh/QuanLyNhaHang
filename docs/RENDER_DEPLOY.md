@@ -124,9 +124,11 @@ không chạy vòng lặp trong web startup; kiểm tra Stripe/network lỗi tro
 
 ## AI, file bền vững và giới hạn hạ tầng
 
-FaceNet đang lazy-load qua engine cache; thiếu manifest/model báo ValidationError.
+FaceNet đang lazy-load qua engine cache; thiếu manifest/model trả JSON 503 cho API FaceID.
 RAG dùng embedding local, không tự download trong request và không phải LLM sinh câu trả lời.
-Không train/download pretrained trong build.sh/start command. Torch, ONNX, OpenCV, embedding và
+build.sh cài riêng hai binary FaceID bằng `download_ai_models --face-only`, kiểm tra SHA-256 và
+ghi đường dẫn của máy build vào manifest. Không tải model trong request/start command, không train
+hoặc tải embedding chatbot tự động. Torch, ONNX, OpenCV, embedding và
 forecast có thể vượt RAM gói nhỏ; chưa đo RAM/timeout trên Render nên chưa xác nhận gói hiện tại đủ.
 Cần benchmark thực tế và chọn tài nguyên phù hợp, giữ nguyên tính năng AI.
 

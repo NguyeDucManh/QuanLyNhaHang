@@ -1,15 +1,30 @@
+from .ai.face.runtime import face_api
 from django import forms
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.http import JsonResponse
 from django.shortcuts import render,redirect
 from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_GET
 from django.db import transaction
 from django.utils import timezone
 from .rbac import role_required,capability_required
 from .models import RestaurantInfo,AttendanceLocationPolicy
 from .location_service import public_config,configuration,evaluate_location,secure_punch
 from .ai_phase_views import payload
+
+@face_api
+@role_required('STAFF','MANAGER','ADMIN')
+@require_GET
+def attendance_status(request):
+    from .attendance_status import attendance_context
+    state = attendance_context(request.user)
+    response = JsonResponse({'config': public_config(), 'schedule_status': state['schedule_status'],
+        'schedule_reason': state['schedule_reason'], 'schedules': [
+            {'id': s.pk, 'label': f'{timezone.localtime(s.start_at):%d/%m/%Y %H:%M} · {s.shift.name}'}
+            for s in state['schedules']]})
+    response['Vary'] = 'Cookie'
+    return response
 
 class LocationForm(forms.Form):
     def __init__(self,*args,**kwargs):
@@ -48,6 +63,7 @@ def settings_page(request):
             messages.success(request,'Đã lưu vị trí và chính sách chấm công.'); return redirect('location_settings')
     return render(request,'admin/location/settings.html',{'admin_page':'location-settings','form':form,'restaurant':info,'location_config':public_config()})
 
+@face_api
 @role_required('STAFF','MANAGER','ADMIN')
 @require_POST
 def check_location(request):
@@ -57,7 +73,9 @@ def check_location(request):
         if policy.mode=='FACE_ONLY': return JsonResponse({'geo_status':'NOT_REQUIRED','message':'Chính sách hiện tại không yêu cầu thu vị trí.'})
         point=payload(request).get('location');result=evaluate_location(point,info,policy)
     except (ValueError,ValidationError) as exc: return JsonResponse({'error':str(exc),'status_code':'GPS_UNAVAILABLE' if point is None else 'GPS_INVALID'},status=400)
-    return JsonResponse(result)
+    return JsonResponse({**result, 'config': public_config()})
+
+@face_api
 
 @role_required('STAFF','MANAGER','ADMIN')
 @require_POST

@@ -1,3 +1,4 @@
+from .ai.face.runtime import face_api
 from django.shortcuts import render,get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
@@ -21,6 +22,8 @@ def test_page(request):
     from django.conf import settings
     return render(request,'admin/ai/face_test.html',{'admin_page':'ai-faces','require_liveness':settings.FACEID_REQUIRE_LIVENESS})
 
+@face_api
+
 @role_required('ADMIN','MANAGER')
 @capability_required('customers.change_employee')
 @require_POST
@@ -33,10 +36,13 @@ def test_face(request):
         from .ai.face.policy import effective_threshold
         failed=getattr(exc,'face_profile',None); threshold,kind=effective_threshold(failed) if failed else (None,'')
         FaceAudit.objects.create(actor=request.user,employee=failed.employee if failed else None,similarity=getattr(exc,'similarity',None),threshold=threshold,threshold_type=kind,action='test',reason=str(exc)[:250])
-        return JsonResponse({'success':False,'error':str(exc)},status=400)
+        evidence = {'similarity': getattr(exc, 'similarity', None), 'threshold': threshold, 'threshold_type': kind} if failed else {}
+        return JsonResponse({'success':False,'error':str(exc), **evidence},status=400)
     result=face_result(profile,score)
     FaceAudit.objects.create(actor=request.user,employee=profile.employee,success=True,similarity=score,threshold=result['threshold'],threshold_type=result['threshold_type'],liveness=result['liveness'],action='test',reason='Verification only; no Attendance written')
     return JsonResponse({'success':True,**result})
+
+@face_api
 
 @role_required('STAFF','MANAGER','ADMIN')
 @require_POST
