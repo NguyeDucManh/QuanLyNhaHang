@@ -94,10 +94,10 @@ def management_payments(request):
     if payment_status in Payment.Status.values: payments=payments.filter(status=payment_status)
     if receipts: payments=payments.filter(status='PENDING',customer_confirmed_at__isnull=False)
     if query:
-        payments=payments.filter(Q(payment_number__icontains=query)|Q(invoice__invoice_number__icontains=query)|Q(invoice__order__order_number__icontains=query)|Q(invoice__order__customer__username__icontains=query)|Q(invoice__order__table__code__icontains=query))
+        payments=payments.filter(Q(payment_number__icontains=query)|Q(invoice__invoice_number__icontains=query)|Q(invoice__order__order_number__icontains=query)|(Q(invoice__order__customer__username__icontains=query) if has_capability(request.user,'customers.view_booking') else Q(pk__in=[]))|Q(invoice__order__table__code__icontains=query))
     invoices=service_scope.invoices(request.user).select_related('order__customer','order__table')
     if invoice_status in Invoice.Status.values: invoices=invoices.filter(status=invoice_status); payments=payments.filter(invoice__status=invoice_status)
-    if query: invoices=invoices.filter(Q(invoice_number__icontains=query)|Q(order__order_number__icontains=query)|Q(order__customer__username__icontains=query)|Q(order__table__code__icontains=query)|Q(payments__payment_number__icontains=query)).distinct()
+    if query: invoices=invoices.filter(Q(invoice_number__icontains=query)|Q(order__order_number__icontains=query)|(Q(order__customer__username__icontains=query) if has_capability(request.user,'customers.view_booking') else Q(pk__in=[]))|Q(order__table__code__icontains=query)|Q(payments__payment_number__icontains=query)).distinct()
     context={'admin_page':'payments','query':query,'payment_status':payment_status,'invoice_status':invoice_status,'receipts':receipts,
         'pagination':Paginator(payments.order_by('-created_at','-pk'),30).get_page(request.GET.get('page')),
         'invoice_pagination':Paginator(invoices.order_by('-created_at','-pk'),30).get_page(request.GET.get('invoice_page')),

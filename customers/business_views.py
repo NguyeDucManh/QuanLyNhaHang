@@ -138,7 +138,9 @@ def recipe_delete(request,pk):
 @capability_required('customers.view_order')
 def orders(request):
     query=request.GET.get('q','').strip()
-    queryset=service_scope.orders(request.user).select_related('customer','table','booking').annotate(item_count=Count('items')).filter(Q(order_number__icontains=query)|Q(customer__username__icontains=query)|Q(customer__first_name__icontains=query)|Q(booking__name__icontains=query)|Q(table__code__icontains=query)).order_by('-created_at','-pk')
+    search=Q(order_number__icontains=query)|Q(table__code__icontains=query)
+    if allowed(request,'view_booking'):search|=Q(customer__username__icontains=query)|Q(customer__first_name__icontains=query)|Q(booking__name__icontains=query)
+    queryset=service_scope.orders(request.user).select_related('customer','table','booking').annotate(item_count=Count('items')).filter(search).order_by('-created_at','-pk')
     status=request.GET.get('status','')
     if status in Order.Status.values:
         queryset=queryset.filter(status=status)

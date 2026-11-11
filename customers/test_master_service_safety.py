@@ -104,6 +104,8 @@ class MasterServiceSafetyTests(Module07Fixtures,TestCase):
         from .report_service import report_data
         order=self.dine();now=timezone.now()
         booking=Booking.objects.create(user=self.customer,name='Financial fixture',phone='0901234567',date=timezone.localdate(),time=timezone.localtime().time(),guests=2,table=self.table,start_time=now,end_time=now+timedelta(hours=2),status='CONFIRMED')
+        order.booking=booking;order.customer=self.customer;order.save(update_fields=['booking','customer'])
+        TableSession.objects.filter(order=order).update(booking=booking)
         deposit=BookingDeposit.objects.create(booking=booking,customer=self.customer,amount=30,currency='vnd',status='SUCCEEDED',paid_at=now,expires_at=now+timedelta(minutes=10))
         invoice=Invoice.objects.create(order=order,invoice_number='TEST-DEPOSIT',subtotal=100,discount_amount=0,total_amount=100,status='PAID',paid_at=now,booking_deposit=deposit,deposit_applied_amount=30)
         Payment.objects.create(invoice=invoice,amount=70,payment_method='CASH',status='SUCCEEDED',paid_at=now,created_by=self.manager,confirmed_by=self.manager,processed_at=now)
@@ -112,6 +114,10 @@ class MasterServiceSafetyTests(Module07Fixtures,TestCase):
         self.assertEqual(rows['Tổng tiền thu gộp, chưa trừ hoàn tiền'],Decimal(100))
         self.assertEqual(rows['Doanh thu hóa đơn PAID'],Decimal(100))
         self.assertEqual(rows['Cọc chờ xử lý/hoàn phần dư: không cộng thêm vào doanh thu'],Decimal(0))
+        self.client.force_login(self.staff)
+        page=self.client.get(reverse('admin_invoices'))
+        self.assertEqual(page.status_code,200)
+        self.assertNotContains(page,self.customer.username)
     @override_settings(TABLE_SERVICE_LIFECYCLE_ENABLED=False,TABLE_SERVICE_ASSIGNMENTS_ENABLED=False)
     def test_flags_off_skip_new_tables(self):
         with patch.object(TableSession.objects,'filter',side_effect=AssertionError('new table queried')):
