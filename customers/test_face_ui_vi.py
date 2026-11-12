@@ -7,7 +7,6 @@ from django.urls import reverse
 from html.parser import HTMLParser
 from .test_module07 import Module07Fixtures
 from .module07_forms import EmployeeForm,AttendanceForm,PayrollForm,ShiftForm
-from .location_views import LocationForm
 from .models import Attendance
 from .templatetags.ui_vi import ui_vi,ui_message
 
@@ -30,7 +29,7 @@ class PageMarkup(HTMLParser):
 class VietnamesePresentationTests(SimpleTestCase):
     def test_enums_localized_without_changing_values(self):
         self.assertEqual(ui_vi('PROVISIONAL'),'Ngưỡng tạm thời');self.assertEqual(ui_vi('CALIBRATED'),'Ngưỡng đã hiệu chỉnh');self.assertEqual(ui_vi('GPS_DENIED'),'Ngoài phạm vi')
-        self.assertEqual(dict(AttendanceForm().fields['status'].choices)['PRESENT'],'Có mặt');self.assertEqual(dict(LocationForm().fields['mode'].choices)['FACE_ONLY'],'Chỉ nhận diện khuôn mặt')
+        self.assertEqual(dict(AttendanceForm().fields['status'].choices)['PRESENT'],'Có mặt')
     def test_time_always_uses_vietnam_timezone(self):
         value=datetime(2026,10,14,3,19,14,tzinfo=dt_timezone.utc)
         with override_settings(TIME_ZONE='UTC'):self.assertEqual(ui_vi(value),'14/10/2026 10:19:14')
@@ -50,9 +49,9 @@ class FaceVietnamesePageTests(Module07Fixtures,TestCase):
         return soup,' '.join(soup.text)
     def test_test_page_has_location_and_identity_hud_without_map(self):
         response=self.client.get(reverse('face_test_page'));soup,text=self.visible(response)
-        for selector in ['[data-geo-hud]','[data-location-text]','[data-geo-accuracy]','[data-face-hud]','[data-face-threshold-type]']:self.assertIsNotNone(soup.select_one(selector))
-        self.assertIsNone(soup.select_one('[data-location-map]'));self.assertIn('không quyết định kết quả nhận diện',text);self.assertEqual(Attendance.objects.count(),0)
-        self.assertNotContains(response,'vendor/leaflet/leaflet.js')
+        for selector in ('[data-face-hud]','[data-face-threshold-type]'):self.assertIsNotNone(soup.select_one(selector))
+        for selector in ('[data-geo-hud]','[data-location-map]','[data-location-start]'):self.assertIsNone(soup.select_one(selector))
+        self.assertEqual(Attendance.objects.count(),0);self.assertNotContains(response,'vendor/leaflet/')
     def test_straight_mode_has_no_blink_instruction(self):
         _,text=self.visible(self.client.get(reverse('face_test_page')))
         self.assertIn('Nhìn thẳng vào camera',text);self.assertNotRegex(text,r'chớp mắt|quay trái|quay phải|blink|head turn')

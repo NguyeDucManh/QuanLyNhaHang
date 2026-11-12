@@ -19,9 +19,9 @@ assert settings.DATABASES['default']['HOST'] in ('127.0.0.1','localhost')
 mode=sys.argv[1]
 if mode in ('legacy','migrated'):
     tables=set(connection.introspection.table_names())
-    expected={'customers_tableserviceassignment','customers_tablesession'}
+    expected={'customers_tableserviceassignment','customers_tablesession','customers_membershippolicy','customers_membershipdiscount','customers_invoicerefund'}
     assert (not tables.intersection(expected)) if mode=='legacy' else expected.issubset(tables)
-    with override_settings(ALLOWED_HOSTS=['testserver'],TABLE_SERVICE_ASSIGNMENTS_ENABLED=False,TABLE_SERVICE_LIFECYCLE_ENABLED=False):
+    with override_settings(ALLOWED_HOSTS=['testserver'],TABLE_SERVICE_ASSIGNMENTS_ENABLED=False,TABLE_SERVICE_LIFECYCLE_ENABLED=False,MEMBERSHIP_DISCOUNTS_ENABLED=False):
         client=Client()
         for url in ('/','/menu/','/login/','/robots.txt','/sitemap.xml','/healthz/'):
             response=client.get(url)

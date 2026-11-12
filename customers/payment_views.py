@@ -1,3 +1,4 @@
+from .membership_service import discount_context
 from . import service_scope as service_scope
 """Customer ownership and management financial permissions around payment services."""
 from django.contrib import messages
@@ -12,7 +13,6 @@ from .models import Invoice,Payment
 from .business_forms import CustomerPaymentForm
 from .rbac import capability_required,has_capability
 from .payment_service import create_payment,report_customer_payment
-from .payment_demo import qr_svg,DEMO_BANK
 
 
 def partial(request,template,context):
@@ -38,9 +38,9 @@ def customer_invoice(request,pk):
     payments=list(invoice.payments.select_related('confirmed_by').order_by('-created_at','-pk'))
     pending=next((p for p in payments if p.status=='PENDING'),None)
     template='customer/_invoice_content.html' if request.headers.get('X-Realtime-Partial')=='1' else 'customer/invoice.html'
-    return partial(request,template,{'invoice':invoice,'payments':payments,'pending_payment':pending,
+    return partial(request,template,{'invoice':invoice,'payments':payments,'pending_payment':pending,'membership_discount':discount_context(invoice.order),
         'items':invoice.order.items.exclude(kitchen_status='CANCELLED').order_by('pk'),'payment_form':CustomerPaymentForm(),
-        'demo_bank':DEMO_BANK,'page':'invoices','can_create':invoice.status=='UNPAID' and invoice.balance_due>0 and not pending})
+        'page':'invoices','can_create':invoice.status=='UNPAID' and invoice.balance_due>0 and not pending})
 
 
 @login_required
@@ -72,15 +72,6 @@ def customer_payment_report(request,pk):
         messages.success(request,'Đã ghi nhận biên nhận chờ nhân viên xác nhận. Hóa đơn chưa được đánh dấu đã thanh toán.')
     return redirect('customer_invoice_detail',pk=payment.invoice_id)
 
-
-@login_required
-def customer_payment_qr(request,pk):
-    payment=get_object_or_404(service_scope.payments(request.user).select_related('invoice'),pk=pk,invoice__order__customer=request.user,payment_method='BANK_TRANSFER')
-    response=HttpResponse(qr_svg(payment),content_type='image/svg+xml')
-    response['Cache-Control']='no-store'
-    response['X-Content-Type-Options']='nosniff'
-    response['Content-Security-Policy']="default-src 'none'; style-src 'unsafe-inline'"
-    return response
 
 
 @capability_required('customers.view_invoice')

@@ -109,6 +109,8 @@ def create_order(*, actor, items, request_key, customer=None, table=None, order_
     for line in lines:
         line.order=order
         save_validated(line)
+    from .membership_service import select_discount
+    select_discount(order)
     if table:
         from .table_session_service import start
         start(table,order=order)
@@ -223,9 +225,17 @@ def open_order_from_booking(booking_id, *, actor):
 def recalculate_totals(order):
     """Caller owns the Order row lock and the enclosing transaction."""
     order.subtotal = sum(order.items.exclude(kitchen_status=OrderItem.KitchenStatus.CANCELLED).values_list('line_total', flat=True), Decimal('0'))
+    voucher_discount = None
     if order.promotion_id and order.status!='CANCELLED':
         from .commerce_service import discount_for
-        order.discount_amount=discount_for(order.promotion_snapshot,order.subtotal)
+        try:
+            voucher_discount=discount_for(order.promotion_snapshot,order.subtotal)
+        except ValidationError:
+            from .membership_service import enabled
+            if not enabled() or not order.customer_id:raise
+        if voucher_discount is not None:order.discount_amount=voucher_discount
+    from .membership_service import select_discount
+    select_discount(order,voucher=voucher_discount)
     if order.discount_amount > order.subtotal:
         raise ValidationError('Tạm tính mới thấp hơn giảm giá đã lưu; không thể sửa món.')
     order.total_amount = order.subtotal - order.discount_amount

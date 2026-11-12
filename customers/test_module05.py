@@ -17,7 +17,6 @@ from .models import Invoice,Payment,Order,OrderItem
 from .order_service import create_order,transition_order
 from .kitchen_service import transition_kitchen_item
 from .payment_service import issue_invoice,create_payment,report_customer_payment,confirm_payment
-from .payment_demo import qr_payload
 from .context_processors import business_dashboard
 from restaurant_system.asgi import application
 
@@ -56,16 +55,16 @@ class Module05Tests(FinancialFixtures,TestCase):
             inv=self.inv if method=='CASH' else self.invoice()
             payment=self.attempt(inv,method)
             self.assertEqual((payment.status,payment.amount),('PENDING',inv.total_amount))
-            self.assertIsNone(payment.customer_confirmed_at); self.assertIsNone(payment.paid_at)
-            if method=='BANK_TRANSFER':
-                data=json.loads(qr_payload(payment)); self.assertTrue(data['demo'])
-                self.assertEqual(data['total_amount'],str(inv.total_amount)); self.assertEqual(data['invoice_number'],inv.invoice_number)
-                self.assertEqual(data['payment_number'],payment.payment_number); self.assertTrue(data['reference'].startswith('DEMO-'))
+            self.assertIsNone(payment.customer_confirmed_at);self.assertIsNone(payment.paid_at)
+            self.client.force_login(self.customer)
+            response=self.client.get(reverse('customer_invoice_detail',args=[inv.pk]))
+            self.assertEqual(response.status_code,200);self.assertNotContains(response,'DEMO BANK')
+            self.assertNotContains(response,'payment-qr')
 
     def test_customer_cannot_see_other_invoice_or_qr_report_start(self):
         payment=self.attempt(method='BANK_TRANSFER'); stranger=User.objects.create_user('other-customer')
         self.client.force_login(stranger)
-        for url in (reverse('customer_invoice_detail',args=[self.inv.pk]),reverse('customer_payment_qr',args=[payment.pk])):
+        for url in (reverse('customer_invoice_detail',args=[self.inv.pk]),f'/payments/{payment.pk}/qr-demo/'):
             self.assertEqual(self.client.get(url).status_code,404)
         for url in (reverse('customer_payment_start',args=[self.inv.pk]),reverse('customer_payment_report',args=[payment.pk])):
             self.assertEqual(self.client.post(url,{}).status_code,404)
@@ -170,10 +169,12 @@ class Module05Tests(FinancialFixtures,TestCase):
         self.assertContains(self.client.get(reverse('admin_payment_receipt',args=[p.pk])),'nhân viên ghi nhận trực tiếp')
 
     def test_customer_invoice_snapshots_and_demo_svg_backend(self):
-        p=self.attempt(method='BANK_TRANSFER'); self.client.force_login(self.customer)
-        self.assertContains(self.client.get(reverse('customer_invoice_detail',args=[self.inv.pk])),'CHUYỂN KHOẢN QR DEMO')
-        response=self.client.get(reverse('customer_payment_qr',args=[p.pk])); self.assertEqual(response.status_code,200); self.assertIn(b'<svg',response.content)
-        self.assertEqual(response['Cache-Control'],'no-store')
+        p=self.attempt(method='BANK_TRANSFER');self.client.force_login(self.customer)
+        response=self.client.get(reverse('customer_invoice_detail',args=[self.inv.pk]))
+        self.assertContains(response,'CHUYỂN KHOẢN · CHỜ ĐỐI SOÁT')
+        self.assertNotContains(response,'QR DEMO');self.assertNotContains(response,'000123456789')
+        self.assertEqual(self.client.get(f'/payments/{p.pk}/qr-demo/').status_code,404)
+        self.inv.refresh_from_db();self.assertEqual(self.inv.status,'UNPAID')
 
     def test_revenue_only_succeeded_not_completed_unpaid_failed(self):
         pending=self.attempt(); other=self.invoice(); failed=self.attempt(other); confirm_payment(failed.pk,actor=self.admin,outcome='FAILED')

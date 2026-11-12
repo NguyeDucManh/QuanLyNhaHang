@@ -18,6 +18,9 @@ from .environment import load_environment
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_environment(BASE_DIR / ".env")
+# Set conservative defaults before URL imports can load a native AI library.
+for _native_threads in ('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS'):
+    os.environ.setdefault(_native_threads,'1')
 
 
 # =========================================================
@@ -265,3 +268,6 @@ BOOKING_DEPOSIT_TYPE = os.environ.get('BOOKING_DEPOSIT_TYPE', 'FIXED')
 BOOKING_DEPOSIT_VALUE = os.environ.get('BOOKING_DEPOSIT_VALUE', '200000')
 BOOKING_DEPOSIT_MINIMUM = os.environ.get('BOOKING_DEPOSIT_MINIMUM', '200000')
 BOOKING_DEPOSIT_TIMEOUT_MINUTES = int(os.environ.get('BOOKING_DEPOSIT_TIMEOUT_MINUTES', '30'))
+
+# Enable only after the additive membership migration is approved/applied.
+MEMBERSHIP_DISCOUNTS_ENABLED = os.environ.get('MEMBERSHIP_DISCOUNTS_ENABLED', 'false').lower() == 'true'

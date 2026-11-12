@@ -21,11 +21,18 @@ def report_data(user):
         deposit_cash=deposits.aggregate(n=Sum('amount'))['n'] or Decimal(0)
         revenue=settled.aggregate(n=Sum('total_amount'))['n'] or Decimal(0)
         applied=settled.aggregate(n=Sum('deposit_applied_amount'))['n'] or Decimal(0)
+        from .membership_service import readable
+        refunds=Decimal(0)
+        if readable():
+            from .models import InvoiceRefund
+            refunds=InvoiceRefund.objects.filter(invoice__in=service_scope.invoices(user)).aggregate(n=Sum('amount'))['n'] or Decimal(0)
         sections.append(('Đối chiếu thu tiền và doanh thu',[
             ('Thu cọc thành công (gồm khoản cần đối soát)',deposit_cash),
             ('Thu bổ sung Payment thành công',extra_cash),('Tổng tiền thu gộp, chưa trừ hoàn tiền',deposit_cash+extra_cash),
             ('Doanh thu hóa đơn PAID',revenue),('Cọc đã áp dụng vào hóa đơn PAID',applied),
-            ('Cọc chờ xử lý/hoàn phần dư: không cộng thêm vào doanh thu',deposit_cash-applied)]))
+            ('Cọc chờ xử lý/hoàn phần dư: không cộng thêm vào doanh thu',deposit_cash-applied),
+            ('Hoàn tiền hóa đơn đã đối soát',refunds),('Tiền thu gộp sau hoàn tiền hóa đơn đã ghi sổ',deposit_cash+extra_cash-refunds),
+            ('Doanh thu hóa đơn sau hoàn tiền đã ghi sổ',revenue-refunds)]))
         rows=[('Thực thu',paid.aggregate(n=Sum('amount'))['n'] or Decimal(0)),('Invoice PAID',service_scope.invoices(user).filter(status='PAID').count()),('Invoice UNPAID',service_scope.invoices(user).filter(status='UNPAID').count())]
         rows.extend((f'Ngày {r["day"]}',r['n']) for r in paid.annotate(day=TruncDate('paid_at')).values('day').annotate(n=Sum('amount')).order_by('-day')[:31])
         rows.extend((f'Tháng {r["month"].strftime("%m/%Y")}',r['n']) for r in paid.annotate(month=TruncMonth('paid_at')).values('month').annotate(n=Sum('amount')).order_by('-month')[:12])

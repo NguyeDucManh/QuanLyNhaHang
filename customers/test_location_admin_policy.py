@@ -14,38 +14,31 @@ class LocationAdminPolicyTests(BusinessData, TestCase):
         self.data={'latitude':'11','longitude':'107','address':'Intentional test edit','attendance_radius_m':150,'max_accuracy_m':50,'mode':'FACE_AND_GPS','is_active':'on'}
 
     def test_manager_and_staff_cannot_read_or_write_admin_settings(self):
-        for user in (self.manager,self.staff):
+        for user in (self.manager,self.staff,self.customer):
             self.client.force_login(user)
-            self.assertEqual(self.client.get(reverse('location_settings')).status_code,403)
-            self.assertEqual(self.client.post(reverse('location_settings'),{**self.data,'confirm_location_change':'on'}).status_code,403)
-            self.assertEqual(self.client.post(reverse('module07_edit',args=['restaurantinfo',self.info.pk]),self.data).status_code,403)
+            self.assertEqual(self.client.get('/management/settings/location/').status_code,404)
+            self.assertEqual(self.client.post('/management/settings/location/',self.data).status_code,404)
         self.info.refresh_from_db();self.assertEqual(float(self.info.latitude),10)
+        self.assertTrue(AttendanceLocationPolicy.objects.filter(pk=self.policy.pk).exists())
 
     @override_settings(DEBUG=False,SECURE_SSL_REDIRECT=False)
     def test_map_worker_served_by_production_static_middleware(self):
-        response=self.client.get('/static/vendor/maplibre/maplibre-gl-worker.js',secure=True)
-        self.assertEqual(response.status_code,200)
-        self.assertIn('javascript',response['Content-Type'])
+        from django.contrib.staticfiles import finders
+        for name in ('vendor/maplibre/maplibre-gl-worker.js','vendor/leaflet/leaflet.js','location/maps.js'):
+            self.assertIsNone(finders.find(name))
 
     def test_admin_must_explicitly_confirm_and_get_never_changes_location(self):
         self.client.force_login(self.admin)
-        self.assertContains(self.client.get(reverse('location_settings')),'data-location-fields disabled')
-        self.client.post(reverse('location_settings'),self.data)
+        self.assertEqual(self.client.get('/management/settings/location/').status_code,404)
+        self.assertEqual(self.client.post('/management/settings/location/',{**self.data,'confirm_location_change':'on'}).status_code,404)
         self.info.refresh_from_db();self.assertEqual(float(self.info.latitude),10)
-        self.assertEqual(self.client.post(reverse('location_settings'),{**self.data,'confirm_location_change':'on'}).status_code,302)
-        self.info.refresh_from_db();self.assertEqual(float(self.info.latitude),11)
-        self.policy.refresh_from_db();self.assertEqual(self.policy.attendance_radius_m,150);self.assertEqual(self.policy.max_accuracy_m,50)
+        self.policy.refresh_from_db();self.assertEqual(self.policy.attendance_radius_m,150)
 
     def test_keyless_map_assets_and_worker_are_local_and_pinned(self):
-        import hashlib,json
         from pathlib import Path
         from django.conf import settings
-        root=Path(settings.BASE_DIR)/'static/vendor/maplibre'
-        manifest=json.loads((root/'manifest.json').read_text(encoding='utf-8'))
-        for name,metadata in manifest['files'].items():
-            self.assertEqual(hashlib.sha256((root/name).read_bytes()).hexdigest(),metadata['sha256'])
-        self.client.force_login(self.admin)
-        page=self.client.get(reverse('location_settings'))
-        for name in ('maplibre-gl.js','maplibre-gl-worker.js','maplibre-gl.css','leaflet-maplibre-gl.js'):
-            self.assertContains(page,'/static/vendor/maplibre/'+name)
-        self.info.refresh_from_db();self.assertEqual(float(self.info.latitude),10)
+        from .models import AttendanceLocationEvent
+        for name in ('leaflet','maplibre'):
+            self.assertFalse((Path(settings.BASE_DIR)/'static/vendor'/name).exists())
+        self.assertEqual(AttendanceLocationEvent._meta.db_table,'customers_attendancelocationevent')
+        self.assertFalse(AttendanceLocationEvent.objects.exists())

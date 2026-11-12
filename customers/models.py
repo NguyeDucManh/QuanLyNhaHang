@@ -497,3 +497,5 @@ from .operations_models import PurchaseOrder, PurchaseOrderItem, PurchaseReceivi
 from .deposit_models import BookingDeposit, StripeCheckoutAttempt, StripeWebhookEvent
 from .table_assignment_models import TableServiceAssignment
 from .table_session_models import TableSession
+
+from .membership_models import MembershipPolicy, MembershipDiscount, InvoiceRefund

@@ -7,5 +7,5 @@ bash scripts/install_production.sh
 python scripts/check_face_native.py
 python manage.py check
 python manage.py download_ai_models --face-only
-python manage.py collectstatic --noinput
+python manage.py collectstatic --noinput --clear
 # Migrations, seeds and training deliberately require separate operator actions.

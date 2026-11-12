@@ -3,12 +3,11 @@
   const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   document.querySelectorAll('[data-face-realtime]').forEach(host=>{
     const mode=host.dataset.faceRealtime, attendance=mode==='attendance';
-    const configNode=document.getElementById('location-config');
+    const configNode=document.getElementById('attendance-config');
     const config=configNode?JSON.parse(configNode.textContent):{};
-    let needGPS=attendance&&config.mode!=='FACE_ONLY', showGPS=!attendance||needGPS, needFace=!attendance||config.mode!=='GPS_ONLY';
     const ui=window.FaceUI;
     const video=host.querySelector('video'), status=host.querySelector('.face-status'), result=host.querySelector('[data-face-result]');
-    let stream=null,watch=null,point=null,pointTime=0,faceTime=0,faceOK=false,generation=0,busy=false,geoAllowed=false;
+    let stream=null,faceTime=0,faceOK=false,generation=0,busy=false;
     const text=(selector,value)=>{const node=host.querySelector(selector);if(node)node.textContent=value;};
     const post=async(url,data,method='POST')=>{
       const controller=new AbortController(), timer=setTimeout(()=>controller.abort(),60000);
@@ -58,22 +57,14 @@
       try{
         const body=await post(host.dataset.statusUrl,undefined,'GET');
         if(!body.config||!Array.isArray(body.schedules))throw new Error('Không đọc được chính sách và ca làm hiện tại.');
-        const changed=['latitude','longitude','radius','max_accuracy','mode','configured'].some(key=>config[key]!==body.config[key]);Object.assign(config,body.config);
-        needGPS=config.mode!=='FACE_ONLY';needFace=config.mode!=='GPS_ONLY';showGPS=needGPS;policyFresh=true;
-        if(changed){geoAllowed=false;text('[data-server-distance]','Cấu hình mới; cần kiểm tra lại khoảng cách máy chủ.');}
-        text('[data-radius]',`Bán kính nhà hàng: ${config.radius??'—'} m`);text('[data-restaurant-location]',`${config.name||'Nhà hàng'} · ${config.address||'Chưa cập nhật địa chỉ'}`);
-        text('[data-policy-message]',config.configured?'Khuôn mặt, vị trí và ca làm được kiểm tra riêng.':config.error);
-        text('[data-restaurant-coordinates]',`${config.latitude??'—'}, ${config.longitude??'—'}`);
-        window.attendanceMap?.configure(config);
-        const guide=host.querySelector('[data-guide]');if(guide)guide.hidden=!needFace;host.querySelector('.face-guide-caption').hidden=!needFace;
-        if(!needGPS)text('.geo-status','Kh\u00f4ng y\u00eau c\u1ea7u v\u1ecb tr\u00ed theo ch\u00ednh s\u00e1ch hi\u1ec7n t\u1ea1i.');
+        Object.assign(config,body.config);policyFresh=true;
+        text('[data-policy-message]','Xác minh khuôn mặt và ca làm đã duyệt.');
         const select=host.querySelector('[data-schedule]'),selected=select.value;select.replaceChildren();
         for(const item of body.schedules){const option=document.createElement('option');option.value=item.id;option.textContent=item.label;select.append(option);}
         if(!body.schedules.length){const option=document.createElement('option');option.value='';option.textContent='Chưa có ca đã duyệt';select.append(option);}
         if([...select.options].some(o=>o.value===selected))select.value=selected;
         text('[data-schedule-reason]',body.schedule_reason);const reason=host.querySelector('[data-schedule-reason]');if(reason)reason.dataset.code=body.schedule_status;
-        host.querySelector('[data-recognize]').disabled=!needFace||busy;
-        host.querySelector('[data-location-start]').disabled=!needGPS;host.querySelector('[data-location-server]').disabled=!needGPS;
+        host.querySelector('[data-recognize]').disabled=busy||!body.schedules.length;
       }catch(error){policyFresh=false;text('[data-schedule-reason]','Không đồng bộ được chính sách/ca làm: '+ui.message(error.message));throw error;}
       finally{ready();}
     }
@@ -89,11 +80,11 @@
     const updateFace=body=>{if(!body.success||typeof body.employee!=='string'||!body.employee_code||typeof body.similarity!=='number'||!Number.isFinite(body.similarity)||typeof body.threshold!=='number'||!Number.isFinite(body.threshold))throw new Error('Ph\u1ea3n h\u1ed3i nh\u1eadn di\u1ec7n thi\u1ebfu th\u00f4ng tin h\u1ee3p l\u1ec7. Ch\u01b0a x\u00e1c th\u1ef1c khu\u00f4n m\u1eb7t.');faceOK=true;faceTime=Date.now();faceState('ĐÃ NHẬN DIỆN','success');text('[data-face-identity]','Nhân viên: '+body.employee+' · '+body.employee_code);text('[data-face-score]','Độ tương đồng: '+Number(body.similarity).toFixed(3));text('[data-face-threshold]','Ngưỡng nhận diện: '+Number(body.threshold).toFixed(3));text('[data-face-threshold-type]','Loại ngưỡng: '+ui.label(body.threshold_type));};
     function ready(){
       if(!attendance)return;
-      const fresh=point&&Date.now()-pointTime<20000;
-      const reason=!policyFresh?'Ch\u01b0a \u0111\u1ed3ng b\u1ed9 ch\u00ednh s\u00e1ch':!config.configured?'Chưa cấu hình chính sách':!host.querySelector('[data-schedule]').value?'Chưa có ca đã duyệt':busy?'Đang xử lý':needGPS&&!fresh?'Đang chờ vị trí mới':needGPS&&!geoAllowed?'Ngoài phạm vi hoặc Độ chính xác GPS thấp':needFace&&(!faceOK||Date.now()-faceTime>30000)?'Chưa xác thực khuôn mặt':'Sẵn sàng chấm công';
+      const reason=!policyFresh?'Ch\u01b0a \u0111\u1ed3ng b\u1ed9 ch\u00ednh s\u00e1ch':!config.configured?'Chưa cấu hình chính sách':!host.querySelector('[data-schedule]').value?'Chưa có ca đã duyệt':busy?'Đang xử lý':(!faceOK||Date.now()-faceTime>30000)?'Chưa xác thực khuôn mặt':'Sẵn sàng chấm công';
+      host.querySelector('[data-recognize]').disabled=busy||!policyFresh||!host.querySelector('[data-schedule]').value;
       text('[data-ready]',reason);host.querySelectorAll('[data-punch]').forEach(button=>button.disabled=reason!=='Sẵn sàng chấm công');
     }
-    function stop(){generation++;phase('idle');progress(0,5);const box=host.querySelector('[data-detection-box]');if(box)box.hidden=true;stream?.getTracks().forEach(track=>track.stop());stream=null;video.srcObject=null;if(watch!==null)navigator.geolocation.clearWatch(watch);watch=null;point=null;window.attendanceMap?.clear();text('[data-location-text]','Chưa lấy được vị trí hiện tại');geoAllowed=false;faceOK=false;text('[data-camera-label]','CAMERA ĐÃ DỪNG');faceState('CHƯA PHÁT HIỆN');ready();}
+    function stop(){generation++;phase('idle');progress(0,5);const box=host.querySelector('[data-detection-box]');if(box)box.hidden=true;stream?.getTracks().forEach(track=>track.stop());stream=null;video.srcObject=null;faceOK=false;text('[data-camera-label]','CAMERA ĐÃ DỪNG');faceState('CHƯA PHÁT HIỆN');ready();}
     const camera=async()=>{
       if(!navigator.mediaDevices?.getUserMedia)throw new Error('Camera cần HTTPS hoặc localhost.');
       status.textContent='Đang mở camera...';
@@ -126,79 +117,33 @@
       phase('verifying');status.textContent='Đã thu đủ frame. Đang chờ máy chủ xác thực...';faceState('ĐANG XÁC THỰC');
       return {challenge:challenge.id,frames:batch};
     }
-    // UI estimate only. The server independently recomputes Haversine on explicit
-    // checks and attendance attempts; watch callbacks never post coordinates.
-    const distance=(lat,lng)=>{const rad=x=>x*Math.PI/180,p1=rad(lat),p2=rad(config.latitude),a=Math.sin(rad(config.latitude-lat)/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(rad(config.longitude-lng)/2)**2;return 6371008.8*2*Math.atan2(Math.sqrt(Math.min(1,a)),Math.sqrt(Math.max(0,1-a)));};
-    function watchLocation(){
-      if(!showGPS)return;
-      if(!navigator.geolocation){text('.geo-status','Không lấy được vị trí · Trình duyệt không hỗ trợ vị trí.');return;}
-      if(watch!==null)return;
-      text('.geo-status','Đang lấy vị trí...');host.querySelector('[data-geo-hud]')?.setAttribute('data-state','pending');
-      watch=navigator.geolocation.watchPosition(position=>{
-        const firstPoint=!point;
-        point={latitude:position.coords.latitude,longitude:position.coords.longitude,accuracy:position.coords.accuracy};pointTime=Number(position.timestamp);
-        if(!Number.isFinite(pointTime)||Date.now()-pointTime>=20000||Date.now()-pointTime < -5000){point=null;window.attendanceMap?.clear();geoAllowed=false;host.querySelector('[data-geo-hud]')?.setAttribute('data-state','pending');text('.geo-status','GPS \u0111\u00e3 c\u0169; \u0111ang ch\u1edd v\u1ecb tr\u00ed m\u1edbi.');ready();return;}
-        const valid=Date.now()-pointTime>=-5000&&Date.now()-pointTime<20000&&Object.values(point).every(Number.isFinite)&&Math.abs(point.latitude)<=90&&Math.abs(point.longitude)<=180&&point.accuracy>=0;
-        if(valid)window.attendanceMap?.update(point);
-        const meters=valid&&attendance?distance(point.latitude,point.longitude):NaN;
-        geoAllowed=valid&&point.accuracy<=config.max_accuracy&&meters<=config.radius;
-        text('[data-location-text]',`Vĩ độ: ${point.latitude.toFixed(6)} · Kinh độ: ${point.longitude.toFixed(6)}`);
-        text('[data-gps-updated]',`GPS cập nhật: ${ui.timestamp(new Date(pointTime).toISOString())}`);
-        text('[data-server-distance]','Khoảng cách máy chủ cần kiểm tra cho vị trí mới.');
-        if(firstPoint&&valid&&attendance&&config.configured){
-          const checkedPoint=point;
-          post(host.dataset.locationUrl,{location:checkedPoint}).then(checked=>{
-            if(point!==checkedPoint)return;
-            text('[data-server-distance]',`Khoảng cách hệ thống xác định: ${checked.calculated_distance.toFixed(1)} m · ${ui.timestamp(checked.checked_at)}`);
-            geoAllowed=checked.geo_status==='ALLOWED';ready();
-          }).catch(error=>{if(point===checkedPoint)text('[data-server-distance]',ui.message(error.message));});
-        }
-        text('[data-geo-distance]',`Khoảng cách ước tính trên giao diện: ${meters.toFixed(1)} m`);text('[data-geo-accuracy]',`Độ chính xác GPS: ±${point.accuracy.toFixed(1)} m`);
-        text('.geo-status',!valid?'Vị trí không hợp lệ':point.accuracy>config.max_accuracy?'Độ chính xác GPS chưa đạt · Tín hiệu GPS chưa đủ chính xác, vui lòng thử lại.':geoAllowed?'Trong phạm vi · Bạn đang ở trong phạm vi chấm công.':`Ngoài phạm vi · Cách điểm chấm công ${meters.toFixed(0)} m, vượt bán kính ${config.radius} m.`);
-        host.querySelector('[data-geo-hud]')?.setAttribute('data-state',geoAllowed?'success':point.accuracy>config.max_accuracy?'pending':'error');ready();
-        if(!attendance){text('.geo-status',valid?'Đã lấy vị trí · chỉ phục vụ hiển thị':'Vị trí không hợp lệ');host.querySelector('[data-geo-hud]')?.setAttribute('data-state',valid?'success':'error');}
-      },error=>{geoAllowed=false;point=null;window.attendanceMap?.clear();text('[data-location-text]','Chưa lấy được vị trí hiện tại');if(error.code===1&&watch!==null){navigator.geolocation.clearWatch(watch);watch=null;}text('.geo-status',error.code===1?'GPS bị từ chối quyền. Hãy cấp quyền vị trí cho trình duyệt.':error.code===2?'GPS không khả dụng; đang chờ tín hiệu mới.':'GPS hết thời gian chờ; đang tiếp tục tìm vị trí.');host.querySelector('[data-geo-hud]')?.setAttribute('data-state','error');ready();},{enableHighAccuracy:true,maximumAge:0,timeout:20000});
-    }
-    host.querySelector('[data-location-start]')?.addEventListener('click',watchLocation);
-    host.querySelector('[data-location-server]')?.addEventListener('click',async()=>{
-      try{
-        await syncStatus();
-        if(!point||Date.now()-pointTime>=20000)throw new Error('Chờ vị trí GPS mới trước khi kiểm tra.');
-        const checked=await post(host.dataset.locationUrl,{location:point});
-        text('[data-server-distance]',`Khoảng cách hệ thống xác định: ${checked.calculated_distance.toFixed(1)} m · ${ui.timestamp(checked.checked_at)}`);
-        text('.geo-status',checked.message);geoAllowed=checked.geo_status==='ALLOWED';ready();
-      }catch(error){text('.geo-status',ui.message(error.message));}
-    });
-    host.querySelector('[data-stop]')?.addEventListener('click',()=>{stop();status.textContent='Đã dừng camera/vị trí và xóa mẫu tạm.';});
+    host.querySelector('[data-stop]')?.addEventListener('click',()=>{stop();status.textContent='Đã dừng camera và xóa mẫu tạm.';});
     host.querySelector('[data-recognize]')?.addEventListener('click',async event=>{
       if(busy)return;busy=true;faceOK=false;faceTime=0;event.target.disabled=true;
       text('[data-face-identity]','Nhân viên: —');text('[data-face-score]','Độ tương đồng: —');text('[data-face-threshold]','Ngưỡng nhận diện: —');text('[data-face-threshold-type]','Loại ngưỡng: —');ready();
-      try{await syncStatus();if(showGPS)watchLocation();const batch=await recognize();const attempt=generation;const body=await post(attendance?host.dataset.selfUrl:host.dataset.verifyUrl,batch);if(attempt!==generation)throw new Error('Camera \u0111\u00e3 d\u1eebng; kh\u00f4ng d\u00f9ng k\u1ebft qu\u1ea3 c\u0169.');updateFace(body);phase('success');show(body);status.textContent='Nhận diện thành công.';}
+      try{await syncStatus();if(attendance&&!host.querySelector('[data-schedule]').value)throw new Error('Chưa có ca đã duyệt trong thời gian chấm công.');const batch=await recognize();const attempt=generation;const body=await post(attendance?host.dataset.selfUrl:host.dataset.verifyUrl,batch);if(attempt!==generation)throw new Error('Camera \u0111\u00e3 d\u1eebng; kh\u00f4ng d\u00f9ng k\u1ebft qu\u1ea3 c\u0169.');updateFace(body);phase('success');show(body);status.textContent='Nhận diện thành công.';}
       catch(error){faceOK=false;faceState('XÁC THỰC CHƯA HOÀN TẤT','error');guidance(error.message);show({...error.body,error:ui.message(error.message)},true);status.textContent=ui.message(error.message);}
-      finally{busy=false;phase(faceOK?'success':'idle');event.target.disabled=attendance&&!needFace;ready();}
+      finally{busy=false;phase(faceOK?'success':'idle');event.target.disabled=false;ready();}
     });
     host.querySelectorAll('[data-punch]').forEach(button=>button.addEventListener('click',async()=>{
       if(busy||button.disabled)return;busy=true;ready();
       try{
         await syncStatus();
-        if(needGPS&&(!point||Date.now()-pointTime>=20000))throw new Error('Vị trí đã cũ; chờ GPS mới.');
-        if(needGPS){const checked=await post(host.dataset.locationUrl,{location:point});text('[data-server-distance]',`Khoảng cách hệ thống xác định: ${checked.calculated_distance.toFixed(1)} m`);if(checked.geo_status!=='ALLOWED')throw new Error(checked.message);}
-        const batch=needFace?await recognize():{};
-        if(needGPS&&(!point||Date.now()-pointTime>=20000))throw new Error('Vị trí đã cũ; chờ GPS mới.');
-        const body=await post(host.dataset.verifyUrl,{...batch,location:needGPS?point:null,schedule:host.querySelector('[data-schedule]').value,action:button.dataset.punch});
+        if(!host.querySelector('[data-schedule]').value)throw new Error('Chưa có ca đã duyệt trong thời gian chấm công.');
+        const batch=await recognize();
+        const body=await post(host.dataset.verifyUrl,{...batch,schedule:host.querySelector('[data-schedule]').value,action:button.dataset.punch});
         if(!Number.isInteger(body.attendance_id)||body.attendance_id<=0)throw new Error('Ph\u1ea3n h\u1ed3i ch\u1ea5m c\u00f4ng thi\u1ebfu m\u00e3 k\u1ebft qu\u1ea3; ki\u1ec3m tra l\u1ecbch s\u1eed tr\u01b0\u1edbc khi th\u1eed l\u1ea1i.');
-        if(body.face)updateFace({success:true,...body.face});if(body.distance!==null)text('[data-server-distance]',`Khoảng cách hệ thống xác định: ${Number(body.distance).toFixed(1)} m`);
+        if(!body.face)throw new Error('Máy chủ đã trả mã chấm công nhưng thiếu bằng chứng xác minh; kiểm tra lịch sử trước khi thử lại.');
+        updateFace({success:true,...body.face});
         show({...body,...body.face});status.textContent=body.message;faceOK=false;
       }catch(error){faceState('XÁC THỰC CHƯA HOÀN TẤT','error');guidance(error.message);show({...error.body,error:ui.message(error.message)},true);status.textContent=ui.message(error.message);faceOK=false;}
       finally{busy=false;phase('idle');ready();}
     }));
     host.querySelector('[data-schedule]')?.addEventListener('change',ready);
-    if(attendance&&!needGPS){text('.geo-status','Không yêu cầu vị trí');host.querySelector('[data-location-start]').disabled=true;host.querySelector('[data-location-server]').disabled=true;}
-    if(attendance&&!needFace){text('.face-instruction','Chỉ xác thực vị trí, không yêu cầu camera');host.querySelector('[data-recognize]').disabled=true;faceState('KHÔNG YÊU CẦU NHẬN DIỆN');host.querySelector('[data-guide]').hidden=true;host.querySelector('.face-guide-caption').hidden=true;}
     window.addEventListener('resize',()=>{if(stream)fitCamera();});
     window.addEventListener('pageshow',event=>{if(event.persisted){clearInterval(ticker);ticker=setInterval(()=>{clock();ready();},1000);syncStatus().catch(()=>{});}});
     window.addEventListener('focus',()=>{if(!busy)syncStatus().catch(()=>{});});
-    if(attendance)syncStatus().catch(()=>{}).finally(()=>{if(showGPS)watchLocation();});
+    if(attendance)syncStatus().catch(()=>{});
     window.addEventListener('pagehide',()=>{stop();clearInterval(ticker);});ready();
   });
 })();

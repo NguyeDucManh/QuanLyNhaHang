@@ -42,7 +42,8 @@ def earn_invoice(invoice_id,*,actor=None):
     account = CustomerLoyalty.objects.select_for_update().get(pk=account.pk)
     account.points_balance += points
     account.lifetime_points += points
-    account.tier = tier_for(account.lifetime_points)
+    from .membership_service import enabled,status
+    account.tier = status(order.customer_id)['tier'] if enabled() else tier_for(account.lifetime_points)
     save_validated(account)
     with audit_actor(actor):
         return save_validated(LoyaltyTransaction(customer_id=order.customer_id,type='EARN',points=points,source_type='INVOICE',source_id=str(invoice.pk),actor=actor,note='Thanh toán hóa đơn thành công'))

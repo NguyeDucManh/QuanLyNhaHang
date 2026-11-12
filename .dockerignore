@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+!.env.example
+.venv
+artifacts
+database_backups
+SmartRestaurant_Submission
+staticfiles
+**/__pycache__
+*.log

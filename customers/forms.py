@@ -18,7 +18,7 @@ class CustomerRegistrationForm(UserCreationForm):
 
 class BookingForm(forms.ModelForm):
     preferred_area = forms.ModelChoiceField(queryset=Area.objects.filter(is_active=True).order_by('name'),required=False,label='Khu vực ưu tiên',empty_label='Bất kỳ khu vực phù hợp')
-    preferred_table = forms.ModelChoiceField(queryset=RestaurantTable.objects.select_related('area').order_by('area__name','code'),required=False,label='Bàn cụ thể',empty_label='Tự động gợi ý bàn phù hợp')
+    preferred_table = forms.ModelChoiceField(queryset=RestaurantTable.objects.filter(is_active=True,area__is_active=True).select_related('area').order_by('area__name','code'),required=False,label='Bàn cụ thể',empty_label='Tự động gợi ý bàn phù hợp')
     class Meta:
         model = Booking
         fields = ("name", "phone", "date", "time", "guests", "note")
