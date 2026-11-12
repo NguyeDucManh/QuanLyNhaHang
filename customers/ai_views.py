@@ -48,15 +48,3 @@ def customer_recommendations(request):
     result=recommend(request.user,n=12)
     dishes=[{**serialize_item(row['item']),'recommendation_reason':row['reason']} for row in result['recommendations']]
     return render(request,'customer/ai/recommendations.html',{'dishes':dishes,'page':'recommendations'})
-
-@role_required('ADMIN','MANAGER')
-@capability_required('customers.view_order')
-@capability_required('customers.view_menuitem')
-def recommendation_demo(request):
-    from .ai.hybrid_service import recommend
-    from .recommendation_service import evaluate_recommendations
-    customers=[u for u in get_user_model().objects.filter(is_active=True).order_by('pk') if get_role(u)=='CUSTOMER']
-    selected=request.GET.get('customer','')
-    customer=next((u for u in customers if str(u.pk)==selected),None) or (customers[0] if customers else None)
-    output=recommend(customer,n=5)
-    return render(request,'admin/ai/recommendations.html',{'admin_page':'recommendation-demo','customers':customers,'selected':customer,'recommendations':output['recommendations'],'mode':output['mode'],'evaluation':evaluate_recommendations(k=5)})

@@ -1,4 +1,4 @@
-﻿"""Business roles live in Django Group; is_staff is never a business role."""
+"""Business roles live in Django Group; is_staff is never a business role."""
 from functools import wraps
 from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import PermissionDenied, ValidationError
@@ -91,29 +91,32 @@ def assign_role(user, role):
 
 
 def management_access(user):
+    role=get_role(user)
+    def cap(permission):
+        return role=='ADMIN' or (role in ('MANAGER','STAFF') and user.has_perm(permission))
     access = {
-        'role': get_role(user), 'is_admin': is_admin(user),
-        'view_menu': has_capability(user, 'customers.view_menuitem'),
-        'add_menu': has_capability(user, 'customers.add_menuitem'),
-        'change_menu': has_capability(user, 'customers.change_menuitem'),
-        'view_areas': has_capability(user, 'customers.view_area'),
-        'view_tables': has_capability(user, 'customers.view_restauranttable'),
-        'view_bookings': has_capability(user, 'customers.view_booking'),
-        'view_orders':has_capability(user,'customers.view_order'),
-        'view_kitchen':has_capability(user,'customers.view_order') and has_capability(user,'customers.view_orderitem'),
-        'view_payments':has_capability(user,'customers.view_invoice'),
-        'view_ingredients':has_capability(user,'customers.view_ingredient'),
-        'view_suppliers':has_capability(user,'customers.view_supplier'),
-        'view_recipes':has_capability(user,'customers.view_recipeingredient'),
-        'view_transactions':has_capability(user,'customers.view_stockmovement'),
-        'view_stock_alerts':has_capability(user,'customers.view_ingredient'),
+        'role': role, 'is_admin': (role=='ADMIN'),
+        'view_menu': cap( 'customers.view_menuitem'),
+        'add_menu': cap( 'customers.add_menuitem'),
+        'change_menu': cap( 'customers.change_menuitem'),
+        'view_areas': cap( 'customers.view_area'),
+        'view_tables': cap( 'customers.view_restauranttable'),
+        'view_bookings': cap( 'customers.view_booking'),
+        'view_orders':cap('customers.view_order'),
+        'view_kitchen':cap('customers.view_order') and cap('customers.view_orderitem'),
+        'view_payments':cap('customers.view_invoice'),
+        'view_ingredients':cap('customers.view_ingredient'),
+        'view_suppliers':cap('customers.view_supplier'),
+        'view_recipes':cap('customers.view_recipeingredient'),
+        'view_transactions':cap('customers.view_stockmovement'),
+        'view_stock_alerts':cap('customers.view_ingredient'),
     }
-    access.update({key:has_capability(user,'customers.view_'+model) for key,model in {'toppings':'topping','combos':'combo','combo-items':'comboitem','promotions':'promotion','reviews':'review','restaurant-info':'restaurantinfo','employees':'employee','positions':'position','shifts':'shift','schedules':'workschedule','attendance':'attendance','payroll':'payroll','periods':'payrollperiod'}.items()})
-    access.update({key:has_capability(user,'customers.'+permission) for key,permission in {'purchase-orders':'view_purchaseorder','food-cost':'view_recipeingredient','loyalty':'view_customerloyalty','audit-log':'view_auditlog','waitlist':'view_bookingwaitlist','booking-operations':'view_booking','transfer-table':'transfer_table'}.items()})
-    access['messages']=get_role(user) in ('ADMIN','MANAGER','STAFF')
-    access['reports']=get_role(user) in ('ADMIN','MANAGER')
-    access['ai-schedule']=get_role(user) in ('ADMIN','MANAGER') and all(has_capability(user,'customers.'+p) for p in ('view_workschedule','add_workschedule','change_workschedule'))
-    access['recommendation-demo']=get_role(user) in ('ADMIN','MANAGER') and has_capability(user,'customers.view_order') and has_capability(user,'customers.view_menuitem')
+    access.update({key:cap('customers.view_'+model) for key,model in {'toppings':'topping','combos':'combo','combo-items':'comboitem','promotions':'promotion','reviews':'review','restaurant-info':'restaurantinfo','employees':'employee','positions':'position','shifts':'shift','schedules':'workschedule','attendance':'attendance','payroll':'payroll','periods':'payrollperiod'}.items()})
+    access.update({key:cap('customers.'+permission) for key,permission in {'purchase-orders':'view_purchaseorder','food-cost':'view_recipeingredient','loyalty':'view_customerloyalty','audit-log':'view_auditlog','waitlist':'view_bookingwaitlist','booking-operations':'view_booking','transfer-table':'transfer_table'}.items()})
+    access['loyalty']=access['loyalty'] and role in ('ADMIN','MANAGER')
+    access['messages']=role in ('ADMIN','MANAGER','STAFF')
+    access['reports']=role in ('ADMIN','MANAGER')
+    access['ai-schedule']=role in ('ADMIN','MANAGER') and all(cap('customers.'+p) for p in ('view_workschedule','add_workschedule','change_workschedule'))
     for page in ['ai-dashboard','ai-forecast','ai-inventory','ai-faces']:
-        access[page]=get_role(user) in ('ADMIN','MANAGER')
+        access[page]=role in ('ADMIN','MANAGER')
     return access

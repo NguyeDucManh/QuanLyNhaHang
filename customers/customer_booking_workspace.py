@@ -12,7 +12,7 @@ from .booking_workspace import booking_panel
 
 DRAFT_KEY = 'customer_booking_draft'
 DRAFT_FIELDS = {'name': 100, 'phone': 20, 'date': 10, 'time': 8,
-                'guests': 3, 'note': 2000, 'promotion_code': 40}
+                'guests': 3, 'note': 2000, 'promotion_code': 40, 'preferred_area': 12, 'preferred_table': 12}
 
 
 def draft_values(request):
@@ -24,6 +24,8 @@ def cart_preview(request):
     preview = booking_cart_preview(session_cart(request))
     extra = enrich_preview(request, preview['selected_food'])
     preview['food_count'] += extra['combo_parts']
+    from .membership_service import quote
+    preview['membership_quote']=quote(request.user,extra['total'])
     preview.update(selected_food=extra['rows'], food_total=format_money(extra['total']),
                    combo_rows=extra['combo_rows'], cart_errors=preview['cart_errors'] + extra['errors'],
                    has_cart=preview['has_cart'] or bool(extra['combo_rows']))

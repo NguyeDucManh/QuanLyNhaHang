@@ -31,6 +31,16 @@ def booking_window(date, time, *, require_future=True):
     if not isinstance(duration, int) or duration <= 0:
         raise ValidationError('Thời lượng đặt bàn phải lớn hơn 0.')
     end = start + timedelta(minutes=duration)
+    from .models import RestaurantInfo
+    info=RestaurantInfo.objects.filter(is_active=True).order_by('pk').first()
+    if info:
+        local=timezone.localtime(start)
+        opening=timezone.make_aware(datetime.combine(local.date(),info.opening_time),timezone.get_default_timezone())
+        closing=timezone.make_aware(datetime.combine(local.date(),info.closing_time),timezone.get_default_timezone())
+        if info.closing_time<=info.opening_time:
+            if local.time()<info.closing_time:opening-=timedelta(days=1)
+            else:closing+=timedelta(days=1)
+        if not opening<=start<end<=closing:raise ValidationError('Khoảng đặt bàn nằm ngoài giờ hoạt động của nhà hàng.')
     if require_future and start <= timezone.now():
         raise ValidationError('Vui lòng chọn thời gian đặt bàn trong tương lai.')
     return start, end
@@ -59,20 +69,32 @@ def table_eligible(table, area, guests):
     return area.is_active and table.is_active and table.status != RestaurantTable.Status.MAINTENANCE and table.capacity >= guests
 
 
-def find_available_table(start, end, guests, areas, *, exclude_booking=None):
+def find_available_table(start, end, guests, areas, *, exclude_booking=None, area_id=None, table_id=None):
     # OCCUPIED describes now, not future reservation availability.
     candidates = RestaurantTable.objects.filter(is_active=True, capacity__gte=guests).exclude(
         status=RestaurantTable.Status.MAINTENANCE).order_by('capacity', 'pk')
+    if area_id is not None:candidates=candidates.filter(area_id=area_id)
+    if table_id is not None:candidates=candidates.filter(pk=table_id)
+    from .table_availability import blocking_orders, effective_bookings, conflict_message
     for table in candidates.select_for_update():
         area = areas.get(table.area_id)
-        if area and table_eligible(table, area, guests) and not overlaps(table.pk, start, end, exclude_booking):
+        busy=blocking_orders(start,end).filter(table_id=table.pk).exists()
+        from .table_session_service import enabled as lifecycle_enabled
+        if lifecycle_enabled():
+            from .models import TableSession
+            busy=busy or TableSession.objects.filter(table=table,ended_at__isnull=True).exists()
+        if table.status=='OCCUPIED' and start<=timezone.now()<end:busy=True
+        conflict=effective_bookings(start,end).filter(table_id=table.pk).exclude(pk=exclude_booking).order_by('start_time','pk').first()
+        if table_id is not None and busy:raise ValidationError('Bàn chưa được giải phóng khỏi lượt phục vụ hiện tại.')
+        if table_id is not None and conflict:raise ValidationError(conflict_message(table,conflict))
+        if area and table_eligible(table, area, guests) and not busy and conflict is None:
             return table
     raise ValidationError(NO_TABLE_MESSAGE)
 
 
 @with_actor
 @transaction.atomic
-def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=None, topping_cart=None, combo_cart=None, promotion_code='', online=False):
+def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=None, topping_cart=None, combo_cart=None, promotion_code='', online=False, area=None, preferred_area=None, preferred_table=None):
     if not user.is_authenticated or not user.is_active:
         raise ValidationError('Vui lòng đăng nhập tài khoản đang hoạt động.')
     if isinstance(guests, bool) or not isinstance(guests, int) or not 1 <= guests <= 20:
@@ -84,7 +106,11 @@ def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=
     # Recheck clock after waiting for another request's lock.
     if start <= timezone.now():
         raise ValidationError('Vui lòng chọn thời gian đặt bàn trong tương lai.')
-    table = find_available_table(start, end, guests, areas)
+    area=preferred_area if preferred_area is not None else area
+    area_id=getattr(area,'pk',None)
+    if area is not None and (area_id not in areas or not areas[area_id].is_active):
+        raise ValidationError('Khu vực không còn phục vụ.')
+    table = find_available_table(start, end, guests, areas, area_id=area_id,table_id=getattr(preferred_table,'pk',None))
     needs_deposit=online and settings.BOOKING_DEPOSIT_REQUIRED
     booking = Booking(user=user, name=name, phone=phone.strip(), date=date, time=time, guests=guests,
                       note=note, table=table, status='PENDING_DEPOSIT' if needs_deposit else Booking.Status.CONFIRMED, start_time=start, end_time=end)
@@ -123,7 +149,10 @@ def create_booking(*, user, name, phone, date, time, guests, note='', food_cart=
 
 @with_actor
 @transaction.atomic
-def transition_booking(booking_id, new_status, *, owner=None):
+def transition_booking(booking_id, new_status, *, owner=None, actor=None):
+    if actor is not None:
+        from .service_scope import require_booking
+        require_booking(actor,booking_id)
     areas = lock_areas()
     snapshot = Booking.objects.get(pk=booking_id)
     table = RestaurantTable.objects.select_for_update().get(pk=snapshot.table_id) if snapshot.table_id else None
@@ -135,12 +164,17 @@ def transition_booking(booking_id, new_status, *, owner=None):
             return booking  # A repeated cancellation does not alter the table or history.
     if new_status not in TRANSITIONS.get(booking.status, ()):
         raise ValidationError('Không được chuyển trạng thái Booking như yêu cầu.')
+    from .models import BookingVisit
+    if new_status in ('CANCELLED','COMPLETED') and BookingVisit.objects.filter(booking=booking,state='CHECKED_IN').exists():
+        raise ValidationError('Khách đã nhận bàn; dùng nghiệp vụ trả bàn có xác nhận và nhật ký.')
     if new_status == Booking.Status.CANCELLED:
         from .models import Order
         service_order = Order.objects.select_for_update().filter(booking=booking).first()
         if service_order and (owner is not None or service_order.status != Order.Status.CANCELLED):
             raise ValidationError('Booking đã mở đơn hàng; không thể tự hủy. Vui lòng liên hệ nhà hàng.')
     if new_status == Booking.Status.CONFIRMED:
+        if getattr(booking,'deposit',None) is not None and booking.deposit.status!='SUCCEEDED':
+            raise ValidationError('Chưa thể xác nhận booking khi tiền cọc bắt buộc chưa thành công.')
         if booking.start_time is None or booking.end_time is None:
             booking.start_time, booking.end_time = booking_window(booking.date, booking.time)
         validate_window(booking.start_time, booking.end_time)

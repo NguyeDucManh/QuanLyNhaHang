@@ -1,3 +1,4 @@
+from . import service_scope as service_scope
 """Small server-rendered additions to the approved management/customer shells."""
 import uuid
 from datetime import timedelta
@@ -127,7 +128,7 @@ def loyalty_management(request):
     # Separate aggregation avoids multiplying invoices by loyalty ledger rows.
     pagination=paginate(request,accounts)
     customers=[account.customer_id for account in pagination]
-    spend={i['order__customer_id']:i for i in Invoice.objects.filter(status='PAID',order__status='COMPLETED',order__customer_id__in=customers).values('order__customer_id').annotate(spend=Sum('total_amount'),orders=Count('pk'))}
+    spend={i['order__customer_id']:i for i in service_scope.invoices(request.user).filter(status='PAID',order__status='COMPLETED',order__customer_id__in=customers).values('order__customer_id').annotate(spend=Sum('total_amount'),orders=Count('pk'))}
     for account in pagination: account.summary=spend.get(account.customer_id,{})
     return page(request,'Thành viên khách hàng',section='loyalty',kind='loyalty',pagination=pagination,can_adjust=has_capability(request.user,'customers.adjust_customerloyalty'),request_key=uuid.uuid4())
 
@@ -149,7 +150,8 @@ def loyalty_adjust(request,pk):
 
 @login_required
 def loyalty_customer(request):
-    return render(request,'customer/operations.html',{'page':'membership','kind':'loyalty','account':CustomerLoyalty.objects.filter(customer=request.user).first(),'pagination':paginate(request,LoyaltyTransaction.objects.filter(customer=request.user))})
+    from .membership_service import status,enabled,policy
+    return render(request,'customer/operations.html',{'page':'membership','kind':'loyalty','member':status(request.user.pk),'membership_enabled':enabled(),'tiers':policy()[0],'account':CustomerLoyalty.objects.filter(customer=request.user).first(),'pagination':paginate(request,LoyaltyTransaction.objects.filter(customer=request.user))})
 
 
 class WaitlistForm(forms.Form):
@@ -193,7 +195,7 @@ def waitlist_action(request,pk):
 
 @capability_required('customers.view_booking')
 def booking_operations(request,pk):
-    booking=get_object_or_404(Booking.objects.select_related('table__area','visit','service_order'),pk=pk)
+    booking=get_object_or_404(service_scope.bookings(request.user).select_related('table__area','visit','service_order'),pk=pk)
     if request.method=='POST':
         try:
             action=request.POST.get('action')
@@ -207,7 +209,7 @@ def booking_operations(request,pk):
         return redirect('booking_operations',pk=pk)
     visit=getattr(booking,'visit',None);order=getattr(booking,'service_order',None);now=timezone.now()
     pending_arrival=booking.status=='CONFIRMED' and not visit and booking.start_time and booking.end_time
-    return page(request,'Phục vụ đặt bàn',kind='booking-ops',booking=booking,tables=RestaurantTable.objects.filter(is_active=True,area__is_active=True).exclude(status='MAINTENANCE').exclude(pk=booking.table_id).select_related('area'),
+    return page(request,'Phục vụ đặt bàn',kind='booking-ops',booking=booking,tables=service_scope.tables(request.user).filter(is_active=True,area__is_active=True).exclude(status='MAINTENANCE').exclude(pk=booking.table_id).select_related('area'),
         can_checkin=has_capability(request.user,'customers.checkin_booking') and pending_arrival and booking.start_time<=now<booking.end_time,
         can_noshow=has_capability(request.user,'customers.noshow_booking') and pending_arrival and now>=booking.start_time+timedelta(minutes=settings.BOOKING_HOLD_MINUTES) and (not order or order.status=='CANCELLED'),
         can_transfer=has_capability(request.user,'customers.transfer_table') and booking.table_id and booking.status=='CONFIRMED' and (not order or order.status in ('PENDING','CONFIRMED','PREPARING')))
@@ -215,9 +217,9 @@ def booking_operations(request,pk):
 
 @capability_required('customers.transfer_table')
 def order_transfer(request,pk):
-    order=get_object_or_404(Order,pk=pk)
+    order=get_object_or_404(service_scope.orders(request.user),pk=pk)
     class TransferForm(forms.Form):
-        destination=forms.ModelChoiceField(RestaurantTable.objects.filter(is_active=True).exclude(status='MAINTENANCE'),label='Bàn đích')
+        destination=forms.ModelChoiceField(service_scope.tables(request.user).filter(is_active=True).exclude(status='MAINTENANCE'),label='Bàn đích')
         guests=forms.IntegerField(min_value=1,max_value=20,label='Số khách')
     form=TransferForm(request.POST or None)
     if request.method=='POST' and form.is_valid():
@@ -229,8 +231,8 @@ def order_transfer(request,pk):
 
 @capability_required('customers.view_restauranttable')
 def table_history(request,pk):
-    table=get_object_or_404(RestaurantTable,pk=pk)
+    table=get_object_or_404(service_scope.tables(request.user),pk=pk)
     return page(request,'Lịch sử bàn '+table.code,kind='table-history',table=table,
         bookings=table.bookings.select_related('visit').order_by('-created_at')[:30] if has_capability(request.user,'customers.view_booking') else [],
-        orders=Order.objects.filter(table=table).order_by('-created_at')[:30] if has_capability(request.user,'customers.view_order') else [],
+        orders=service_scope.orders(request.user).filter(table=table).order_by('-created_at')[:30] if has_capability(request.user,'customers.view_order') else [],
         events=AuditLog.objects.filter(entity_type='RestaurantTable',entity_id=str(pk)).select_related('actor')[:30] if has_capability(request.user,'customers.view_auditlog') else [])

@@ -205,7 +205,9 @@ class AdvancedBookingTests(OperationData,TestCase):
         from .booking_service import transition_booking
         b=self.booking()
         with patch('customers.booking_advanced_service.timezone.now',return_value=b.start_time+timedelta(minutes=1)): mark_arrival(b.pk,actor=self.admin,state='CHECKED_IN')
-        transition_booking(b.pk,'COMPLETED')
+        with self.assertRaises(ValidationError):transition_booking(b.pk,'COMPLETED')
+        from .table_session_service import release
+        release(actor=self.admin,booking_id=b.pk,reason='Khách rời bàn, quản lý kiểm tra',confirm=True,override=True)
         b.table.refresh_from_db();self.assertEqual(b.table.status,'AVAILABLE')
 
 

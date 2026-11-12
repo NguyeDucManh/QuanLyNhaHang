@@ -6,6 +6,20 @@ import cv2
 import numpy as np
 from django.core.exceptions import ValidationError
 from customers.ai.artifacts import root, read_json, sha256
+from .runtime import FaceServiceUnavailable, asset_path
+
+
+def release_unused_heap():
+    """Return already freed glibc pages between native model initializations."""
+    import sys
+    if sys.platform != 'linux':
+        return
+    import ctypes
+    trim = getattr(ctypes.CDLL(None), 'malloc_trim', None)
+    if trim is not None:
+        trim.argtypes = [ctypes.c_size_t]
+        trim.restype = ctypes.c_int
+        trim(0)
 
 def decode_frame(data):
     if not isinstance(data,str) or len(data)>1500000: raise ValidationError('Ảnh quá lớn/không hợp lệ.')
@@ -15,9 +29,21 @@ def decode_frame(data):
     if image is None or image.shape[0]*image.shape[1]>1920*1080: raise ValidationError('Ảnh phải là JPEG/PNG tối đa 1920×1080.')
     return image,hashlib.sha256(raw).hexdigest()
 
-@lru_cache(maxsize=1)
+_engine_lock = threading.Lock()
+
 def engine():
-    return FaceNet()
+    # functools' cache alone permits duplicate concurrent first initialization.
+    with _engine_lock:
+        return _cached_engine()
+
+@lru_cache(maxsize=1)
+def _cached_engine():
+    try:
+        return FaceNet()
+    except FaceServiceUnavailable:
+        raise
+    except Exception as error:
+        raise FaceServiceUnavailable('Không khởi tạo được FaceNet/MediaPipe trên máy chủ. Cần kiểm tra model, thư viện và Render Logs.') from error
 
 class FaceNet:
     def __init__(self):
@@ -25,17 +51,22 @@ class FaceNet:
         import mediapipe as mp
         from mediapipe.tasks.python import vision
         folder=root()/'pretrained'
-        if not (folder/'manifest.json').exists(): raise ValidationError('Chưa tải pretrained model: chạy download_ai_models.')
+        if not (folder/'manifest.json').exists(): raise FaceServiceUnavailable('Thiếu manifest.json của FaceID trên máy chủ.')
         manifest=read_json(folder/'manifest.json')
-        from pathlib import Path
-        paths={name:Path(manifest[name].get('local_path',str(folder/name))) for name in ['facenet.onnx','face_landmarker.task']}
+        try:
+            paths={name:asset_path(folder,name,manifest[name]) for name in ['facenet.onnx','face_landmarker.task']}
+        except (KeyError, TypeError) as error:
+            raise FaceServiceUnavailable('Manifest FaceID không hợp lệ.') from error
         for name in ['facenet.onnx','face_landmarker.task']:
-            if sha256(paths[name])!=manifest[name]['sha256']: raise ValidationError('Model hash không khớp manifest.')
+            if sha256(paths[name])!=manifest[name]['sha256']: raise FaceServiceUnavailable('Model hash không khớp manifest: '+name)
         options=ort.SessionOptions(); options.intra_op_num_threads=1; options.inter_op_num_threads=1
+        options.enable_cpu_mem_arena=False; options.enable_mem_pattern=False
         self.session=ort.InferenceSession(str(paths['facenet.onnx']),options,providers=['CPUExecutionProvider'])
+        release_unused_heap()
         self.model_version=manifest['facenet.onnx']['sha256']
         self.landmarker=vision.FaceLandmarker.create_from_options(vision.FaceLandmarkerOptions(base_options=mp.tasks.BaseOptions(model_asset_buffer=paths['face_landmarker.task'].read_bytes()),num_faces=2,output_face_blendshapes=True))
-        self.mp=mp; self.lock=threading.Lock()
+        self.mp=mp; self.lock=threading.Lock(); self.process_lock=threading.Lock()
+        release_unused_heap()
         # MediaPipe uses a ThreadPoolExecutor for its C API. Close before Python
         # shuts down that executor; normal atexit runs too late on Python 3.14.
         threading._register_atexit(self.landmarker.close)
@@ -60,7 +91,9 @@ class FaceNet:
         if abs(yaw)>.38: raise ValidationError('Quay đầu quá xa; nhìn gần thẳng vào camera.')
         blends={c.category_name:float(c.score) for c in result.face_blendshapes[0]} if result.face_blendshapes else {}
         blink=(blends.get('eyeBlinkLeft',0)+blends.get('eyeBlinkRight',0))/2
-        return face,{'blur':blur,'brightness':brightness,'yaw':float(yaw),'blink':blink,'faces':1,'face_width':x2-x1,'face_height':y2-y1}
+        return face,{'blur':blur,'brightness':brightness,'yaw':float(yaw),'blink':blink,'faces':1,'face_width':x2-x1,'face_height':y2-y1,
+            'frame_width':width,'frame_height':height,'face_x':x1,'face_y':y1,
+            'center_x':(x1+x2)/(2*width),'center_y':(y1+y2)/(2*height)}
 
     def embedding(self,face):
         input_info=self.session.get_inputs()[0]; shape=input_info.shape
@@ -69,12 +102,13 @@ class FaceNet:
         image=cv2.resize(face,(size,size)).astype(np.float32)
         # Keras FaceNet exported upstream: per-image standardization.
         image=(image-image.mean())/max(float(image.std()),1/np.sqrt(image.size))
-        tensor=image[None] if nhwc else image.transpose(2,0,1)[None]
+        tensor=(image[None] if nhwc else image.transpose(2,0,1)[None]).astype(np.float32,copy=False)
         output=np.asarray(self.session.run(None,{input_info.name:tensor})[0],np.float32).ravel()
         norm=float(np.linalg.norm(output))
         if not np.isfinite(output).all() or norm<1e-9: raise ValidationError('Embedding không hợp lệ.')
         return output/norm
 
     def process(self,data):
-        image,digest=decode_frame(data); face,quality=self.analyze(image)
-        return self.embedding(face),quality,digest
+        with self.process_lock:
+            image,digest=decode_frame(data); face,quality=self.analyze(image)
+            return self.embedding(face),quality,digest

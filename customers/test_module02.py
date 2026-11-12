@@ -123,8 +123,11 @@ class BookingServiceTests(BookingFixtures, TestCase):
         for data in ({'date':self.day-timedelta(days=2)}, {'guests':0}, {'guests':-1}, {'guests':3}, {'guests':21}):
             with self.subTest(data=data), self.assertRaises(ValidationError):
                 self.reserve(**data)
+        # Keep date/time from the same instant: just after midnight, pairing
+        # today's date with yesterday's 23:xx constructs a future booking.
+        past=timezone.localtime(timezone.now()-timedelta(minutes=5))
         with self.assertRaises(ValidationError):
-            self.reserve(date=timezone.localdate(), time=timezone.localtime(timezone.now()-timedelta(minutes=5)).time().replace(tzinfo=None))
+            self.reserve(date=past.date(), time=past.time().replace(tzinfo=None))
         self.assertEqual(Booking.objects.count(),0)
 
     def test_pending_overlap_and_18_20_vs_19_21(self):

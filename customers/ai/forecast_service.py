@@ -12,7 +12,7 @@ from .artifacts import new_version, publish, latest, read_json, write_json
 
 FEATURES=['day_of_week','weekend','promotion_flag','lag_1','lag_7','lag_14','rolling_mean_7','rolling_mean_14']
 
-@lru_cache(maxsize=64)
+@lru_cache(maxsize=1)
 def load_model(path):
     return joblib.load(path)
 

@@ -1,3 +1,5 @@
+from .membership_service import discount_context,enabled as membership_enabled
+from . import service_scope as service_scope
 """Existing Admin shell, real ORM lists and forms, explicit permission on every mutation."""
 from django.contrib import messages
 from django.core.exceptions import ValidationError,PermissionDenied
@@ -137,18 +139,23 @@ def recipe_delete(request,pk):
 @capability_required('customers.view_order')
 def orders(request):
     query=request.GET.get('q','').strip()
-    queryset=Order.objects.select_related('customer','table','booking').annotate(item_count=Count('items')).filter(Q(order_number__icontains=query)|Q(customer__username__icontains=query)|Q(customer__first_name__icontains=query)|Q(booking__name__icontains=query)|Q(table__code__icontains=query)).order_by('-created_at','-pk')
+    search=Q(order_number__icontains=query)|Q(table__code__icontains=query)
+    if allowed(request,'view_booking'):search|=Q(customer__username__icontains=query)|Q(customer__first_name__icontains=query)|Q(booking__name__icontains=query)
+    queryset=service_scope.orders(request.user).select_related('customer','table','booking').annotate(item_count=Count('items')).filter(search).order_by('-created_at','-pk')
     status=request.GET.get('status','')
     if status in Order.Status.values:
         queryset=queryset.filter(status=status)
     return list_page(request,page='orders',title='Đơn hàng',headers=['Mã đơn','Khách','Bàn','Booking','Số loại món','Tổng tiền','Trạng thái','Ngày'],queryset=queryset,
-        cells=lambda x:[x.order_number,x.booking.name if x.booking else x.customer.username if x.customer else 'Khách vãng lai',x.table.code if x.table else '—',f'#{x.booking_id}' if x.booking_id else '—',x.item_count,money(x.total_amount),x.get_status_display(),x.created_at],
+        cells=lambda x:[x.order_number,(x.booking.name if x.booking else x.customer.username if x.customer else 'Khách vãng lai') if allowed(request,'view_booking') else 'Ẩn theo quyền',x.table.code if x.table else '—',f'#{x.booking_id}' if x.booking_id else '—',x.item_count,money(x.total_amount),x.get_status_display(),x.created_at],
         actions=lambda x:[action(request,'view_order','Chi tiết',reverse('admin_order_detail',args=[x.pk]))],
         tools=[action(request,'add_order','Mở đơn từ Booking',reverse('admin_order_bookings')),action(request,'add_order','Tạo đơn trực tiếp',reverse('admin_order_add'))],filters={'name':'status','choices':Order.Status.choices,'selected':status})
 
 
 def entry_form(request,*,form_class,lines_class,title,page,submit,destination):
     form=form_class(request.POST if request.method=='POST' else None)
+    if form_class==OrderForm:
+        form.fields['table'].queryset=service_scope.tables(request.user)
+        if not allowed(request,'view_booking'):form.fields['customer'].queryset=form.fields['customer'].queryset.none()
     lines=lines_class(request.POST if request.method=='POST' else None,prefix='items')
     if request.method=='POST':
         valid=form.is_valid()
@@ -174,7 +181,7 @@ def order_add(request):
 
 @capability_required('customers.view_order')
 def order_detail(request,pk):
-    order=get_object_or_404(Order.objects.select_related('customer','table__area','booking','created_by'),pk=pk)
+    order=get_object_or_404(service_scope.orders(request.user).select_related('customer','table__area','booking','created_by'),pk=pk)
     active=order.status in ACTIVE_ORDER_STATUSES and allowed(request,'change_order')
     items=list(order.items.order_by('created_at','pk'))
     can_edit=active and allowed(request,'change_orderitem')
@@ -190,9 +197,10 @@ def order_detail(request,pk):
     if not allowed(request,'change_orderitem'):
         transitions=[state for state in transitions if state not in ('CONFIRMED','CANCELLED')]
     template='admin/business/_order_content.html' if request.headers.get('X-Realtime-Partial')=='1' else 'admin/business/order.html'
-    response=render(request,template,dict(admin_page='orders',order=order,items=items if allowed(request,'view_orderitem') else [],
+    response=render(request,template,dict(admin_page='orders',order=order,membership_discount=discount_context(order),items=items if allowed(request,'view_orderitem') else [],
         can_view_items=allowed(request,'view_orderitem'),item_form=OrderLineForm(),can_add_item=active and allowed(request,'add_orderitem'),can_edit_item=can_edit,
-        combos=Combo.objects.filter(is_active=True),
+        combos=Combo.objects.filter(is_active=True),can_release_table=allowed(request,'change_order'),can_override_release=service_scope.management(request.user),
+        release_ready=order.status=='COMPLETED' and Invoice.objects.filter(order=order,status='PAID').exists(),
         can_send=can_edit and order.status in ('CONFIRMED','PREPARING') and any(item.kitchen_status=='DRAFT' for item in items),
         can_view_kitchen=allowed(request,'view_order') and allowed(request,'view_orderitem'),
         transitions=[(status,TRANSITION_LABELS[status]) for status in transitions],can_invoice=allowed(request,'add_invoice') and order.status=='COMPLETED'))
@@ -226,7 +234,7 @@ def kitchen_queue(request):
 @capability_required('customers.change_orderitem')
 @require_POST
 def order_send_kitchen(request,pk):
-    get_object_or_404(Order,pk=pk)
+    get_object_or_404(service_scope.orders(request.user),pk=pk)
     try:
         count=send_order_to_kitchen(pk,actor=request.user)
     except ValidationError as exc:
@@ -259,16 +267,20 @@ def service_message(request,callback):
 @capability_required('customers.change_order')
 @require_POST
 def order_status(request,pk):
-    get_object_or_404(Order,pk=pk)
+    get_object_or_404(service_scope.orders(request.user),pk=pk)
     service_message(request,lambda:transition_order(pk,request.POST.get('status',''),actor=request.user))
     return redirect('admin_order_detail',pk=pk)
 
 
 @capability_required('customers.add_order')
 def order_bookings(request):
+    from .table_assignment_service import staff_table_ids
+    scoped=staff_table_ids(request.user)
+    bookings=service_scope.bookings(request.user).filter(status=Booking.Status.CONFIRMED,table__isnull=False,service_order__isnull=True)
+    if scoped is not None:bookings=bookings.filter(table_id__in=scoped)
     return list_page(request,page='orders',title='Mở đơn từ Booking',headers=['Booking','Khách','Bàn','Bắt đầu','Kết thúc'],
-        queryset=Booking.objects.filter(status=Booking.Status.CONFIRMED,table__isnull=False,service_order__isnull=True).select_related('table').order_by('start_time','pk'),
-        cells=lambda b:[f'#{b.pk}',b.name,b.table.code,b.start_time,b.end_time],
+        queryset=bookings.select_related('table').order_by('start_time','pk'),
+        cells=lambda b:[f'#{b.pk}',b.name if has_capability(request.user,'customers.view_booking') else 'Khách đặt bàn',b.table.code,b.start_time,b.end_time],
         actions=lambda b:[action(request,'add_order','Mở đơn hàng',reverse('admin_booking_open_order',args=[b.pk]),post=True)],
         description='Chỉ mở đơn khi khách đến. Món đặt trước được sao chép theo tên và giá đã lưu.')
 
@@ -277,7 +289,7 @@ def order_bookings(request):
 @capability_required('customers.add_orderitem')
 @require_POST
 def booking_open_order(request,pk):
-    get_object_or_404(Booking,pk=pk)
+    get_object_or_404(service_scope.bookings(request.user),pk=pk)
     try:
         order=open_order_from_booking(pk,actor=request.user)
     except ValidationError as exc:
@@ -293,7 +305,7 @@ def booking_open_order(request,pk):
 @capability_required('customers.add_orderitem')
 @require_POST
 def order_item_add(request,pk):
-    get_object_or_404(Order,pk=pk)
+    get_object_or_404(service_scope.orders(request.user),pk=pk)
     form=OrderLineForm(request.POST)
     if form.is_valid():
         data=form.cleaned_data
@@ -329,7 +341,7 @@ def order_item_remove(request,pk,item_id):
 @capability_required('customers.view_invoice')
 def invoices(request):
     return list_page(request,page='payments',title='Hóa đơn & Thanh toán',headers=['Số hóa đơn','Đơn','Tổng tiền','Trạng thái','Ngày xuất'],
-        queryset=Invoice.objects.select_related('order').filter(invoice_number__icontains=request.GET.get('q','')),
+        queryset=service_scope.invoices(request.user).select_related('order').filter(invoice_number__icontains=request.GET.get('q','')),
         cells=lambda x:[x.invoice_number,f'#{x.order_id}',x.total_amount,x.get_status_display(),x.issued_at],
         description='Xuất hóa đơn từ chi tiết đơn đã hoàn thành. Thanh toán tiền mặt/chuyển khoản được nhà hàng đối soát và xác nhận thủ công.',
         actions=lambda x:[action(request,'view_invoice','Chi tiết / Thanh toán',reverse('admin_invoice_detail',args=[x.pk]))])
@@ -338,7 +350,7 @@ def invoices(request):
 @capability_required('customers.add_invoice')
 @require_POST
 def invoice_issue(request,pk):
-    get_object_or_404(Order,pk=pk)
+    get_object_or_404(service_scope.orders(request.user),pk=pk)
     try:
         invoice=issue_invoice(pk,actor=request.user)
     except ValidationError as exc:
@@ -349,20 +361,20 @@ def invoice_issue(request,pk):
 
 @capability_required('customers.view_invoice')
 def invoice_detail(request,pk):
-    invoice=get_object_or_404(Invoice.objects.select_related('order__customer','order__table'),pk=pk)
+    invoice=get_object_or_404(service_scope.invoices(request.user).select_related('order__customer','order__table'),pk=pk)
     form=PaymentForm()
     can_view_payments=allowed(request,'view_payment')
     from .payment_views import partial
     template='admin/business/_invoice_content.html' if request.headers.get('X-Realtime-Partial')=='1' else 'admin/business/invoice.html'
-    return partial(request,template,dict(admin_page='payments',invoice=invoice,form=form,
+    return partial(request,template,dict(admin_page='payments',invoice=invoice,membership_discount=discount_context(invoice.order),form=form,
         payments=invoice.payments.select_related('confirmed_by','created_by').all() if can_view_payments else [],
-        can_view_payments=can_view_payments,can_pay=allowed(request,'add_payment') and invoice.status=='UNPAID' and not invoice.payments.filter(status__in=['PENDING','SUCCEEDED']).exists(),can_confirm=allowed(request,'change_payment')))
+        can_record_refund=membership_enabled() and allowed(request,'record_invoice_refund') and invoice.status=='PAID',can_view_payments=can_view_payments,can_pay=allowed(request,'add_payment') and invoice.status=='UNPAID' and not invoice.payments.filter(status__in=['PENDING','SUCCEEDED']).exists(),can_confirm=allowed(request,'change_payment')))
 
 
 @capability_required('customers.add_payment')
 @require_POST
 def payment_add(request,pk):
-    invoice=get_object_or_404(Invoice,pk=pk)
+    invoice=get_object_or_404(service_scope.invoices(request.user),pk=pk)
     form=PaymentForm(request.POST)
     if form.is_valid():
         service_message(request,lambda:create_payment(invoice_id=pk,actor=request.user,**form.cleaned_data))
@@ -374,7 +386,7 @@ def payment_add(request,pk):
 @capability_required('customers.change_payment')
 @require_POST
 def payment_confirm(request,pk):
-    payment=get_object_or_404(Payment,pk=pk)
+    payment=get_object_or_404(service_scope.payments(request.user),pk=pk)
     outcome=request.POST.get('outcome')
     if outcome not in ('success','failed','cancelled'):
         messages.error(request,'Kết quả xác nhận không hợp lệ.')

@@ -7,6 +7,7 @@ from .models import (Topping, Combo, MenuItem, BookingItem, Promotion, Order, Re
 from .business_service import save_validated
 from .rbac import get_role, has_capability
 from .realtime import notify_order_changed
+from .audit_service import with_actor
 
 def identifiers(raw):
     if not isinstance(raw,list) or len(raw)>20: raise ValidationError('Danh sách topping không hợp lệ.')
@@ -43,8 +44,11 @@ def combo_values(combo_id,quantity):
             position+=1
     return values
 
+@with_actor
 @transaction.atomic
 def add_combo_to_order(order_id,combo_id,quantity,*,actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     if not has_capability(actor,'customers.change_order') or not has_capability(actor,'customers.add_orderitem'): raise PermissionDenied
     from .order_service import active_order,recalculate_totals
     order=active_order(order_id)
@@ -82,8 +86,11 @@ def discount_for(snapshot,subtotal):
     if cap is not None: discount=min(discount,Decimal(cap))
     return min(subtotal,discount).quantize(Decimal('.01'),rounding=ROUND_HALF_UP)
 
+@with_actor
 @transaction.atomic
 def apply_voucher(order_id,code,*,actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     order=Order.objects.select_for_update().get(pk=order_id)
     if order.customer_id!=actor.pk and not has_capability(actor,'customers.change_order'): raise PermissionDenied
     if not actor.is_active or order.status!='PENDING': raise ValidationError('Chỉ áp dụng voucher cho đơn đang chờ xác nhận.')
@@ -91,17 +98,28 @@ def apply_voucher(order_id,code,*,actor):
     if order.promotion_id:
         if order.promotion_snapshot['code']==normalized: return order
         raise ValidationError('Đơn đã áp dụng voucher; không đổi lượt sử dụng.')
-    if order.discount_amount: raise ValidationError('Đơn đã có giảm giá thủ công; không cộng thêm voucher.')
+    from .membership_service import enabled,select_discount
+    if enabled() and order.customer_id:
+        from django.contrib.auth import get_user_model
+        get_user_model().objects.select_for_update().get(pk=order.customer_id)
+    member_entry = order.membership_discount if enabled() and hasattr(order,'membership_discount') else None
+    if order.discount_amount and (not member_entry or member_entry.selected=='MANUAL'): raise ValidationError('Đơn đã có giảm giá thủ công; không cộng thêm voucher.')
     promo=Promotion.objects.select_for_update().filter(code=normalized).first(); now=timezone.now()
     if not promo or not promo.is_active or not promo.start_at<=now<=promo.end_at or (promo.usage_limit is not None and promo.used_count>=promo.usage_limit): raise ValidationError('Voucher không tồn tại, hết hạn hoặc hết lượt.')
     snap={k:str(getattr(promo,k)) if getattr(promo,k) is not None else None for k in ('code','name','discount_type','discount_value','min_order_amount','max_discount_amount')}
     discount=discount_for(snap,order.subtotal)
+    entry=select_discount(order,voucher=discount)
+    if entry is not None and entry.selected!='VOUCHER':
+        return order  # Better membership benefit; voucher usage is untouched.
     order.promotion=promo; order.promotion_snapshot=snap; order.discount_amount=discount; order.total_amount=order.subtotal-discount
     promo.used_count+=1; save_validated(promo); save_validated(order); notify_order_changed(order.pk)
     return order
 
+@with_actor
 @transaction.atomic
 def add_toppings_to_line(order_id,line_id,ids,*,actor):
+    from .service_scope import require_order
+    require_order(actor,order_id)
     if not has_capability(actor,'customers.change_order') or not has_capability(actor,'customers.change_orderitem'): raise PermissionDenied
     order=Order.objects.select_for_update().get(pk=order_id)
     line=OrderItem.objects.select_for_update().get(pk=line_id,order=order)

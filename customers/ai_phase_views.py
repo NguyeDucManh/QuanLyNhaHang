@@ -1,3 +1,4 @@
+from .ai.face.runtime import face_api
 import json
 from collections import Counter
 from django.contrib.auth.decorators import login_required
@@ -18,11 +19,22 @@ def metadata(kind):
 
 @role_required('ADMIN','MANAGER')
 def dashboard(request):
-    recommendation=metadata('recommendation'); forecast=metadata('forecast'); chatbot=metadata('chatbot'); evaluation=metadata('evaluation')
-    return render(request,'admin/ai/dashboard.html',{'admin_page':'ai-dashboard','employee_total':Employee.objects.filter(is_active=True).count(),'recommendation':recommendation,'forecast':forecast,'chatbot':chatbot,'evaluation':evaluation,'profiles':FaceProfile.objects.count(),'embeddings':FaceEmbedding.objects.count(),'calibrated':FaceProfile.objects.filter(threshold__isnull=False).count(),'audits':dict(Counter(FaceAudit.objects.values_list('success',flat=True)))})
+    from .rbac import has_capability
+    from .employee_identity import operational_employees
+    employees=operational_employees()
+    can_faces=has_capability(request.user,'customers.change_employee')
+    profiles=FaceProfile.objects.filter(employee__in=employees)
+    return render(request,'admin/ai/operational_dashboard.html',{'admin_page':'ai-dashboard',
+        'profiles':profiles.count() if can_faces else 0,
+        'embeddings':FaceEmbedding.objects.filter(profile__in=profiles).count() if can_faces else 0,
+        'calibrated':profiles.filter(threshold__isnull=False).count() if can_faces else 0,'can_faces':can_faces,
+        'can_schedule_ai':all(has_capability(request.user,'customers.'+key) for key in ('view_workschedule','add_workschedule','change_workschedule'))})
 
 @role_required('ADMIN','MANAGER')
 def forecast(request):
+    from .ai.availability import operational_forecast_metadata
+    meta,error=operational_forecast_metadata()
+    if not meta: return render(request,'admin/ai/forecast.html',{'admin_page':'ai-forecast','result':None,'summary':None,'error':error})
     from .ai.forecast_service import predict
     error=''; result=None
     try: result=predict(int(request.GET.get('days','7')))
@@ -32,6 +44,9 @@ def forecast(request):
 
 @role_required('ADMIN','MANAGER')
 def inventory(request):
+    from .ai.availability import operational_forecast_metadata
+    meta,error=operational_forecast_metadata()
+    if not meta: return render(request,'admin/ai/inventory.html',{'admin_page':'ai-inventory','rows':[],'error':error,'counts':{},'suppliers':Supplier.objects.filter(is_active=True)})
     from .ai.forecast_service import predict
     from .ai.inventory_ai_service import calculate
     error=''; rows=[]; result=None
@@ -74,6 +89,8 @@ def payload(request):
     if not isinstance(data,dict): raise ValidationError('JSON phải là object.')
     return data
 
+@face_api
+
 @role_required('ADMIN','MANAGER')
 @require_POST
 def enrollment(request,pk):
@@ -89,6 +106,8 @@ def enrollment(request,pk):
     from .ai.face.policy import effective_threshold
     threshold,kind=effective_threshold(profile)
     return JsonResponse({'samples':profile.samples.count(),'threshold':threshold,'threshold_type':kind,'message':'Đã đăng ký. Ngưỡng tạm thời — chưa hiệu chỉnh bằng dữ liệu validation thật.'})
+
+@face_api
 
 @role_required('ADMIN','MANAGER','STAFF')
 @require_POST
@@ -116,14 +135,16 @@ def face_delete(request,pk):
 
 @role_required('STAFF','ADMIN','MANAGER')
 def face_attendance(request):
-    from .location_service import public_config
+    from .face_attendance_views import public_config
     from .employee_identity import operational_employees
     from .ai.face.policy import effective_threshold
     from django.conf import settings
-    employee=operational_employees().select_related('face_profile','position').filter(user=request.user).first()
-    schedules=WorkSchedule.objects.filter(employee=employee,status='APPROVED',start_at__lte=timezone.now()+timezone.timedelta(hours=1),end_at__gte=timezone.now()-timezone.timedelta(hours=4)).select_related('shift').order_by('start_at')[:20] if employee else []
+    from .attendance_status import attendance_context
+    state=attendance_context(request.user)
     config=public_config(); config['require_liveness']=settings.FACEID_REQUIRE_LIVENESS
-    return render(request,'customer/ai/face_attendance.html',{'schedules':schedules,'employee':employee,'location_config':config,'require_liveness':settings.FACEID_REQUIRE_LIVENESS})
+    return render(request,'customer/ai/face_attendance.html',{**state,'attendance_config':config,'require_liveness':settings.FACEID_REQUIRE_LIVENESS})
+
+@face_api
 
 @role_required('STAFF','ADMIN','MANAGER')
 @require_POST
@@ -132,14 +153,11 @@ def challenge(request):
     from django.conf import settings
     return JsonResponse(issue(request.user,require_liveness=settings.FACEID_REQUIRE_LIVENESS))
 
-@role_required('STAFF','ADMIN','MANAGER')
-@require_POST
 def verify(request):
-    from .location_service import secure_punch
-    try:
-        data=payload(request); result,_=secure_punch(actor=request.user,challenge_id=data.get('challenge'),frames=data.get('frames'),schedule_id=int(data.get('schedule')),action=data.get('action','in'),point=data.get('location'))
-    except (ValidationError,ValueError,TypeError) as exc: return JsonResponse({'error':str(exc)},status=400)
-    return JsonResponse({'message':'Chấm công thành công.','attendance_id':result.pk})
+    # The canonical view owns auth, method and inference capacity guards.
+    # Wrapping it twice would make this request compete with itself (429).
+    from .face_attendance_views import attendance
+    return attendance(request)
 
 def chat_page(request):
     return render(request,'customer/ai/chat.html',{})

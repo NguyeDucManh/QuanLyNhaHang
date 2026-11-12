@@ -7,7 +7,6 @@ from .reranker import rerank
 
 @lru_cache(maxsize=1)
 def embedder():
-    from sentence_transformers import SentenceTransformer
     from pathlib import Path
     manifest=read_json(root()/'pretrained'/'manifest.json')
     if 'embedding' not in manifest: raise ValueError('Chưa tải embedding; chạy download_ai_models.')
@@ -15,6 +14,7 @@ def embedder():
     if not path.exists(): raise ValueError('Chưa tải embedding; chạy download_ai_models.')
     for name,expected in manifest['embedding']['files'].items():
         if sha256(path/name)!=expected: raise ValueError('Embedding hash mismatch: '+name)
+    from sentence_transformers import SentenceTransformer
     return SentenceTransformer(str(path),device='cpu',local_files_only=True)
 
 def documents():
@@ -81,7 +81,7 @@ def retrieve(question,k=10):
 
 def answer(question,intent):
     try: rows,meta=retrieve(question)
-    except (ValueError,FileNotFoundError): return {'answer':NO_DATA,'tool':'rag_retrieval','sources':[]}
+    except (ValueError,OSError,ImportError): return grounded_fallback(question,intent)
     allowed={'BOOKING_POLICY':{'BOOKING_POLICY'},'WEBSITE_HELP':{'WEBSITE_GUIDE'},'POLICY':{'BOOKING_POLICY','PAYMENT_POLICY'},'FAQ':{'WEBSITE_GUIDE','BOOKING_POLICY','PAYMENT_POLICY'}}.get(intent)
     rows=[r for r in rows if r['semantic_score']>=meta['hyperparameters']['semantic_threshold'] and (allowed is None or r['source_type'] in allowed)][:3]
     if intent=='UNKNOWN':
@@ -93,3 +93,23 @@ def answer(question,intent):
     # Extractive answer: no external LLM or unsupported generated facts.
     chosen=rows[0]
     return {'answer':chosen['content'],'tool':'rag_retrieval','sources':[{'source_type':chosen['source_type'],'source_id':chosen['source_id'],'title':chosen['title'],'chunk_id':chosen['chunk_id']}],'retrieved':[r['chunk_id'] for r in rows]}
+
+
+def grounded_fallback(question,intent):
+    """Extract only a matching code-backed policy; never pretend semantic RAG ran."""
+    from .intent_router import normalize
+    text=normalize(question)
+    key=None
+    if 'dat ban' in text and intent in ('BOOKING_POLICY','POLICY','FAQ','UNKNOWN'):
+        key='booking-cancel' if 'huy' in text else 'booking-window'
+    elif intent=='WEBSITE_HELP':
+        key='cart' if 'gio' in text else 'support' if 'nhan' in text else 'order' if 'don' in text else None
+    elif intent=='POLICY' and 'thanh toan' in text:
+        key='payment-confirm'
+    if key:
+        docs,_=documents()
+        chosen=next((row for row in docs if row['source_id']==key),None)
+        if chosen:
+            return {'answer':chosen['content'],'tool':'grounded_policy_fallback','semantic_ready':False,
+                'sources':[{'source_type':chosen['source_type'],'source_id':key,'title':chosen['title']} ]}
+    return {'answer':NO_DATA,'tool':'rag_retrieval','semantic_ready':False,'sources':[]}

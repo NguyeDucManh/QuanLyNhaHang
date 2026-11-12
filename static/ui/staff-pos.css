@@ -53,3 +53,7 @@
 }
 
 .pos-service-tools{font-size:11px;margin-bottom:8px;color:#476b55}.pos-service-tools summary{cursor:pointer}
+
+.pos-timeline-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.pos-timeline-tabs a{padding:8px;border:1px solid #cad9cb;border-radius:8px}.pos-table.UPCOMING{border-color:#b18a38;background:#fff8e9}.pos-booking-timeline{grid-column:1/-1;min-width:0}.table-scroll{max-width:100%;overflow-x:auto}.pos-booking-timeline table{width:100%;min-width:680px}.pos-booking-timeline td,.pos-booking-timeline th{padding:10px;vertical-align:top}.pos-table small{overflow-wrap:anywhere}
+
+.pos-time-filter{display:flex;flex-wrap:wrap;gap:8px;align-items:end}.pos-time-filter input{max-width:100%;min-width:0}.pos-time-filter label{min-width:0}

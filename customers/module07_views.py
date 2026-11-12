@@ -34,6 +34,7 @@ RESOURCES={
 }
 
 def require(user,perm):
+    if any(perm.endswith('_'+r) for r in ('employee','workschedule','attendance','payroll','payrollperiod','shift','position')) and get_role(user) not in ('ADMIN','MANAGER'):raise PermissionDenied
     if not has_capability(user,'customers.'+perm): raise PermissionDenied
 
 def nav_action(label,url,data=None): return {'label':label,'url':url,'post':data is not None,'data':data or {}}
@@ -65,6 +66,7 @@ def resource_list(request,resource):
 
 @transaction.atomic
 def save_resource(form,resource,actor):
+    if resource=='restaurantinfo' and get_role(actor)!='ADMIN':raise PermissionDenied
     model=RESOURCES[resource][0]
     if resource=='workschedule': return hr.save_schedule(form,actor=actor)
     if resource=='attendance': return hr.save_attendance(form,actor=actor)
@@ -87,6 +89,7 @@ def save_resource(form,resource,actor):
 
 @login_required
 def resource_edit(request,resource,pk=None):
+    if resource=='restaurantinfo' and get_role(request.user)!='ADMIN':raise PermissionDenied
     if resource not in RESOURCES: raise PermissionDenied
     model,Form,page,title,_=RESOURCES[resource]
     require(request.user,('change_' if pk else 'add_')+resource)
@@ -126,7 +129,7 @@ def my_work(request):
 @require_POST
 def punch(request,pk):
     get_object_or_404(WorkSchedule,pk=pk,employee__user=request.user)
-    messages.info(request,'Vui lòng dùng trang chấm công để xác thực theo chính sách FaceID/GPS.')
+    messages.info(request,'Vui lòng dùng trang chấm công để xác thực theo chính sách FaceID.')
     return redirect('face_attendance')
 
 @capability_required('customers.view_payroll')
@@ -202,9 +205,11 @@ def history(request,pk=None):
 def voucher(request,pk):
     get_object_or_404(Order,pk=pk,customer=request.user)
     from .commerce_service import apply_voucher
-    try: apply_voucher(pk,request.POST.get('code',''),actor=request.user)
+    try: order=apply_voucher(pk,request.POST.get('code',''),actor=request.user)
     except ValidationError as exc: messages.error(request,' '.join(exc.messages))
-    else: messages.success(request,'Đã áp dụng voucher.')
+    else:
+        if order.promotion_id:messages.success(request,'Đã áp dụng voucher.')
+        else:messages.info(request,'Ưu đãi thành viên có lợi hơn hoặc bằng voucher; voucher chưa bị sử dụng.')
     return redirect('purchase_detail',pk=pk)
 
 @capability_required('customers.change_order')

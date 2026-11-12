@@ -3,12 +3,15 @@ from django.urls import path
 from django.views.generic import RedirectView
 from customers import views, management_views, business_views, payment_views, module07_views as m7, ai_views
 from customers import ai_phase_views as ai
-from customers import location_views as geo
+from customers import face_attendance_views as face_attendance
 from customers import final_views as final
 from customers import employee_identity_views as identities
+from customers import table_assignment_views
+from customers.table_session_views import release_order_table
 
 from customers.booking_workspace import availability
 from customers import operations_views as ops
+from customers import membership_views as membership
 from customers import deposit_views as deposits
 from .health import health
 from django.contrib.sitemaps.views import sitemap
@@ -17,6 +20,8 @@ from customers.seo import robots, SITEMAPS
 handler404 = 'restaurant_system.errors.page_not_found'
 
 urlpatterns = [
+    path('management/orders/<int:pk>/release-table/',release_order_table,name='release_order_table'),
+    path('management/table-assignments/',table_assignment_views.assignments,name='table_assignments'),
     path('robots.txt', robots, name='seo_robots'),
     path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}, name='seo_sitemap'),
     path('healthz/', health, name='health'),
@@ -33,9 +38,12 @@ urlpatterns = [
     path('management/supplier-prices/',ops.prices,name='supplier_prices'),
     path('management/food-cost/',ops.food_cost,name='food_cost'),
     path('management/audit-log/',ops.audit_logs,name='audit_logs'),
-    path('management/loyalty/',ops.loyalty_management,name='loyalty_management'),
+    path('management/loyalty/',membership.members,name='loyalty_management'),
     path('management/loyalty/<int:pk>/adjust/',ops.loyalty_adjust,name='loyalty_adjust'),
     path('membership/',ops.loyalty_customer,name='loyalty_customer'),
+    path('management/membership/policy/',membership.policy,name='membership_policy'),
+    path('management/membership/<int:pk>/',membership.member_detail,name='membership_detail'),
+    path('management/invoices/<int:pk>/refund-record/',membership.refund,name='invoice_refund_record'),
     path('booking/waitlist/',ops.waitlist_customer,name='waitlist_customer'),
     path('management/waitlist/',ops.waitlist_management,name='waitlist_management'),
     path('booking/waitlist/<int:pk>/action/',ops.waitlist_action,name='waitlist_action'),
@@ -51,9 +59,8 @@ urlpatterns = [
     path('management/ai/faces/<int:pk>/enrollment/',final.enrollment_page,name='face_enrollment_page'),
     path('management/ai/faces/test/',final.test_page,name='face_test_page'),
     path('management/ai/faces/test/verify/',final.test_face,name='face_test_verify'),
-    path('management/settings/location/',geo.settings_page,name='location_settings'),
-    path('work/location/check/',geo.check_location,name='location_check'),
-    path('work/attendance/verify/',geo.attendance,name='secure_attendance'),
+    path('work/attendance/status/',face_attendance.attendance_status,name='attendance_status'),
+    path('work/attendance/verify/',face_attendance.attendance,name='secure_attendance'),
     path('management/ai/',ai.dashboard,name='ai_dashboard'),
     path('management/ai/forecast/',ai.forecast,name='ai_forecast'),
     path('management/ai/inventory/',ai.inventory,name='ai_inventory'),
@@ -69,7 +76,6 @@ urlpatterns = [
     path('ai/chat/message/',ai.chat_message,name='ai_chat_message'),
     path('ai/chat/history/',ai.chat_history,name='ai_chat_history'),
     path('management/schedules/ai/',ai_views.ai_schedules,name='ai_schedules'),
-    path('management/recommendations/',ai_views.recommendation_demo,name='recommendation_demo'),
     path('recommendations/',ai_views.customer_recommendations,name='customer_recommendations'),
     path('management/module07/<str:resource>/',m7.resource_list,name='module07_list'),
     path('management/module07/<str:resource>/add/',m7.resource_edit,name='module07_add'),
@@ -137,7 +143,6 @@ urlpatterns = [
     path('invoices/<int:pk>/', payment_views.customer_invoice, name='customer_invoice_detail'),
     path('invoices/<int:pk>/payments/start/', payment_views.customer_payment_start, name='customer_payment_start'),
     path('payments/<int:pk>/report/', payment_views.customer_payment_report, name='customer_payment_report'),
-    path('payments/<int:pk>/qr-demo/', payment_views.customer_payment_qr, name='customer_payment_qr'),
     path("management/accounts/", views.account_list, name="admin_accounts"),
     path("management/accounts/<int:user_id>/edit/", views.account_edit, name="admin_account_edit"),
     path("management/areas/", management_views.areas, name="admin_areas"),
