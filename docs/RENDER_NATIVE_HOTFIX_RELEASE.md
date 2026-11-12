@@ -73,6 +73,12 @@ Sau khi CI đạt, phải xác minh các gate sau trước khi xin duyệt cuố
   timeout lock giới hạn, hậu kiểm counts/FK/hash/quyền; không reverse/drop/restore đè production.
   Code/flagsOFF đã tương thích schema0021 nên deployment không phụ thuộc tự migrate khi start.
 
+Nếu service Free không có Shell, không nâng gói chỉ để migrate: sau phê duyệt riêng có thể dùng
+môi trường operator từ đúng SHA hotfix, External Database URL và SSL verify-full để chạy migration.
+Credential chỉ truyền qua môi trường local, không ghi DSN vào command/log. Đã kiểm tra các quyền
+schema CREATE, REFERENCES và SELECT/INSERT metadata bằng SELECT read-only; đây chưa phải thực thi DDL.
+Không áp dụng migration từ workspace gốc đang có thay đổi chưa commit hoặc dùng code/schema khác release.
+
 ## Kiểm chứng sau deploy, chưa được báo PASS trước khi có bằng chứng
 
 Đối chiếu SHA commit của deployment trong Render, image/build/start logs và Web Service hiện hữu.
