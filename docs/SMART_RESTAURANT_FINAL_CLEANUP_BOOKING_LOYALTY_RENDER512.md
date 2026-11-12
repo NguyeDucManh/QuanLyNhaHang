@@ -1,6 +1,6 @@
 # Smart Restaurant — kiểm toán cuối, FACE_ONLY, booking, thành viên và Render 512 MB
 
-Ngày 12/11/2026. **Chưa nghiệm thu production; chưa xác nhận chạy ổn trong 512 MB.**
+Ngày 12/11/2026. **CI Ubuntu và phép thử cgroup512MiB đã PASS; chưa nghiệm thu production/nhận diện người thật.**
 Mọi thay đổi nằm trong worktree riêng `artifacts/final-cleanup-worktree`, không trộn workspace gốc.
 Không merge/deploy/migrate production, không thay environment hoặc dữ liệu PostgreSQL nghiệp vụ.
 Yêu cầu mới FACE_ONLY thay thế yêu cầu GPS cũ; không thay threshold/liveness/model_version.
@@ -21,7 +21,7 @@ Kiểm kê AST 197 module Python, 190 template; danh mục class/function/test t
 | Nhân sự | employees, shifts, approved schedules, attendance, payroll | regression; Face inference mock ở integration |
 | Khách hàng | own bookings/orders/invoices, membership, chat | regression + browser fixture |
 | AI | FaceNet, MediaPipe, chatbot grounded/RAG, recommendations, forecast, GA | Face tensor thật local; phần khác regression có giới hạn |
-| Triển khai | WhiteNoise/build/native libraries/deposit scheduler/Redis | local checks/static; CI mới chưa chạy |
+| Triển khai | WhiteNoise/build/native libraries/deposit scheduler/Redis | CI Ubuntu/static/Redis PASS; Render chưa deploy |
 
 ## 2. Chức năng giữ — PASS mã nguồn/test tương ứng
 
@@ -101,38 +101,57 @@ không gọi Stripe/bank, không sửa invoice/ledger lịch sử. Không thử 
   HTML render từ PostgreSQL test riêng, không phải browser production hoặc Safari/iPhone thật.
 - Lượt full trước lỗi8 static subcase do chưa collectstatic trong worktree mới; đã build static để chạy lại.
   Không bỏ test hoặc nới assertion nghiệp vụ. Test GPS/QR được đổi hợp đồng theo yêu cầu loại bỏ mới.
-- Chưa chạy CI mới: không dùng kết quả664 test của PR4 cũ làm bằng chứng cho gói này.
+- CI mới tại56d0aad: **696/696 PASS,133.248s trên Ubuntu**, migration tiến/lùi, native model, build.sh/static và Redis cross-client PASS. Không dùng CI664 test của PR4 cũ thay kết quả này.
 
-## 12. Peak RAM 512 MB — BLOCKED thực thi Linux
+## 12. Peak RAM512MiB — PASS phạm vi CI đã đo
 
-Không có WSL/Docker local; push mới bị auto-review chặn nên chưa chạy workflow cgroup.
-Đã chuẩn bị Docker/Ubuntu CI ép512MiB, swap=0,1CPU,1Daphne; PostgreSQL/driver ngoài cgroup.
-Probe có pha public/booking/admin/staff/chat, native Face quality và25tensor128,30request/3concurrent,
-lưu memory.max/current/peak/events và diagnostics cả khi thất bại. Fixture chỉ cho DB restaurant_ci512 localhost.
-**Không có số peak512 hợp lệ để báo PASS.** Tensor không có mặt người không chứng minh nhận diện danh tính.
+Thực thi thật trên Ubuntu24.04/Python3.14.8, Docker cgroup v2, `--memory=512m --memory-swap=512m --cpus=1`,
+1Daphne; PostgreSQL và HTTP driver ngoài cgroup. DEBUG=false, storage/static production;
+transport HTTP loopback CI riêng, không thử TLSproxy Render.
+`memory.max=536870912`, **peak=384454656byte=366.645MiB**;
+`oom=0`, `oom_kill=0`, `oom_group_kill=0`, `max=0`, Docker `OOMKilled=false`.
 
-Local Windows trước/sau Face load:309,45→308,84MiB RSS;5,985→4,487s; tensor128:0,339→0,214s.
-Đây là một lần đo, không benchmark thống kê và không đại diện cho Linux/toàn ứng dụng.
-Hash hai model đúng, model_version1c69044b… giữ nguyên; số đo đầy đủ `FINAL_FACE_LOCAL_MEMORY.json`.
+| Pha | Memory.current MiB | Memory.peak MiB |
+| --- | ---: | ---: |
+| public | 90.070 | 116.246 |
+| booking | 91.066 | 116.246 |
+| management | 91.309 | 116.246 |
+| staff | 91.289 | 116.246 |
+| real_face_models_no_identity | 269.520 | 366.645 |
+| chatbot_grounded_tools_and_rag_fallback | 276.328 | 366.645 |
+| 30_requests_3_concurrent | 278.367 | 366.645 |
 
-## 13. Khả năng vượt RAM — BLOCKED định lượng mới
+Public/menu/booking/membership/recommendations/admin/staff đều200. Quality với PNG hợp lệ không có mặt trả400,
+FaceNet+MediaPipe khởi tạo thật, 25tensor128 chạy0,810s; model_version1c69044b… giữ nguyên.
+Chat grounded/fallback và30GETmenu/3concurrent đều đạt sau khi đã tải Face runtime.
+**Không phải25frame nhận diện/liveness người thật**, không kiểm định FAR/FRR hoặc camera iPhone.
+Fixture CI nhỏ, chưa phải dữ liệu/tải/concurrency production và chưa thử semantic RAG embedding cùng FaceNet.
 
-PR4 cũ có Linux peak596.672KiB (~583MiB), chưa cgroup512; bằng chứng đó không đạt512.
-Gói mới lazy-load ML, CPU-only Torch/XGBoost, ONNX tắt arena/mem-pattern, thread1,
-serialize inference và malloc_trim Linux; chưa đo hiệu quả Linux nên không cam kết hết OOM.
+Bằng chứng [workflow512](https://github.com/NguyeDucManh/QuanLyNhaHang/actions/runs/43176258585),
+artifact `render512-measurements`, SHA `56d0aadddd68c516c18e14cc859a9e060936a832`.
+Artifact tải local: `artifacts/final-ci-measurements/run-43176258585.json`; log `final-ci-job-131041116363.log`.
+Các số Windows trước/sau309,45→308,84MiB chỉ là phép đo cũ riêng, không dùng thay số cgroup trên.
+
+## 13. Giới hạn RAM — PASS smoke native, BLOCKED các tải chưa đo
+
+PR4 cũ có Linux peak596.672KiB (~583MiB), không cùng phép thử/fixture nên không tính phần trăm cải thiện.
+Gói mới lazy-load ML, CPU-only Torch/XGBoost, ONNX tắt arena/mem-pattern,thread1,
+serialize inference và malloc_trim; cgroup512 mới đạt366,645MiB ở phạm vi đã nêu.
+Chưa có bằng chứng đủ để bảo đảm mọi luồng và số người dùng thực tế không OOM.
 Semantic RAG cần embedding/index thật và có thể vượt ngân sách khi cùng FaceNet;
 fallback chỉ trả chính sách có nguồn code, unknown trả thiếu dữ liệu, không giả semantic readiness.
+Forecast model thật/GA tải lớn/ảnh người thật5/25frame và full ML cùng lúc chưa được capacity test.
 Không tự nâng gói trả phí hoặc tách dịch vụ production.
 
-## 14. Git/PR — PASS cô lập nhánh, BLOCKED xuất bản mới
+## 14. Git/PR — PASS xuất bản theo phê duyệt mới
 
-Nhánh `feature/face-only-loyalty-render512`, base PR4 `10d756058549d28a6180596bbff089728acb5477`.
-GitHub kiểm tra lại12/11: main `b170842ce9ba0d58bbffb9517e7ade0a054ab284`;
-PR2 `9d02c233…`/PR3 `1f685682…` open base main; PR4 draft open base integration/master-readiness.
-Không có PR mới cho gói này. Tích hợp theo ancestry PR2+PR3→integration→PR4→gói mới;
-không merge lại/squash chồng từng nhánh vào main làm mất thay đổi.
-Auto-review từ chối publish vì phạm vi mới vượt gói23 file cũ; cần chủ hệ thống xác nhận lại phạm vi xuất bản.
-Không tìm cách upload patch qua kênh khác để vượt từ chối.
+Nhánh `feature/face-only-loyalty-render512`; commit được duyệt `56d0aadddd68c516c18e14cc859a9e060936a832`.
+[Draft PR #5](https://github.com/NguyeDucManh/QuanLyNhaHang/pull/5), base `fix/master-service-audit` của PR4.
+GitHub đối chiếu đủ121file với manifest, secret/path scan PASS; không env/dump/modelbinary/cache.
+Main vẫn `b170842ce9ba0d58bbffb9517e7ade0a054ab284`, PR2/3/4 chưa merge.
+Ancestry Git xác nhận PR2 vàPR3 đã nằm trong base10d7560 của PR4; không merge lặp các nhánh vào main.
+Sau phê duyệt rõ121file, push/PR được thực hiện đúng quy trình; không có thao tác vượt kiểm duyệt.
+Commit báo cáo tiếp theo chỉ sửa tài liệu này; CI sẽ chạy lại trên SHA mới, kết quả cuối ghi tại Checks/PR body.
 
 ## 15. Migration — PASS review, BLOCKED production approval
 
@@ -145,20 +164,21 @@ Rollback production: tắt feature mới, giữ bảng/dữ liệu mới và sna
 
 ## 16. Rủi ro — BLOCKED nghiệm thu thực tế
 
-Chưa browser camera phần cứng/Safari/iPhone, FAR/FRR, actual5/25frame real face Render, native512/OOM.
+Chưa browser camera phần cứng/Safari/iPhone, FAR/FRR, actual5/25frame real face Render. Native512 smoke đã đạt; chưa thay thế kiểm thử dữ liệu/tải production.
 Chưa xác minh Render settings/AutoDeploy hiện tại, Redis topology/scheduler hoặc logs mới qua Dashboard.
 Chưa đo latency/cold-start trước-sau production vì chưa deploy. Không suy ra hệ thống đã nhanh từ test local.
 Refund ledger mới cần quy trình đối soát và cấp capability rõ; không tự cấp quyền cho tài khoản thật.
 
 ## 17. Bị chặn — BLOCKED
 
-Push/PR/CI mới: automatic approval review; không có Linux cgroup local thay thế.
+Không còn bị chặn push/PR/CI sau phê duyệt mới: PR5 và hai workflow đã chạy thành công.
+Còn bị chặn nghiệm thu Render và camera người thật; không tự suy rộng kết quả CI thành production PASS.
 Dashboard/Shell/Metrics Render chưa được kết nối; không giả định Auto-Deploy On/Off theo báo cáo cũ.
 Thiết bị thật/nhận diện danh tính cần phiên kiểm thử được đồng ý; không tạo chấm công giả.
 
 ## 18. Triển khai/rollback/smoke — BLOCKED production, kế hoạch đã chuẩn bị
 
-1. Review patch/manifest/commit riêng; cho phép publish phạm vi mới; CI Ubuntu +512 phải chạy trên SHA cuối.
+1. Review Draft PR5 và CI Ubuntu/512 đã chạy; xác minh lại Checks trên SHA cuối trước khi phê duyệt merge.
 2. Xác minh Render branch/main, AutoDeploy, build `bash build.sh`, start Daphne đúng,512/native libs.
    Nếu AutoDeploy OnCommit, phải chốt cửa sổ triển khai và phê duyệt cấu hình trước merge; chưa tự chỉnh.
 3. Backup PostgreSQL mới ngay trước triển khai, SHA/pg_restore archive và restore rehearsal ở môi trường riêng được duyệt.
@@ -172,10 +192,10 @@ Thiết bị thật/nhận diện danh tính cần phiên kiểm thử được 
 9. Theo dõi memory/CPU/error/latency; nếu lỗi tắt flag mới và rollback artifact tương thích, giữ schema/ledger.
    Không downgrade schema hoặc restore đè dữ liệu phát sinh. FACE_ONLY đổi chính sách phải được thông báo khi release.
 
-**Cần duyệt tiếp:** xuất bản gói mới; sau CI đạt mới xem xét merge/deploy/migration/flags/environment riêng.
-Không đánh dấu hoàn thành mã nguồn/production khi CI512 và PR còn bị chặn.
+**Cần duyệt tiếp:** merge/deploy/migration/flags/environment production riêng. Việc publish/CI đã được duyệt và thực hiện.
+Không đánh dấu hoàn thành production: chưa deploy và chưa kiểm thử dữ liệu/thiết bị thật trên Render.
 
-## Chốt kiểm chứng local — PASS; Linux/production vẫn BLOCKED
+## Chốt kiểm chứng — local và CI PASS; production còn BLOCKED
 
 | Kiểm tra cuối | Kết quả | Bằng chứng local ignored |
 | --- | --- | --- |
@@ -190,7 +210,7 @@ Không đánh dấu hoàn thành mã nguồn/production khi CI512 và PR còn b�
 | Wheel metadata Linuxx86_64/CPython3.14 | 23/23 có wheel;không phải cài/build | FINAL_LINUX_WHEEL_AUDIT.json |
 | Source GPS/Map/demo reference audit | Không còn các tham chiếu active đã tìm | rg audit customers/templates/static/restaurant_system |
 | Gói thay đổi/secret scan | PASS;không env/dump/modelbinary/cache | FINAL_UPGRADE_REVIEW_MANIFEST.json |
-| CI Ubuntu mới /512MiB thật | BLOCKED,chưa chạy | workflow chuẩn bị,chưa publish |
+| CI Ubuntu mới /512MiB thật | PASS,696test;peak366.645MiB;OOM0 | hai workflow tại56d0aad,link bên trên |
 | Render/iPhone thật | BLOCKED,chưa deploy/thiết bị thật | không dùng mô phỏng thay nghiệm thu |
 
 Lượt full trung gian695 test có1failure: endpoint cũ và canonical cùng lấy semaphore,
@@ -202,8 +222,8 @@ Không giấu các lượt lỗi trong log.
 Harness512 dùng `scripts.render512_settings` chỉ chấp nhận DB restaurant_ci512/127.0.0.1/RENDER=false,
 DEBUG=false và static production; HTTP loopback thay TLSproxy để driver CI gửi secure-session fixture.
 Production settings/cookies/SSL không thay đổi. Probe thất bại cả khi có oom hoặc oom_kill,
-giữ diagnostics khi lỗi. Chưa thực thi nên không báo harness512 PASS hoặc đã đạt512.
+giữ diagnostics khi lỗi. Đã thực thi thành công tại56d0aad; chỉ kết luận theo phạm vi/giới hạn mục12.
 
 Sau local checkpoint, SHA và hash patch nằm trong `artifacts/FINAL_UPGRADE_LOCAL_CHECKPOINT.json`.
-Patch/manifest/PR-body đã chuẩn bị chỉ để review local, **không phải PR đã tạo**.
-Phải có phê duyệt xuất bản phạm vi mới rồi mới push/tạo draft PR/chạy CI.
+Patch/manifest giữ checkpoint gốc121file. Draft PR5 đã tạo sau phê duyệt mới; không merge/deploy.
+Báo cáo/PR body công bố riêng kết quả SHA56d0aad và kết quả chạy lại trên commit tài liệu tiếp theo.
