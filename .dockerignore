@@ -9,3 +9,9 @@ SmartRestaurant_Submission
 staticfiles
 **/__pycache__
 *.log
+**/.env
+**/.env.*
+!**/.env.example
+**/*.dump
+**/*.backup
+**/database_backups

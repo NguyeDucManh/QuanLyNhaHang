@@ -27,7 +27,11 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
-      - name: Build production dependencies and actual face assets
+      - name: Build the production Render image and actual face assets
+        run: docker build -f Dockerfile -t smart-restaurant-release:ci .
+      - name: Validate production entrypoint and HTTPS proxy behavior
+        run: python3 scripts/docker_production_smoke.py
+      - name: Add isolated CI settings to the production image
         run: docker build -f Dockerfile.ci512 -t smart-restaurant-ci512 .
       - name: Enforce cgroup512MiB, no swap, one CPU
         run: docker run -d --name smart-restaurant-ci512 --memory=512m --memory-swap=512m --cpus=1 --pids-limit=256 --network=host smart-restaurant-ci512
@@ -44,7 +48,10 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: render512-measurements
-          path: render512-results.json
+          path: |
+            render512-results.json
+            production-image-smoke.json
+            production-startup.log
           if-no-files-found: warn
           retention-days: 7
       - name: Remove disposable container

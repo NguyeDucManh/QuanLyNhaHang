@@ -1,5 +1,10 @@
 # Triển khai Smart Restaurant lên dịch vụ Render hiện hữu
 
+> Cập nhật 12/11/2026: lỗi native MediaPipe `libGLESv2.so.2` được xử lý bằng Dockerfile
+> production đã kiểm thử. Dùng [runbook hotfix mới](RENDER_NATIVE_HOTFIX_RELEASE.md)
+> cho đợt rollout này. Các lệnh Python native bên dưới là cấu hình lịch sử;
+> không deploy lại runtime native thiếu thư viện. Đổi runtime/merge/deploy/migrate vẫn cần phê duyệt.
+
 Ngày kiểm tra: 10/11/2026 (Asia/Saigon). Không tạo dịch vụ hoặc database mới bằng Blueprint.
 Giữ Django 6.1.1, PostgreSQL và Channels. Không chạy seed, migration hoặc train trong startup.
 
