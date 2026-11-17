@@ -36,7 +36,8 @@ jobs:
       - name: Add isolated CI settings to the production image
         run: docker build -f Dockerfile.ci512 -t smart-restaurant-ci512 .
       - name: Enforce cgroup512MiB, no swap, one CPU
-        run: docker run -d --name smart-restaurant-ci512 --memory=512m --memory-swap=512m --cpus=1 --pids-limit=256 --tmpfs /sys:ro --network=host smart-restaurant-ci512
+        # Hide CPU topology while preserving /sys/fs/cgroup for RAM counters.
+        run: docker run -d --name smart-restaurant-ci512 --memory=512m --memory-swap=512m --cpus=1 --pids-limit=256 --tmpfs /sys/devices/system/cpu:ro --network=host smart-restaurant-ci512
       - name: Real Django HTTP, native FaceNet and memory measurements
         run: python3 scripts/render512_probe.py
       - name: Preserve container state and diagnostics

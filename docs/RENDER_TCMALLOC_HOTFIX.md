@@ -44,12 +44,15 @@ before dlopen so subsequent fatal errors identify the library being loaded.
 - Build the production Dockerfile with the entire build RUN using an empty
   BuildKit tmpfs /sys: dependencies, native load, models, Django check, static.
 - Against that image and an empty read-only /sys, load the SHA-pinned old Linux
-  library: require exit 134 and the exact NumCPUs assertion. Load the installed
+  library: require fatal exit 134 (SIGABRT) or 139 (SIGSEGV) and the exact NumCPUs
+  assertion. Render reported 134; the first CI reproduction reported 139.
+  Load the installed
   fixed library: require success and actual ONNX CPU provider.
 - Start the production CMD with flags OFF and disposable PostgreSQL; verify
   health, proxy/HTTPS, static, non-root and no OOM.
 - Run the existing real 5/25-frame detector/embedding and Django HTTP probe with
-  empty /sys, 512 MiB, no swap and one CPU. Publish peak memory/OOM counters.
+  empty /sys/devices/system/cpu, 512 MiB, no swap and one CPU. Preserve
+  /sys/fs/cgroup to publish actual peak memory/OOM counters.
 - Ubuntu full regression, system checks and migration drift on test PostgreSQL.
 
 Repeated sample frames validate runtime compatibility, not employee identity,

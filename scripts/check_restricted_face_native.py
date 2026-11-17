@@ -30,8 +30,10 @@ try:
         IMAGE,'python','-c',"import ctypes;ctypes.CDLL('/tmp/libmediapipe-baseline.so')"],
         capture_output=True,text=True,timeout=90)
     report['baseline']={'version':'1.1.0','wheel_sha256':SHA,'exit_code':old.returncode,
-        'numcpus_check_seen':'maybe_cpus.has_value()' in old.stderr}
-    assert old.returncode==134 and report['baseline']['numcpus_check_seen'],old.stderr[-3000:]
+        'numcpus_check_seen':'CHECK in NumCPUs: maybe_cpus.has_value() (false)' in old.stderr}
+    # Fatal native CHECK can terminate with SIGABRT (Render) or SIGSEGV (this
+    # wheel/CI). Require the exact assertion AND a fatal signal, never any error.
+    assert old.returncode in (134,139) and report['baseline']['numcpus_check_seen'],old.stderr[-3000:]
     fixed=subprocess.run([*common,IMAGE,'python','scripts/check_face_native.py'],
         capture_output=True,text=True,timeout=90)
     report['fixed']={'exit_code':fixed.returncode,'stdout':fixed.stdout,'stderr':fixed.stderr}
