@@ -1,5 +1,5 @@
 """Host-side driver. Measures only the Docker cgroup containing one Daphne process."""
-import atexit,urllib.parse
+import atexit,urllib.parse,hashlib
 import concurrent.futures,http.cookiejar,json,re,subprocess,time,urllib.request,urllib.error,zlib,struct,base64
 from pathlib import Path
 BASE='http://127.0.0.1:8100'
@@ -59,6 +59,19 @@ assert result['status']==400,result  # Valid image, deliberately no human face.
 tensor,body=request(admin,'/__ci_face_tensor',{},True)
 assert tensor['status']==200,tensor
 report['phases'].append({'name':'real_face_models_no_identity','tensor':json.loads(body),'memory':sample()})
+# Public-domain NASA sample distributed by scikit-image. Test input stays out of
+# the production image/artifacts; this tests real detection/embedding, not an
+# employee identity or liveness challenge. Exact bytes are pinned.
+fixture_url='https://raw.githubusercontent.com/scikit-image/scikit-image/v0.25.2/skimage/data/astronaut.png'
+with urllib.request.urlopen(fixture_url,timeout=30) as response:fixture=response.read()
+assert hashlib.sha256(fixture).hexdigest()=='88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5'
+real_frame='data:image/png;base64,'+base64.b64encode(fixture).decode()
+quality,body=request(admin,'/management/ai/faces/quality/',{'frame':real_frame},True)
+assert quality['status']==200 and json.loads(body)['accepted'] is True,quality
+face_sample,body=request(admin,'/__ci_face_sample',{'frame':real_frame},True)
+assert face_sample['status']==200,face_sample
+report['phases'].append({'name':'real_face_detection_and_embedding_5_25',
+    'public_fixture_source':fixture_url,'quality':quality,'face_sample':json.loads(body),'memory':sample()})
 for message in ('Xin chào','nhà hàng có gì','chính sách đặt bàn'):
     result,_=request(customer,'/ai/chat/message/',{'message':message},True)
     assert result['status']==200,result
