@@ -3,6 +3,7 @@ from importlib.metadata import version
 import ctypes
 import json
 import sys
+import os
 
 libraries = ('libGLESv2.so.2', 'libEGL.so.1', 'libGL.so.1', 'libgomp.so.1')
 if sys.platform == 'linux':
@@ -15,11 +16,15 @@ if sys.platform == 'linux':
                 'with libgles2/libegl1/libgl1/libgomp1; do not skip MediaPipe validation.'
             ) from error
 
-# This binding belongs to mediapipe==1.1.0, pinned in requirements.txt.
+# Both platform-specific pins expose the Tasks C API below.
 # Importing mediapipe alone does not load its native library and misses absent EGL.
+print(json.dumps({'stage':'mediapipe_native_load','mediapipe':version('mediapipe'),
+    'cpu_possible_readable':os.access('/sys/devices/system/cpu/possible',os.R_OK) if sys.platform=='linux' else None,
+    'os_cpu_count':os.cpu_count()}),flush=True)
 from mediapipe.tasks.python.core.mediapipe_c_bindings import load_raw_library
 
 load_raw_library()
+print(json.dumps({'stage':'mediapipe_native_loaded'}),flush=True)
 import onnxruntime as ort
 if 'CPUExecutionProvider' not in ort.get_available_providers():
     raise RuntimeError('ONNX Runtime CPUExecutionProvider unavailable.')
