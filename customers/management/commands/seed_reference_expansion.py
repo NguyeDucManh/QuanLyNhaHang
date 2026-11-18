@@ -12,9 +12,9 @@ BASES = [
  ("Bò áp chảo", "Bò", 25, [("Thịt bò","0.220","kg"),("Bơ","0.025","kg"),("Tiêu đen","0.003","kg")]),
  ("Mì xào", "Món chính", 20, [("Mì","0.150","kg"),("Cải thìa","0.080","kg"),("Tỏi","0.010","kg")]),
  ("Cơm chiên", "Món chính", 18, [("Gạo","0.120","kg"),("Trứng","1","piece"),("Hành lá","0.015","kg")]),
- ("Salad rau củ", "Khai vị", 15, [("Xà lách","0.080","kg"),("Cà chua bi","0.070","kg"),("Dưa leo","0.070","kg")]),
+ ("Nấm áp chảo", "Khai vị", 15, [("Nấm","0.180","kg"),("Bơ","0.020","kg"),("Tỏi","0.010","kg")]),
  ("Gà nướng", "Gia cầm", 40, [("Thịt gà","0.250","kg"),("Tỏi","0.015","kg"),("Mật ong","0.020","kg")]),
- ("Panna cotta", "Tráng miệng", 25, [("Kem tươi","0.120","l"),("Sữa","0.080","l"),("Gelatin","0.006","kg")]),
+ ("Sườn bò nướng", "Bò", 35, [("Sườn bò","0.300","kg"),("Tỏi","0.015","kg"),("Dầu ăn","0.010","l")]),
 ]
 STYLES = [
  ("sốt chanh", ("Chanh","0.025","kg"), "Pha nước cốt chanh, nêm vừa khẩu vị rồi hoàn thiện món."),
