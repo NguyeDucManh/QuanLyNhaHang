@@ -132,3 +132,19 @@ from .models import Supplier,Ingredient,RecipeIngredient,Order,OrderItem,Invoice
 # bypass price snapshots, state machines or stock/payment accounting.
 for business_model in (Supplier,Ingredient,RecipeIngredient,Order,OrderItem,Invoice,Payment,StockReceipt,StockReceiptItem,StockIssue,StockIssueItem,StockMovement):
     admin.site.register(business_model,ReadOnlyResourceAdmin)
+
+# Internal, read-only recipe references. These never modify live menu recipes.
+from .recipe_reference_models import RecipeReference
+
+@admin.register(RecipeReference)
+class RecipeReferenceAdmin(admin.ModelAdmin):
+    list_display = ("code", "name", "category", "estimated_minutes", "source")
+    list_filter = ("category",)
+    search_fields = ("code", "name")
+    readonly_fields = ("code", "name", "category", "estimated_minutes", "ingredients", "steps", "source", "created_at")
+    def has_add_permission(self, request):
+        return False
+    def has_change_permission(self, request, obj=None):
+        return False
+    def has_delete_permission(self, request, obj=None):
+        return False
