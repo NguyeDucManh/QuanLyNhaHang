@@ -13,6 +13,7 @@ from customers.booking_workspace import availability
 from customers import operations_views as ops
 from customers import membership_views as membership
 from customers import deposit_views as deposits
+from customers import roster_views
 from .health import health
 from django.contrib.sitemaps.views import sitemap
 from customers.seo import robots, SITEMAPS
@@ -20,6 +21,8 @@ from customers.seo import robots, SITEMAPS
 handler404 = 'restaurant_system.errors.page_not_found'
 
 urlpatterns = [
+    path('work/shift-registration/',roster_views.registration,name='shift_registration'),
+    path('management/roster/',roster_views.management,name='roster_management'),
     path('management/orders/<int:pk>/release-table/',release_order_table,name='release_order_table'),
     path('management/table-assignments/',table_assignment_views.assignments,name='table_assignments'),
     path('robots.txt', robots, name='seo_robots'),

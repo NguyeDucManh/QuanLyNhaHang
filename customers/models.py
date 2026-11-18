@@ -499,3 +499,4 @@ from .table_assignment_models import TableServiceAssignment
 from .table_session_models import TableSession
 
 from .membership_models import MembershipPolicy, MembershipDiscount, InvoiceRefund
+from .roster_models import RosterWeek,ShiftRegistration

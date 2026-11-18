@@ -33,6 +33,7 @@ class Problem:
     start_date:object
     end_date:object
     cutoff:object
+    policy:object=None
 
 def shift_window(day,shift):
     start=timezone.make_aware(datetime.combine(day,shift.start_time))
@@ -75,6 +76,7 @@ def eligible(problem,seat,employee_id,assigned):
     employee=problem.employees.get(employee_id)
     if not employee or employee.hire_date>seat.day or seat.start<=problem.cutoff:return False
     if any(a<=seat.day<=b for a,b in problem.frozen.get(employee_id,[])):return False
+    if problem.policy is not None and not problem.policy.allows(problem,seat,employee_id,assigned):return False
     return not any(start<seat.end and end>seat.start for start,end in [*problem.blocks.get(employee_id,[]),*assigned.get(employee_id,[])])
 
 def repair(problem,chromosome,rng,*,fill=True):
@@ -90,7 +92,7 @@ def repair(problem,chromosome,rng,*,fill=True):
             candidates=[pk for pk in problem.employees if eligible(problem,problem.seats[i],pk,assigned)]
             if candidates:
                 rng.shuffle(candidates)
-                employee_id=min(candidates,key=lambda pk:len(assigned[pk]))
+                employee_id=min(candidates,key=lambda pk:problem.policy.balance_key(problem,problem.seats[i],pk,assigned) if problem.policy is not None else len(assigned[pk]))
                 result[i]=employee_id;assigned[employee_id].append((problem.seats[i].start,problem.seats[i].end))
     return tuple(result)
 
@@ -120,6 +122,7 @@ def evaluate_chromosome(problem,chromosome):
                 gap=(right[0]-left[1]).total_seconds()/3600
                 if gap>=0:short_rest+=max(0,MIN_REST_HOURS-gap)
     score=-(WEIGHTS['hard']*hard+WEIGHTS['missing_seat']*missing+WEIGHTS['imbalance']*imbalance+WEIGHTS['weekly_overwork']*overwork+WEIGHTS['short_rest_hour']*short_rest)
+    if problem.policy is not None:score-=problem.policy.fairness_penalty(problem,assigned)
     full=sum(coverage.get(key,0)>=problem.shifts[key[1]].required_staff for key in problem.windows)
     return {'score':round(score,6),'hard_violations':hard,'missing_seats':missing,'full_shifts':full,'short_shifts':len(problem.windows)-full,'coverage_rate':full/len(problem.windows) if problem.windows else 0,'imbalance':round(imbalance,4),'overwork_hours':round(overwork,4),'short_rest_hours':round(short_rest,4)}
 
