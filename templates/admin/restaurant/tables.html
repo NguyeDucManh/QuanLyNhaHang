@@ -1,4 +1,4 @@
-﻿{% extends management_base %}{% block admin_title %}Quản lý bàn{% endblock %}
+{% extends management_base %}{% block admin_title %}Quản lý bàn{% endblock %}
 {% block admin_content %}
 <div class="module-heading"><div><h1>Quản lý bàn</h1><p>Trạng thái vận hành hiện tại và lịch Booking được quản lý riêng.</p></div>{% if can_add %}<a class="primary-button" href="{% url 'admin_table_add' %}">Thêm bàn</a>{% endif %}</div>
 {% include "admin/restaurant/_messages.html" %}

@@ -77,6 +77,7 @@ jobs:
       - name: Checks and migration graph
         run: |
           python manage.py check
+          python scripts/check_vietnamese_text.py
           python manage.py makemigrations --check --dry-run
           bash -n build.sh
           python manage.py migrate customers 0021 --noinput

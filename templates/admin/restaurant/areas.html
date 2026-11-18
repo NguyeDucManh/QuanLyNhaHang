@@ -1,4 +1,4 @@
-﻿{% extends management_base %}{% block admin_title %}Quản lý khu vực{% endblock %}
+{% extends management_base %}{% block admin_title %}Quản lý khu vực{% endblock %}
 {% block admin_content %}
 <div class="module-heading"><div><h1>Quản lý khu vực</h1><p>Khu vực nhà hàng</p></div>{% if can_add %}<a class="primary-button" href="{% url 'admin_area_add' %}">Thêm khu vực</a>{% endif %}</div>
 {% include "admin/restaurant/_messages.html" %}
