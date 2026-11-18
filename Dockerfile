@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 # Debian 12 matches Render's documented native OS; the image owns its OS deps.
 FROM python:3.14.8-slim-bookworm
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 DJANGO_DEBUG=false \
@@ -9,7 +10,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY . /app
 # Build has no database or live credential. Never declare sensitive Render
 # environment variables as build ARG/ENV or bake them into the image.
-RUN DJANGO_SECRET_KEY=container-build-only-not-a-live-secret-0123456789 \
+# BuildKit/Render may not expose CPU topology in sysfs. Require the complete
+# native/model/static build to work with an empty /sys; never invent CPU data.
+RUN --mount=type=tmpfs,target=/sys \
+    DJANGO_SECRET_KEY=container-build-only-not-a-live-secret-0123456789 \
     DJANGO_SETTINGS_MODULE=restaurant_system.settings DJANGO_DEBUG=false \
     RENDER=false DATABASE_URL='' DB_HOST=127.0.0.1 DB_NAME=build_only \
     DB_USER=build_only DB_PASSWORD=build-only-unused \
