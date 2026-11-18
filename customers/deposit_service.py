@@ -1,4 +1,4 @@
-"""Stripe hosted checkout; verified webhooks are the only deposit confirmation path."""
+"""Confirm deposits only from signed events or authenticated Stripe API reads."""
 from datetime import timedelta
 from decimal import Decimal, ROUND_CEILING
 import uuid
@@ -21,7 +21,7 @@ def as_dict(value):
 def stripe_client():
     if not settings.STRIPE_SECRET_KEY.startswith(('sk_test_','rk_test_')):
         raise ImproperlyConfigured('Cần cấu hình Stripe TEST key trong .env; không chấp nhận live key.')
-    return stripe.StripeClient(settings.STRIPE_SECRET_KEY,max_network_retries=2)
+    return stripe.StripeClient(settings.STRIPE_SECRET_KEY,max_network_retries=1,http_client=stripe.RequestsClient(timeout=10))
 
 
 def deposit_amount(subtotal):
@@ -86,6 +86,28 @@ def metadata(deposit,attempt):
     return {'booking_id':str(deposit.booking_id),'deposit_id':str(deposit.pk),'customer_id':str(deposit.customer_id),'attempt_key':str(attempt.request_key)}
 
 
+def payment_progress(booking,deposit,*,awaiting=False):
+    """Presentation only. Neither a return URL nor an open attempt proves payment."""
+    attempt=deposit.attempts.filter(status__in=['CREATING','OPEN']).first()
+    state='READY';message='Có thể mở Stripe Checkout trong thời gian giữ bàn.'
+    if deposit.reconciliation_required:
+        state='RECONCILIATION';message='Giao dịch cần nhà hàng đối soát. Không thanh toán lại.'
+    elif deposit.status=='SUCCEEDED':
+        state='CONFIRMED' if booking.status in ('CONFIRMED','COMPLETED') else 'PAID'
+        message='Tiền cọc đã được ghi nhận.'
+    elif deposit.expires_at<=timezone.now() or deposit.status in ('EXPIRED','CANCELLED') or booking.status!='PENDING_DEPOSIT':
+        state='EXPIRED';message='Bàn không còn được giữ. Nếu đã trả tiền, không thanh toán lại; liên hệ nhà hàng để đối soát.'
+    elif awaiting and attempt and attempt.session_id:
+        state='AWAITING_WEBHOOK';message='Đang chờ webhook Stripe xác nhận. Không thanh toán lại cho đặt bàn này.'
+    elif attempt:
+        state='CHECKOUT_OPEN';message='Đã có một phiên Stripe. Chỉ kiểm tra hoặc tiếp tục phiên hiện có; không tạo thanh toán mới.'
+    elif deposit.status=='FAILED':
+        state='FAILED';message='Stripe báo giao dịch thất bại. Có thể thử lại trong thời gian giữ bàn.'
+    return {'payment_state':state,'payment_message':message,
+        'can_pay':state in ('READY','FAILED'),'can_resume':state=='CHECKOUT_OPEN',
+        'awaiting_webhook':state=='AWAITING_WEBHOOK','reconciliation_required':deposit.reconciliation_required}
+
+
 def checkout(booking_id,*,actor):
     require_owner(Booking.objects.only('user_id').get(pk=booking_id),actor)
     client=stripe_client()
@@ -105,8 +127,10 @@ def checkout(booking_id,*,actor):
     # Persist the retry key before contacting Stripe. Network failures reuse this attempt.
     if attempt.session_id:
         session=as_dict(client.v1.checkout.sessions.retrieve(attempt.session_id))
-        if session.get('livemode') is not False: raise ValidationError('Chỉ chấp nhận Stripe Test Mode.')
-        if session.get('status')=='complete': raise ValidationError('Stripe đang xác minh kết quả. Vui lòng chờ webhook cập nhật.')
+        if session.get('livemode') is not False or session.get('id')!=attempt.session_id or session.get('amount_total')!=amount or session.get('currency')!='vnd' or dict(session.get('metadata',{}))!=values:
+            raise ValidationError('Thông tin phiên Stripe không khớp đặt bàn.')
+        if session.get('status')=='complete': raise ValidationError('Phiên Stripe đã hoàn tất. Không thanh toán lại; chờ webhook hợp lệ cập nhật.',code='awaiting_webhook')
+        if session.get('status') not in ('open','expired'):raise ValidationError('Chưa xác định được trạng thái phiên Stripe; không tạo phiên mới.')
         if session.get('status')=='expired':
             with transaction.atomic():
                 locked=StripeCheckoutAttempt.objects.select_for_update().get(pk=attempt.pk)
@@ -143,6 +167,59 @@ def checkout(booking_id,*,actor):
         except stripe.StripeError: pass
         raise ValidationError('Thời gian giữ bàn đã hết; vui lòng đặt lại.')
     return url
+
+
+def settle_paid_deposit(booking,table,deposit,attempt,intent):
+    """Caller holds booking/deposit/attempt locks and verified provider evidence."""
+    if not intent or not str(intent).startswith('pi_'):raise ValidationError('Thiếu PaymentIntent.')
+    if deposit.status=='SUCCEEDED':
+        if attempt.status!='PAID':
+            record(action='DEPOSIT_DUPLICATE_CHARGE_REVIEW',entity=deposit,after={'session_id':attempt.session_id})
+            deposit.reconciliation_required=True;save_validated(deposit)
+        outcome='ALREADY_PAID'
+    else:
+        from .booking_service import overlaps,table_eligible
+        conflict=not table or not table_eligible(table,table.area,booking.guests) or overlaps(table.pk,booking.start_time,booking.end_time,booking.pk)
+        if table and booking.start_time<=timezone.now() and Order.objects.filter(table=table,status__in=['PENDING','CONFIRMED','PREPARING']).exists():conflict=True
+        late=deposit.expires_at<=timezone.now() or booking.status!='PENDING_DEPOSIT' or conflict
+        deposit.status='SUCCEEDED';deposit.paid_at=timezone.now();deposit.reconciliation_required=late;save_validated(deposit)
+        if not late:
+            booking.status='CONFIRMED';save_validated(booking)
+            record(action='BOOKING_CONFIRMED_FROM_DEPOSIT',entity=booking,after={'deposit_id':deposit.pk})
+        elif booking.status=='PENDING_DEPOSIT':booking.status='CANCELLED';save_validated(booking)
+        record(action='DEPOSIT_SUCCEEDED_REVIEW' if late else 'DEPOSIT_SUCCEEDED',entity=deposit,after={'booking_id':booking.pk,'amount':str(deposit.amount),'session_id':attempt.session_id})
+        outcome='RECONCILIATION_REQUIRED' if late else 'CONFIRMED'
+    attempt.status='PAID';attempt.payment_intent_id=intent;save_validated(attempt)
+    return outcome
+
+
+def reconcile_checkout(booking_id,*,actor):
+    """Server-to-server verification, never trust a browser-supplied Session ID."""
+    booking=Booking.objects.get(pk=booking_id);require_owner(booking,actor)
+    deposit=BookingDeposit.objects.get(booking=booking)
+    if deposit.status=='SUCCEEDED':return 'ALREADY_PAID'
+    attempt=deposit.attempts.exclude(session_id__isnull=True).exclude(session_id='').first()
+    if not attempt:return 'NO_SESSION'
+    session=as_dict(stripe_client().v1.checkout.sessions.retrieve(attempt.session_id,{'expand':['payment_intent']}))
+    intent=as_dict(session.get('payment_intent'))
+    expected=metadata(deposit,attempt)
+    if session.get('id')!=attempt.session_id or session.get('livemode') is not False or session.get('currency')!='vnd' or session.get('amount_total')!=int(deposit.amount) or dict(session.get('metadata') or {})!=expected or session.get('client_reference_id')!=str(deposit.pk):
+        raise ValidationError('Phiên Stripe không thuộc tiền cọc này.')
+    if session.get('status')!='complete' or session.get('payment_status')!='paid':return 'AWAITING_PAYMENT'
+    if not isinstance(intent,dict) or not str(intent.get('id','')).startswith('pi_') or intent.get('status')!='succeeded' or intent.get('livemode') is not False or intent.get('currency')!='vnd' or intent.get('amount')!=int(deposit.amount) or intent.get('amount_received')!=int(deposit.amount) or dict(intent.get('metadata') or {})!=expected:
+        raise ValidationError('PaymentIntent chưa xác nhận đúng số tiền cọc.')
+    with transaction.atomic():
+        booking,table=locked_booking(booking_id);require_owner(booking,actor)
+        deposit=BookingDeposit.objects.select_for_update().get(pk=deposit.pk)
+        locked=StripeCheckoutAttempt.objects.select_for_update().get(pk=attempt.pk)
+        if locked.session_id!=session['id'] or locked.deposit_id!=deposit.pk or (locked.payment_intent_id and locked.payment_intent_id!=intent['id']):raise ValidationError('Phiên thanh toán đã thay đổi.')
+        if session['amount_total']!=int(deposit.amount) or dict(session['metadata'])!=metadata(deposit,locked) or session['client_reference_id']!=str(deposit.pk):raise ValidationError('Tiền cọc đã đổi sau khi kiểm tra Stripe.')
+        if deposit.status=='SUCCEEDED' and locked.status=='PAID':return 'ALREADY_PAID'
+        outcome=settle_paid_deposit(booking,table,deposit,locked,intent['id'])
+        record(action='STRIPE_API_RECONCILED',entity=deposit,actor=actor,after={'booking_id':booking.pk,'session_id':locked.session_id,'payment_intent_id':intent['id'],'outcome':outcome,'source':'authenticated_stripe_api'})
+        from .booking_advanced_service import notify_floor_changed
+        notify_floor_changed()
+        return outcome
 
 
 @transaction.atomic
@@ -182,26 +259,7 @@ def handle_verified_event(event):
     if attempt.payment_intent_id and intent and attempt.payment_intent_id!=intent: raise ValidationError('PaymentIntent đã thay đổi.')
     succeeded=kind in ('checkout.session.completed','checkout.session.async_payment_succeeded') and obj.get('payment_status')=='paid' and obj.get('status')=='complete'
     if succeeded:
-        if not intent or not str(intent).startswith('pi_'): raise ValidationError('Thiếu PaymentIntent.')
-        if deposit.status=='SUCCEEDED':
-            if attempt.status!='PAID':
-                record(action='DEPOSIT_DUPLICATE_CHARGE_REVIEW',entity=deposit,after={'session_id':attempt.session_id})
-                deposit.reconciliation_required=True;save_validated(deposit)
-            outcome='ALREADY_PAID'
-        else:
-            from .booking_service import overlaps,table_eligible
-            conflict=not table or not table_eligible(table,table.area,booking.guests) or overlaps(table.pk,booking.start_time,booking.end_time,booking.pk)
-            if table and booking.start_time<=timezone.now() and Order.objects.filter(table=table,status__in=['PENDING','CONFIRMED','PREPARING']).exists(): conflict=True
-            late=deposit.expires_at<=timezone.now() or booking.status!='PENDING_DEPOSIT' or conflict
-            deposit.status='SUCCEEDED';deposit.paid_at=timezone.now();deposit.reconciliation_required=late
-            save_validated(deposit)
-            if not late:
-                booking.status='CONFIRMED';save_validated(booking)
-                record(action='BOOKING_CONFIRMED_FROM_DEPOSIT',entity=booking,after={'deposit_id':deposit.pk})
-            elif booking.status=='PENDING_DEPOSIT': booking.status='CANCELLED';save_validated(booking)
-            record(action='DEPOSIT_SUCCEEDED_REVIEW' if late else 'DEPOSIT_SUCCEEDED',entity=deposit,after={'booking_id':booking.pk,'amount':str(deposit.amount),'session_id':attempt.session_id})
-            outcome='RECONCILIATION_REQUIRED' if late else 'CONFIRMED'
-        attempt.status='PAID';attempt.payment_intent_id=intent;save_validated(attempt)
+        outcome=settle_paid_deposit(booking,table,deposit,attempt,intent)
     elif deposit.status in ('SUCCEEDED','EXPIRED','CANCELLED'): outcome='IGNORED_TERMINAL'
     elif kind=='checkout.session.expired':
         attempt.status='EXPIRED';save_validated(attempt)
@@ -215,6 +273,7 @@ def handle_verified_event(event):
         expire_locked(booking,deposit);outcome='FAILED'
     else: outcome='AWAITING_PAYMENT'
     StripeWebhookEvent.objects.create(event_id=event_id,event_type=kind,outcome=outcome)
+    record(action='STRIPE_WEBHOOK_PROCESSED',entity=deposit,after={'event_id':event_id,'event_type':kind,'outcome':outcome,'booking_id':booking.pk})
     from .booking_advanced_service import notify_floor_changed
     notify_floor_changed()
     return outcome
