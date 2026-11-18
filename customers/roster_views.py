@@ -22,10 +22,10 @@ class RegistrationForm(forms.Form):
     def __init__(self,*args,week,initial_availability=None,**kwargs):
         super().__init__(*args,**kwargs);self.week=week
         for i in range(7):
-            day=(week.start_date+timedelta(days=i)).isoformat();entry=(initial_availability or {}).get(day,{})
-            self.fields['busy_'+str(i)]=forms.BooleanField(required=False,label='Không thể làm '+day,initial=entry.get('unavailable',False))
-            self.fields['shifts_'+str(i)]=forms.ModelMultipleChoiceField(Shift.objects.filter(is_active=True),required=False,label='Ca mong muốn '+day,widget=forms.CheckboxSelectMultiple,initial=entry.get('shifts',[]))
-            self.fields['priority_'+str(i)]=forms.TypedChoiceField(choices=[(1,'Ưu tiên cao'),(2,'Bình thường'),(3,'Ưu tiên thấp')],coerce=int,label='Mức ưu tiên '+day,initial=entry.get('priority',2))
+            day=(week.start_date+timedelta(days=i)).isoformat();label_day=(week.start_date+timedelta(days=i)).strftime('%d/%m/%Y');entry=(initial_availability or {}).get(day,{})
+            self.fields['busy_'+str(i)]=forms.BooleanField(required=False,label='Không thể làm '+label_day,initial=entry.get('unavailable',False))
+            self.fields['shifts_'+str(i)]=forms.ModelMultipleChoiceField(Shift.objects.filter(is_active=True),required=False,label='Ca mong muốn '+label_day,widget=forms.CheckboxSelectMultiple,initial=entry.get('shifts',[]))
+            self.fields['priority_'+str(i)]=forms.TypedChoiceField(choices=[(1,'Ưu tiên cao'),(2,'Bình thường'),(3,'Ưu tiên thấp')],coerce=int,label='Mức ưu tiên '+label_day,initial=entry.get('priority',2))
     def availability(self):
         values={}
         for i in range(7):
@@ -82,7 +82,7 @@ def registration(request):
 @require_http_methods(['GET','POST'])
 def management(request):
     require_ga(request.user)
-    if not schema_ready():return render(request,'admin/restaurant/roster.html',{'schema_missing':True},status=503)
+    if not schema_ready():return render(request,'admin/restaurant/roster.html',{'schema_missing':True,'admin_page':'schedules'},status=503)
     start=monday(timezone.localdate())+timedelta(days=7)
     week=RosterWeek.objects.filter(start_date=start).first();preview=None
     week_form=WeekForm(request.POST if request.POST.get('action')=='open' else None,start=start)
@@ -110,4 +110,4 @@ def management(request):
         except (ValidationError,ValueError,TypeError) as exc:
             messages.error(request,' '.join(exc.messages) if isinstance(exc,ValidationError) else 'Dữ liệu JSON không hợp lệ.')
     registrations=list(week.registrations.select_related('employee')) if week else []
-    return render(request,'admin/restaurant/roster.html',{'week':week,'registrations':registrations,'preview':preview,'start':start,'week_form':week_form})
+    return render(request,'admin/restaurant/roster.html',{'week':week,'registrations':registrations,'preview':preview,'start':start,'week_form':week_form,'admin_page':'schedules'})

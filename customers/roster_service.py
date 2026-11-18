@@ -107,7 +107,7 @@ def load_roster(start,end,rules,*,week=None):
             if a<opening or b>closing:raise ValidationError('Giờ ca nằm ngoài giờ mở cửa; cần quản lý đối chiếu trước.')
             windows[(day,shift.pk)]=(a,b)
             seats.extend(Seat(day,shift.pk,n,a,b) for n in range(max(0,shift.required_staff-len(coverage[(day,shift.pk)]))))
-    state={'employees':[(e.pk,e.user_id,e.employee_code,e.hire_date,e.position_id,get_role(e.user)) for e in employees.values()],
+    state={'employees':[(e.pk,e.user_id,e.employee_code,e.full_name,e.user.username,e.hire_date,e.position_id,get_role(e.user)) for e in employees.values()],
         'shifts':[(s.pk,s.start_time,s.end_time,s.required_staff) for s in shifts.values()],
         'records':[(v.pk,v.employee_id,v.shift_id,v.work_date,v.start_at,v.end_at,v.status) for v in records],
         'frozen':salaries,'rules':rules,'registrations':registrations,'week_revision':week.revision if week else None,
@@ -118,6 +118,8 @@ def load_roster(start,end,rules,*,week=None):
 
 def preview_roster(start,end,rules,*,week=None):
     problem=load_roster(start,end,rules,week=week)
+    from .employee_identity import operational_employees
+    confirmed_ids=set(operational_employees().values_list('pk',flat=True))
     proposal=run_ga(problem,population_size=12,generations=16,random_seed=42)
     for row in proposal['rows']:
         row['employee_name']=problem.employees[row['employee_id']].full_name
@@ -126,7 +128,7 @@ def preview_roster(start,end,rules,*,week=None):
     counts.update(v['employee_id'] for v in proposal['rows'])
     proposal.update(rules=rules,week_id=week.pk if week else None,
         staff=[{'employee_id':e.pk,'name':e.full_name,'existing_and_proposed':counts[e.pk],
-                'identity_review_required':e.employee_code.upper().startswith('DEMO-')} for e in problem.employees.values()],
+                'identity_review_required':e.pk not in confirmed_ids} for e in problem.employees.values()],
         missing_by_day=[{'date':day.isoformat(),'shift_id':sid,'shift_name':problem.shifts[sid].name,'missing':max(0,problem.shifts[sid].required_staff-len(problem.coverage[(day,sid)])-sum(v['shift_id']==sid and v['work_date']==day.isoformat() for v in proposal['rows']))} for day,sid in problem.windows],
         retrospective=True if week is None else False,created_at=timezone.now().isoformat())
     proposal['plan_digest']=digest(proposal)
@@ -158,6 +160,8 @@ def apply_roster(token,*,actor,approved_digest,approve_current=False):
         obj=WorkSchedule(employee_id=pk,shift_id=seat.shift_id,work_date=seat.day,source='AI',status='DRAFT',start_at=seat.start,end_at=seat.end,
             note=marker+'; nhập bổ sung lúc '+now.isoformat()+('; lịch hồi tố, không xác nhận đã đi làm' if seat.end<now else '; chờ quản lý xác nhận'))
         if approve_current and seat.end>=now:
+            from .employee_identity import require_operational
+            require_operational(problem.employees[pk])
             obj.status='APPROVED';obj.approved_by=actor;obj.approved_at=now
         obj.full_clean();obj.save();created.append(obj)
         record(action='ROSTER_SCHEDULE_CREATED',entity=obj,actor=actor,after={'plan_digest':approved_digest,'retrospective':seat.end<now,'status':obj.status})

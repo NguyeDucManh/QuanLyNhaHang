@@ -56,6 +56,17 @@ class RosterTests(RosterData,TestCase):
             self.assertTrue(all(v<=48 for v in weekly_hours(values).values()))
         for (day,sid),count in coverage.items():self.assertLessEqual(count,Shift.objects.get(pk=sid).required_staff)
         self.assertEqual(apply_roster(plan['token'],actor=self.admin,approved_digest=plan['proposal']['plan_digest']),[])
+    def test_six_people_five_weeks_have_weekly_difference_at_most_two(self):
+        for i in (4,5):
+            user=get_user_model().objects.create_user('roster-staff-'+str(i));assign_role(user,'STAFF')
+            Employee.objects.create(user=user,employee_code='NV'+str(i),full_name='Nhân viên '+str(i),position=self.position,hire_date=date(2020,1,1),base_salary=1)
+        start=monday(timezone.localdate())
+        plan=preview_roster(start,start+timedelta(days=34),self.rules)['proposal']
+        self.assertEqual(plan['metrics']['missing_seats'],0)
+        by_week=defaultdict(Counter)
+        for row in plan['rows']:by_week[monday(date.fromisoformat(row['work_date']))][row['employee_id']]+=1
+        for counts in by_week.values():
+            self.assertEqual(len(counts),6);self.assertLessEqual(max(counts.values())-min(counts.values()),2)
     def test_existing_schedule_is_preserved_and_stale_plan_rejected(self):
         day=timezone.localdate();plan=preview_roster(day,day,self.rules)
         employee=self.people[0];start,end=self.window(day,self.shift)
@@ -104,11 +115,21 @@ class RosterTests(RosterData,TestCase):
             Payroll.objects.create(employee=person,period=period,status='APPROVED',approved_by=self.admin,approved_at=timezone.now(),base_salary=1,working_hours=0,overtime_hours=0,earned_base=0,overtime_pay=0,allowance=0,bonus=0,deduction=0,gross_salary=0,net_salary=0)
         self.assertEqual(preview_roster(day,day,self.rules)['proposal']['rows'],[])
     def test_registered_ui_permissions_and_csrf(self):
-        self.week();self.client.force_login(self.people[0].user)
+        self.week();self.client.force_login(self.admin)
+        page=self.client.get('/management/roster/')
+        self.assertContains(page,'data-admin-page="schedules"')
+        self.assertContains(page,'<h1>Đăng ký và phân ca tuần sau</h1>',html=True)
+        self.client.force_login(self.people[0].user)
         self.assertContains(self.client.get('/work/shift-registration/'),'Đăng ký ca tuần sau')
         self.assertEqual(self.client.get('/management/roster/').status_code,403)
         client=Client(enforce_csrf_checks=True);client.force_login(self.people[0].user)
         self.assertEqual(client.post('/work/shift-registration/',{}).status_code,403)
+    def test_form_whitespace_is_not_mislabelled_as_missing_phone_data(self):
+        from .roster_views import RegistrationForm
+        from .templatetags.roster_ui import roster_form
+        from .presentation_middleware import OperationalHTML
+        form=RegistrationForm(week=self.week());parser=OperationalHTML();parser.feed(str(roster_form(form)));parser.close()
+        self.assertNotIn('Chưa cập nhật',''.join(parser.parts))
     def test_published_week_cannot_be_edited(self):
         week=self.week();week.status='PUBLISHED';week.save()
         with self.assertRaises(ValidationError):save_registration(week.pk,self.people[0],self.availability(week),actor=self.people[0].user)

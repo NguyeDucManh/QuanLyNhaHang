@@ -1,7 +1,7 @@
-{% extends management_base %}{% block content %}<section class="staff-card"><h1>Đăng ký và phân ca tuần sau</h1>
+{% extends management_base %}{% load static roster_ui %}{% block admin_content %}<link rel="stylesheet" href="{% static 'ui/staff-roster.css' %}"><section class="staff-card roster-page"><h1>Đăng ký và phân ca tuần sau</h1>
 {% if schema_missing %}<p role="alert">Chưa áp dụng migration đăng ký ca. Không tự chạy migration production.</p>{% else %}
 {% if not week %}<p>Tuần bắt đầu {{ start|date:'d/m/Y' }} chưa mở. Quản lý chọn chức vụ phù hợp từng ca và xác nhận giới hạn trước khi mở đăng ký.</p>
-<form method="post">{% csrf_token %}<input type="hidden" name="action" value="open"><fieldset style="min-width:0">{{ week_form.as_p }}<button>Mở đăng ký tuần sau</button></fieldset></form>
+<form method="post">{% csrf_token %}<input type="hidden" name="action" value="open"><fieldset style="min-width:0">{{ week_form|roster_form }}<button>Mở đăng ký tuần sau</button></fieldset></form>
 {% else %}<p>Tuần {{ week.start_date|date:'d/m/Y' }} · Hạn {{ week.registration_deadline|date:'d/m/Y H:i' }} · {{ week.get_status_display }}</p>
 <h2>Đăng ký của nhân viên</h2>{% for entry in registrations %}<details><summary>{{ entry.employee.full_name }}</summary><dl>{% for day,value in entry.availability.items %}<dt>{{ day }}</dt><dd>{% if value.unavailable %}Không thể làm{% else %}Ca đã chọn: {{ value.shifts|join:', ' }} · Ưu tiên {{ value.priority }}{% endif %}</dd>{% endfor %}</dl></details>{% empty %}<p>Chưa có đăng ký. Hệ thống không tự gán ca cho người chưa đăng ký.</p>{% endfor %}
 <form method="post">{% csrf_token %}<button name="action" value="preview">Xem đề xuất GA và độ công bằng</button></form>{% endif %}
