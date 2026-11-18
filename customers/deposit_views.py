@@ -12,6 +12,7 @@ from django.utils import timezone
 from .models import Booking,BookingDeposit
 from . import deposit_service as service
 from .rbac import capability_required
+from .stripe_configuration import configuration_errors,payment_readiness
 
 
 def owned_booking(request,pk):
@@ -31,10 +32,12 @@ def deposit_page(request,pk,success=False):
     deposit=BookingDeposit.objects.get(booking=booking)
     booking.deposit=deposit
     paid=confirmed(booking)
+    readiness,readiness_message=payment_readiness(booking,deposit,timezone.now())
     context={'page':'booking','booking':booking,'deposit':deposit,'confirmed':paid,'success_view':success,
         'cancelled':request.GET.get('cancelled')=='1','items':booking.preorder_items.all(),'server_now':timezone.now(),
         'can_pay':booking.status=='PENDING_DEPOSIT' and deposit.status in ('PENDING','FAILED') and deposit.expires_at>timezone.now(),
-        'stripe_ready':settings.STRIPE_SECRET_KEY.startswith(('sk_test_','rk_test_')) and bool(settings.STRIPE_WEBHOOK_SECRET),
+        'stripe_ready':not configuration_errors(),
+        'payment_readiness':readiness,'payment_readiness_message':readiness_message,
         'deposit_rule':'Cọc cố định' if settings.BOOKING_DEPOSIT_TYPE=='FIXED' else 'Cọc theo tỷ lệ (có mức tối thiểu)'}
     response=render(request,'customer/deposit_success.html' if success and paid else 'customer/deposit.html',context)
     response['Cache-Control']='no-store'
@@ -45,7 +48,7 @@ def deposit_page(request,pk,success=False):
 @require_POST
 def checkout_start(request,pk):
     owned_booking(request,pk)
-    if not settings.STRIPE_WEBHOOK_SECRET:
+    if configuration_errors():
         messages.error(request,'Stripe Test Mode chưa sẵn sàng. Vui lòng liên hệ nhà hàng.');return redirect('booking_deposit',pk=pk)
     try: url=service.checkout(pk,actor=request.user)
     except ValidationError as error: messages.error(request,' '.join(error.messages))
