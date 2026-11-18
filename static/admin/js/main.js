@@ -52,7 +52,7 @@ const pageHref=page=>adminRoutes[page]||adminRoutes.home+'#'+page;
 const groups=[
 ['QUẢN LÝ NHÀ HÀNG',[['menu','book','Thực đơn'],['categories','book','Danh mục'],['toppings','book','Topping'],['combos','book','Combo'],['promotions','money','Khuyến mãi / Voucher'],['reviews','chat','Đánh giá'],['restaurant-info','pin','Thông tin nhà hàng'],['areas','pin','Quản lý khu vực'],['tables','table','Quản lý bàn'],['bookings','calendar','Đặt bàn'],['orders','receipt','Đơn hàng'],['kitchen','utensils','Bếp'],['payments','wallet','Hóa đơn & Thanh toán']]],
 ['QUẢN LÝ KHO',[['ingredients','leaf','Nguyên liệu'],['transactions','truck','Nhập / Xuất kho'],['suppliers','users','Nhà cung cấp'],['recipes','tools','Công thức món'],['stock-alerts','alert','Tồn kho & Cảnh báo']]],
-['NHÂN SỰ',[['employees','user','Danh sách nhân viên'],['positions','briefcase','Chức vụ'],['shifts','clock','Ca làm việc'],['schedules','calendar','Lịch làm việc'],['attendance','clock','Chấm công'],['payroll','wallet','Bảng lương']]],
+['NHÂN SỰ',[['employees','user','Danh sách nhân viên'],['positions','briefcase','Chức vụ'],['shifts','clock','Ca làm việc'],['schedules','calendar','Lịch làm việc'],['attendance','clock','Chấm công'],['face-checkin','user','Quét mặt FaceID'],['payroll','wallet','Bảng lương']]],
 
 ['AI',[['ai-faces','user','Quản lý khuôn mặt'],['ai-chatbot','bot','Trợ lý nhà hàng'],['ai-schedule','calendar','Đề xuất lịch làm việc']]],
 ['BÁO CÁO',[['reports','chart','Thống kê & Báo cáo'],['loyalty','users','Thành viên khách hàng']]],
@@ -65,7 +65,7 @@ groups.find(g=>g[0]==='HỆ THỐNG')[1].push(['audit-log','receipt','Nhật ký
 Object.assign(moduleAccess,Object.fromEntries(['purchase-orders','food-cost','loyalty','audit-log','waitlist'].map(k=>[k,k])));
 Object.assign(moduleAccess,{'ai-schedule':'ai-schedule',});
 Object.assign(moduleAccess,Object.fromEntries(['ai-dashboard','ai-forecast','ai-inventory','ai-faces'].map(k=>[k,k])));
-Object.assign(moduleAccess,{'categories':'view_menu','ai-chatbot':'ai-dashboard'});
+Object.assign(moduleAccess,{'categories':'view_menu','ai-chatbot':'ai-dashboard','face-checkin':'ai-faces'});
 Object.assign(moduleAccess,Object.fromEntries(['toppings','combos','combo-items','promotions','reviews','restaurant-info','employees','positions','shifts','schedules','attendance','payroll','periods','messages','reports'].map(k=>[k,k])));
 const visibleGroups=groups.map(g=>[g[0],g[1].filter(e=>(!!adminRoutes[e[0]])&&(access.is_admin||access[moduleAccess[e[0]]]))]).filter(g=>g[1].length);
 const entries=[...(access.role==='STAFF'?[]:[['dashboard','grid','Tổng quan']]),...visibleGroups.flatMap(g=>g[1])];
