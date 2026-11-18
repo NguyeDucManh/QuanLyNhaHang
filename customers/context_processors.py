@@ -25,6 +25,7 @@ def customer_context(request):
     routes.update({'categories':reverse('admin_categories'),'ai-chatbot':reverse('ai_chatbot_management')})
     routes.update({key:reverse(route) for key,route in {'purchase-orders':'purchase_orders','food-cost':'food_cost','loyalty':'loyalty_management','audit-log':'audit_logs','waitlist':'waitlist_management'}.items()})
     routes.update({'ai-schedule':reverse('ai_schedules'),'ai-dashboard':reverse('ai_dashboard'),'ai-forecast':reverse('ai_forecast'),'ai-inventory':reverse('ai_inventory'),'ai-faces':reverse('ai_faces')})
+    routes['face-checkin']=reverse('face_attendance')
     combo_cart=request.session.get('combo_cart',{})
     combo_count=sum(q for q in combo_cart.values() if isinstance(q,int) and not isinstance(q,bool) and 1<=q<=20) if isinstance(combo_cart,dict) else 0
     return {
