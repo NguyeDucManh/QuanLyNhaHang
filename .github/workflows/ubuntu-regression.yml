@@ -2,7 +2,7 @@ name: Ubuntu PostgreSQL regression
 
 on:
   pull_request:
-    branches: [main, integration/master-readiness, fix/master-service-audit]
+    branches: [main, integration/master-readiness, fix/master-service-audit, feature/issue10-operations]
   push:
     branches: [main, integration/master-readiness]
   workflow_dispatch:

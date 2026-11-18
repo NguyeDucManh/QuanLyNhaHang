@@ -62,6 +62,7 @@ def resource_list(request,resource):
         return out
     if resource=='comboitem' and request.GET.get('combo','').isdigit(): qs=qs.filter(combo_id=request.GET['combo'])
     tools=[nav_action('Thêm',reverse('module07_add',args=[resource]))] if has_capability(request.user,'customers.add_'+resource) else []
+    if resource=='workschedule':tools.append(nav_action('Đăng ký và xếp ca tuần sau',reverse('roster_management')))
     return list_page(request,page=page,title=title,headers=columns,queryset=qs,cells=lambda obj:[getattr(obj,key) for key in columns],actions=actions,tools=tools)
 
 @transaction.atomic

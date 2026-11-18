@@ -1,0 +1,9 @@
+{% extends personal_base %}{% load static roster_ui %}{% block title %}Đăng ký ca tuần sau{% endblock %}{% block content %}
+<link rel="stylesheet" href="{% static 'ui/staff-roster.css' %}"><section class="staff-card roster-page"><h1>Đăng ký ca tuần sau</h1>
+{% if schema_missing %}<p role="alert">Chức năng đăng ký chưa được triển khai đầy đủ. Quản lý cần duyệt migration đăng ký ca; lịch và chấm công hiện tại vẫn giữ nguyên.</p>
+{% elif no_employee %}<p role="alert">Tài khoản chưa có hồ sơ nhân viên. Liên hệ quản lý, không tự tạo hồ sơ thay thế.</p>
+{% elif week_unopened %}<p>Quản lý chưa mở đăng ký cho tuần bắt đầu {{ start|date:'d/m/Y' }}.</p>
+{% else %}<p>Tuần {{ week.start_date|date:'d/m/Y' }} · Hạn đăng ký: {{ week.registration_deadline|date:'d/m/Y H:i' }}.</p><p>Chỉ chọn ca có thể làm. Không chọn ca đồng nghĩa chưa đồng ý làm ca đó. Đăng ký chưa phải lịch đã duyệt.</p>
+{% if closed %}<p role="status">Đã hết hạn chỉnh sửa hoặc lịch đã công bố. Xem lịch chính thức trong Lịch làm.</p>{% endif %}
+<form method="post">{% csrf_token %}<fieldset {% if closed %}disabled{% endif %} style="min-width:0">{{ form|roster_form }}<button class="button" type="submit">Lưu đăng ký</button><button class="button-secondary" name="action" value="delete">Xóa đăng ký trước hạn</button></fieldset></form>{% endif %}
+<a href="{% url 'my_work' %}?tab=schedule">Xem lịch chính thức</a></section>{% endblock %}
